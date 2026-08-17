@@ -6122,14 +6122,14 @@ input[type=file] {
 .banner-entry-list {
     --tw-bg-opacity: 1;
     --tw-text-opacity: 1;
-    background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+    /* background-color: rgba(243, 244, 246, var(--tw-bg-opacity)); */
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 0.375rem;
     color: rgba(255, 255, 255, var(--tw-text-opacity));
     /* height: 200px; */
-    aspect-ratio: 4/2;
+    aspect-ratio: 3/1;
     overflow: hidden;
     padding: 0.75rem;
     position: relative;
