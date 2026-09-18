@@ -2579,3 +2579,293 @@ body {
     font-size: 9.5px;
   }
 }
+
+
+/* ==========================================================
+   FULL-BLEED SHELL RESET
+   Neutralize legacy theme width/margin rules on page wrappers.
+   ========================================================== */
+
+html,
+body,
+body.site-body,
+#app,
+.app,
+.header,
+.main,
+.site-main,
+.main-container-wrapper,
+.content-container,
+.footer,
+.site-footer-wrap {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#app,
+.app {
+  display: block !important;
+  overflow: visible !important;
+}
+
+.header {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background: transparent !important;
+}
+
+.main,
+.site-main,
+.main-container-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-top: 0 !important;
+  background: #fff !important;
+}
+
+.main-container-wrapper .content-container,
+.content-container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer,
+.site-footer-wrap {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Every full-width visual band must actually span the viewport */
+.store-notify,
+.qs-header,
+.qs-topbar,
+.qs-main-header,
+.qs-nav,
+.qs-footer {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+}
+
+/* The inside content is wide, fluid and consistently aligned */
+:root {
+  --qs-page-gutter: clamp(18px, 3.2vw, 58px);
+  --qs-container: 1540px;
+}
+
+.qs-container,
+.site-container,
+.container,
+.category-block,
+.product-detail,
+.cart {
+  width: min(var(--qs-container), calc(100% - (var(--qs-page-gutter) * 2))) !important;
+  max-width: var(--qs-container) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.store-notify > .container {
+  width: min(var(--qs-container), calc(100% - (var(--qs-page-gutter) * 2))) !important;
+  max-width: var(--qs-container) !important;
+  margin-inline: auto !important;
+}
+
+/* Homepage components share the same wide axis */
+.home > .container,
+.home > .load-products,
+.home > a[id^="block"],
+.home > img,
+.home .w-100.mb-40,
+.ui-product-section,
+.ui-features,
+.ui-brands,
+.ui-testimonials,
+.ui-banner-grid,
+.ui-banner-slider,
+.s-block--banners {
+  width: min(var(--qs-container), calc(100% - (var(--qs-page-gutter) * 2))) !important;
+  max-width: var(--qs-container) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Avoid nested containers shrinking the homepage twice */
+.home > .load-products .ui-product-section,
+.home > .container .ui-product-section,
+.load-products > .ui-product-section {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Old app.css sets .home-grid to flex + wrap; Owl must own its root */
+.home-grid.owl-carousel,
+.product-slider.owl-carousel,
+.ui-brands__slider.owl-carousel,
+.ui-testimonials__slider.owl-carousel {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+  grid-gap: 0 !important;
+}
+
+.owl-carousel .owl-stage-outer {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.owl-carousel .owl-stage {
+  margin: 0 !important;
+}
+
+.owl-carousel .owl-item {
+  min-width: 0 !important;
+}
+
+/* More natural desktop spacing */
+.qs-main-header__inner {
+  width: min(var(--qs-container), calc(100% - (var(--qs-page-gutter) * 2))) !important;
+  max-width: var(--qs-container) !important;
+  grid-template-columns: minmax(150px, 210px) minmax(360px, 1fr) minmax(150px, 210px);
+}
+
+.qs-topbar__inner,
+.qs-nav__inner {
+  width: min(var(--qs-container), calc(100% - (var(--qs-page-gutter) * 2))) !important;
+  max-width: var(--qs-container) !important;
+}
+
+.qs-search .ui.search {
+  max-width: 760px;
+}
+
+.product-grid-4,
+#load_data.product-grid-4 {
+  width: 100%;
+}
+
+/* On wide desktops, use the space instead of leaving giant white gutters */
+@media (min-width: 1500px) {
+  :root {
+    --qs-page-gutter: 56px;
+    --qs-container: 1600px;
+  }
+
+  .qs-main-header__inner {
+    grid-template-columns: 220px minmax(420px, 1fr) 220px;
+  }
+
+  .qs-search .ui.search {
+    max-width: 820px;
+  }
+
+  .product-image,
+  .qs-product-card__image {
+    height: 250px !important;
+    min-height: 250px !important;
+  }
+}
+
+/* Standard laptop: still nearly full width */
+@media (min-width: 992px) and (max-width: 1499px) {
+  :root {
+    --qs-page-gutter: 28px;
+    --qs-container: 1440px;
+  }
+
+  .qs-main-header__inner {
+    grid-template-columns: 175px minmax(320px, 1fr) 175px;
+    gap: 20px;
+  }
+
+  .qs-search .ui.search {
+    max-width: 680px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  :root {
+    --qs-page-gutter: 18px;
+    --qs-container: 100%;
+  }
+
+  .qs-container,
+  .site-container,
+  .container,
+  .home > .container,
+  .home > .load-products,
+  .home > a[id^="block"],
+  .home > img,
+  .home .w-100.mb-40,
+  .ui-product-section,
+  .ui-features,
+  .ui-brands,
+  .ui-testimonials,
+  .ui-banner-grid,
+  .ui-banner-slider,
+  .s-block--banners,
+  .category-block,
+  .product-detail,
+  .cart {
+    width: calc(100% - (var(--qs-page-gutter) * 2)) !important;
+  }
+}
+
+/* Phone: full usable width with a small safe gutter */
+@media (max-width: 767px) {
+  :root {
+    --qs-page-gutter: 12px;
+  }
+
+  .qs-container,
+  .site-container,
+  .container,
+  .home > .container,
+  .home > .load-products,
+  .home > a[id^="block"],
+  .home > img,
+  .home .w-100.mb-40,
+  .ui-product-section,
+  .ui-features,
+  .ui-brands,
+  .ui-testimonials,
+  .ui-banner-grid,
+  .ui-banner-slider,
+  .s-block--banners,
+  .category-block,
+  .product-detail,
+  .cart {
+    width: calc(100% - 24px) !important;
+  }
+
+  .qs-main-header__inner,
+  .qs-topbar__inner,
+  .qs-nav__inner {
+    width: calc(100% - 24px) !important;
+  }
+}
