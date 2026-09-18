@@ -26,7 +26,9 @@
   --ui-shadow-sm: 0 8px 24px rgba(15, 23, 42, .06);
   --ui-shadow-md: 0 18px 48px rgba(15, 23, 42, .09);
   --ui-container: 1200px;
-  --ui-font: "Thmanyah Serif Text", "STC", Tahoma, Arial, sans-serif;
+  --ui-font: "Thmanyah Sans", "STC", Tahoma, Arial, sans-serif;
+  --ui-display: "Thmanyah Serif Display", "Thmanyah Sans", sans-serif;
+  --ui-reading: "Thmanyah Serif Text", "Thmanyah Sans", serif;
 }
 
 html {
@@ -111,7 +113,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--ui-text) !important;
-  font-family: var(--ui-font) !important;
+  font-family: var(--ui-display) !important;
   font-weight: 700 !important;
   line-height: 1.35;
 }
@@ -2408,4 +2410,12 @@ table tr:last-child td {
   .ui-section-heading--row {
     align-items: flex-end;
   }
+}
+
+
+.full-description,
+.cms-content,
+.blog-content,
+article .article-content {
+  font-family: var(--ui-reading) !important;
 }
