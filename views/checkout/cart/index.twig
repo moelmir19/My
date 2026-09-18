@@ -21,6 +21,9 @@
 {% endblock %}
 {% block main_content %}
 <section class="cart">
+    <div class="page-heading ui-page-heading">
+        <h1>{{ 'shop::app.checkout.cart.title' | trans }}</h1>
+    </div>
     {% if cart %}
         <div class="cart-content">
 
