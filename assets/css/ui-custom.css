@@ -2975,3 +2975,89 @@ body {
     max-width: 1680px !important;
   }
 }
+
+
+/* ==========================================================
+   CLEAN HOME FLOW
+   Primary banner -> all products -> supporting sections
+   ========================================================== */
+
+/* Category navigation is removed from markup; header ends cleanly here. */
+.qs-main-header {
+  border-bottom: 1px solid var(--qs-line);
+}
+
+.qs-nav,
+.category-navbar {
+  display: none !important;
+}
+
+/* Remove leftover spacing that previously belonged to the category nav. */
+.home-clean-flow {
+  padding-top: 0 !important;
+}
+
+.home-primary-banner {
+  width: 100%;
+  margin: 22px 0 0 !important;
+}
+
+.home-primary-banner > * {
+  margin-top: 0 !important;
+}
+
+.home-products-stream {
+  width: 100%;
+  margin: 28px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.home-products-stream > .load-products,
+.home-products-stream > .container {
+  width: min(var(--qs-container), calc(100% - (var(--qs-page-gutter) * 2))) !important;
+  max-width: var(--qs-container) !important;
+  margin: 0 auto !important;
+}
+
+.home-products-stream .ui-product-section {
+  margin: 0 !important;
+}
+
+.home-products-stream .section_title,
+.home-products-stream .ui-section-heading,
+.home-products-stream .product-group {
+  margin-top: 0 !important;
+}
+
+.home-supporting-content {
+  width: 100%;
+  margin-top: 48px;
+}
+
+/* Extra promotional/list-of-items banners are no longer rendered on home. */
+.home-clean-flow .ui-banner-grid,
+.home-clean-flow .ui-banner-slider {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .home-primary-banner {
+    margin-top: 12px !important;
+  }
+
+  .home-products-stream {
+    margin-top: 20px;
+    gap: 26px;
+  }
+
+  .home-products-stream > .load-products,
+  .home-products-stream > .container {
+    width: calc(100% - 24px) !important;
+  }
+
+  .home-supporting-content {
+    margin-top: 34px;
+  }
+}
