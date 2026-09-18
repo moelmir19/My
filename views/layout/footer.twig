@@ -49,14 +49,7 @@
             <div class="qs-footer__column">
                 <h3>{{ lang == 'ar' ? 'الدفع الآمن' : 'Secure payment' }}</h3>
                 <div class="qs-payment">
-                    {% if getFunction('getDefaultPaymentMethod').getAdminPaymentMethod and getFunction('getDefaultPaymentMethod').getAdminPaymentMethod['active']|default(0) == 1 %}
-                        <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/visa.png" alt="Visa">
-                        <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/mastercard.png" alt="Mastercard">
-                        {% if getSuperConfig('store.current_country_code') != "OM" %}
-                            <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/mada.png" alt="Mada">
-                            <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/applepay.png" alt="Apple Pay">
-                        {% endif %}
-                    {% endif %}
+                    <img class="qs-payment__all" src="https://quick-salla.com/wp-content/uploads/2023/05/payment.png" alt="{{ lang == 'ar' ? 'وسائل الدفع' : 'Payment methods' }}">
                 </div>
                 {% if companyTax and (companyTax.show_tax_no|default(0)) == 1 %}
                     <p class="qs-tax">{{ ('admin::app.footer.tax_no'|trans) }}: <strong>{{ companyTax.tax_no ?? '' }}</strong></p>
