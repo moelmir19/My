@@ -6,7 +6,7 @@
                     <i class="icon-cancel"></i>
                 </button>                <div>
                     <div class="img-wrapper">
-                        <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/flat.svg" alt="flat">
+                        <div class="qs-loyalty-icon" aria-hidden="true"><i class="icon-star2"></i></div>
                     </div>
                     <div>
                         <h4 class="title mb-0 mt-0">
@@ -39,7 +39,7 @@
                                      data-points-value="{{ item.required_points }}" 
                                      data-points-name="شحن مجاني">
                                     <a class="product--light__thumb">
-                                        <img class="owl-lazy" alt="شحن مجاني" src="https://twsaa.com/admin-themes/mbotiq/assets/images/free_shipping.webp" style="opacity: 1;">
+                                        <span class="qs-loyalty-art" aria-hidden="true"><i class="fa fa-truck"></i></span>
                                     </a>
                                     <div class="product--light__meta">
                                         <a>{{ ('shop::app.checkout.redeem.' ~ item.selected_prize|lower)|trans }}</a>
@@ -64,7 +64,7 @@
                                         {% if item.discount_image %}
                                             <img class="owl-lazy" alt="discount coupon" src="{{ storage_url ~ (item.discount_image) }}" style="opacity: 1;">
                                         {% else %}
-                                            <img class="owl-lazy" alt="discount coupon" src="https://twsaa.com/admin-themes/mbotiq/assets/images/free_coupon.png" style="opacity: 1;">
+                                            <span class="qs-loyalty-art" aria-hidden="true"><i class="fa fa-ticket"></i></span>
                                         {% endif %}
                                     </a>
                                     <div class="product--light__meta">
