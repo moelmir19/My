@@ -13,10 +13,9 @@
         {% for review in content['settings']['reviews'] %}
             <article class="ui-testimonial-card">
                 <div class="ui-testimonial-card__head">
-                    <img
-                        src="{{ asset_url ~ ('images/') }}{{ review['customer']['gender'] ?? 'other' }}-gender.png"
-                        alt="{{ review['name'] }}"
-                        loading="lazy">
+                    <div class="ui-testimonial-avatar" aria-hidden="true">
+                        <i class="icon-user"></i>
+                    </div>
                     <div>
                         {% if content['settings']['hide_user'] != 'true' %}
                             <h4>{{ review['name'] }}</h4>
