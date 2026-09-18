@@ -108,131 +108,119 @@
 
 
 {% block footer_scripts %}
-    {# <script>
-        $( window ).resize(function() {
-            $('.s-slider').slick('resize');
+<script>
+(function () {
+    const isRtl = {{ lang == 'ar' ? 'true' : 'false' }};
+
+    function initOwl($slider) {
+        if (!$slider || !$slider.length || !$.fn.owlCarousel) return;
+
+        if ($slider.hasClass('owl-loaded')) {
+            $slider.trigger('refresh.owl.carousel');
+            return;
+        }
+
+        let responsive = {
+            0:   { items: 2, margin: 10 },
+            480: { items: 2, margin: 12 },
+            768: { items: 3, margin: 14 },
+            1100:{ items: 4, margin: 18 }
+        };
+
+        if ($slider.hasClass('ui-testimonials__slider')) {
+            responsive = {
+                0:   { items: 1, margin: 10 },
+                640: { items: 2, margin: 12 },
+                992: { items: 3, margin: 16 }
+            };
+        } else if ($slider.hasClass('ui-brands__slider')) {
+            responsive = {
+                0:   { items: 2, margin: 10 },
+                600: { items: 4, margin: 12 },
+                992: { items: 6, margin: 14 }
+            };
+        }
+
+        $slider.owlCarousel({
+            loop: false,
+            rewind: true,
+            autoplay: false,
+            autoWidth: false,
+            nav: false,
+            dots: true,
+            rtl: isRtl,
+            responsive: responsive
         });
-    </script> #}
-    <script>
-        $('.owl-carousel').hide();
-        $('.product-group').hide();
-        $(document).ready(function(){
-            $(".owl-carousel").owlCarousel({
-                loop: false,
-                autoplay: true,
-                autoplayTimeout: 5000,
-                autoWidth: true,
-                rewind: true,
-                margin: 15,
-                nav: true,
-                rtl: {{ lang ? 'true' : 'false' }},
-            });
-            setTimeout(() => {
-                $('#block{{ content['block_id'] }} .product-group-arrow-prev').click(function() {
-                    $('#block{{ content['block_id'] }} .owl-prev').click();
-                })
-    
-                $('#block{{ content['block_id'] }} .product-group-arrow-next').click(function() {
-                    $('#block{{ content['block_id'] }} .owl-next').click();
-                })
-            }, 1000);
-            $('#block{{ content['block_id'] }} .product-group').slideDown();
+    }
+
+    function initAllCarousels(scope) {
+        $(scope || document).find('.owl-carousel').each(function () {
+            initOwl($(this));
         });
-    </script>
-    <script>
-        $(document).ready(function() {
-                var width = document.body.clientWidth;
-    
-                perView = 1;
-    
-                var swiper = new Swiper(".myListSwiper", {
-                    slidesPerView: perView,
-                    autoplay: {
-                        delay: 1000,
-                    },
-                    navigation: {
-                        nextEl: ".s-slider-next",
-                        prevEl: ".s-slider-prev",
-                    },
-                });
-            });
-    </script>
-    <script>
-        $('.owl-carousel').hide();
-        $('.product-group').hide();
-        setTimeout(() => {
-            $('.product-slider').owlCarousel({
+    }
+
+    function initBannerSwiper() {
+        if (typeof Swiper === 'undefined' || !document.querySelector('.myListSwiper')) return;
+
+        document.querySelectorAll('.myListSwiper').forEach(function (el) {
+            if (el.swiper) return;
+
+            new Swiper(el, {
+                slidesPerView: 1,
+                spaceBetween: 12,
                 loop: false,
-                autoplay: true,
-                autoplayTimeout: 5000,
-                autoWidth: true,
-                rewind: true,
-                margin: 15,
-                nav: true,
-                rtl: {{ lang ? 'true' : 'false' }},
-            });
-
-            setTimeout(() => {
-                $('.product-group-arrow-prev').click(function() {
-                    $('.owl-prev').click();
-                })
-
-                $('.product-group-arrow-next').click(function() {
-                    $(' .owl-next').click();
-                })
-            }, 1000);
-
-            $('.product-group').slideDown();
-            $('.owl-carousel').fadeIn();
-        }, 3000);
-    </script>
-    <script>
-    $(document).ready(function () {
-    $('.load-products').each(function () {
-        let block = $(this);
-        
-        // 1. Capture the variables from the data-attributes of the current block
-        let blockId = block.data('id');
-        let blockType = block.data('type');
-        let blockLimit = block.data('limit');
-
-        // 2. Perform the AJAX call
-        $.ajax({
-            url: '/fetch-home-products', 
-            method: 'GET',
-            data: {
-                id: blockId,    // Using the variable we just defined
-                type: blockType,
-                limit: blockLimit
-            },
-            success: function (response) {
-                // Inject the HTML fragment from Twig
-                block.html(response);
-
-                // 3. Initialize Owl Carousel if it's a slider
-                if (blockType === 'slider') {
-                    let sliderSelector = $('#slider' + blockId);
-                    
-                    if ($.fn.owlCarousel) {
-                        sliderSelector.owlCarousel({
-                            loop: false,
-                            autoplay: true,
-                            autoplayTimeout: 4000,
-                            autoWidth: true,
-                            margin: 15,
-                            nav: false,
-                            rtl: {{ lang ? 'true' : 'false' }}
-                        });
-                    }
+                autoplay: {
+                    delay: 4500,
+                    disableOnInteraction: false
+                },
+                pagination: {
+                    el: el.querySelector('.swiper-pagination'),
+                    clickable: true
                 }
-            },
-            error: function (xhr, status, error) {
-                console.error("AJAX Error: " + error);
-            }
+            });
         });
+    }
+
+    $(document).ready(function () {
+        initAllCarousels(document);
+        initBannerSwiper();
+
+        $('.load-products').each(function () {
+            const block = $(this);
+            const blockId = block.data('id');
+            const blockType = block.data('type');
+            const blockLimit = block.data('limit');
+
+            $.ajax({
+                url: '/fetch-home-products',
+                method: 'GET',
+                data: {
+                    id: blockId,
+                    type: blockType,
+                    limit: blockLimit
+                },
+                success: function (response) {
+                    block.html(response);
+                    initAllCarousels(block);
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error:', error);
+                }
+            });
+        });
+
+        $(document).on('click', '.product-group-arrow-prev', function () {
+            const block = $(this).closest('[id^="block"]');
+            block.find('.owl-carousel').first().trigger('prev.owl.carousel');
+        });
+
+        $(document).on('click', '.product-group-arrow-next', function () {
+            const block = $(this).closest('[id^="block"]');
+            block.find('.owl-carousel').first().trigger('next.owl.carousel');
         });
     });
-    </script>
+})();
+</script>
 {% endblock %}
 
     
