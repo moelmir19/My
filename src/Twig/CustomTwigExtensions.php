@@ -3082,15 +3082,54 @@ class CustomTwigExtensions extends AbstractExtension
 
     public function getHomepageCategories()
     {
-        if (function_exists('category')) {
-            $data = category();
-
-            if (is_array($data) && isset($data['categories']) && is_array($data['categories'])) {
-                return $data['categories'];
-            }
+        if (!function_exists('category')) {
+            return [];
         }
 
-        return [];
+        $data = category();
+        $categories = (is_array($data) && isset($data['categories']) && is_array($data['categories']))
+            ? $data['categories']
+            : [];
+
+        $fallbacks = [
+            'تخفيضات' => '/assets/images/category-sale.svg',
+            'mob' => '/assets/images/category-mobile.svg',
+            'العطور' => '/assets/images/category-perfume.svg',
+            'المكياج' => '/assets/images/category-makeup.svg',
+            'العناية' => '/assets/images/category-care.svg',
+            'العدسات' => '/assets/images/category-lens.svg',
+            'منتجات-يوسرين' => '/assets/images/category-derma.svg',
+            'الأظافر' => '/assets/images/category-nails.svg',
+            'الملابس' => '/assets/images/category-clothes.svg',
+        ];
+
+        $result = [];
+        $seen = [];
+
+        foreach ($categories as $categoryItem) {
+            if (!is_array($categoryItem)) {
+                continue;
+            }
+
+            $slug = trim((string)($categoryItem['slug'] ?? ''));
+            if ($slug === '' || isset($seen[$slug])) {
+                continue;
+            }
+
+            if (($categoryItem['status'] ?? 1) != 1) {
+                continue;
+            }
+
+            $seen[$slug] = true;
+
+            if (empty($categoryItem['image_url']) && empty($categoryItem['image']) && empty($categoryItem['category_icon_path'])) {
+                $categoryItem['image_url'] = $fallbacks[$slug] ?? '/assets/images/placeholder.svg';
+            }
+
+            $result[] = $categoryItem;
+        }
+
+        return $result;
     }
 
     public function getPath()
