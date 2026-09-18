@@ -3,13 +3,9 @@
 {% block title %} main {% endblock %}
 
 {% block main_content %}
-<div class="home home-clean-flow">
+<div class="home home-categories-only">
 
-    {# ======================================================
-       1) PRIMARY BANNER ONLY
-       Render the first valid fixed/wide banner and ignore the
-       rest so promotional blocks never interrupt products.
-       ====================================================== #}
+    {# Primary banner only #}
     {% set primary_banner_rendered = false %}
     {% for content in homeContent %}
         {% if not primary_banner_rendered
@@ -22,135 +18,9 @@
         {% endif %}
     {% endfor %}
 
-    {# ======================================================
-       2) ALL PRODUCT SECTIONS TOGETHER
-       Preserve all original product data/types, but force every
-       product section to appear consecutively under main banner.
-       ====================================================== #}
-    <div class="home-products-stream">
-        {% for content in homeContent %}
-            {% if 'fixed_products' == content['slug'] %}
-                {% include 'home/fixed-products-block.twig' with {'content': content} %}
-            {% endif %}
-        {% endfor %}
-    </div>
-
-    {# ======================================================
-       3) NON-PROMOTIONAL CONTENT AFTER PRODUCTS
-       Extra banners/list_of_items are intentionally omitted.
-       ====================================================== #}
-    <div class="home-supporting-content">
-        {% for content in homeContent %}
-            {% if ('store_features' == content['slug']) %}
-                {% include 'custom/store-features.twig' with {'content': content} %}
-            {% endif %}
-
-            {% if ('brands' == content['slug']) %}
-                {% include 'custom/brands.twig' with {'content': content} %}
-            {% endif %}
-
-            {% if ('customer_options' == content['slug']) %}
-                {% include 'custom/customer-options.twig' with {'content': content} %}
-            {% endif %}
-
-            {% if ('youtube' == content['slug'] and content['settings']['youtube_url']) %}
-                {% include 'custom/video.twig' with {'content': content} %}
-            {% endif %}
-        {% endfor %}
-    </div>
+    {# Categories only — products are intentionally excluded from homepage #}
+    {% set categories = getFunction('getHomepageCategories') %}
+    {% include 'home/categories-grid.twig' with {'categories': categories} %}
 
 </div>
-{% endblock %}
-
-{% block footer_scripts %}
-<script>
-(function () {
-    const isRtl = {{ lang == 'ar' ? 'true' : 'false' }};
-
-    function initOwl($slider) {
-        if (!$slider || !$slider.length || !$.fn.owlCarousel) return;
-
-        if ($slider.hasClass('owl-loaded')) {
-            $slider.trigger('refresh.owl.carousel');
-            return;
-        }
-
-        let responsive = {
-            0:   { items: 2, margin: 10 },
-            480: { items: 2, margin: 12 },
-            768: { items: 3, margin: 14 },
-            1100:{ items: 4, margin: 18 }
-        };
-
-        if ($slider.hasClass('ui-testimonials__slider')) {
-            responsive = {
-                0:   { items: 1, margin: 10 },
-                640: { items: 2, margin: 12 },
-                992: { items: 3, margin: 16 }
-            };
-        } else if ($slider.hasClass('ui-brands__slider')) {
-            responsive = {
-                0:   { items: 2, margin: 10 },
-                600: { items: 4, margin: 12 },
-                992: { items: 6, margin: 14 }
-            };
-        }
-
-        $slider.owlCarousel({
-            loop: false,
-            rewind: true,
-            autoplay: false,
-            autoWidth: false,
-            nav: false,
-            dots: true,
-            rtl: isRtl,
-            responsive: responsive
-        });
-    }
-
-    function initAllCarousels(scope) {
-        $(scope || document).find('.owl-carousel').each(function () {
-            initOwl($(this));
-        });
-    }
-
-    $(document).ready(function () {
-        initAllCarousels(document);
-
-        $('.load-products').each(function () {
-            const block = $(this);
-            const blockId = block.data('id');
-            const blockType = block.data('type');
-            const blockLimit = block.data('limit');
-
-            $.ajax({
-                url: '/fetch-home-products',
-                method: 'GET',
-                data: {
-                    id: blockId,
-                    type: blockType,
-                    limit: blockLimit
-                },
-                success: function (response) {
-                    block.html(response);
-                    initAllCarousels(block);
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX Error:', error);
-                }
-            });
-        });
-
-        $(document).on('click', '.product-group-arrow-prev', function () {
-            const block = $(this).closest('[id^="block"]');
-            block.find('.owl-carousel').first().trigger('prev.owl.carousel');
-        });
-
-        $(document).on('click', '.product-group-arrow-next', function () {
-            const block = $(this).closest('[id^="block"]');
-            block.find('.owl-carousel').first().trigger('next.owl.carousel');
-        });
-    });
-})();
-</script>
 {% endblock %}
