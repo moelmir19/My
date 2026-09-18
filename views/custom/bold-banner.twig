@@ -1,21 +1,34 @@
 {% if content['settings']['image'] %}
-    {% if content['settings']['link'] %}
-        <a id="block{{ content['block_id'] }}" href="{{ content['settings']['link'] }}">
-    {% endif %}
+    <div id="block{{ content['block_id'] }}" class="qs-primary-banner">
+        {% if content['settings']['link'] %}
+            <a href="{{ content['settings']['link'] }}" class="qs-primary-banner__link">
+        {% endif %}
 
-    {% if content['settings']['start_date'] and content['settings']['start_date'] != '' and content['settings']['end_date'] and content['settings']['end_date'] != '' %}
-        {% if "now"|date > content['settings']['start_date'] and "now"|date < content['settings']['end_date'] %}
-            <img class="w-100 mb-40" src="{{ content['content']['settings']['image'] }}" alt="Banner" />
+        {% set show_banner = true %}
+
+        {% if content['settings']['start_date'] and content['settings']['start_date'] != '' %}
+            {% if "now"|date < content['settings']['start_date'] %}
+                {% set show_banner = false %}
+            {% endif %}
         {% endif %}
-    {% elseif content['settings']['start_date'] and content['settings']['start_date'] != '' and (content['settings']['end_date'] == '' or content['settings']['end_date'] == '') %}
-        {% if "now"|date > setting['start_date'] %}
-            <img class="w-100 mb-40" src="{{ content['settings']['image'] }}" alt="Banner" />
+
+        {% if content['settings']['end_date'] and content['settings']['end_date'] != '' %}
+            {% if "now"|date > content['settings']['end_date'] %}
+                {% set show_banner = false %}
+            {% endif %}
         {% endif %}
-    {% else %}
-        <img class="w-100 mb-40" src="{{ content['settings']['image'] }}" alt="Banner" />
-    {% endif %}
-   
-    {% if content['settings']['link'] %}
-    </a>
-    {% endif %}
+
+        {% if show_banner %}
+            <img
+                class="qs-primary-banner__image"
+                src="{{ content['settings']['image'] }}"
+                alt="Banner"
+                loading="eager"
+                decoding="async">
+        {% endif %}
+
+        {% if content['settings']['link'] %}
+            </a>
+        {% endif %}
+    </div>
 {% endif %}
