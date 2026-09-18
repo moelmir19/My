@@ -45,90 +45,22 @@
 
     <style>
         :root {
-            --brand: #3157d5;
-            --brand-light: #eef2ff;
+            --brand: #6f8d7e;
+            --brand-light: #f4f1e9;
         }
 
-        .cat-sub {
-            position: absolute;
-            width: 200px;
-            max-height: 561px;
-            background: #fff;
-            text-align: right;
-            box-shadow: 0 0 0 1px #e0e0e0;
-            margin-left: -120px;
-            display: none;
-        }
-
-        .float-left {
-            float: left;
-        }
-
-        .category-navbar {
-            text-align: -webkit-center;
-        }
-
-        .cat-sub li ul {
-            right: 100%;
-        }
-
-        /* Hide all child and sub-child menus by default */
-        .nav .cat-sub {
-            display: none;
-        }
-
-        /* Show child menu when hovering over the parent li */
-        .nav li:hover > .cat-sub {
-            display: block;
-        }
-
-        /* Show sub-child menu only when hovering over the child li */
+        .nav li { position: relative; }
+        .nav .cat-sub { display: none; }
+        .nav li:hover > .cat-sub { display: block; }
         .nav .cat-sub li:hover > .cat-sub {
             display: block;
-            margin-top: -40px
+            top: 0 !important;
+            inset-inline-start: 100% !important;
         }
 
-        /* Optional: Style the parent li and links */
-        .nav li {
-            position: relative; /* Required for absolute positioning of child menus */
-        }
-
-        .nav a {
-            text-decoration: none;
-            padding: 10px;
-            display: block; /* Make the entire area clickable */
-        }
-
-        /* Style for child menu items */
-        .nav .cat-sub {
-            position: absolute; /* Position the child menu */
-            left: 0; /* Align to the left of the parent */
-            top: 100%; /* Position it below the parent */
-            background-color: #fff; /* Background color */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
-        }
-
-        /* Optional: Style the links within the child menu */
-        .nav .cat-sub a {
-            padding: 10px;
-            color: #333; /* Link color */
-        }
-
-        .nav .cat-sub a:hover {
-            background-color: #f0f0f0; /* Background color on hover */
-        }
-
-        .float-left {
-            float: left;
-        }
-
-        .owl-nav {
-            display: none;
-        }
+        .owl-nav { display: none; }
         .owl-carousel,
-        .owl-carousel .owl-item {
-            position: initial;
-        }
+        .owl-carousel .owl-item { position: initial; }
     </style>
 
     {% block head %}{% endblock %}
