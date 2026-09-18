@@ -16,26 +16,24 @@
         {% else %}
             <div class="product-grid-4">
                 {% for product in products %}
-                    <article class="product-box ui-product-card">
+                    <article class="product-box qs-product-card">
                         <div class="product-card">
-                            {% if product['new'] %}
-                                <div class="sticker new">{{ ('app.products.new'|trans) }}</div>
-                            {% endif %}
-                            <a href="/{{ product['url_key'] }}" title="{{ product['name'] }}" class="product-a ui-product-card__link">
-                                <div class="product-image ui-product-card__media">
+                            {% if product['new'] %}<div class="sticker new">{{ ('app.products.new'|trans) }}</div>{% endif %}
+                            <a href="/{{ product['url_key'] }}" title="{{ product['name'] }}" class="product-a qs-product-card__link">
+                                <div class="product-image qs-product-card__image">
                                     <img src="{{ product.product.base_image_url }}" alt="{{ product['name'] }}" loading="lazy"/>
                                     {% if product['promotion_title'] %}<div class="card-promo">{{ product['promotion_title'] }}</div>{% endif %}
                                 </div>
-                                <div class="product-information ui-product-card__body">
+                                <div class="product-information qs-product-card__content">
                                     <div class="product-name"><p>{{ product['name'] }}</p></div>
                                 </div>
                             </a>
-                            <div class="product-bottom-row ui-product-card__footer">
-                                <div class="ui-product-card__price">{{ product.html_price | raw }}</div>
-                                <div class="hover-buttons ui-product-card__quick-actions">
+                            <div class="product-bottom-row qs-product-card__bottom">
+                                <div class="qs-product-card__price">{{ product.html_price | raw }}</div>
+                                <div class="qs-product-card__buttons">
                                     <form action="/customer/wishlist/add/{{ product.product_id }}" method="GET">
                                         <input type="hidden" name="product_id" value="{{ product.product_id }}">
-                                        <button type="submit" class="border-0 btn" title="إضافة منتج إلى قائمة الأمنيات"><i class="icon-heart"></i></button>
+                                        <button type="submit" class="qs-wish-btn" title="إضافة منتج إلى قائمة الأمنيات"><i class="icon-heart"></i></button>
                                     </form>
                                     <form id="addToCart-{{ product.product_id }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -45,7 +43,9 @@
                                         {% if outOfStock and not product.saleable %}
                                             <span class="not-available">{{ ('app.products.out_of_stock'|trans) }}</span>
                                         {% else %}
-                                            <button type="button" class="btn addToCart border-0" {{ product.saleable ? '' : 'disabled' }} data-id="{{ product.product_id }}"><i class="icon-cart"></i></button>
+                                            <button type="button" class="btn addToCart qs-order-btn" {{ product.saleable ? '' : 'disabled' }} data-id="{{ product.product_id }}">
+                                                <i class="icon-cart"></i><span>{{ lang == 'ar' ? 'اطلب الآن' : 'Order now' }}</span>
+                                            </button>
                                         {% endif %}
                                     </form>
                                 </div>
