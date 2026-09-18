@@ -2869,3 +2869,109 @@ body {
     width: calc(100% - 24px) !important;
   }
 }
+
+
+/* Clean shell introduced in main.twig */
+.site-shell-header,
+.site-shell-main,
+.site-shell-content,
+.site-shell-footer {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.site-shell-header {
+  position: relative;
+  z-index: 100;
+  background: #fff;
+}
+
+.site-shell-main {
+  min-height: 50vh;
+  background: #fff;
+}
+
+.site-shell-content {
+  overflow: visible;
+}
+
+.site-shell-footer {
+  background: transparent;
+}
+
+/* Remove any inherited legacy spacing still hanging on common blocks */
+.home-grid,
+.product-grid-4,
+.product-box,
+.product-card,
+.product-a,
+.product-image,
+.product-information,
+.product-bottom-row {
+  box-sizing: border-box;
+}
+
+/* Desktop: let the actual storefront visually occupy the screen */
+@media (min-width: 1200px) {
+  .qs-container,
+  .site-container,
+  .container,
+  .home > .container,
+  .home > .load-products,
+  .home > a[id^="block"],
+  .home > img,
+  .home .w-100.mb-40,
+  .ui-product-section,
+  .ui-features,
+  .ui-brands,
+  .ui-testimonials,
+  .ui-banner-grid,
+  .ui-banner-slider,
+  .s-block--banners,
+  .category-block,
+  .product-detail,
+  .cart {
+    width: calc(100% - 64px) !important;
+    max-width: 1540px !important;
+  }
+
+  .qs-main-header__inner,
+  .qs-topbar__inner,
+  .qs-nav__inner,
+  .store-notify > .container {
+    width: calc(100% - 64px) !important;
+    max-width: 1540px !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .qs-container,
+  .site-container,
+  .container,
+  .home > .container,
+  .home > .load-products,
+  .home > a[id^="block"],
+  .home > img,
+  .home .w-100.mb-40,
+  .ui-product-section,
+  .ui-features,
+  .ui-brands,
+  .ui-testimonials,
+  .ui-banner-grid,
+  .ui-banner-slider,
+  .s-block--banners,
+  .category-block,
+  .product-detail,
+  .cart,
+  .qs-main-header__inner,
+  .qs-topbar__inner,
+  .qs-nav__inner,
+  .store-notify > .container {
+    width: calc(100% - 96px) !important;
+    max-width: 1680px !important;
+  }
+}
