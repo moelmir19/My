@@ -1,111 +1,66 @@
-
 {% extends "layout/main.twig" %}
 
 {% block title %} main {% endblock %}
 
 {% block main_content %}
-    <div class="home">
+<div class="home home-clean-flow">
 
-        {% for content in homeContent %}
-        {# <pre>{{ dump(content['settings']) }}</pre> #}
-            {% if (('fixed_banner' == content['slug'] or 'wide_banner' == content['slug']) and content['settings']['image'] ) %}
+    {# ======================================================
+       1) PRIMARY BANNER ONLY
+       Render the first valid fixed/wide banner and ignore the
+       rest so promotional blocks never interrupt products.
+       ====================================================== #}
+    {% set primary_banner_rendered = false %}
+    {% for content in homeContent %}
+        {% if not primary_banner_rendered
+            and ('fixed_banner' == content['slug'] or 'wide_banner' == content['slug'])
+            and content['settings']['image'] %}
+            <div class="home-primary-banner">
                 {% include 'custom/bold-banner.twig' with {'content': content} %}
-            {% endif %}
-            {% if ('youtube' == content['slug'] and content['settings']['youtube_url'] ) %}
-                {% include 'custom/video.twig' with {'content': content} %}
-            {% endif %}
-             {% if ('customer_options' == content['slug']) %}
-                {% include 'custom/customer-options.twig' with {'content': content} %}
-            {% endif %}
-             {% if ('store_features' == content['slug']) %}
-                {% include 'custom/store-features.twig' with {'content': content} %}
-            {% endif %}
-             {% if ('brands' == content['slug']) %}
-                {% include 'custom/brands.twig' with {'content': content} %}
-            {% endif %}
-            {% if ('list_of_items' == content['slug']) %}
-                {% if ('slider' == content['settings']['type']) %}
-                    {% include 'custom/list-of-items-slider.twig' with {'content': content} %}
-                {% else %}
-                    {% include 'custom/list-of-items.twig' with {'content': content} %}
-                {% endif %}
-            {% endif %}
+            </div>
+            {% set primary_banner_rendered = true %}
+        {% endif %}
+    {% endfor %}
 
-             {% if ('fixed_products' == content['slug']) %}
-                {% if ('chosen_products' == content['settings']['list_type'] and content['settings']['sku_text']) %}
-                    {# <pre>{{ dump(content['settings']['products']) }}</pre> #}
-                
-                    <div class="load-products container mt-50" 
-                    data-id="{{ content['block_id'] }}" 
-                    data-title="{{ content['settings']['products_title'] }}" 
-                    data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}"
-                    data-products="{{ content['settings']['products'] }}"
-                    data-limit="{{ content['settings']['limit'] }}" 
-                    data-ids="{{ content['settings']['ids'] }}" 
-                    data-type="{{ content['settings']['type'] }}">
-                    </div>
-
-                {% elseif ('category' == content['settings']['list_type'] and content['settings']['category_id']) %}
-
-                    <div class="load-products container mt-50" 
-                    data-id="{{ content['block_id'] }}" 
-                    data-title="{{ content['settings']['products_title'] }}" 
-                    data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '' }}" 
-                    data-products="{{ content['settings']['products'] }}" 
-                    data-limit="{{ content['settings']['limit'] }}" 
-                    data-ids="{{ content['settings']['ids'] }}" 
-                    data-type="{{ content['settings']['type'] }}">
-                    </div>
-                    
-                {% elseif ('featured_products' == content['settings']['list_type']) %}
-                    <div class="load-products container mt-50" 
-                    data-id="{{ content['block_id'] }}" 
-                    data-title="{{ content['settings']['products_title'] }}" 
-                    data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}" 
-                    data-products="{{ content['settings']['products'] }}" 
-                    data-limit="{{ content['settings']['limit'] }}" 
-                    data-ids="{{ content['settings']['ids'] }}" 
-                    data-type="{{ content['settings']['type'] }}">
-                    </div>
-                    
-                {% elseif ('discounted_products' == content['settings']['list_type']) %}
-                    <div class="load-products container mt-50" 
-                    data-id="{{ content['block_id'] }}" 
-                    data-title="{{ content['settings']['products_title'] }}" 
-                    data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}" 
-                    data-products="{{ content['settings']['products'] }}" 
-                    data-limit="{{ content['settings']['limit'] }}" 
-                    data-ids="{{ content['settings']['ids'] }}" 
-                    data-type="{{ content['settings']['type'] }}">
-                    </div>
-                {% elseif ('most_sales' == content['settings']['list_type']) %}
-                    <div class="load-products container mt-50" 
-                    data-id="{{ content['block_id'] }}" 
-                    data-title="{{ content['settings']['products_title'] }}" 
-                    data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}" 
-                    data-products="{{ content['settings']['products'] }}" 
-                    data-limit="{{ content['settings']['limit'] }}" 
-                    data-ids="{{ content['settings']['ids'] }}" 
-                    data-type="{{ content['settings']['type'] }}">
-                    </div>
-                    
-                {% elseif ('latest_products' == content['settings']['list_type']) %}
-                    <div class="load-products container mt-50" 
-                    data-id="{{ content['block_id'] }}" 
-                    data-title="{{ content['settings']['products_title'] }}" 
-                    data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}" 
-                    data-products="{{ content['settings']['products'] }}" data-limit="{{ content['settings']['limit'] }}" 
-                    data-ids="{{ content['settings']['ids'] }}" 
-                    data-type="{{ content['settings']['type'] }}">
-                    </div>
-                    
-                {% endif %}
+    {# ======================================================
+       2) ALL PRODUCT SECTIONS TOGETHER
+       Preserve all original product data/types, but force every
+       product section to appear consecutively under main banner.
+       ====================================================== #}
+    <div class="home-products-stream">
+        {% for content in homeContent %}
+            {% if 'fixed_products' == content['slug'] %}
+                {% include 'home/fixed-products-block.twig' with {'content': content} %}
             {% endif %}
         {% endfor %}
     </div>
 
-{% endblock %}
+    {# ======================================================
+       3) NON-PROMOTIONAL CONTENT AFTER PRODUCTS
+       Extra banners/list_of_items are intentionally omitted.
+       ====================================================== #}
+    <div class="home-supporting-content">
+        {% for content in homeContent %}
+            {% if ('store_features' == content['slug']) %}
+                {% include 'custom/store-features.twig' with {'content': content} %}
+            {% endif %}
 
+            {% if ('brands' == content['slug']) %}
+                {% include 'custom/brands.twig' with {'content': content} %}
+            {% endif %}
+
+            {% if ('customer_options' == content['slug']) %}
+                {% include 'custom/customer-options.twig' with {'content': content} %}
+            {% endif %}
+
+            {% if ('youtube' == content['slug'] and content['settings']['youtube_url']) %}
+                {% include 'custom/video.twig' with {'content': content} %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
 
 {% block footer_scripts %}
 <script>
@@ -159,31 +114,8 @@
         });
     }
 
-    function initBannerSwiper() {
-        if (typeof Swiper === 'undefined' || !document.querySelector('.myListSwiper')) return;
-
-        document.querySelectorAll('.myListSwiper').forEach(function (el) {
-            if (el.swiper) return;
-
-            new Swiper(el, {
-                slidesPerView: 1,
-                spaceBetween: 12,
-                loop: false,
-                autoplay: {
-                    delay: 4500,
-                    disableOnInteraction: false
-                },
-                pagination: {
-                    el: el.querySelector('.swiper-pagination'),
-                    clickable: true
-                }
-            });
-        });
-    }
-
     $(document).ready(function () {
         initAllCarousels(document);
-        initBannerSwiper();
 
         $('.load-products').each(function () {
             const block = $(this);
@@ -222,5 +154,3 @@
 })();
 </script>
 {% endblock %}
-
-    
