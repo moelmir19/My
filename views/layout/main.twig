@@ -112,17 +112,17 @@
             {% endif %}
         {% endif %}
 
-        <div class="header">
+        <div class="site-shell-header">
             {{ include("layout/header.twig") }}
         </div>
         
-        <div class="main main-container-wrapper site-main">
-            <div class="content-container">
+        <main class="site-shell-main site-main">
+            <div class="site-shell-content">
                 {% block main_content %}{% endblock %}
             </div>
-        </div>
-        <div class="footer site-footer-wrap">
-                {{ include("layout/footer.twig") }}
+        </main>
+        <div class="site-shell-footer">
+            {{ include("layout/footer.twig") }}
         </div>
 
         {% if not authUser %}
