@@ -1,48 +1,43 @@
-<div class="product-box">
+<article class="product-box ui-product-card">
     <div class="product-card">
-    
-        {% if product['new']  %}                        
-            <div class="sticker new">
-                {{ ('shop::app.products.new'|trans) }}
-            </div>
+        {% if product['new'] %}
+            <div class="sticker new">{{ ('shop::app.products.new'|trans) }}</div>
         {% endif %}
-    
-        <a href="/{{ product.url_key }}"
-            title="{{ product.name }}" class="product-a">
-            <div class="product-image">
-                <img src="{{ product.product.base_image_url }}"/>
-                    {% if product['promotion_title'] %}                                    
-                                        <div class="card-promo">{{ product['promotion_title'] }}</div>
-                                    {% endif %}
+
+        <a href="/{{ product.url_key }}" title="{{ product.name }}" class="product-a ui-product-card__link">
+            <div class="product-image ui-product-card__media">
+                <img src="{{ product.product.base_image_url }}" alt="{{ product.name }}" loading="lazy" />
+                {% if product['promotion_title'] %}
+                    <div class="card-promo">{{ product['promotion_title'] }}</div>
+                {% endif %}
             </div>
-            <div class="product-information">
-                <div class="product-name">
-                        <span>{{ product.name }}</span>
-                </div>
+
+            <div class="product-information ui-product-card__body">
+                <div class="product-name"><span>{{ product.name }}</span></div>
             </div>
         </a>
 
-    
-        <div class="product-bottom-row">
-            {{ product.html_price | raw }}
-    
-            <span class="cart-wish-wrap">
+        <div class="product-bottom-row ui-product-card__footer">
+            <div class="ui-product-card__price">{{ product.html_price | raw }}</div>
+
+            <span class="cart-wish-wrap ui-product-card__actions">
                 {% include 'products/wishlist.twig' %}
-            
                 <form id="addToCart-{{ product.product_id }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="product_id" value="{{ product.product_id }}">
                     <input type="hidden" name="quantity" value="1">
                     {% set outOfStock = getConfig('config.products.out-of-stock') == '1' %}
-                    {% if(outOfStock and not product.saleable) %}
-                    <span class="not-available">{{ ('shop::app.products.out_of_stock'|trans) }}</span>
+                    {% if outOfStock and not product.saleable %}
+                        <span class="not-available">{{ ('shop::app.products.out_of_stock'|trans) }}</span>
                     {% else %}
-                    <button type="button" class="btn addToCart icon-cart border-0" {{ product.saleable ? '' : 'disabled' }} data-id="{{ product.product_id }}"></button>
+                        <button type="button"
+                            class="btn addToCart icon-cart border-0"
+                            {{ product.saleable ? '' : 'disabled' }}
+                            data-id="{{ product.product_id }}"
+                            aria-label="{{ ('shop::app.header.cart'|trans) }}"></button>
                     {% endif %}
                 </form>
             </span>
-
         </div>
-    
     </div>
-</div>
+</article>
