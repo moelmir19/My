@@ -158,7 +158,7 @@ elseif (str_contains($url, '/fetch-home-products')) {
             'html_price' => '<span class="price">367.35</span>',
             'saleable' => true,
             'new' => true,
-            'product' => ['base_image_url' => 'https://cdn.twsaa.com/product/643712/medium-f417538a-eb3a-4c94-a4a8-99e5a8dfcd0f.jpg']
+            'product' => ['base_image_url' => 'https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png']
         ],
         [
             'product_id' => 2, 
@@ -167,7 +167,7 @@ elseif (str_contains($url, '/fetch-home-products')) {
             'html_price' => '<span class="price">367.35</span>',
             'saleable' => true,
             'new' => false,
-            'product' => ['base_image_url' => 'https://cdn.twsaa.com/product/649687/medium-095dbde6-ce6d-49e0-a4d4-69bfb8563bfa.jpg']
+            'product' => ['base_image_url' => 'https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png']
         ],
         [
             'product_id' => 3, 
@@ -176,7 +176,7 @@ elseif (str_contains($url, '/fetch-home-products')) {
             'html_price' => '<span class="price">367.35</span>',
             'saleable' => true,
             'new' => true,
-            'product' => ['base_image_url' => 'https://cdn.twsaa.com/product/662322/medium-ecc7d0a5-8573-4180-ae16-15a4a05aa51d.jpg']
+            'product' => ['base_image_url' => 'https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png']
         ],
         [
             'product_id' => 4, 
@@ -185,7 +185,7 @@ elseif (str_contains($url, '/fetch-home-products')) {
             'html_price' => '<span class="price">367.35</span>',
             'saleable' => true,
             'new' => false,
-            'product' => ['base_image_url' => 'https://cdn.twsaa.com/product/650782/medium-50f0297b-2a4e-4e09-9b95-092bd3671778.jpg']
+            'product' => ['base_image_url' => 'https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png']
         ],
         [
             'product_id' => 5, 
@@ -194,7 +194,7 @@ elseif (str_contains($url, '/fetch-home-products')) {
             'html_price' => '<span class="price">367.35</span>',
             'saleable' => true,
             'new' => false,
-            'product' => ['base_image_url' => 'https://cdn.twsaa.com/product/660156/medium-7cfe95a8-88d3-4013-9e53-735237692d23.jpg']
+            'product' => ['base_image_url' => 'https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png']
         ],
         // [
         //     'product_id' => 6, 
@@ -203,7 +203,7 @@ elseif (str_contains($url, '/fetch-home-products')) {
         //     'html_price' => '<span class="price">367.35</span>',
         //     'saleable' => false, // Out of stock example
         //     'new' => false,
-        //     'product' => ['base_image_url' => 'https://cdn.twsaa.com/product/649687/medium-095dbde6-ce6d-49e0-a4d4-69bfb8563bfa.jpg']
+        //     'product' => ['base_image_url' => 'https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png']
         // ]
     ];
 
