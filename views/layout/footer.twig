@@ -6,7 +6,7 @@
     <div class="qs-container">
         <div class="qs-footer__grid">
             <div class="qs-footer__about">
-                <img class="qs-footer__logo" src="https://quick-salla.com/wp-content/uploads/2024/07/%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%86%D8%B2%D9%8A%D8%A9-%D8%A7%D9%86%D8%B3%D8%AA%D8%A7-2.png" alt="{{ channel.name|default('Quick Salla') }}">
+                <img class="qs-footer__logo" src="/assets/images/logo.svg" alt="{{ channel.name|default('Quick Salla') }}">
                 <h3>{{ lang == 'ar' ? 'من نحن' : 'About us' }}</h3>
                 <p>{{ channel.name }}</p>
                 <div class="qs-footer__social">
@@ -49,7 +49,7 @@
             <div class="qs-footer__column">
                 <h3>{{ lang == 'ar' ? 'الدفع الآمن' : 'Secure payment' }}</h3>
                 <div class="qs-payment">
-                    <img class="qs-payment__all" src="https://quick-salla.com/wp-content/uploads/2023/05/payment.png" alt="{{ lang == 'ar' ? 'وسائل الدفع' : 'Payment methods' }}">
+                    <img class="qs-payment__all" src="/assets/images/payment.svg" alt="{{ lang == 'ar' ? 'وسائل الدفع' : 'Payment methods' }}">
                 </div>
                 {% if companyTax and (companyTax.show_tax_no|default(0)) == 1 %}
                     <p class="qs-tax">{{ ('admin::app.footer.tax_no'|trans) }}: <strong>{{ companyTax.tax_no ?? '' }}</strong></p>
