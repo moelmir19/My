@@ -1,125 +1,112 @@
-<header>
-    <div class="header-container">
-        <div class="header-row-one">
-            <ul class="top-links top-links-1">
-                <li>
-                    <div>
-                        <div class="dropdown-toggle">
-                            <span class="top-links-icon top-links-locale">
-                                <i class="icon-world"></i>
-                            </span>
-                        </div>
-                    
-                        <div class="dropdown-list bottom-left dropdown-links" style="display: none;">
-                            <ul>
-                                {% for locale in getFunction('getAllLocales') %}                             
-                                    <li>
-                                        <a href="?locale={{ locale.code }}">{{ locale.name }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+<header class="site-header">
+    {% set channel = getFunction('getCurrentChannel') %}
+    <div class="site-header__utility">
+        <div class="site-container site-header__utility-inner">
+            <div class="site-header__utility-group">
+                <div class="header-dropdown">
+                    <button type="button" class="header-utility-btn dropdown-toggle" aria-label="{{ lang == 'ar' ? 'اللغة' : 'Language' }}">
+                        <i class="icon-world"></i>
+                        <span>{{ lang|upper }}</span>
+                    </button>
+                    <div class="dropdown-list dropdown-links site-dropdown" style="display: none;">
+                        <ul>
+                            {% for locale in getFunction('getAllLocales') %}
+                                <li><a href="?locale={{ locale.code }}">{{ locale.name }}</a></li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                </li>
-                <li>
-                    <div>
-                        <div class="dropdown-toggle">
-                            <span class="top-links-icon top-links-locale">
-                                <i class="icon-flag"></i>
-                            </span>
-                        </div>
-                        <div class="dropdown-list bottom-left dropdown-links" style="display: none;">
-                            <ul>
-                                {% for currency in getFunction('getActiveChannelCurrency') %}
-                                    <li>
-                                        <a href="?currency={{ currency.code }}" class="{{ currency.company_id }} {{ currency.id }}">{{ currency.code }} {{ currency.symbol }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                </div>
+
+                <div class="header-dropdown">
+                    <button type="button" class="header-utility-btn dropdown-toggle" aria-label="{{ lang == 'ar' ? 'العملة' : 'Currency' }}">
+                        <i class="icon-flag"></i>
+                        <span>{{ getFunction('getActiveChannelCurrency')[0].code|default('') }}</span>
+                    </button>
+                    <div class="dropdown-list dropdown-links site-dropdown" style="display: none;">
+                        <ul>
+                            {% for currency in getFunction('getActiveChannelCurrency') %}
+                                <li>
+                                    <a href="?currency={{ currency.code }}" class="{{ currency.company_id }} {{ currency.id }}">
+                                        {{ currency.code }} {{ currency.symbol }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                </li>
-                <li>
-                    <div class="dropdown-toggle top-links-icon top-links-search icon-magnifying-glass icon-search">
-                    </div>
-                    <div class="dropdown-list bottom-left popper-tooltip" style="display: none;">
-                        <div class="ui search">
-                            <input type="text" placeholder="Search products here" value="" class="prompt search-box"
-                                autocomplete="off">
-                            <i class="notch-loader gray search-loader" style="display: none;"></i>
-                            <div class="results"></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="cart-dropdown-container has-counter">
-                    <a href="/checkout/cart">
-                        <span class="top-links-icon top-links-cart">
-                            <span class="icon-cart"></span>
-                            <span class="count-wrapper cart-count count">{{ getFunction('cartItemsCount') }}</span>
-                        </span>
-                    </a>
-                </li>
-                <li><a href="/customer/account/wallet"><span
-                            class="top-links-icon top-links-cart"><span class="icon-bag-dollar"></span> <span
-                                class="wallet-wrapper">{{ getFunction('customerWallet') | default('0') |raw }}</span></span></a></li>
-            </ul>
-            {% set channel = getFunction('getCurrentChannel') %}
-            <div class="store-logo top-links-2">
-                <a href="/">
-                    {% if channel %}
-                        <img src="{{ storage_url ~ channel.logo }}" class="logo">
-                    {% else %}
-                        <h1>{{ channel.name }}</h1>
+                </div>
+            </div>
+
+            <a class="site-header__wallet-link" href="/customer/account/wallet">
+                <i class="icon-bag-dollar"></i>
+                <span>{{ lang == 'ar' ? 'المحفظة' : 'Wallet' }}</span>
+                <strong>{{ getFunction('customerWallet') | default('0') | raw }}</strong>
+            </a>
+        </div>
+    </div>
+
+    <div class="site-header__main">
+        <div class="site-container site-header__main-inner">
+            <div class="site-brand">
+                <a href="/" aria-label="{{ channel.name|default('Home') }}">
+                    {% if channel and channel.logo %}
+                        <img src="{{ storage_url ~ channel.logo }}" class="site-brand__logo" alt="{{ channel.name|default('Store') }}">
+                    {% elseif channel %}
+                        <span class="site-brand__name">{{ channel.name }}</span>
                     {% endif %}
                 </a>
-            </div>                
-            <div class="top-links-3">
-                <div>
-                    <div 
+            </div>
+
+            <div class="site-search">
+                <div class="ui search">
+                    <span class="site-search__icon icon-magnifying-glass" aria-hidden="true"></span>
+                    <input
+                        type="text"
+                        placeholder="{{ lang == 'ar' ? 'ابحث عن المنتجات...' : 'Search products...' }}"
+                        value=""
+                        class="prompt search-box site-search__input"
+                        autocomplete="off"
+                        aria-label="{{ lang == 'ar' ? 'البحث عن المنتجات' : 'Search products' }}">
+                    <i class="notch-loader gray search-loader" style="display: none;"></i>
+                    <div class="results"></div>
+                </div>
+            </div>
+
+            <div class="site-header__actions">
+                <div class="site-account">
+                    <button type="button"
+                        class="site-action-btn {{ authUser ? 'dropdown-toggle' : '' }}"
+                        {% if not authUser %}data-toggle="modal" data-target="#customerLoginModal"{% endif %}
+                        aria-label="{{ lang == 'ar' ? 'الحساب' : 'Account' }}">
+                        <i class="icon-user"></i>
+                        <span class="site-action-btn__label">{{ authUser ? authUser.first_name : (lang == 'ar' ? 'حسابي' : 'Account') }}</span>
+                    </button>
+
                     {% if authUser %}
-                        class="dropdown-toggle"
-                    {% else %}
-                        data-toggle="modal" data-target="#customerLoginModal"
-                    {% endif %}>
-                        <span class="top-links-icon top-links-account"><i class="icon-user"></i></span>
-                    </div>
-                    {% if authUser %}
-                        <ul class="dropdown-list bottom-right customer-dropdown dropdown-links">
-                            <li class="no-link">
-                                {{ authUser.first_name }}
-                            </li>
-                            <li>
-                                <a href="/customer/account/notifications"><i class="icon-bell"></i>
-                                    {{ ('shop::app.header.notifications'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/profile"><i class="icon-user"></i>
-                                    {{ ('shop::app.header.profile'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/wishlist"><i class="icon-heart"></i>
-                                    {{ ('shop::app.header.wishlist'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/orders"><i class="icon-packed-box"></i>
-                                    {{ ('shop::app.header.orders'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/cart"><i class="icon-cart"></i>
-                                    {{ ('shop::app.header.cart'|trans) }}</a>
-                            </li>
-                            <hr />
-                            <li>
-                                <a href="/customer/account/logout"><i class="icon-send-out"></i>
-                                    {{ ('shop::app.header.logout'|trans) }}</a>
-                            </li>
+                        <ul class="dropdown-list customer-dropdown dropdown-links site-dropdown site-account__menu">
+                            <li class="no-link site-account__hello">{{ authUser.first_name }}</li>
+                            <li><a href="/customer/account/notifications"><i class="icon-bell"></i>{{ ('shop::app.header.notifications'|trans) }}</a></li>
+                            <li><a href="/customer/account/profile"><i class="icon-user"></i>{{ ('shop::app.header.profile'|trans) }}</a></li>
+                            <li><a href="/customer/account/wishlist"><i class="icon-heart"></i>{{ ('shop::app.header.wishlist'|trans) }}</a></li>
+                            <li><a href="/customer/account/orders"><i class="icon-packed-box"></i>{{ ('shop::app.header.orders'|trans) }}</a></li>
+                            <li><a href="/customer/account/cart"><i class="icon-cart"></i>{{ ('shop::app.header.cart'|trans) }}</a></li>
+                            <li class="site-account__divider"></li>
+                            <li><a href="/customer/account/logout"><i class="icon-send-out"></i>{{ ('shop::app.header.logout'|trans) }}</a></li>
                         </ul>
                     {% endif %}
                 </div>
+
+                <a href="/checkout/cart" class="site-action-btn site-cart-btn" aria-label="{{ lang == 'ar' ? 'السلة' : 'Cart' }}">
+                    <i class="icon-cart"></i>
+                    <span class="site-action-btn__label">{{ lang == 'ar' ? 'السلة' : 'Cart' }}</span>
+                    <span class="cart-count count">{{ getFunction('cartItemsCount') }}</span>
+                </a>
             </div>
         </div>
-        <div class="primary-menu">
+    </div>
+
+    <nav class="site-nav">
+        <div class="site-container site-nav__inner">
             {% include 'layout/navbar.twig' %}
         </div>
-    </div>
+    </nav>
 </header>
