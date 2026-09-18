@@ -1,29 +1,18 @@
-<div id="block{{ content['block_id'] }}">
+<section id="block{{ content['block_id'] }}" class="ui-brands site-container">
     {% if content['setting']['brands_title'] %}
-        <div class="s-block__title">
-            <div class="flex flex-col w-full">
-                <h2 class="w-full da-cp">{{ content['setting']['brands_title'] }}</h2>
-            </div>
-        </div>        
+        <div class="ui-section-heading">
+            <h2>{{ content['setting']['brands_title'] }}</h2>
+        </div>
     {% endif %}
-    
-    <div id="slider{{ content['block_id'] }}" class="home-grid mb-20 owl-carousel">
+
+    <div id="slider{{ content['block_id'] }}" class="ui-brands__slider owl-carousel">
         {% for brand in content['settings']['brands'] %}
-            <div class="">
-                <div class="">
-                    <a href="">
-                        <div class="product-image">
-                            <img src="{{ storage_url ~ brand['logo'] }}"
-                                {# onerror="this['src']='{{ asset_url ~ (brand['logo']) }}'" #}
-                                 />
-                        </div>        
-                    </a>
+            <a href="" class="ui-brand-card" aria-label="{{ brand['name'] }}">
+                <div class="ui-brand-card__logo">
+                    <img src="{{ storage_url ~ brand['logo'] }}" alt="{{ brand['name'] }}" loading="lazy" />
                 </div>
-                <div class="text-center">
-                    <h3 class="text-lg">{{ brand['name'] }}</h3>
-                </div>
-            </div>
+                <h3>{{ brand['name'] }}</h3>
+            </a>
         {% endfor %}
-       
     </div>
-</div>
+</section>
