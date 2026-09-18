@@ -308,5 +308,19 @@
         });
     </script>
     
+
+<script>
+document.addEventListener('error', function (event) {
+    var el = event.target;
+    if (!el || el.tagName !== 'IMG') return;
+
+    var src = el.getAttribute('src') || '';
+    if (src.indexOf('/assets/images/') !== -1 || src.indexOf('assets/images/') !== -1) {
+        el.onerror = null;
+        el.src = 'https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png';
+    }
+}, true);
+</script>
+
 </body>
 </html>
