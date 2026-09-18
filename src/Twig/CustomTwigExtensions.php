@@ -3079,6 +3079,20 @@ class CustomTwigExtensions extends AbstractExtension
             "updated_at" => "2025-04-06 17:25:48",
         ];
     }
+
+    public function getHomepageCategories()
+    {
+        if (function_exists('category')) {
+            $data = category();
+
+            if (is_array($data) && isset($data['categories']) && is_array($data['categories'])) {
+                return $data['categories'];
+            }
+        }
+
+        return [];
+    }
+
     public function getPath()
     {
         return true;
