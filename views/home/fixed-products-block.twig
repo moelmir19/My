@@ -1,0 +1,66 @@
+{% if ('chosen_products' == content['settings']['list_type'] and content['settings']['sku_text']) %}
+    <div class="load-products container"
+        data-id="{{ content['block_id'] }}"
+        data-title="{{ content['settings']['products_title'] }}"
+        data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}"
+        data-products="{{ content['settings']['products'] }}"
+        data-limit="{{ content['settings']['limit'] }}"
+        data-ids="{{ content['settings']['ids'] }}"
+        data-type="{{ content['settings']['type'] }}">
+    </div>
+
+{% elseif ('category' == content['settings']['list_type'] and content['settings']['category_id']) %}
+    <div class="load-products container"
+        data-id="{{ content['block_id'] }}"
+        data-title="{{ content['settings']['products_title'] }}"
+        data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '' }}"
+        data-products="{{ content['settings']['products'] }}"
+        data-limit="{{ content['settings']['limit'] }}"
+        data-ids="{{ content['settings']['ids'] }}"
+        data-type="{{ content['settings']['type'] }}">
+    </div>
+
+{% elseif ('featured_products' == content['settings']['list_type']) %}
+    <div class="load-products container"
+        data-id="{{ content['block_id'] }}"
+        data-title="{{ content['settings']['products_title'] }}"
+        data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}"
+        data-products="{{ content['settings']['products'] }}"
+        data-limit="{{ content['settings']['limit'] }}"
+        data-ids="{{ content['settings']['ids'] }}"
+        data-type="{{ content['settings']['type'] }}">
+    </div>
+
+{% elseif ('discounted_products' == content['settings']['list_type']) %}
+    <div class="load-products container"
+        data-id="{{ content['block_id'] }}"
+        data-title="{{ content['settings']['products_title'] }}"
+        data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}"
+        data-products="{{ content['settings']['products'] }}"
+        data-limit="{{ content['settings']['limit'] }}"
+        data-ids="{{ content['settings']['ids'] }}"
+        data-type="{{ content['settings']['type'] }}">
+    </div>
+
+{% elseif ('most_sales' == content['settings']['list_type']) %}
+    <div class="load-products container"
+        data-id="{{ content['block_id'] }}"
+        data-title="{{ content['settings']['products_title'] }}"
+        data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}"
+        data-products="{{ content['settings']['products'] }}"
+        data-limit="{{ content['settings']['limit'] }}"
+        data-ids="{{ content['settings']['ids'] }}"
+        data-type="{{ content['settings']['type'] }}">
+    </div>
+
+{% elseif ('latest_products' == content['settings']['list_type']) %}
+    <div class="load-products container"
+        data-id="{{ content['block_id'] }}"
+        data-title="{{ content['settings']['products_title'] }}"
+        data-link="{{ content['settings']['link'] is not empty ? content['settings']['link'] : '/products' }}"
+        data-products="{{ content['settings']['products'] }}"
+        data-limit="{{ content['settings']['limit'] }}"
+        data-ids="{{ content['settings']['ids'] }}"
+        data-type="{{ content['settings']['type'] }}">
+    </div>
+{% endif %}
