@@ -1,51 +1,36 @@
-<section class="s-block s-block--banners   p-left angel_anime animate__ animate__fadeIn" data-wow-delay="0.1s"
-    style="visibility: visible; animation-delay: 0.1s;">
-    <div id="block{{ content['block_id'] }}">
-        <div class="product-group" style="display: ;">
-            <h3 class="product-group-heading">{{ content['setting']['customer_options'] }}</h3>
-            <div class="product-group-divider"></div>
-            <div class="product-group-arrows">
-                <span class="product-group-arrow-prev"><i class="icon-caret-{{ lang == 'ar' ? 'right':'left' }}"></i></span>
-                <span class="product-group-arrow-next"><i class="icon-caret-{{ lang == 'ar' ? 'left':'right' }}"></i></span>
+<section id="block{{ content['block_id'] }}" class="ui-testimonials site-container">
+    {% if content['setting']['customer_options'] %}
+        <div class="ui-section-heading ui-section-heading--row">
+            <h2>{{ content['setting']['customer_options'] }}</h2>
+            <div class="ui-slider-controls">
+                <button type="button" class="product-group-arrow-prev" aria-label="Previous"><i class="icon-caret-{{ lang == 'ar' ? 'right':'left' }}"></i></button>
+                <button type="button" class="product-group-arrow-next" aria-label="Next"><i class="icon-caret-{{ lang == 'ar' ? 'left':'right' }}"></i></button>
             </div>
         </div>
-    
-        <div id="slider{{ content['block_id'] }}" class="home-grid mb-20 owl-carousel">
-            {% for review in content['settings']['reviews'] %}
-                <div class="flex flex-col w-full px-4 pb-8 -mt-8 ">
-                    <div class="s-testimonials--slider--img flex-center flex-col gap-2" style="text-align: -webkit-center;">
-                        <div
-                            class="testimonial__avatar overflow-hidden h-24 w-24 flex z-1 rounded-full transition-shadow duration-500 hover:shadow-default">
-                            <img src="{{ asset_url ~ ('images/') }}{{ review['customer']['gender'] ?? 'other' }}-gender.png"
-                                data-src="{{ asset_url ~ ('images/') }}{{ review['customer']['gender'] ?? 'other' }}-gender.png"
-                                alt="{{ review['name'] }}" claowl-carouselss="w-full h-full object-cover lazy loaded" loading="lazy"
-                                data-ll-status="loaded" width="75" height="75" style="width: 75px">
-                        </div>
-                        <h4 class="text-lg leading-6 da-tm">
-                            {% if content['settings']['hide_user'] != 'true' %}
-                                {{ review['name'] }}
-                            {% endif %}
-                        </h4>
-                        <div class="testimonial__rating text-sm">
-                            <twsaarating-stars size="small" value="5" class="hydrated">
-                                <div class="s-rating-stars-wrapper">
-                                    {% for i in 0..4 %}
-                                        {% if review['rating'] > i %}
-                                            <i class="icon-star2" style="color: rgb(255, 215, 0);"></i>
-                                        {% else %}
-                                            <i class="icon-star2" style="color: rgb(212, 212, 212);"></i>
-                                        {% endif %}
-                                    {% endfor %}                                    
-                                </div>
-                            </twsaarating-stars>
+    {% endif %}
+
+    <div id="slider{{ content['block_id'] }}" class="ui-testimonials__slider owl-carousel">
+        {% for review in content['settings']['reviews'] %}
+            <article class="ui-testimonial-card">
+                <div class="ui-testimonial-card__head">
+                    <img
+                        src="{{ asset_url ~ ('images/') }}{{ review['customer']['gender'] ?? 'other' }}-gender.png"
+                        alt="{{ review['name'] }}"
+                        loading="lazy">
+                    <div>
+                        {% if content['settings']['hide_user'] != 'true' %}
+                            <h4>{{ review['name'] }}</h4>
+                        {% endif %}
+                        <div class="ui-rating" aria-label="{{ review['rating'] }}/5">
+                            {% for i in 0..4 %}
+                                <i class="icon-star2 {{ review['rating'] > i ? 'is-active' : '' }}"></i>
+                            {% endfor %}
                         </div>
                     </div>
-                    <p class="text-base da-tm leading-6 line-clamp-3 w-full da-tm text-center my-2">
-                        {{ review['comment'] }}
-                    </p>
-                    <i class="testimonial__icon icon-quote -scale-y-100 -scale-x-100 absolute top-4 end-4 text-3xl da-tm opacity-10"></i>
                 </div>
-            {% endfor %}
-        </div>
+                <p>{{ review['comment'] }}</p>
+                <i class="testimonial__icon icon-quote ui-testimonial-card__quote"></i>
+            </article>
+        {% endfor %}
     </div>
 </section>
