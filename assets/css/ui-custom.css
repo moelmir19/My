@@ -2053,3 +2053,62 @@ table tr:last-child td {
     min-height: 38px;
   }
 }
+
+
+/* =========================================================
+   REWRITE-SPECIFIC PAGE HELPERS
+   ========================================================= */
+
+.ui-product-section {
+  width: 100%;
+}
+
+.ui-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ui-product-card__price {
+  min-width: 0;
+}
+
+.product-purchase-panel {
+  margin-top: 23px;
+  padding-top: 20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--ui-border);
+}
+
+.product-purchase-panel > * {
+  margin: 0 !important;
+}
+
+.ui-page-heading {
+  margin: 0 0 22px;
+}
+
+.ui-page-heading h1 {
+  margin: 0 !important;
+  font-size: clamp(25px, 2.8vw, 36px) !important;
+  font-weight: 750 !important;
+}
+
+@media (max-width: 767px) {
+  .product-purchase-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .product-purchase-panel .quantity.control-group {
+    width: fit-content;
+  }
+
+  .product-purchase-panel .btn,
+  .product-purchase-panel button[type="submit"] {
+    width: 100%;
+  }
+}
