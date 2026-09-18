@@ -1,16 +1,16 @@
+{% set lang = getFunction('locale') %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}" dir="{{ lang == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{% block title %}{% endblock %}</title>
     {% set asset_url = getFunction('assets') %}
     {# {% set asset_url = '/twig-theme/assets/' %} #}
     {% set storage_url = 'https://cdn.twsaa.com/' %}
-    {% set lang = getFunction('locale') %}
 
     {% if lang == 'ar' %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/bootstrap-ar.min.css' }}">
@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/search.min.css' }}">
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/fonts.css' }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/front-fonts.css' }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@dawod/thmanyah-font-web/serif-text.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/ui.css' }}">
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'js/plugins/owlcarousel/assets/owl.carousel.min.css' }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'js/plugins/owlcarousel/assets/owl.theme.default.min.css' }}" />
@@ -44,8 +45,8 @@
 
     <style>
         :root {
-            --brand: #5e8cff;
-            --brand-light: #d7d7d7;
+            --brand: #3157d5;
+            --brand-light: #eef2ff;
         }
 
         .cat-sub {
@@ -144,7 +145,7 @@
         };
     </script>
 </head>
-<body class="{{ lang == 'ar' ? 'rtl' : 'ltr' }}">
+<body class="site-body {{ lang == 'ar' ? 'rtl' : 'ltr' }}">
     <div class="app" id="app">
 
         {% set ad = getFunction('getad') %}
@@ -183,12 +184,12 @@
             {{ include("layout/header.twig") }}
         </div>
         
-        <div class="main main-container-wrapper">
+        <div class="main main-container-wrapper site-main">
             <div class="content-container">
                 {% block main_content %}{% endblock %}
             </div>
         </div>
-        <div class="footer">
+        <div class="footer site-footer-wrap">
                 {{ include("layout/footer.twig") }}
         </div>
 
