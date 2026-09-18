@@ -1,6 +1,6 @@
 
 .section-title {
-  font-family: "Thmanyah Serif Display", serif !important;
+  font-family: "Thmanyah Serif Text", serif !important;
   font-weight: 700;
 }
 
@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-  font-family: "Thmanyah Serif Display", serif !important;
+  font-family: "Thmanyah Serif Text", serif !important;
 }
 
 button,
@@ -41,7 +41,7 @@ b,
 table,
 th,
 td {
-  font-family: "Thmanyah Serif Display", serif !important;
+  font-family: "Thmanyah Serif Text", serif !important;
 }
 
 .main-container-wrapper,
