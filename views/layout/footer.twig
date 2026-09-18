@@ -2,47 +2,24 @@
 {% set companyTax = getFunction('getCompanyTax') %}
 {% set company = channel['getCompanyAddress'] %}
 
-<footer class="site-footer">
-    <div class="site-container">
-        <div class="site-footer__grid">
-            <div class="site-footer__brand">
-                {% if channel and channel.logo %}
-                    <a href="/" class="site-footer__logo-link">
-                        <img src="{{ storage_url ~ channel.logo }}" alt="{{ channel.name|default('Store') }}" class="site-footer__logo">
-                    </a>
-                {% else %}
-                    <a href="/" class="site-footer__brand-name">{{ channel.name }}</a>
-                {% endif %}
-                <p class="site-footer__brand-copy">{{ channel.name }}</p>
-
-                <ul class="site-footer__social">
-                    {% if company.instagram %}<li><a href="https://www.instagram.com/{{ company.instagram }}" target="_blank" aria-label="Instagram"><i class="icon-instagram"></i></a></li>{% endif %}
-                    {% if company.twitter %}<li><a href="https://twitter.com/{{ company.twitter }}" target="_blank" aria-label="Twitter"><i class="icon-twitter"></i></a></li>{% endif %}
-                    {% if company.snapchat %}<li><a href="https://www.snapchat.com/add/{{ company.snapchat }}" target="_blank" aria-label="Snapchat"><i class="icon-snapchat"></i></a></li>{% endif %}
-                    {% if company.tiktok %}<li><a href="https://www.tiktok.com/{{ company.tiktok }}/" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></li>{% endif %}
-                    {% if company.youtube %}<li><a href="{{ company.youtube }}" target="_blank" aria-label="YouTube"><i class="icon-youtube"></i></a></li>{% endif %}
-                </ul>
-            </div>
-
-            <div class="site-footer__column">
-                <h2 class="site-footer__title">{{ ('admin::app.front.support_team'|trans) }}</h2>
-                <div class="site-footer__contact">
-                    {% if company.whatsapp %}
-                        <a href="https://wa.me/{{ company.whatsapp|replace({'~[^+0-9]~': ''}) }}" rel="nofollow" target="_blank"><i class="icon-whatsapp2"></i><span>{{ ('admin::app.customers.customers.whatsapp'|trans) }}</span></a>
-                    {% endif %}
-                    {% if company.phone_visibility == 0 %}
-                        <a href="tel:{{ company.phone ?? '' }}"><i class="icon-phone"></i><span>{{ ('admin::app.customers.customers.phone'|trans) }}</span></a>
-                    {% endif %}
-                    {% if company.email %}
-                        <a href="mailto:{{ company.email ?? '' }}"><i class="icon-mail"></i><span>{{ ('admin::app.customers.customers.email'|trans) }}</span></a>
-                    {% endif %}
+<footer class="qs-footer">
+    <div class="qs-container">
+        <div class="qs-footer__grid">
+            <div class="qs-footer__about">
+                <img class="qs-footer__logo" src="https://quick-salla.com/wp-content/uploads/2024/07/%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D9%86%D8%B2%D9%8A%D8%A9-%D8%A7%D9%86%D8%B3%D8%AA%D8%A7-2.png" alt="{{ channel.name|default('Quick Salla') }}">
+                <h3>{{ lang == 'ar' ? 'من نحن' : 'About us' }}</h3>
+                <p>{{ channel.name }}</p>
+                <div class="qs-footer__social">
+                    {% if company.instagram %}<a href="https://www.instagram.com/{{ company.instagram }}" target="_blank" aria-label="Instagram"><i class="icon-instagram"></i></a>{% endif %}
+                    {% if company.twitter %}<a href="https://twitter.com/{{ company.twitter }}" target="_blank" aria-label="Twitter"><i class="icon-twitter"></i></a>{% endif %}
+                    {% if company.snapchat %}<a href="https://www.snapchat.com/add/{{ company.snapchat }}" target="_blank" aria-label="Snapchat"><i class="icon-snapchat"></i></a>{% endif %}
+                    {% if company.youtube %}<a href="{{ company.youtube }}" target="_blank" aria-label="YouTube"><i class="icon-youtube"></i></a>{% endif %}
                 </div>
             </div>
 
-            {% if channel.getCmsPages|length > 0 or channel.getBlogs|length > 0 %}
-            <div class="site-footer__column">
-                <h2 class="site-footer__title">{{ ('admin::app.admin.store_data.other_links'|trans) }}</h2>
-                <ul class="site-footer__links">
+            <div class="qs-footer__column">
+                <h3>{{ lang == 'ar' ? 'روابط تهمك' : 'Useful links' }}</h3>
+                <ul>
                     {% if channel.getBlogs|length > 0 %}
                         <li><a href="/blogs/{{ company.company_id }}">{{ ('admin::app.admin.blog.blogs'|trans) }}</a></li>
                     {% endif %}
@@ -53,11 +30,25 @@
                     {% endfor %}
                 </ul>
             </div>
-            {% endif %}
 
-            <div class="site-footer__column site-footer__payments-column">
-                <h2 class="site-footer__title">{{ lang == 'ar' ? 'الدفع الآمن' : 'Secure payment' }}</h2>
-                <div class="site-footer__payments">
+            <div class="qs-footer__column">
+                <h3>{{ lang == 'ar' ? 'تواصل معنا' : 'Contact us' }}</h3>
+                <div class="qs-footer__contact">
+                    {% if company.whatsapp %}
+                        <a href="https://wa.me/{{ company.whatsapp|replace({'~[^+0-9]~': ''}) }}" target="_blank"><i class="icon-whatsapp2"></i><span>{{ ('admin::app.customers.customers.whatsapp'|trans) }}</span></a>
+                    {% endif %}
+                    {% if company.phone_visibility == 0 %}
+                        <a href="tel:{{ company.phone ?? '' }}"><i class="icon-phone"></i><span>{{ company.phone ?? ('admin::app.customers.customers.phone'|trans) }}</span></a>
+                    {% endif %}
+                    {% if company.email %}
+                        <a href="mailto:{{ company.email ?? '' }}"><i class="icon-mail"></i><span>{{ company.email }}</span></a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="qs-footer__column">
+                <h3>{{ lang == 'ar' ? 'الدفع الآمن' : 'Secure payment' }}</h3>
+                <div class="qs-payment">
                     {% if getFunction('getDefaultPaymentMethod').getAdminPaymentMethod and getFunction('getDefaultPaymentMethod').getAdminPaymentMethod['active']|default(0) == 1 %}
                         <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/visa.png" alt="Visa">
                         <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/mastercard.png" alt="Mastercard">
@@ -66,35 +57,25 @@
                             <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/applepay.png" alt="Apple Pay">
                         {% endif %}
                     {% endif %}
-                    {% if (getFunction('getTabbyPaymentMethod') and getFunction('getTabbyPaymentMethod').active|default(0)) == 1 and (getFunction('getTabbyPaymentMethod').getAdminPaymentMethod['active']|default(0)) == 1 %}
-                        <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/tabby.webp" alt="Tabby">
-                    {% endif %}
-                    {% if (getFunction('getTamaraPaymentMethod') and getFunction('getTamaraPaymentMethod').active|default(0)) == 1 and (getFunction('getTamaraPaymentMethod').getAdminPaymentMethod['active']|default(0)) == 1 %}
-                        <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/tamara.svg" alt="Tamara">
-                    {% endif %}
                 </div>
                 {% if companyTax and (companyTax.show_tax_no|default(0)) == 1 %}
-                    <p class="site-footer__tax">{{ ('admin::app.footer.tax_no'|trans) }}: <strong>{{ companyTax.tax_no ?? '' }}</strong></p>
+                    <p class="qs-tax">{{ ('admin::app.footer.tax_no'|trans) }}: <strong>{{ companyTax.tax_no ?? '' }}</strong></p>
                 {% endif %}
             </div>
         </div>
 
-        <div class="site-footer__bottom">
-            {% if getConfig('config.general.show-platform-message') == 0 %}
-                <p>{{ ('admin::app.footer.right-reserved'|trans) }} {{ "now"|date("Y") }} · {{ channel.name }}</p>
-            {% else %}
-                <p>{{ ('admin::app.footer.twsaa-reserved'|trans) }} {{ "now"|date("Y") }} · {{ ('admin::app.users.sessions.company'|trans) }}</p>
-            {% endif %}
-
-            {% if company.certificate_id %}
-                {% if getSuperConfig('store.current_country_code') == "OM" %}
-                    <a class="site-footer__certificate" target="_blank" href="https://maroof.om/businesses?keyword={{ company.certificate_id }}">
-                {% else %}
-                    <a class="site-footer__certificate" target="_blank" href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/{{ company.certificate_id }}">
-                {% endif %}
-                    <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/sbc.webp" alt="Business certificate" loading="lazy">
-                </a>
-            {% endif %}
+        <div class="qs-footer__bottom">
+            <p>© {{ "now"|date("Y") }} {{ lang == 'ar' ? 'حقوق الطبع والنشر' : 'All rights reserved' }} · {{ channel.name }}</p>
         </div>
     </div>
 </footer>
+
+<nav class="qs-mobile-bar" aria-label="{{ lang == 'ar' ? 'التنقل السريع' : 'Quick navigation' }}">
+    <a href="/"><i class="icon-home"></i><span>{{ lang == 'ar' ? 'الرئيسية' : 'Home' }}</span></a>
+    <a href="/checkout/cart" class="qs-mobile-bar__cart"><i class="icon-cart"></i><span>{{ lang == 'ar' ? 'سلة المشتريات' : 'Cart' }}</span><b class="cart-count count">{{ getFunction('cartItemsCount') }}</b></a>
+    {% if company.whatsapp %}
+        <a href="https://wa.me/{{ company.whatsapp|replace({'~[^+0-9]~': ''}) }}" target="_blank"><i class="icon-whatsapp2"></i><span>{{ lang == 'ar' ? 'الدعم الفني' : 'Support' }}</span></a>
+    {% else %}
+        <a href="/page/contact-us"><i class="icon-phone"></i><span>{{ lang == 'ar' ? 'الدعم الفني' : 'Support' }}</span></a>
+    {% endif %}
+</nav>
