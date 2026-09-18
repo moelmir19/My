@@ -315,10 +315,10 @@ document.addEventListener('error', function (event) {
     if (!el || el.tagName !== 'IMG') return;
 
     var src = el.getAttribute('src') || '';
-    if (src.indexOf('/assets/images/') !== -1 || src.indexOf('assets/images/') !== -1) {
-        el.onerror = null;
-        el.src = '/assets/images/placeholder.svg';
-    }
+    if (src.indexOf('/assets/images/placeholder.svg') !== -1) return;
+
+    el.onerror = null;
+    el.src = '/assets/images/placeholder.svg';
 }, true);
 </script>
 
