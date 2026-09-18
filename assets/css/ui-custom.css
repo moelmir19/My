@@ -1,6 +1,6 @@
 
 .section-title {
-  font-family: "IBM Plex Sans Arabic", sans-serif !important;
+  font-family: "Thmanyah Serif Display", serif !important;
   font-weight: 700;
 }
 
@@ -22,7 +22,26 @@ html, body {
 }
 
 body {
-  font-family: "IBM Plex Sans Arabic", "STC", Tahoma, Arial, sans-serif !important;
+  font-family: "Thmanyah Serif Display", serif !important;
+}
+
+button,
+input,
+textarea,
+select,
+option,
+label,
+h1, h2, h3, h4, h5, h6,
+p,
+a,
+li,
+small,
+strong,
+b,
+table,
+th,
+td {
+  font-family: "Thmanyah Serif Display", serif !important;
 }
 
 .main-container-wrapper,
@@ -203,7 +222,7 @@ section {
   padding: 15px 14px !important;
   color: #334155 !important;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 10px;
   transition: .2s ease;
 }
@@ -256,7 +275,7 @@ section {
 .section_title h2 {
   font-size: 26px !important;
   line-height: 1.35 !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   color: #111827 !important;
   margin-bottom: 6px !important;
 }
@@ -321,7 +340,7 @@ section {
   text-align: start !important;
   color: #1f2937 !important;
   font-size: 14px !important;
-  font-weight: 650 !important;
+  font-weight: 700 !important;
   line-height: 1.65;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -341,7 +360,7 @@ section {
 .product-bottom-row .price,
 .product-bottom-row [class*="price"] {
   color: var(--qs-primary-dark) !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
 }
 
 .hover-buttons {
@@ -378,7 +397,7 @@ section {
 
 .footer-title {
   font-size: 16px !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   margin-bottom: 16px !important;
 }
 
