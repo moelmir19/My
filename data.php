@@ -144,7 +144,7 @@ function homePage() {
                 //        "url_key" => "2g663yz", 
                 //        "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //        "product" => [
-                //           "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" 
+                //           "base_image_url" => "/assets/images/product-1.svg" 
                 //        ] 
                 //     ], 
                 //     [
@@ -156,7 +156,7 @@ function homePage() {
                 //         "url_key" => "customizable", 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" 
+                //         "base_image_url" => "/assets/images/product-2.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -168,7 +168,7 @@ function homePage() {
                 //         "url_key" => "n2-4-5-3", 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" 
+                //             "base_image_url" => "/assets/images/product-3.svg" 
                 //         ],
                 //         "wishlist_product" => true
                 //     ], 
@@ -181,7 +181,7 @@ function homePage() {
                 //         "url_key" => "ouu1ro7", 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" 
+                //         "base_image_url" => "/assets/images/product-4.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -193,7 +193,7 @@ function homePage() {
                 //         "url_key" => "k6p8ato", 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" 
+                //             "base_image_url" => "/assets/images/product-5.svg" 
                 //         ] 
                 //     ] 
                 //  ] 
@@ -204,7 +204,7 @@ function homePage() {
             "sort" => null, 
             "block_id" => 295765, 
             "settings" => [
-                "image" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png", 
+                "image" => "/assets/images/banner-1.svg", 
             ] 
         ], 
         [
@@ -232,7 +232,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-6.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -245,7 +245,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png" 
+                //             "base_image_url" => "/assets/images/product-1.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -258,7 +258,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-2.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -271,7 +271,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-3.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -284,7 +284,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-4.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -297,7 +297,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-5.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -310,7 +310,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-6.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -323,7 +323,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png" 
+                //             "base_image_url" => "/assets/images/product-1.svg" 
                 //         ] 
                 //     ] 
                 // ] 
@@ -336,28 +336,28 @@ function homePage() {
             "settings" => [
                 "items" => [
                     [
-                        "image" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png", 
+                        "image" => "/assets/images/banner-2.svg", 
                         "name" => "أحمر الشفاه", 
                         "link_type" => "category", 
                         "category_id" => "2122", 
                         "link" => "/المكياج" 
                     ], 
                     [
-                        "image" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png", 
+                        "image" => "/assets/images/banner-3.svg", 
                         "name" => "أقلام الكحل", 
                         "link_type" => "category", 
                         "category_id" => "2122", 
                         "link" => "/المكياج" 
                     ], 
                     [
-                        "image" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png", 
+                        "image" => "/assets/images/banner-1.svg", 
                         "name" => "كونسيلر", 
                         "link_type" => "category", 
                         "category_id" => "2122", 
                         "link" => "/المكياج" 
                     ], 
                     [
-                        "image" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png", 
+                        "image" => "/assets/images/banner-2.svg", 
                         "name" => "ظلال عيون", 
                         "link_type" => "category", 
                         "category_id" => "2122", 
@@ -375,14 +375,14 @@ function homePage() {
             "settings" => [
             "items" => [
                 [
-                    "image" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png", 
+                    "image" => "/assets/images/banner-3.svg", 
                     "name" => "", 
                     "link_type" => "category", 
                     "category_id" => "2121", 
                     "link" => "/العناية" 
                 ], 
                 [
-                    "image" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png", 
+                    "image" => "/assets/images/banner-1.svg", 
                     "name" => "", 
                     "link_type" => "category", 
                     "category_id" => "2175", 
@@ -414,7 +414,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png" 
+                //         "base_image_url" => "/assets/images/product-2.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -427,7 +427,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-3.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -440,7 +440,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png" 
+                //         "base_image_url" => "/assets/images/product-4.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -453,7 +453,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-5.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -467,7 +467,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png" 
+                //         "base_image_url" => "/assets/images/product-6.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -480,7 +480,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png" 
+                //             "base_image_url" => "/assets/images/product-1.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -493,7 +493,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png" 
+                //         "base_image_url" => "/assets/images/product-2.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -507,7 +507,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-3.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -521,7 +521,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png" 
+                //         "base_image_url" => "/assets/images/product-4.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -535,7 +535,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-5.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -548,7 +548,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //         "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png" 
+                //         "base_image_url" => "/assets/images/product-6.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -561,7 +561,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png" 
+                //             "base_image_url" => "/assets/images/product-1.svg" 
                 //         ] 
                 //     ] 
                 // ] 
@@ -572,7 +572,7 @@ function homePage() {
             "sort" => null, 
             "block_id" => 298292, 
             "settings" => [
-                "image" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png", 
+                "image" => "/assets/images/banner-2.svg", 
             ] 
         ], 
         [
@@ -598,7 +598,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-2.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -611,7 +611,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-3.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -624,7 +624,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-4.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -637,7 +637,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-5.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -650,7 +650,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png" 
+                //             "base_image_url" => "/assets/images/product-6.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -663,7 +663,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-1.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -676,7 +676,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-2.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -689,7 +689,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-3.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -702,7 +702,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-4.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -715,7 +715,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png" 
+                //             "base_image_url" => "/assets/images/product-5.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -728,7 +728,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png" 
+                //             "base_image_url" => "/assets/images/product-6.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -741,7 +741,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-1.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -754,7 +754,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-2.svg" 
                 //         ] 
                 //     ], 
                 //     [
@@ -767,7 +767,7 @@ function homePage() {
                 //         "saleable" => 1, 
                 //         "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
                 //         "product" => [
-                //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png" 
+                //             "base_image_url" => "/assets/images/product-3.svg" 
                 //         ] 
                 //     ] 
                 // ] 
@@ -930,7 +930,7 @@ function homePage() {
             //             "saleable" => 1, 
             //             "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
             //             "product" => [
-            //                 "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png" 
+            //                 "base_image_url" => "/assets/images/product-4.svg" 
             //             ] 
             //         ], 
             //         [
@@ -943,7 +943,7 @@ function homePage() {
             //             "saleable" => 1, 
             //             "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
             //             "product" => [
-            //                 "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png" 
+            //                 "base_image_url" => "/assets/images/product-5.svg" 
             //             ] 
             //         ], 
             //         [
@@ -956,7 +956,7 @@ function homePage() {
             //             "saleable" => 1, 
             //             "html_price" => "<span class='price'>‏٣٦٧٫٣٥ ر.س.‏</span>", 
             //             "product" => [
-            //             "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png" 
+            //             "base_image_url" => "/assets/images/product-6.svg" 
             //             ] 
             //         ] 
             //     ] 
@@ -1662,7 +1662,7 @@ function cart() {
                             "status" => 0, 
                             "is_user_defined" => 1 
                         ],
-                        "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png"
+                        "base_image_url" => "/assets/images/product-1.svg"
                     ] 
               ], 
               [
@@ -1774,7 +1774,7 @@ function cart() {
                                                         "status" => 0, 
                                                         "is_user_defined" => 1 
                                                      ],
-                                                     "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png"
+                                                     "base_image_url" => "/assets/images/product-2.svg"
 
                                                   ] 
                              ], 
@@ -1914,7 +1914,7 @@ function cart() {
                                                                                                            "status" => 0, 
                                                                                                            "is_user_defined" => 1 
                                                                                                         ],
-                                                                                                        "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png",
+                                                                                                        "base_image_url" => "/assets/images/product-3.svg",
                                                                                                         "customizable" => [
                                                                                                             [
                                                                                                                   "id" => 157, 
@@ -2207,7 +2207,7 @@ function cart() {
                                                                                                                                    "status" => 0, 
                                                                                                                                    "is_user_defined" => 1 
                                                                                                                                 ],
-                                                                                                                                "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png"
+                                                                                                                                "base_image_url" => "/assets/images/product-4.svg"
 
                                                                                                                              ], 
                                                                                                               "child" => [
@@ -2296,7 +2296,7 @@ function cart() {
                                                                                                                                                "status" => 0, 
                                                                                                                                                "is_user_defined" => 1 
                                                                                                                                             ],
-                                                                                                                                            "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png",
+                                                                                                                                            "base_image_url" => "/assets/images/product-5.svg",
                                                                                                                                             "child_product_string" => "sizes | m colors | red images | 2"
                                                                                                                                          ] 
                                                                                                                                    ] 
@@ -2418,7 +2418,7 @@ function cart() {
                                                                                                                                                               "status" => 0, 
                                                                                                                                                               "is_user_defined" => 1 
                                                                                                                                                            ],
-                                                                                                                                                           "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png"
+                                                                                                                                                           "base_image_url" => "/assets/images/product-6.svg"
 
                                                                                                                                                         ] 
                                                                                                                                                ] 
@@ -2490,7 +2490,7 @@ function reviews() {
                 "height" => null, 
                 "depth" => null, 
                 "weight" => null, 
-                "base_image_url" => 'https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png',
+                "base_image_url" => '/assets/images/product-1.svg',
                 "attribute_family" => [
                     "id" => 21, 
                     "code" => "default", 
@@ -2559,7 +2559,7 @@ function reviews() {
                 "height" => null, 
                 "depth" => null, 
                 "weight" => null, 
-                "base_image_url" => 'https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png',
+                "base_image_url" => '/assets/images/product-2.svg',
                 "attribute_family" => [
                     "id" => 21, 
                     "code" => "default", 
@@ -2592,7 +2592,7 @@ function wishlist() {
             "additional" => null ,
             "product" => [
                 "name" => "Product 1",
-                "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png",
+                "base_image_url" => "/assets/images/product-1.svg",
                 "average_rating" => "4"
             ]
         ], 
@@ -2610,7 +2610,7 @@ function wishlist() {
             "additional" => null,
             "product" => [
                 "name" => "Product 2",
-                "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png",
+                "base_image_url" => "/assets/images/product-2.svg",
                 "average_rating" => "5"
             ]
         ]    
@@ -2795,7 +2795,7 @@ function orderView() {
                     "id" => 96, 
                     "product_name" => "ebook", 
                     "name" => null, 
-                    "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png", 
+                    "url" => "/assets/images/product-3.svg", 
                     "file" => "450266", 
                     "file_name" => "asdf", 
                     "type" => "image", 
@@ -3135,7 +3135,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -3225,7 +3225,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -3291,7 +3291,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -3357,7 +3357,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -3423,7 +3423,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -3489,7 +3489,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -3555,7 +3555,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -3645,7 +3645,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -3753,7 +3753,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -3764,7 +3764,7 @@ function brandView() {
                 "parent_id" => null, 
                 "sku" => "MSKUAE1005006629609421", 
                 "name" => "مجموعة مسحوق مجفف مجمد مضاد للتجاعيد ، خميرة للإصلاح ، مصل مغذي ، كرياتين لتعزيز إنتاج الكولاجين", 
-                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p></div></div>', 
+                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /></p></div></div>', 
                 "url_key" => "mskuae1005006629609421", 
                 "new" => null, 
                 "featured" => null, 
@@ -3780,10 +3780,10 @@ function brandView() {
                 "min_price" => "424.51", 
                 "max_price" => "1061.28", 
                 "is_vat" => 1, 
-                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p></div></div>', 
+                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /></p></div></div>', 
                 "meta_title" => "مجموعة مسحوق مجفف مجمد مضاد للتجاعيد ، خميرة للإصلاح ، مصل مغذي ، كرياتين لتعزيز إنتاج الكولاجين", 
                 "meta_keywords" => null, 
-                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p></div></div>', 
+                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /></p></div></div>', 
                 "width" => 0, 
                 "height" => 0, 
                 "depth" => 0, 
@@ -3819,7 +3819,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -3847,7 +3847,7 @@ function brandView() {
                     <div>
                         &nbsp;
                     </div>
-                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /></p></div></div>
+                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-3.svg" slate-data-type="image" /></p></div></div>
                     ', 
                 "url_key" => "mskuae1005006608665729", 
                 "new" => null, 
@@ -3881,7 +3881,7 @@ function brandView() {
                 <div>
                     &nbsp;
                 </div>
-                <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p></div></div>
+                <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-4.svg" slate-data-type="image" /></p></div></div>
                 ', 
                 "meta_title" => "سوار زوجين من الصلب الكلاسيكي الفاخر من التيتانيوم ، سوار عالي الجودة للرجال والنساء ، هدايا الحفلات", 
                 "meta_keywords" => null, 
@@ -3902,7 +3902,7 @@ function brandView() {
                     <div>
                         &nbsp;
                     </div>
-                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /></p></div></div>
+                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-5.svg" slate-data-type="image" /></p></div></div>
                     ', 
                 "width" => 0, 
                 "height" => 0, 
@@ -3939,7 +3939,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -3950,14 +3950,14 @@ function brandView() {
                 "parent_id" => null, 
                 "sku" => "MSKUAE1005006682900581", 
                 "name" => "نظارات شمسية مستطيلة سوداء للنساء ، نظارات شمسية نسائية غريبة ، أزياء الحفلات ، مصمم العلامة التجارية ، UV400 ، بيع", 
-                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p> 
+                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-6.svg" slate-data-type="image" /></p> 
                     <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                     <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                     <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                     <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-2.svg" slate-data-type="image" /></p> 
                     <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                     <p><br /></p> 
                     <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -3991,14 +3991,14 @@ function brandView() {
                 "min_price" => "431.44", 
                 "max_price" => "431.44", 
                 "is_vat" => 1, 
-                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /></p> 
+                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-3.svg" slate-data-type="image" /></p> 
                     <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                     <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                     <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                     <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-4.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-5.svg" slate-data-type="image" /></p> 
                     <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                     <p><br /></p> 
                     <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -4019,14 +4019,14 @@ function brandView() {
                     ', 
                 "meta_title" => "نظارات شمسية مستطيلة سوداء للنساء ، نظارات شمسية نسائية غريبة ، أزياء الحفلات ، مصمم العلامة التجارية ، UV400 ، بيع", 
                 "meta_keywords" => null, 
-                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /></p> 
+                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-6.svg" slate-data-type="image" /></p> 
                         <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                         <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                         <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                         <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /></p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-2.svg" slate-data-type="image" /></p> 
                         <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                         <p><br /></p> 
                         <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -4080,7 +4080,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -4146,7 +4146,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -4212,7 +4212,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -4278,7 +4278,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -4344,7 +4344,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -4458,7 +4458,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -4584,7 +4584,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -4668,7 +4668,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -4761,7 +4761,7 @@ function brandView() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ]
@@ -4834,7 +4834,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -4924,7 +4924,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -4990,7 +4990,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -5056,7 +5056,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -5122,7 +5122,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -5188,7 +5188,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -5254,7 +5254,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -5344,7 +5344,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -5452,7 +5452,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -5463,7 +5463,7 @@ function products() {
                 "parent_id" => null, 
                 "sku" => "MSKUAE1005006629609421", 
                 "name" => "مجموعة مسحوق مجفف مجمد مضاد للتجاعيد ، خميرة للإصلاح ، مصل مغذي ، كرياتين لتعزيز إنتاج الكولاجين", 
-                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p></div></div>', 
+                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /></p></div></div>', 
                 "url_key" => "mskuae1005006629609421", 
                 "new" => null, 
                 "featured" => null, 
@@ -5479,10 +5479,10 @@ function products() {
                 "min_price" => "424.51", 
                 "max_price" => "1061.28", 
                 "is_vat" => 1, 
-                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p></div></div>', 
+                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /></p></div></div>', 
                 "meta_title" => "مجموعة مسحوق مجفف مجمد مضاد للتجاعيد ، خميرة للإصلاح ، مصل مغذي ، كرياتين لتعزيز إنتاج الكولاجين", 
                 "meta_keywords" => null, 
-                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p></div></div>', 
+                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /></p></div></div>', 
                 "width" => 0, 
                 "height" => 0, 
                 "depth" => 0, 
@@ -5518,7 +5518,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -5546,7 +5546,7 @@ function products() {
                     <div>
                         &nbsp;
                     </div>
-                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /></p></div></div>
+                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-3.svg" slate-data-type="image" /></p></div></div>
                     ', 
                 "url_key" => "mskuae1005006608665729", 
                 "new" => null, 
@@ -5580,7 +5580,7 @@ function products() {
                 <div>
                     &nbsp;
                 </div>
-                <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p></div></div>
+                <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-4.svg" slate-data-type="image" /></p></div></div>
                 ', 
                 "meta_title" => "سوار زوجين من الصلب الكلاسيكي الفاخر من التيتانيوم ، سوار عالي الجودة للرجال والنساء ، هدايا الحفلات", 
                 "meta_keywords" => null, 
@@ -5601,7 +5601,7 @@ function products() {
                     <div>
                         &nbsp;
                     </div>
-                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /></p></div></div>
+                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-5.svg" slate-data-type="image" /></p></div></div>
                     ', 
                 "width" => 0, 
                 "height" => 0, 
@@ -5638,7 +5638,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -5649,14 +5649,14 @@ function products() {
                 "parent_id" => null, 
                 "sku" => "MSKUAE1005006682900581", 
                 "name" => "نظارات شمسية مستطيلة سوداء للنساء ، نظارات شمسية نسائية غريبة ، أزياء الحفلات ، مصمم العلامة التجارية ، UV400 ، بيع", 
-                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /></p> 
+                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-6.svg" slate-data-type="image" /></p> 
                     <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                     <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                     <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                     <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-2.svg" slate-data-type="image" /></p> 
                     <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                     <p><br /></p> 
                     <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -5690,14 +5690,14 @@ function products() {
                 "min_price" => "431.44", 
                 "max_price" => "431.44", 
                 "is_vat" => 1, 
-                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /></p> 
+                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-3.svg" slate-data-type="image" /></p> 
                     <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                     <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                     <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                     <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-4.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-5.svg" slate-data-type="image" /></p> 
                     <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                     <p><br /></p> 
                     <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -5718,14 +5718,14 @@ function products() {
                     ', 
                 "meta_title" => "نظارات شمسية مستطيلة سوداء للنساء ، نظارات شمسية نسائية غريبة ، أزياء الحفلات ، مصمم العلامة التجارية ، UV400 ، بيع", 
                 "meta_keywords" => null, 
-                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /></p> 
+                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-6.svg" slate-data-type="image" /></p> 
                         <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                         <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                         <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                         <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /></p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-2.svg" slate-data-type="image" /></p> 
                         <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                         <p><br /></p> 
                         <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -5779,7 +5779,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -5845,7 +5845,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -5911,7 +5911,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -5977,7 +5977,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -6043,7 +6043,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -6157,7 +6157,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -6283,7 +6283,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -6367,7 +6367,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -6460,7 +6460,7 @@ function products() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ]
@@ -8363,7 +8363,7 @@ function customizable() {
             "path" => "product/55682/aa97d069-649f-41d3-bf95-a66addfc903c.jpg", 
             "product_id" => 55682, 
             "main" => 1, 
-            "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" 
+            "url" => "/assets/images/product-4.svg" 
             ] 
         ],
         "product" => [
@@ -8637,7 +8637,7 @@ function customizable() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="price">٥٫٧٥&nbsp;ر.س.</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ]
             ], 
             [
@@ -8700,7 +8700,7 @@ function customizable() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="special-price"> ‏٥١٫٧٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ]
             ], 
             [
@@ -8763,7 +8763,7 @@ function customizable() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏١٫١٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ]
             ], 
             [
@@ -8826,7 +8826,7 @@ function customizable() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏٣٦٧٫٣٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ]
             ]
         ],
@@ -8837,7 +8837,7 @@ function customizable() {
                   "path" => "product/55682/aa97d069-649f-41d3-bf95-a66addfc903c.jpg", 
                   "product_id" => 55682, 
                   "main" => 1, 
-                  "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" 
+                  "url" => "/assets/images/product-5.svg" 
                ] 
             ],
         "html_price" => '<span class="product-price"><span class="price">‏١٫١٥&nbsp;ر.س.‏</span></span>', 
@@ -8932,7 +8932,7 @@ function configurable() {
                                                               55674, 
                                                               55676 
                                                            ], 
-                                                           "swatch_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" 
+                                                           "swatch_url" => "/assets/images/product-3.svg" 
                                                         ], 
                                                         [
                                                                  "id" => 6, 
@@ -8944,7 +8944,7 @@ function configurable() {
                                                                     55679, 
                                                                     55680 
                                                                  ], 
-                                                                 "swatch_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" 
+                                                                 "swatch_url" => "/assets/images/product-4.svg" 
                                                               ] 
                                                      ] 
                                                   ] 
@@ -9032,50 +9032,50 @@ function configurable() {
         "variant_images" => [
                                                                                                                                       [
                                                                                                                                          [
-                                                                                                                                            "small_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png", 
-                                                                                                                                            "medium_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png", 
-                                                                                                                                            "large_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png", 
-                                                                                                                                            "original_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" 
+                                                                                                                                            "small_image_url" => "/assets/images/product-5.svg", 
+                                                                                                                                            "medium_image_url" => "/assets/images/product-6.svg", 
+                                                                                                                                            "large_image_url" => "/assets/images/product-1.svg", 
+                                                                                                                                            "original_image_url" => "/assets/images/product-2.svg" 
                                                                                                                                          ] 
                                                                                                                                       ], 
                                                                                                                                       [
                                                                                                                                                [
-                                                                                                                                                  "small_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png", 
-                                                                                                                                                  "medium_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png", 
-                                                                                                                                                  "large_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png", 
-                                                                                                                                                  "original_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" 
+                                                                                                                                                  "small_image_url" => "/assets/images/product-3.svg", 
+                                                                                                                                                  "medium_image_url" => "/assets/images/product-4.svg", 
+                                                                                                                                                  "large_image_url" => "/assets/images/product-5.svg", 
+                                                                                                                                                  "original_image_url" => "/assets/images/product-6.svg" 
                                                                                                                                                ] 
                                                                                                                                             ], 
                                                                                                                                       [
                                                                                                                                                      [
-                                                                                                                                                        "small_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png", 
-                                                                                                                                                        "medium_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png", 
-                                                                                                                                                        "large_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png", 
-                                                                                                                                                        "original_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" 
+                                                                                                                                                        "small_image_url" => "/assets/images/product-1.svg", 
+                                                                                                                                                        "medium_image_url" => "/assets/images/product-2.svg", 
+                                                                                                                                                        "large_image_url" => "/assets/images/product-3.svg", 
+                                                                                                                                                        "original_image_url" => "/assets/images/product-4.svg" 
                                                                                                                                                      ] 
                                                                                                                                                   ], 
                                                                                                                                       [
                                                                                                                                                            [
-                                                                                                                                                              "small_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png", 
-                                                                                                                                                              "medium_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png", 
-                                                                                                                                                              "large_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png", 
-                                                                                                                                                              "original_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" 
+                                                                                                                                                              "small_image_url" => "/assets/images/product-5.svg", 
+                                                                                                                                                              "medium_image_url" => "/assets/images/product-6.svg", 
+                                                                                                                                                              "large_image_url" => "/assets/images/product-1.svg", 
+                                                                                                                                                              "original_image_url" => "/assets/images/product-2.svg" 
                                                                                                                                                            ] 
                                                                                                                                                         ], 
                                                                                                                                       [
                                                                                                                                                                  [
-                                                                                                                                                                    "small_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png", 
-                                                                                                                                                                    "medium_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png", 
-                                                                                                                                                                    "large_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png", 
-                                                                                                                                                                    "original_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" 
+                                                                                                                                                                    "small_image_url" => "/assets/images/product-3.svg", 
+                                                                                                                                                                    "medium_image_url" => "/assets/images/product-4.svg", 
+                                                                                                                                                                    "large_image_url" => "/assets/images/product-5.svg", 
+                                                                                                                                                                    "original_image_url" => "/assets/images/product-6.svg" 
                                                                                                                                                                  ] 
                                                                                                                                                               ], 
                                                                                                                                       [
                                                                                                                                                                        [
-                                                                                                                                                                          "small_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png", 
-                                                                                                                                                                          "medium_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png", 
-                                                                                                                                                                          "large_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png", 
-                                                                                                                                                                          "original_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" 
+                                                                                                                                                                          "small_image_url" => "/assets/images/product-1.svg", 
+                                                                                                                                                                          "medium_image_url" => "/assets/images/product-2.svg", 
+                                                                                                                                                                          "large_image_url" => "/assets/images/product-3.svg", 
+                                                                                                                                                                          "original_image_url" => "/assets/images/product-4.svg" 
                                                                                                                                                                        ] 
                                                                                                                                                                     ] 
                                                                                                                                    ], 
@@ -9885,7 +9885,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png", 
+                "image_url" => "/assets/images/product-5.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "s", 
@@ -10007,7 +10007,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png", 
+                "image_url" => "/assets/images/product-6.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "m", 
@@ -10129,7 +10129,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png", 
+                "image_url" => "/assets/images/product-1.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "s", 
@@ -10251,7 +10251,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png", 
+                "image_url" => "/assets/images/product-2.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "m", 
@@ -10373,7 +10373,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png", 
+                "image_url" => "/assets/images/product-3.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "s", 
@@ -10495,7 +10495,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png", 
+                "image_url" => "/assets/images/product-4.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "s", 
@@ -10617,7 +10617,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png", 
+                "image_url" => "/assets/images/product-5.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "m", 
@@ -10739,7 +10739,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "1", 
                 "image_value" => "1", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png", 
+                "image_url" => "/assets/images/product-6.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "m", 
@@ -10861,7 +10861,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "2", 
                 "image_value" => "2", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png", 
+                "image_url" => "/assets/images/product-1.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "s", 
@@ -10983,7 +10983,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "2", 
                 "image_value" => "2", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png", 
+                "image_url" => "/assets/images/product-2.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "m", 
@@ -11105,7 +11105,7 @@ function configurable() {
                 "image_name" => "images", 
                 "image_label" => "2", 
                 "image_value" => "2", 
-                "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png", 
+                "image_url" => "/assets/images/product-3.svg", 
                 "text" => "text", 
                 "text_name" => "sizes", 
                 "text_label" => "s", 
@@ -11227,7 +11227,7 @@ function configurable() {
                     "image_name" => "images", 
                     "image_label" => "2", 
                     "image_value" => "2", 
-                    "image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png", 
+                    "image_url" => "/assets/images/product-4.svg", 
                     "text" => "text", 
                     "text_name" => "sizes", 
                     "text_label" => "m", 
@@ -11372,7 +11372,7 @@ function configurable() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="price">٥٫٧٥&nbsp;ر.س.</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ]
             ], 
             [
@@ -11435,7 +11435,7 @@ function configurable() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="special-price"> ‏٥١٫٧٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ]
             ], 
             [
@@ -11498,7 +11498,7 @@ function configurable() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏١٫١٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ]
             ], 
             [
@@ -11561,7 +11561,7 @@ function configurable() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏٣٦٧٫٣٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ]
             ]
         ],
@@ -11572,7 +11572,7 @@ function configurable() {
                 "path" => "product/55668/a16626c7-40a0-42f9-954f-5e1b25159fc1.png", 
                 "product_id" => 55668, 
                 "main" => 0, 
-                "url" => "https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" 
+                "url" => "/assets/images/product-6.svg" 
             ], 
             [
                 "id" => 37958, 
@@ -11580,7 +11580,7 @@ function configurable() {
                 "path" => "product/55668/1d3c32b0-8c59-40e5-ad5a-26ae3d58572c.jpg", 
                 "product_id" => 55668, 
                 "main" => 0, 
-                "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" 
+                "url" => "/assets/images/product-1.svg" 
             ] 
         ],
         "html_price" => '<span class="product-price"><span class="price">‏١٫١٥&nbsp;ر.س.‏</span></span>', 
@@ -11778,7 +11778,7 @@ function simple() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="price">٥٫٧٥&nbsp;ر.س.</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ]
             ], 
             [
@@ -11841,7 +11841,7 @@ function simple() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="special-price"> ‏٥١٫٧٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ]
             ], 
             [
@@ -11904,7 +11904,7 @@ function simple() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏١٫١٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ]
             ], 
             [
@@ -11967,7 +11967,7 @@ function simple() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏٣٦٧٫٣٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ]
             ]
         ],
@@ -11978,7 +11978,7 @@ function simple() {
                   "path" => "product/56116/0592b342-84cb-44f6-8d29-1328e332c9fd.png", 
                   "product_id" => 56116, 
                   "main" => 1, 
-                  "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" 
+                  "url" => "/assets/images/product-2.svg" 
                ], 
             [
                      "id" => 38106, 
@@ -11986,7 +11986,7 @@ function simple() {
                      "path" => "product/56116/dc4ae137-feba-4d5a-82e1-be617eb59274.png", 
                      "product_id" => 56116, 
                      "main" => 0, 
-                     "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" 
+                     "url" => "/assets/images/product-3.svg" 
                   ] 
          ],
         "html_price" => '<span class="product-price"><span class="price">‏١٫١٥&nbsp;ر.س.‏</span></span>', 
@@ -12184,7 +12184,7 @@ function digital() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="price">٥٫٧٥&nbsp;ر.س.</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ]
             ], 
             [
@@ -12247,7 +12247,7 @@ function digital() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="special-price"> ‏٥١٫٧٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ]
             ], 
             [
@@ -12310,7 +12310,7 @@ function digital() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏١٫١٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ]
             ], 
             [
@@ -12373,7 +12373,7 @@ function digital() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏٣٦٧٫٣٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ]
             ]
         ],
@@ -12384,7 +12384,7 @@ function digital() {
                   "path" => "product/56219/b5a93051-3cc1-4d62-8b7f-2cd7897b9581.jpg", 
                   "product_id" => 56219, 
                   "main" => 1, 
-                  "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" 
+                  "url" => "/assets/images/product-4.svg" 
                ] 
         ],
         "html_price" => '<span class="product-price"><span class="price">‏١٫١٥&nbsp;ر.س.‏</span></span>', 
@@ -12583,7 +12583,7 @@ function downloadable() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="price">٥٫٧٥&nbsp;ر.س.</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ]
             ], 
             [
@@ -12646,7 +12646,7 @@ function downloadable() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="special-price"> ‏٥١٫٧٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ]
             ], 
             [
@@ -12709,7 +12709,7 @@ function downloadable() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏١٫١٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ]
             ], 
             [
@@ -12772,7 +12772,7 @@ function downloadable() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏٣٦٧٫٣٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ]
             ]
         ],
@@ -12783,7 +12783,7 @@ function downloadable() {
                 "path" => "product/56118/68fc0441-483a-4167-a993-22d76d82b494.jpg", 
                 "product_id" => 55668, 
                 "main" => 1, 
-                "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" 
+                "url" => "/assets/images/product-5.svg" 
             ], 
          ],
         "html_price" => '<span class="product-price"><span class="price">‏١٫١٥&nbsp;ر.س.‏</span></span>', 
@@ -12966,7 +12966,7 @@ function booking() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="price">٥٫٧٥&nbsp;ر.س.</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ]
             ], 
             [
@@ -13029,7 +13029,7 @@ function booking() {
                 "require_shipping" => 0 ,
                 "html_price" => '<span class="product-price"><span class="special-price"> ‏٥١٫٧٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ]
             ], 
             [
@@ -13092,7 +13092,7 @@ function booking() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏١٫١٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ]
             ], 
             [
@@ -13155,7 +13155,7 @@ function booking() {
                 "require_shipping" => 0,
                 "html_price" => '<span class="product-price"><span class="price">‏٣٦٧٫٣٥ ر.س.‏</span></span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ]
             ]
         ],
@@ -13166,7 +13166,7 @@ function booking() {
                 "path" => "product/56471/74c1f0fd-cb40-46e3-9b12-a2aa5ec304c7.png", 
                 "product_id" => 55668, 
                 "main" => 1, 
-                "url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" 
+                "url" => "/assets/images/product-6.svg" 
             ], 
         ],
         "html_price" => '<span class="product-price"><span class="price">‏١٫١٥&nbsp;ر.س.‏</span></span>', 
@@ -13299,7 +13299,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -13389,7 +13389,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -13455,7 +13455,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -13521,7 +13521,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -13587,7 +13587,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -13653,7 +13653,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -13719,7 +13719,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -13809,7 +13809,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -13917,7 +13917,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -13928,7 +13928,7 @@ function allProducts() {
                 "parent_id" => null, 
                 "sku" => "MSKUAE1005006629609421", 
                 "name" => "مجموعة مسحوق مجفف مجمد مضاد للتجاعيد ، خميرة للإصلاح ، مصل مغذي ، كرياتين لتعزيز إنتاج الكولاجين", 
-                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p></div></div>', 
+                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /></p></div></div>', 
                 "url_key" => "mskuae1005006629609421", 
                 "new" => null, 
                 "featured" => null, 
@@ -13944,10 +13944,10 @@ function allProducts() {
                 "min_price" => "424.51", 
                 "max_price" => "1061.28", 
                 "is_vat" => 1, 
-                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p></div></div>', 
+                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /></p></div></div>', 
                 "meta_title" => "مجموعة مسحوق مجفف مجمد مضاد للتجاعيد ، خميرة للإصلاح ، مصل مغذي ، كرياتين لتعزيز إنتاج الكولاجين", 
                 "meta_keywords" => null, 
-                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p></div></div>', 
+                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /></p></div></div>', 
                 "width" => 0, 
                 "height" => 0, 
                 "depth" => 0, 
@@ -13983,7 +13983,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -14011,7 +14011,7 @@ function allProducts() {
                     <div>
                         &nbsp;
                     </div>
-                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /></p></div></div>
+                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-5.svg" slate-data-type="image" /></p></div></div>
                     ', 
                 "url_key" => "mskuae1005006608665729", 
                 "new" => null, 
@@ -14045,7 +14045,7 @@ function allProducts() {
                 <div>
                     &nbsp;
                 </div>
-                <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p></div></div>
+                <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-6.svg" slate-data-type="image" /></p></div></div>
                 ', 
                 "meta_title" => "سوار زوجين من الصلب الكلاسيكي الفاخر من التيتانيوم ، سوار عالي الجودة للرجال والنساء ، هدايا الحفلات", 
                 "meta_keywords" => null, 
@@ -14066,7 +14066,7 @@ function allProducts() {
                     <div>
                         &nbsp;
                     </div>
-                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /></p></div></div>
+                    <p style="font-family:&quot;Open Sans&quot;, Roboto, Arial, Helvetica, sans-serif, SimSun;font-size:14px;font-weight:400;letter-spacing:normal;line-height:inherit;text-align:start;white-space:normal;color:rgb(34, 34, 34);margin:0px;margin-bottom:0px;margin-top:0px;margin-left:0px;margin-right:0px;padding:0px;padding-bottom:0px;padding-top:0px;padding-left:0px;padding-right:0px;box-sizing:border-box" align="start"><img src="/assets/images/product-1.svg" slate-data-type="image" /></p></div></div>
                     ', 
                 "width" => 0, 
                 "height" => 0, 
@@ -14103,7 +14103,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -14114,14 +14114,14 @@ function allProducts() {
                 "parent_id" => null, 
                 "sku" => "MSKUAE1005006682900581", 
                 "name" => "نظارات شمسية مستطيلة سوداء للنساء ، نظارات شمسية نسائية غريبة ، أزياء الحفلات ، مصمم العلامة التجارية ، UV400 ، بيع", 
-                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /></p> 
+                "description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-2.svg" slate-data-type="image" /></p> 
                     <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                     <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                     <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                     <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-3.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-4.svg" slate-data-type="image" /></p> 
                     <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                     <p><br /></p> 
                     <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -14155,14 +14155,14 @@ function allProducts() {
                 "min_price" => "431.44", 
                 "max_price" => "431.44", 
                 "is_vat" => 1, 
-                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /></p> 
+                "short_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-5.svg" slate-data-type="image" /></p> 
                     <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                     <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                     <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                     <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /></p> 
-                    <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-6.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /></p> 
+                    <p><img src="/assets/images/product-1.svg" slate-data-type="image" /></p> 
                     <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                     <p><br /></p> 
                     <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -14183,14 +14183,14 @@ function allProducts() {
                     ', 
                 "meta_title" => "نظارات شمسية مستطيلة سوداء للنساء ، نظارات شمسية نسائية غريبة ، أزياء الحفلات ، مصمم العلامة التجارية ، UV400 ، بيع", 
                 "meta_keywords" => null, 
-                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /></p> 
+                "meta_description" => '<div class="detailmodule_html"><div class="detail-desc-decorate-richtext"><p><img src="/assets/images/product-2.svg" slate-data-type="image" /></p> 
                         <p id="tl_1">انقر على المجموعة اتبع متجرنا ، وذلك للعثور على أسرع وإذا كان المتجر قد حدّث المنتج الجديد ، يمكنك الحصول عليه في المرة الأولى.</p> 
                         <p id="tl_2">إذا لم تتمكن من العثور على الموديل الذي تريده ، يرجى الاتصال بنا للحصول على المزيد من الطراز.</p> 
                         <p id="tl_3">لأن هناك العديد من النماذج ، ما زلنا نقوم بالتحميل ، ولم يتم تحميلها كلها.</p> 
                         <p id="tl_4">لذلك إذا كنت بحاجة إلى رؤية المزيد من النماذج ، يرجى الاتصال بنا.</p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-1.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-13-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-12-1024x1024.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-11-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-15-300x300.png" slate-data-type="image" /><img src="https://quick-salla.com/wp-content/uploads/2024/08/18-1000x1000.png" slate-data-type="image" /></p> 
-                        <p><img src="https://quick-salla.com/wp-content/uploads/2024/08/%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1-%D8%B9%D9%84%D9%89-%D9%85%D9%82%D8%A7%D8%B3%D8%A7%D8%AA-3-1-1000x1000.png" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-3.svg" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-4.svg" slate-data-type="image" /><img src="/assets/images/product-5.svg" slate-data-type="image" /><img src="/assets/images/product-6.svg" slate-data-type="image" /><img src="/assets/images/product-1.svg" slate-data-type="image" /><img src="/assets/images/product-2.svg" slate-data-type="image" /><img src="/assets/images/product-3.svg" slate-data-type="image" /></p> 
+                        <p><img src="/assets/images/product-4.svg" slate-data-type="image" /></p> 
                         <p id="tl_5">موضع ترحيب انخفاض الشحن.</p> 
                         <p><br /></p> 
                         <p id="tl_6">للشحن المباشر ، يمكننا إرسال البضائع إلى عملائك مباشرة ولن نترك معلومات عنا إذا كنت ترغب في ذلك.</p> 
@@ -14244,7 +14244,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -14310,7 +14310,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -14376,7 +14376,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ],
@@ -14442,7 +14442,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-3.svg"
                 ],
             ]
         ],
@@ -14508,7 +14508,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-4.svg"
                 ],
             ]
         ],
@@ -14622,7 +14622,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/1-2-1024x323.png"
+                    "base_image_url" => "/assets/images/product-5.svg"
                 ],
             ]
         ],
@@ -14748,7 +14748,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/2-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-6.svg"
                 ],
             ]
         ],
@@ -14832,7 +14832,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/3-3-2048x808.png"
+                    "base_image_url" => "/assets/images/product-1.svg"
                 ],
             ]
         ],
@@ -14925,7 +14925,7 @@ function allProducts() {
                 "saleable" => 1,
                 "html_price" => '<span class="price">‏٣٦٧٫٣٥ ر.س.‏</span>',
                 "product" => [
-                    "base_image_url" => "https://quick-salla.com/wp-content/uploads/2024/08/%D9%84%D8%A7-%D8%AA%D9%81%D9%88%D8%AA-3-2048x809.png"
+                    "base_image_url" => "/assets/images/product-2.svg"
                 ],
             ]
         ]
