@@ -1,23 +1,18 @@
-<section class="s-block s-block--banners   p-left angel_anime animate__ animate__fadeIn mt-40 mb-40">
-    <div class="grid one-row md:grid-cols-{{ content['settings']['items']|length }} grid-flow-row gap-3 sm:gap-8">
+<section class="ui-banner-grid site-container">
+    <div class="ui-banner-grid__items ui-banner-grid__items--{{ content['settings']['items']|length }}">
         {% for item in content['settings']['items'] %}
-            <div class="banner-entry {{ item['name'] ? 'has-overlay with-hover' : '' }} angel_anime animate__ animate__fadeIn" data-wow-delay="0.1s"
-                style="visibility: visible; animation-delay: 0.1s;">
-                <div class="lazy__bg lazy entered loaded"
-                    data-bg="{{ item['image'] }}"
-                    data-ll-status="loaded"
-                    style="background-image: url(&quot;{{ item['image'] }}&quot;);">
-                </div>
+            <article class="ui-banner-card {{ item['name'] ? 'ui-banner-card--overlay' : '' }}">
+                <div class="ui-banner-card__image" style="background-image: url('{{ item['image'] }}');"></div>
                 {% if item['link'] %}
-                    <a href="{{ item['link'] }}" aria-label="link">
+                    <a href="{{ item['link'] }}" class="ui-banner-card__link" aria-label="{{ item['name']|default('link') }}">
                 {% endif %}
-                {% if item['name'] %}                        
-                    <h3 class="text-lg">{{ item['name'] }}</h3>
+                {% if item['name'] %}
+                    <h3>{{ item['name'] }}</h3>
                 {% endif %}
                 {% if item['link'] %}
-                </a>
+                    </a>
                 {% endif %}
-            </div>
+            </article>
         {% endfor %}
     </div>
 </section>
