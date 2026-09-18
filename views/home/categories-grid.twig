@@ -1,0 +1,55 @@
+{% set fallback_map = {
+    'تخفيضات': '/assets/images/category-sale.svg',
+    'mob': '/assets/images/category-mobile.svg',
+    'العطور': '/assets/images/category-perfume.svg',
+    'المكياج': '/assets/images/category-makeup.svg',
+    'العناية': '/assets/images/category-care.svg',
+    'العدسات': '/assets/images/category-lens.svg',
+    'منتجات-يوسرين': '/assets/images/category-derma.svg',
+    'الأظافر': '/assets/images/category-nails.svg',
+    'الملابس': '/assets/images/category-clothes.svg'
+} %}
+
+<section class="home-categories">
+    <div class="home-categories__heading">
+        <h2>{{ lang == 'ar' ? 'الأقسام' : 'Categories' }}</h2>
+    </div>
+
+    <div class="home-categories__grid">
+        {% for category in categories %}
+            {% if category['status']|default(1) == 1 %}
+                {% set slug = category['slug']|trim %}
+                {% set image_src = fallback_map[slug]|default('/assets/images/placeholder.svg') %}
+
+                {% if category['image_url']|default(null) %}
+                    {% set image_src = category['image_url'] %}
+                {% elseif category['image']|default(null) %}
+                    {% if category['image'] starts with 'http' or category['image'] starts with '/' %}
+                        {% set image_src = category['image'] %}
+                    {% else %}
+                        {% set image_src = storage_url ~ category['image'] %}
+                    {% endif %}
+                {% elseif category['category_icon_path']|default(null) %}
+                    {% if category['category_icon_path'] starts with 'http' or category['category_icon_path'] starts with '/' %}
+                        {% set image_src = category['category_icon_path'] %}
+                    {% else %}
+                        {% set image_src = storage_url ~ category['category_icon_path'] %}
+                    {% endif %}
+                {% endif %}
+
+                <a
+                    class="home-category-card"
+                    href="/{{ slug }}"
+                    aria-label="{{ category['name']|trim }}"
+                    title="{{ category['name']|trim }}">
+                    <img
+                        class="home-category-card__image"
+                        src="{{ image_src }}"
+                        alt="{{ category['name']|trim }}"
+                        loading="lazy"
+                        decoding="async">
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
