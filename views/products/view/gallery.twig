@@ -13,7 +13,7 @@
                 
             {% for index, image in product.images %}
                 <li class="thumb-frame" id="thumb-frame-{{ image.id }}" @mouseover="changeImage({{ index }})" style="width: 120px;">
-                    <img src="{{ storage_url ~ image.path }}" />
+                    <img src="{{ image.url is defined and image.url ? image.url : (storage_url ~ image.path) }}" alt="{{ product.name|default('Product') }}" loading="lazy" />
                 </li>
             {% endfor %}
 
