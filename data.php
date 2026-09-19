@@ -2425,6 +2425,20 @@ function cart() {
            ] 
     ];
     
+    // Persist removals for the fixed demo cart items in the local preview.
+    $removedItems = !empty($_SESSION['cart_removed_items']) && is_array($_SESSION['cart_removed_items'])
+        ? array_map('strval', $_SESSION['cart_removed_items'])
+        : [];
+
+    if (!empty($removedItems)) {
+        $context['cart']['items'] = array_values(array_filter(
+            $context['cart']['items'],
+            function ($item) use ($removedItems) {
+                return !in_array((string)($item['id'] ?? ''), $removedItems, true);
+            }
+        ));
+    }
+
     // Demo subscription products selected from the dedicated subscription pages.
     if (!empty($_SESSION['demo_subscriptions']) && is_array($_SESSION['demo_subscriptions'])) {
         foreach ($_SESSION['demo_subscriptions'] as $demoKey => $demoItem) {
@@ -2479,6 +2493,38 @@ function cart() {
             $context['cart']['items_qty'] = (string)((int)$context['cart']['items_qty'] + 1);
         }
     }
+
+    // Recalculate preview cart totals after session additions/removals.
+    $previewSubtotal = 0.0;
+    $previewTax = 0.0;
+    $previewItemsCount = 0;
+    $previewItemsQty = 0;
+
+    foreach ($context['cart']['items'] as $previewItem) {
+        $qty = max(1, (int)($previewItem['quantity'] ?? 1));
+        $unitPrice = (float)($previewItem['base_price'] ?? $previewItem['price'] ?? 0);
+        $taxPercent = (float)($previewItem['tax_percent'] ?? 0);
+        $lineTotal = $unitPrice * $qty;
+
+        $previewSubtotal += $lineTotal;
+        $previewTax += $lineTotal * ($taxPercent / 100);
+        $previewItemsCount++;
+        $previewItemsQty += $qty;
+    }
+
+    $shipping = (float)($context['cart']['base_shipping_amount'] ?? 0);
+    $discount = (float)($context['cart']['base_discount_amount'] ?? 0);
+    $walletDiscount = (float)($context['cart']['base_wallet_discount'] ?? 0);
+    $previewGrandTotal = $previewSubtotal + $previewTax + $shipping - $discount - $walletDiscount;
+
+    $context['cart']['items_count'] = $previewItemsCount;
+    $context['cart']['items_qty'] = (string)$previewItemsQty;
+    $context['cart']['base_sub_total'] = number_format($previewSubtotal, 4, '.', '');
+    $context['cart']['sub_total'] = number_format($previewSubtotal, 4, '.', '');
+    $context['cart']['base_tax_total'] = number_format($previewTax, 4, '.', '');
+    $context['cart']['tax_total'] = number_format($previewTax, 4, '.', '');
+    $context['cart']['base_grand_total'] = number_format($previewGrandTotal, 4, '.', '');
+    $context['cart']['grand_total'] = number_format($previewGrandTotal, 4, '.', '');
 
 return $context;
 }
