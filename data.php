@@ -2424,7 +2424,63 @@ function cart() {
                                                                                                                                                ] 
            ] 
     ];
-    return $context;
+    
+    // Demo subscription products selected from the dedicated subscription pages.
+    if (!empty($_SESSION['demo_subscriptions']) && is_array($_SESSION['demo_subscriptions'])) {
+        foreach ($_SESSION['demo_subscriptions'] as $demoKey => $demoItem) {
+            $price = (float)($demoItem['price'] ?? 0);
+            $name = (string)($demoItem['name'] ?? 'Subscription');
+            $image = (string)($demoItem['image'] ?? '/assets/images/placeholder.svg');
+            $slug = (string)($demoItem['service'] ?? '');
+
+            $context['cart']['items'][] = [
+                'id' => 'demo-' . $demoKey,
+                'quantity' => 1,
+                'sku' => strtoupper($slug . '-' . ($demoItem['plan'] ?? 'plan')),
+                'type' => 'virtual',
+                'name' => $name,
+                'price' => number_format($price, 4, '.', ''),
+                'base_price' => number_format($price, 4, '.', ''),
+                'formated_price' => number_format($price, 0) . ' SAR',
+                'total' => number_format($price, 4, '.', ''),
+                'base_total' => number_format($price, 4, '.', ''),
+                'tax_percent' => '0.0000',
+                'tax_amount' => '0.0000',
+                'base_tax_amount' => '0.0000',
+                'discount_amount' => '0.0000',
+                'base_discount_amount' => '0.0000',
+                'additional' => [
+                    'options' => [],
+                    'attributes' => [
+                        [
+                            'attribute_name' => 'الباقة',
+                            'option_label' => (string)($demoItem['plan_name'] ?? ''),
+                        ],
+                    ],
+                ],
+                'parent_id' => null,
+                'child' => null,
+                'show_quantity_box' => false,
+                'item_have_qty' => true,
+                'is_demo_subscription' => true,
+                'demo_key' => $demoKey,
+                'product' => [
+                    'url_key' => 'subscriptions/' . $slug,
+                    'base_image_url' => $image,
+                    'total_product_quantity' => 1,
+                ],
+            ];
+
+            $context['cart']['base_sub_total'] = (string)((float)$context['cart']['base_sub_total'] + $price);
+            $context['cart']['sub_total'] = (string)((float)$context['cart']['sub_total'] + $price);
+            $context['cart']['base_grand_total'] = (string)((float)$context['cart']['base_grand_total'] + $price);
+            $context['cart']['grand_total'] = (string)((float)$context['cart']['grand_total'] + $price);
+            $context['cart']['items_count'] = (int)$context['cart']['items_count'] + 1;
+            $context['cart']['items_qty'] = (string)((int)$context['cart']['items_qty'] + 1);
+        }
+    }
+
+return $context;
 }
 
 function reviews() {
@@ -14932,4 +14988,49 @@ function allProducts() {
     ]; 
 
     return $context;
+}
+
+
+function subscriptionDemo($slug) {
+    $services = [
+        'netflix' => [
+            'slug' => 'netflix',
+            'name' => 'Netflix',
+            'image' => '/assets/images/product-1.svg',
+            'description' => 'اختر مدة الاشتراك المناسبة لك، ثم أضف الباقة للسلة.',
+            'plans' => [
+                ['key' => 'monthly', 'name' => 'اشتراك شهري', 'price' => 29, 'hint' => 'شهر واحد'],
+                ['key' => 'yearly', 'name' => 'اشتراك سنوي', 'price' => 279, 'hint' => '12 شهر'],
+            ],
+        ],
+        'youtube' => [
+            'slug' => 'youtube',
+            'name' => 'YouTube',
+            'image' => '/assets/images/service-youtube.svg',
+            'description' => 'اختر الباقة التي تناسب استخدامك من داخل صفحة المنتج.',
+            'plans' => [
+                ['key' => 'monthly', 'name' => 'اشتراك شهري', 'price' => 24, 'hint' => 'شهر واحد'],
+                ['key' => 'yearly', 'name' => 'اشتراك سنوي', 'price' => 219, 'hint' => '12 شهر'],
+            ],
+        ],
+        'osn' => [
+            'slug' => 'osn',
+            'name' => 'OSN',
+            'image' => '/assets/images/product-3.svg',
+            'description' => 'اختر الاشتراك الشهري أو السنوي ثم أضفه مباشرة إلى السلة.',
+            'plans' => [
+                ['key' => 'monthly', 'name' => 'اشتراك شهري', 'price' => 35, 'hint' => 'شهر واحد'],
+                ['key' => 'yearly', 'name' => 'اشتراك سنوي', 'price' => 329, 'hint' => '12 شهر'],
+            ],
+        ],
+    ];
+
+    if (!isset($services[$slug])) {
+        return null;
+    }
+
+    return [
+        'authUser' => auth(),
+        'service' => $services[$slug],
+    ];
 }
