@@ -1,27 +1,18 @@
 {% set demo_services = [
     {
         'name': 'Netflix',
-        'image': '/assets/images/product-1.svg',
-        'plans': [
-            {'name': 'اشتراك شهري', 'price': 29},
-            {'name': 'اشتراك سنوي', 'price': 279}
-        ]
+        'slug': 'netflix',
+        'image': '/assets/images/product-1.svg'
     },
     {
         'name': 'YouTube',
-        'image': '/assets/images/service-youtube.svg',
-        'plans': [
-            {'name': 'اشتراك شهري', 'price': 24},
-            {'name': 'اشتراك سنوي', 'price': 219}
-        ]
+        'slug': 'youtube',
+        'image': '/assets/images/service-youtube.svg'
     },
     {
         'name': 'OSN',
-        'image': '/assets/images/product-3.svg',
-        'plans': [
-            {'name': 'اشتراك شهري', 'price': 35},
-            {'name': 'اشتراك سنوي', 'price': 329}
-        ]
+        'slug': 'osn',
+        'image': '/assets/images/product-3.svg'
     }
 ] %}
 
@@ -32,34 +23,23 @@
 
     <div class="home-demo-services__grid">
         {% for service in demo_services %}
-            <details class="home-service-card">
-                <summary class="home-service-card__summary">
-                    <div class="home-service-card__media">
-                        <img
-                            src="{{ service.image }}"
-                            alt="{{ service.name }}"
-                            class="home-service-card__image"
-                            loading="lazy"
-                            decoding="async">
-                    </div>
-
-                    <div class="home-service-card__meta">
-                        <strong>{{ service.name }}</strong>
-                        <span>اضغط لعرض الباقات</span>
-                    </div>
-
-                    <span class="home-service-card__toggle" aria-hidden="true">+</span>
-                </summary>
-
-                <div class="home-service-card__plans">
-                    {% for plan in service.plans %}
-                        <div class="home-service-plan">
-                            <span class="home-service-plan__name">{{ plan.name }}</span>
-                            <strong class="home-service-plan__price">{{ plan.price }} SAR</strong>
-                        </div>
-                    {% endfor %}
+            <a class="home-service-link-card" href="/subscriptions/{{ service.slug }}">
+                <div class="home-service-link-card__media">
+                    <img
+                        src="{{ service.image }}"
+                        alt="{{ service.name }}"
+                        class="home-service-link-card__image"
+                        loading="lazy"
+                        decoding="async">
                 </div>
-            </details>
+
+                <div class="home-service-link-card__content">
+                    <strong>{{ service.name }}</strong>
+                    <span>عرض الاشتراكات</span>
+                </div>
+
+                <span class="home-service-link-card__arrow" aria-hidden="true">←</span>
+            </a>
         {% endfor %}
     </div>
 </section>
