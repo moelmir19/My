@@ -80,26 +80,18 @@
 
             <div class="qs-faq-list">
                 {% for item in faq_items %}
-                    <div class="qs-faq-item {{ loop.first ? 'is-open' : '' }}">
-                        <h3 class="qs-faq-h">
-                            <button
-                                type="button"
-                                class="qs-faq-q"
-                                aria-expanded="{{ loop.first ? 'true' : 'false' }}"
-                                aria-controls="qs-faq-panel-{{ loop.index0 }}">
-                                <span class="qs-faq-q-text">{{ item.q }}</span>
-                                <span class="qs-faq-icon" aria-hidden="true">+</span>
-                            </button>
-                        </h3>
-                        <div
-                            id="qs-faq-panel-{{ loop.index0 }}"
-                            class="qs-faq-panel"
-                            role="region">
+                    <details class="qs-faq-item">
+                        <summary class="qs-faq-q">
+                            <span class="qs-faq-q-text">{{ item.q }}</span>
+                            <span class="qs-faq-icon" aria-hidden="true">+</span>
+                        </summary>
+
+                        <div class="qs-faq-panel">
                             <div class="qs-faq-panel-inner">
                                 <p class="qs-faq-answer">{{ item.a }}</p>
                             </div>
                         </div>
-                    </div>
+                    </details>
                 {% endfor %}
             </div>
         </div>
@@ -154,37 +146,3 @@
     </div>
 </section>
 
-<script>
-(function () {
-    function initFaq() {
-        document.querySelectorAll('.qs-faq-q').forEach(function (button) {
-            if (button.dataset.faqReady === '1') return;
-            button.dataset.faqReady = '1';
-
-            button.addEventListener('click', function () {
-                var item = button.closest('.qs-faq-item');
-                if (!item) return;
-
-                var wasOpen = item.classList.contains('is-open');
-
-                document.querySelectorAll('.qs-faq-item.is-open').forEach(function (openItem) {
-                    openItem.classList.remove('is-open');
-                    var openButton = openItem.querySelector('.qs-faq-q');
-                    if (openButton) openButton.setAttribute('aria-expanded', 'false');
-                });
-
-                if (!wasOpen) {
-                    item.classList.add('is-open');
-                    button.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initFaq);
-    } else {
-        initFaq();
-    }
-})();
-</script>
