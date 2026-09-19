@@ -203,42 +203,147 @@
     {% endif %}
     <script>
         $(document).ready(function() {
-                    
-                    $('.ui.search')
-                        .search({
-                            apiSettings: {
-                                url: 'api/search?term={query}&language=false',
-                                onRequest: function(promise, xhr) {
-                                    $('.search-loader').fadeIn(200);
-                                },
-                                onResponse: function(response) {
-                                    $('.search-loader').fadeOut(200);
-                                    const res = response.data || [];
-                                    res.data = res.data.map(r => {
-                                        r.price = '<span class="product-price">'+r.price+'</span>';
-                                        let discountedPrice = r.special_price;
-                                        let discounted = r.discounted;
-                                        if (discounted) {
-                                            r.price =
-                                                `<span style='color:red'>${discountedPrice}</span><br/><small><s style='opacity:0.4;'>${r.price}</s></small>`;
-                                        }
-                                        r.url = '/' + r.url_key + '?origsource=shopsearch';
-                                        r.description = '';
-                                        r.action = 'action1';
-                                        r.actionText = 'action2';
-                                        r.actionURL = r.url;
-                                        return r;
-                                    });
-                                    return res
-                                },
-                            },
-                            fields: {
-                                results: 'data',
-                                title: 'name',
-                            }
-                        })
+            var $search = $('.qs-search .ui.search');
+            var $input = $search.find('.qs-search__input, .search-box');
+            var $results = $search.find('.results');
+            var $loader = $search.find('.search-loader');
+            var $button = $search.find('.qs-search__button');
+            var searchTimer = null;
+            var activeRequest = null;
+
+            function escapeHtml(value) {
+                return $('<div>').text(value == null ? '' : String(value)).html();
+            }
+
+            function normalizeProducts(response) {
+                if (!response) return [];
+
+                if (Array.isArray(response)) return response;
+                if (Array.isArray(response.data)) return response.data;
+                if (response.data && Array.isArray(response.data.data)) return response.data.data;
+                if (Array.isArray(response.results)) return response.results;
+
+                return [];
+            }
+
+            function closeSearchResults() {
+                $results.removeClass('visible qs-search-open').hide().empty();
+            }
+
+            function productUrl(product) {
+                if (product.url) return product.url;
+                if (product.url_key) return '/' + String(product.url_key).replace(/^\/+/, '') + '?origsource=shopsearch';
+                if (product.slug) return '/' + String(product.slug).replace(/^\/+/, '');
+                return '#';
+            }
+
+            function renderResults(products, query) {
+                if (!$results.length) return;
+
+                if (!products.length) {
+                    $results
+                        .html('<div class="qs-search-empty">{{ lang == 'ar' ? 'لا توجد نتائج مطابقة' : 'No matching results' }}</div>')
+                        .addClass('visible qs-search-open')
+                        .show();
+                    return;
+                }
+
+                var html = products.slice(0, 8).map(function(product) {
+                    var name = escapeHtml(product.name || product.title || '');
+                    var price = product.special_price || product.price || '';
+                    var image = product.image || product.thumbnail || product.image_url || '';
+                    var href = escapeHtml(productUrl(product));
+
+                    return '<a class="result qs-search-result" href="' + href + '">' +
+                        (image ? '<span class="qs-search-result__image"><img src="' + escapeHtml(image) + '" alt=""></span>' : '') +
+                        '<span class="qs-search-result__body">' +
+                            '<span class="qs-search-result__name">' + name + '</span>' +
+                            (price ? '<span class="qs-search-result__price">' + escapeHtml(price) + '</span>' : '') +
+                        '</span>' +
+                    '</a>';
+                }).join('');
+
+                $results.html(html).addClass('visible qs-search-open').show();
+            }
+
+            function runSearch() {
+                var query = $.trim($input.val() || '');
+
+                if (query.length < 2) {
+                    if (activeRequest && activeRequest.readyState !== 4) activeRequest.abort();
+                    $loader.stop(true, true).hide();
+                    closeSearchResults();
+                    return;
+                }
+
+                if (activeRequest && activeRequest.readyState !== 4) activeRequest.abort();
+
+                $loader.stop(true, true).fadeIn(120);
+
+                activeRequest = $.ajax({
+                    url: '/api/search',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        term: query,
+                        language: false
+                    }
+                }).done(function(response) {
+                    renderResults(normalizeProducts(response), query);
+                }).fail(function(xhr, status) {
+                    if (status !== 'abort') {
+                        $results
+                            .html('<div class="qs-search-empty">{{ lang == 'ar' ? 'تعذر البحث الآن، حاول مرة أخرى' : 'Search is temporarily unavailable' }}</div>')
+                            .addClass('visible qs-search-open')
+                            .show();
+                    }
+                }).always(function() {
+                    $loader.stop(true, true).fadeOut(120);
                 });
-    
+            }
+
+            $input.off('.subcoveSearch').on('input.subcoveSearch', function() {
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(runSearch, 250);
+            });
+
+            $input.on('keydown.subcoveSearch', function(e) {
+                if (e.key === 'Escape') {
+                    closeSearchResults();
+                    return;
+                }
+
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    var firstHref = $results.find('a.qs-search-result').first().attr('href');
+                    if (firstHref) {
+                        window.location.href = firstHref;
+                    } else {
+                        runSearch();
+                    }
+                }
+            });
+
+            $button
+                .attr('tabindex', '0')
+                .css('cursor', 'pointer')
+                .off('.subcoveSearch')
+                .on('click.subcoveSearch', function() {
+                    var firstHref = $results.find('a.qs-search-result').first().attr('href');
+                    if (firstHref) {
+                        window.location.href = firstHref;
+                    } else {
+                        runSearch();
+                        $input.trigger('focus');
+                    }
+                });
+
+            $(document).on('click.subcoveSearch', function(e) {
+                if (!$(e.target).closest('.qs-search').length) {
+                    closeSearchResults();
+                }
+            });
+        });
     </script>
     {% block footer_scripts %}{% endblock %}
 
