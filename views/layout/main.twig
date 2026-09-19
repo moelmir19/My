@@ -347,70 +347,148 @@
     </script>
     {% block footer_scripts %}{% endblock %}
 
+    <div class="qs-cart-toast" id="qs-global-cart-toast" role="status" aria-live="polite"></div>
     <div class="modal-overlay"></div>
     <script>
-        $(document).ready(function() {
-            $(document).on('click', '.addToCart', function(e){
-                var productId = $(this).data("id");
-                var formData = $('#addToCart-'+productId).serialize();
-                var imgtodrag = $(this).closest('.product-card').find("img").eq(0);
-                var cart = $('.top-links-cart');
-                $.ajax({
-                    url: "{{ route('cart.addition', '') }}"+'/'+productId,
-                    type: 'POST',
-                    data: formData,
-                    success: function (response) {
-                        if(response['redirect-url'])
-                        {
-                            location.href= response['redirect-url'];
-                        }
-                        else if(response.success == true)
-                        {
-                            toastr.success(response.message);
-                            $('.cart-count').removeClass('d-none');
-                            $('.cart-count').html(response.count);
-                            $('.disabled-link').removeClass('disabled-link');
-                            if (imgtodrag) {
-                                var imgclone = imgtodrag.clone()
-                                    .offset({
-                                        top: imgtodrag.offset().top,
-                                        left: imgtodrag.offset().left
-                                    })
-                                    .css({
-                                        'opacity': '0.5',
-                                        'position': 'absolute',
-                                        'height': '150px',
-                                        'width': '150px',
-                                        'z-index': '100'
-                                    })
-                                    .appendTo($('body'))
-                                    .animate({
-                                        'top': cart.offset().top + 10,
-                                        'left': cart.offset().left + 10,
-                                        'width': 75,
-                                        'height': 75
-                                    }, 1000, 'easeInOutExpo');
-    
-                                imgclone.animate({
-                                    'width': 0,
-                                    'height': 0
-                                }, function() {
-                                    $(this).detach()
-                                });
-                            }
-    
-                        }
-                        else
-                        {
-                            toastr.warning(response.message);
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
+        (function () {
+            var cartToastTimer = null;
+
+            window.qsCartNotice = function (message, type) {
+                var text = message || 'تم إضافة المنتج إلى السلة';
+                var noticeType = type || 'success';
+
+                if (window.toastr) {
+                    toastr.options = {
+                        closeButton: true,
+                        progressBar: true,
+                        timeOut: 2800,
+                        positionClass: 'toast-top-left'
+                    };
+
+                    if (noticeType === 'error') {
+                        toastr.error(text);
+                    } else if (noticeType === 'warning') {
+                        toastr.warning(text);
+                    } else {
+                        toastr.success(text);
                     }
+                    return;
+                }
+
+                var toast = document.getElementById('qs-global-cart-toast');
+                if (!toast) return;
+
+                toast.textContent = text;
+                toast.classList.toggle('is-error', noticeType === 'error');
+                toast.classList.add('is-visible');
+
+                clearTimeout(cartToastTimer);
+                cartToastTimer = setTimeout(function () {
+                    toast.classList.remove('is-visible');
+                }, 2800);
+            };
+
+            function updateCartCount(count) {
+                if (count === undefined || count === null || count === '') return;
+                $('.cart-count')
+                    .removeClass('d-none')
+                    .text(count);
+                $('.disabled-link').removeClass('disabled-link');
+            }
+
+            function isCartRedirect(url) {
+                if (!url) return false;
+
+                try {
+                    var path = new URL(url, window.location.origin).pathname;
+                    return /\/(checkout\/cart|cart)\/?$/.test(path);
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            $(document).ready(function() {
+                $(document).on('click', '.addToCart', function(e){
+                    e.preventDefault();
+
+                    var $button = $(this);
+                    var productId = $button.data("id");
+                    var formData = $('#addToCart-'+productId).serialize();
+                    var imgtodrag = $button.closest('.product-card').find("img").eq(0);
+                    var cart = $('.top-links-cart');
+
+                    $button.prop('disabled', true);
+
+                    $.ajax({
+                        url: "{{ route('cart.addition', '') }}"+'/'+productId,
+                        type: 'POST',
+                        data: formData,
+                        success: function (response) {
+                            response = response || {};
+
+                            if (response.success == true) {
+                                window.qsCartNotice(response.message || 'تم إضافة المنتج إلى السلة', 'success');
+                                updateCartCount(response.count !== undefined ? response.count : response.cart_count);
+
+                                if (imgtodrag && imgtodrag.length && cart.length) {
+                                    var imgclone = imgtodrag.clone()
+                                        .offset({
+                                            top: imgtodrag.offset().top,
+                                            left: imgtodrag.offset().left
+                                        })
+                                        .css({
+                                            'opacity': '0.5',
+                                            'position': 'absolute',
+                                            'height': '150px',
+                                            'width': '150px',
+                                            'z-index': '100'
+                                        })
+                                        .appendTo($('body'))
+                                        .animate({
+                                            'top': cart.offset().top + 10,
+                                            'left': cart.offset().left + 10,
+                                            'width': 75,
+                                            'height': 75
+                                        }, 700, 'easeInOutExpo');
+
+                                    imgclone.animate({
+                                        'width': 0,
+                                        'height': 0
+                                    }, function() {
+                                        $(this).detach();
+                                    });
+                                }
+                                return;
+                            }
+
+                            if (response['redirect-url']) {
+                                if (isCartRedirect(response['redirect-url'])) {
+                                    window.qsCartNotice(response.message || 'تم إضافة المنتج إلى السلة', 'success');
+                                    updateCartCount(response.count !== undefined ? response.count : response.cart_count);
+                                } else {
+                                    window.location.href = response['redirect-url'];
+                                }
+                                return;
+                            }
+
+                            window.qsCartNotice(response.message || 'تعذر إضافة المنتج إلى السلة', 'warning');
+                        },
+                        error: function (xhr) {
+                            var message = 'تعذر إضافة المنتج إلى السلة';
+
+                            if (xhr && xhr.responseJSON && xhr.responseJSON.message) {
+                                message = xhr.responseJSON.message;
+                            }
+
+                            window.qsCartNotice(message, 'error');
+                        },
+                        complete: function () {
+                            $button.prop('disabled', false);
+                        }
+                    });
                 });
             });
-        });
+        })();
     </script>
     
 
