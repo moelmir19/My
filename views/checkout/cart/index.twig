@@ -58,11 +58,14 @@
                             item['additional']['options'] : 
                             [item]) %}
 
+                            {% set cartItemHref = item.is_demo_subscription|default(false)
+                                ? '/' ~ item.product.url_key
+                                : route('shop.productOrCategory.index', url_key) %}
                             <div class="item"
                                 data-unit-price="{{ item.base_price|default(item.price)|default(0) }}"
                                 data-tax-percent="{{ item.tax_percent|default(0) }}">
                                 <div class="item-image">
-                                    <a href="{{ route('shop.productOrCategory.index',  url_key) }}">
+                                    <a href="{{ cartItemHref }}">
                                         <img src="{{ item.product.base_image_url }}" />
                                     </a>
                                 </div>
@@ -70,7 +73,7 @@
                                 <div class="item-details">
                                 
                                     <div class="item-title">
-                                        <a href="{{ route('shop.productOrCategory.index', url_key) }}">
+                                        <a href="{{ cartItemHref }}">
                                             {{ item.name }}
                                         </a>
                                     </div>
@@ -152,12 +155,18 @@
                                         {% endif %}
                                     
                                         <span class="remove">
-                                            <a href="{{ route('shop.checkout.cart.remove', { 'id': item.id, 'option': optionKey }) }}" onclick="removeLink(event)">
-                                                <span class="icon-close-mini"><i class="fa fa-times"></i></span>
-                                            </a>
+                                            {% if item.is_demo_subscription|default(false) %}
+                                                <a href="/subscription/remove?key={{ item.demo_key }}">
+                                                    <span class="icon-close-mini"><i class="fa fa-times"></i></span>
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ route('shop.checkout.cart.remove', { 'id': item.id, 'option': optionKey }) }}" onclick="removeLink(event)">
+                                                    <span class="icon-close-mini"><i class="fa fa-times"></i></span>
+                                                </a>
+                                            {% endif %}
                                         </span>
                                     
-                                        {% if authUser %}
+                                        {% if authUser and not item.is_demo_subscription|default(false) %}
                                             <span class="towishlist">
                                                 {% if item.parent_id | length == 0 %}
                                                     <a href="{{ route('shop.movetowishlist', item.id ) }}" onclick="removeLink(event)">
