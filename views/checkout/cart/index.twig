@@ -122,18 +122,29 @@
                                             <div class="quantity control-group cart-quantity">
                                                 <label class="required">{{ ('shop::app.products.quantity'|trans) }}</label>
 
-                                                <button type="button" class="decrease" aria-label="تقليل الكمية">−</button>
+                                                <button
+                                                    type="button"
+                                                    class="decrease"
+                                                    aria-label="تقليل الكمية"
+                                                    onclick="return window.cartQtyStep(this, -1);">−</button>
                                                 <input
                                                     class="control qtyBox"
                                                     name="{{ qtyName }}"
                                                     data-vv-as="{{ ('shop::app.products.quantity'|trans) }}"
-                                                    type="number"
-                                                    min="1"
+                                                    type="text"
                                                     value="{{ qtyValue }}"
                                                     max="{{ qtyMax }}"
                                                     inputmode="numeric"
+                                                    pattern="[0-9]*"
+                                                    autocomplete="off"
+                                                    oninput="window.cartQtyInput(this);"
+                                                    onchange="window.cartQtyCommit(this);"
                                                 />
-                                                <button type="button" class="increase" aria-label="زيادة الكمية">+</button>
+                                                <button
+                                                    type="button"
+                                                    class="increase"
+                                                    aria-label="زيادة الكمية"
+                                                    onclick="return window.cartQtyStep(this, 1);">+</button>
 
                                                 <span class="control-error"></span>
                                             </div>
@@ -544,129 +555,163 @@
 </script>
 
 <script>
-    /* Cart quantity controls + live pricing.
-       Works without jQuery and tolerates missing/invalid max stock values. */
-    (function () {
-        var form = document.getElementById('cart-update-form');
-        if (!form) return;
+(function () {
+    var form;
+    var currency = 'SAR';
+    var fixedAdjustment = 0;
+    var submitTimer = null;
 
-        var currency = form.dataset.currency || 'SAR';
-        var initialSubtotal = parseFloat(form.dataset.baseSubtotal || '0') || 0;
-        var initialTax = parseFloat(form.dataset.baseTax || '0') || 0;
-        var initialGrand = parseFloat(form.dataset.baseGrandTotal || '0') || 0;
-        var fixedAdjustment = initialGrand - initialSubtotal - initialTax;
-        var submitTimer = null;
+    function number(value) {
+        var parsed = parseFloat(value);
+        return isFinite(parsed) ? parsed : 0;
+    }
 
-        function money(value) {
-            var n = Number(value);
-            if (!Number.isFinite(n)) n = 0;
-            return currency + ' ' + n.toFixed(2).replace(/\.00$/, '');
+    function integer(value) {
+        var parsed = parseInt(value, 10);
+        return isFinite(parsed) ? parsed : 1;
+    }
+
+    function money(value) {
+        var n = number(value);
+        return currency + ' ' + n.toFixed(2).replace(/\.00$/, '');
+    }
+
+    function normalize(input) {
+        var value = integer(input.value);
+        if (value < 1) value = 1;
+
+        var max = integer(input.getAttribute('max'));
+        var rawMax = input.getAttribute('max');
+
+        if (rawMax !== null && rawMax !== '' && max > 0 && value > max) {
+            value = max;
         }
 
-        function normalizeQuantity(input) {
-            var value = parseInt(input.value, 10);
-            if (!Number.isFinite(value) || value < 1) value = 1;
+        input.value = value;
+        return value;
+    }
 
-            var max = parseInt(input.getAttribute('max'), 10);
-            if (Number.isFinite(max) && max > 0 && value > max) {
-                value = max;
-            }
+    function calculateRawTotals() {
+        var subtotal = 0;
+        var tax = 0;
 
-            input.value = value;
-            return value;
-        }
+        if (!form) return { subtotal: 0, tax: 0 };
 
-        function recalculateCart() {
-            var subtotal = 0;
-            var tax = 0;
-
-            form.querySelectorAll('.item').forEach(function (item) {
-                var input = item.querySelector('.qtyBox');
-                if (!input) return;
-
-                var qty = normalizeQuantity(input);
-                var unitPrice = parseFloat(item.dataset.unitPrice || '0') || 0;
-                var taxPercent = parseFloat(item.dataset.taxPercent || '0') || 0;
-                var lineTotal = unitPrice * qty;
-                var lineTax = lineTotal * (taxPercent / 100);
-
-                subtotal += lineTotal;
-                tax += lineTax;
-
-                var priceEl = item.querySelector('.cart-line-price');
-                if (priceEl) {
-                    priceEl.textContent = money(lineTotal);
-                }
-            });
-
-            var subtotalEl = document.querySelector('.order-summary .item-detail:first-of-type .right');
-            if (subtotalEl) subtotalEl.textContent = money(subtotal);
-
-            var taxEl = document.getElementById('basetaxamount');
-            if (taxEl) taxEl.textContent = money(tax);
-
-            var grandEl = document.getElementById('grand-total-amount-detail');
-            if (grandEl) grandEl.textContent = money(subtotal + tax + fixedAdjustment);
-        }
-
-        function scheduleServerUpdate() {
-            var rawAction = form.getAttribute('action') || '';
-
-            // Local preview has no cart update route; keep the live UI result instead of
-            // submitting back to /checkout/cart and resetting the demo quantities.
-            if (!rawAction.trim()) return;
-
-            window.clearTimeout(submitTimer);
-            submitTimer = window.setTimeout(function () {
-                if (typeof form.requestSubmit === 'function') {
-                    form.requestSubmit();
-                } else {
-                    form.submit();
-                }
-            }, 650);
-        }
-
-        form.addEventListener('click', function (event) {
-            var button = event.target.closest('.increase, .decrease');
-            if (!button) return;
-
-            event.preventDefault();
-
-            var control = button.closest('.cart-quantity');
-            if (!control) return;
-
-            var input = control.querySelector('.qtyBox');
+        form.querySelectorAll('.item').forEach(function (item) {
+            var input = item.querySelector('.qtyBox');
             if (!input) return;
 
-            var value = normalizeQuantity(input);
-            var max = parseInt(input.getAttribute('max'), 10);
+            var qty = normalize(input);
+            var unitPrice = number(item.getAttribute('data-unit-price'));
+            var taxPercent = number(item.getAttribute('data-tax-percent'));
+            var lineTotal = unitPrice * qty;
 
-            if (button.classList.contains('increase')) {
-                if (!Number.isFinite(max) || max <= 0 || value < max) {
-                    input.value = value + 1;
-                }
-            } else if (value > 1) {
-                input.value = value - 1;
+            subtotal += lineTotal;
+            tax += lineTotal * (taxPercent / 100);
+        });
+
+        return { subtotal: subtotal, tax: tax };
+    }
+
+    function renderPrices() {
+        if (!form) return;
+
+        form.querySelectorAll('.item').forEach(function (item) {
+            var input = item.querySelector('.qtyBox');
+            var price = item.querySelector('.cart-line-price');
+            if (!input || !price) return;
+
+            var qty = normalize(input);
+            var unitPrice = number(item.getAttribute('data-unit-price'));
+            price.textContent = money(unitPrice * qty);
+        });
+
+        var totals = calculateRawTotals();
+
+        var subtotalEl = document.querySelector('.order-summary .item-detail:first-of-type .right');
+        if (subtotalEl) subtotalEl.textContent = money(totals.subtotal);
+
+        var taxEl = document.querySelector('.order-summary #basetaxamount');
+        if (taxEl) taxEl.textContent = money(totals.tax);
+
+        var grandEl = document.getElementById('grand-total-amount-detail');
+        if (grandEl) grandEl.textContent = money(totals.subtotal + totals.tax + fixedAdjustment);
+    }
+
+    function scheduleServerUpdate() {
+        if (!form) return;
+
+        var action = (form.getAttribute('action') || '').trim();
+        if (!action) return;
+
+        clearTimeout(submitTimer);
+        submitTimer = setTimeout(function () {
+            if (typeof form.requestSubmit === 'function') {
+                form.requestSubmit();
+            } else {
+                form.submit();
             }
+        }, 700);
+    }
 
-            recalculateCart();
-            input.dispatchEvent(new Event('change', { bubbles: true }));
-        });
+    window.cartQtyStep = function (button, delta) {
+        var control = button.closest('.cart-quantity');
+        if (!control) return false;
 
-        form.addEventListener('input', function (event) {
-            if (!event.target.classList.contains('qtyBox')) return;
-            recalculateCart();
-        });
+        var input = control.querySelector('.qtyBox');
+        if (!input) return false;
 
-        form.addEventListener('change', function (event) {
-            if (!event.target.classList.contains('qtyBox')) return;
-            normalizeQuantity(event.target);
-            recalculateCart();
-            scheduleServerUpdate();
-        });
+        var current = normalize(input);
+        var next = current + delta;
+        if (next < 1) next = 1;
 
-        recalculateCart();
-    })();
+        var rawMax = input.getAttribute('max');
+        var max = integer(rawMax);
+        if (delta > 0 && rawMax !== null && rawMax !== '' && max > 0 && next > max) {
+            next = max;
+        }
+
+        input.value = next;
+        renderPrices();
+        scheduleServerUpdate();
+        return false;
+    };
+
+    window.cartQtyInput = function (input) {
+        input.value = input.value.replace(/[^0-9]/g, '');
+        if (input.value !== '') {
+            normalize(input);
+            renderPrices();
+        }
+    };
+
+    window.cartQtyCommit = function (input) {
+        normalize(input);
+        renderPrices();
+        scheduleServerUpdate();
+    };
+
+    function init() {
+        form = document.getElementById('cart-update-form');
+        if (!form) return;
+
+        currency = form.getAttribute('data-currency') || 'SAR';
+
+        var initialGrand = number(form.getAttribute('data-base-grand-total'));
+        var initial = calculateRawTotals();
+
+        // Preserve shipping/discount/other fixed adjustments while quantities change.
+        fixedAdjustment = initialGrand - initial.subtotal - initial.tax;
+
+        renderPrices();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
 </script>
 
 {% endblock %}
