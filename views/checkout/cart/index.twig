@@ -245,26 +245,31 @@
                             </div>
     
                             <button type="submit" class="btn btn-black" id="apply-coupon-btn">{{ ('shop::app.checkout.onepage.apply-coupon'|trans) }}</button>
+
+                            {% if cart.getCartRule %}
+                                <button
+                                    type="button"
+                                    class="coupon-remove-button"
+                                    id="remove-coupon-btn"
+                                    title="{{ ('shop::app.checkout.total.remove-coupon'|trans) }}"
+                                    aria-label="{{ ('shop::app.checkout.total.remove-coupon'|trans) }}">
+                                    <span class="icon icon-trash" aria-hidden="true"></span>
+                                </button>
+                            {% endif %}
                         </form>
                     </div>
 
-                    <!-- Applied Coupon Details -->
-                    <div class="applied-coupon-details" 
-                        {% if not cart.getCartRule %}    
+                    <!-- Kept for coupon JS state, hidden visually in the custom theme -->
+                    <div class="applied-coupon-details"
+                        {% if not cart.getCartRule %}
                             style="display: none;"
                         {% endif %}
                         id="applied-coupon-details">
-                        <label>{{ ('shop::app.checkout.total.coupon-applied'|trans) }}</label>
-    
-                        <label class="right" style="display: inline-flex; align-items: center;">
-                            <b id="applied-coupon-name">{{ cart.coupon_code }}</b>
-    
-                            <span class="icon icon-trash" title="{{ ('shop::app.checkout.total.remove-coupon'|trans) }}" id="remove-coupon-btn" style="cursor: pointer;"></span>
-                        </label>
+                        <b id="applied-coupon-name">{{ cart.coupon_code }}</b>
 
                         {% if cart.getCartRule and cart.getCartRule.show_maximum_discount == 1 and cart.getCartRule.action_type == 'by_percent' %}
                             <label id="maximum-discount" style="display: {{ cart.getCartRule.maximum_amount ? 'block' : 'none' }};">
-                                <b style="color: red">{{ ('shop::app.checkout.total.maximum_discount'|trans) }} {{ formatPrice(cart.getCartRule.maximum_amount, cart.cart_currency_code)|raw }}</b>
+                                <b>{{ ('shop::app.checkout.total.maximum_discount'|trans) }} {{ formatPrice(cart.getCartRule.maximum_amount, cart.cart_currency_code)|raw }}</b>
                             </label>
                         {% endif %}
                     </div>
