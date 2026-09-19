@@ -1,0 +1,190 @@
+{% set faq_items = [
+    {
+        'q': 'كيف أستلم منتجي بعد الدفع؟',
+        'a': 'مباشرة بعد إتمام الدفع تظهر بيانات اشتراكك في صفحة الطلب، وتصلك أيضاً نسخة على بريدك الإلكتروني.'
+    },
+    {
+        'q': 'كم يستغرق التسليم؟',
+        'a': 'أغلب المنتجات تسليمها فوري خلال لحظات. الاشتراكات التي تحتاج تفعيلاً يدوياً تصلك خلال وقت قصير.'
+    },
+    {
+        'q': 'هل الاشتراكات أصلية؟',
+        'a': 'نعم، جميع اشتراكاتنا أصلية 100% ومضمونة طوال مدة الاشتراك.'
+    },
+    {
+        'q': 'ما طرق الدفع المتاحة؟',
+        'a': 'مدى، آبل باي، فيزا وماستركارد — عبر بوابة دفع آمنة ومعتمدة.'
+    },
+    {
+        'q': 'دفعت ولم يصلني المنتج أو ظهر خطأ، ماذا أفعل؟',
+        'a': 'لا تُعد الطلب حتى لا يُخصم منك مرتين. راجع «طلباتي» وبريدك، وإن لم تجد منتجك تواصل معنا عبر التلقرام وسنساعدك فوراً.'
+    },
+    {
+        'q': 'كيف أتواصل مع الدعم؟',
+        'a': 'عبر التلقرام على مدار الساعة — نرد عليك بأسرع وقت ممكن.'
+    }
+] %}
+
+{% set review_items = [
+    {
+        'name': 'طلال العنزي',
+        'rating': 5,
+        'text': 'متجر ممتاز وسريع للامانه الشهر الثالث ارجع افعل معه ، ولا يتقفل الحساب كامل المده اكثر من شهر',
+        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
+        'date': '16 Sep 2026'
+    },
+    {
+        'name': 'Amal Saad',
+        'rating': 5,
+        'text': 'لحد الان المتجر ممتاز.',
+        'product': 'اشتراك شاهد شهر مسلسلات ضمان ذهبي وتسليم فوري',
+        'date': '14 Sep 2026'
+    },
+    {
+        'name': 'عمار .',
+        'rating': 5,
+        'text': 'تسليم سريع جدااااا وموثوق ❣️',
+        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
+        'date': '13 Sep 2026'
+    },
+    {
+        'name': 'محمد معشي',
+        'rating': 5,
+        'text': 'موقع موثوق',
+        'product': 'اشتراك شاهد شهر مسلسلات ضمان ذهبي وتسليم فوري',
+        'date': '13 Sep 2026'
+    },
+    {
+        'name': 'ابو سهم',
+        'rating': 5,
+        'text': 'ممتاز',
+        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
+        'date': '12 Sep 2026'
+    },
+    {
+        'name': 'D A',
+        'rating': 5,
+        'text': 'ثقه',
+        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
+        'date': '12 Sep 2026'
+    }
+] %}
+
+<section class="qs-faq-reviews">
+    <div class="qs-container">
+        <div class="qs-faq-wrap">
+            <div class="qs-section-heading">
+                <h2>الأسئلة الشائعة</h2>
+                <p>كل ما تحتاج معرفته قبل الطلب</p>
+            </div>
+
+            <div class="qs-faq-list">
+                {% for item in faq_items %}
+                    <div class="qs-faq-item {{ loop.first ? 'is-open' : '' }}">
+                        <h3 class="qs-faq-h">
+                            <button
+                                type="button"
+                                class="qs-faq-q"
+                                aria-expanded="{{ loop.first ? 'true' : 'false' }}"
+                                aria-controls="qs-faq-panel-{{ loop.index0 }}">
+                                <span class="qs-faq-q-text">{{ item.q }}</span>
+                                <span class="qs-faq-icon" aria-hidden="true">+</span>
+                            </button>
+                        </h3>
+                        <div
+                            id="qs-faq-panel-{{ loop.index0 }}"
+                            class="qs-faq-panel"
+                            role="region">
+                            <div class="qs-faq-panel-inner">
+                                <p class="qs-faq-answer">{{ item.a }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="qs-reviews-wrap">
+            <div class="qs-section-heading qs-reviews-heading">
+                <h2>آراء عملائنا</h2>
+
+                <div class="qs-reviews-summary">
+                    <div class="qs-review-stars" dir="ltr" aria-label="5 من 5">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <div class="qs-reviews-score">
+                        <strong>5.0</strong>
+                        <span>من 5</span>
+                    </div>
+                    <i class="qs-reviews-separator"></i>
+                    <span class="qs-reviews-count">بناءً على 121 تقييم</span>
+                </div>
+            </div>
+
+            <div class="qs-reviews-grid">
+                {% for review in review_items %}
+                    <article class="qs-review-card">
+                        <span class="qs-review-quote" aria-hidden="true">“</span>
+
+                        <div class="qs-review-stars qs-review-card-stars" dir="ltr" aria-label="{{ review.rating }} من 5">
+                            {% for i in 1..5 %}
+                                <span class="{{ i <= review.rating ? 'is-active' : '' }}">★</span>
+                            {% endfor %}
+                        </div>
+
+                        <p class="qs-review-text">{{ review.text }}</p>
+
+                        <div class="qs-review-footer">
+                            <span class="qs-review-avatar">{{ review.name|slice(0, 1) }}</span>
+
+                            <div class="qs-review-person">
+                                <strong>{{ review.name }}</strong>
+                                <span class="qs-review-product">
+                                    <i class="icon-packed-box" aria-hidden="true"></i>
+                                    {{ review.product }}
+                                </span>
+                            </div>
+
+                            <time class="qs-review-date">{{ review.date }}</time>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function () {
+    function initFaq() {
+        document.querySelectorAll('.qs-faq-q').forEach(function (button) {
+            if (button.dataset.faqReady === '1') return;
+            button.dataset.faqReady = '1';
+
+            button.addEventListener('click', function () {
+                var item = button.closest('.qs-faq-item');
+                if (!item) return;
+
+                var wasOpen = item.classList.contains('is-open');
+
+                document.querySelectorAll('.qs-faq-item.is-open').forEach(function (openItem) {
+                    openItem.classList.remove('is-open');
+                    var openButton = openItem.querySelector('.qs-faq-q');
+                    if (openButton) openButton.setAttribute('aria-expanded', 'false');
+                });
+
+                if (!wasOpen) {
+                    item.classList.add('is-open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFaq);
+    } else {
+        initFaq();
+    }
+})();
+</script>
