@@ -62,6 +62,54 @@
                 </form>
             </div>
         </div>
+
+        {% if service.details %}
+            <section class="qs-product-description-section" aria-labelledby="subscription-description-title">
+                <div class="qs-product-description-section__header">
+                    <span>تفاصيل المنتج</span>
+                    <h2 id="subscription-description-title">الوصف</h2>
+                </div>
+
+                <div class="qs-product-description-section__body">
+                    <p class="qs-product-description-section__intro">{{ service.details.intro }}</p>
+
+                    <div class="qs-product-description-grid">
+                        {% if service.details.features %}
+                            <div class="qs-product-description-card">
+                                <h3>مميزات الاشتراك</h3>
+                                <ul>
+                                    {% for item in service.details.features %}
+                                        <li>{{ item }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        {% if service.details.notes %}
+                            <div class="qs-product-description-card">
+                                <h3>معلومات مهمة</h3>
+                                <ul>
+                                    {% for item in service.details.notes %}
+                                        <li>{{ item }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        {% if service.details.activation %}
+                            <div class="qs-product-description-card">
+                                <h3>طريقة التفعيل</h3>
+                                <ol>
+                                    {% for item in service.details.activation %}
+                                        <li>{{ item }}</li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+        {% endif %}
     </div>
 </section>
 
