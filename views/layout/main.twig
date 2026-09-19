@@ -269,7 +269,7 @@
             function runSearch() {
                 var query = $.trim($input.val() || '');
 
-                if (query.length < 2) {
+                if (query.length < 1) {
                     if (activeRequest && activeRequest.readyState !== 4) activeRequest.abort();
                     $loader.stop(true, true).hide();
                     closeSearchResults();
@@ -304,7 +304,7 @@
 
             $input.off('.subcoveSearch').on('input.subcoveSearch', function() {
                 clearTimeout(searchTimer);
-                searchTimer = setTimeout(runSearch, 250);
+                searchTimer = setTimeout(runSearch, 150);
             });
 
             $input.on('keydown.subcoveSearch', function(e) {
