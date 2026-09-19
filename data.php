@@ -1550,8 +1550,8 @@ function cart() {
         "base_discount_amount" => "0.0000", 
         "wallet_discount" => "0.0000", 
         "base_wallet_discount" => "0.0000", 
-        "total_shipping_amount" => "23.0000", 
-        "base_shipping_amount" => "23.0000", 
+        "total_shipping_amount" => "0.0000", 
+        "base_shipping_amount" => "0.0000", 
         "cod_amount" => "0.0000", 
         "base_cod_amount" => "0.0000", 
         "total_weight" => "0.0000", 
@@ -2512,10 +2512,13 @@ function cart() {
         $previewItemsQty += $qty;
     }
 
-    $shipping = (float)($context['cart']['base_shipping_amount'] ?? 0);
+    // Digital storefront: no delivery/shipping charges.
+    $context['cart']['total_shipping_amount'] = '0.0000';
+    $context['cart']['base_shipping_amount'] = '0.0000';
+
     $discount = (float)($context['cart']['base_discount_amount'] ?? 0);
     $walletDiscount = (float)($context['cart']['base_wallet_discount'] ?? 0);
-    $previewGrandTotal = $previewSubtotal + $previewTax + $shipping - $discount - $walletDiscount;
+    $previewGrandTotal = $previewSubtotal + $previewTax - $discount - $walletDiscount;
 
     $context['cart']['items_count'] = $previewItemsCount;
     $context['cart']['items_qty'] = (string)$previewItemsQty;
