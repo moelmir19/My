@@ -22,5 +22,7 @@
     {% set categories = getFunction('getHomepageCategories') %}
     {% include 'home/categories-grid.twig' with {'categories': categories} %}
 
+    {% include 'home/faq-reviews.twig' %}
+
 </div>
 {% endblock %}
