@@ -88,43 +88,40 @@
                                     {% endif %}
                                 
                                     <div class="misc">
-                                        <div class="quantity control-group" class="" >
-                                            <label class="required">{{ ('shop::app.products.quantity'|trans) }}</label>
+                                        {% set qtyName = 'qty[' ~ item.id ~ ']' %}
+                                        {% set qtyValue = item.quantity %}
+                                        {% set qtyMax = item.product.total_product_quantity %}
+                                        {% set showQtyControl = item.show_quantity_box == true or item.child %}
 
-                                            <button type="button" class="decrease">-</button>    
-                                            {% if item.show_quantity_box == true and item.type != 'customizable' and not item.child%}
-                                                <input
-                                                    class="control qtyBox"
-                                                    name="qty[{{ item.id }}]"
-                                                    data-vv-as="{{ ('shop::app.products.quantity'|trans) }}"
-                                                    value="{{ item.quantity }}"
-                                                    max="{{ item.product.total_product_quantity }}"
-                                                />
-                                            {% elseif item.child %}
-                                                <input
-                                                    class="control qtyBox"
-                                                    name="qty[{{ item.id }}]"
-                                                    data-vv-as="{{ ('shop::app.products.quantity'|trans) }}"
-                                                    value="{{ item.quantity }}"
-                                                    max="{{ item.child.product.total_product_quantity }}"
-                                                />
-                                            {% elseif item.show_quantity_box == true and item.type == 'customizable' %}
-                                                <input
-                                                    class="control qtyBox"
-                                                    name="qty[{{ item.id }}][{{ optionKey }}]"
-                                                    data-vv-as="{{ ('shop::app.products.quantity'|trans) }}"
-                                                    value="{{ item.additional['quantities'][quantityCounter] | length > 0 ? item.additional['quantities'][quantityCounter] : 1 }}"
-                                                    max="{{ item.product.total_product_quantity }}"
-                                                />
+                                        {% if item.child %}
+                                            {% set qtyMax = item.child.product.total_product_quantity %}
+                                        {% endif %}
 
-                                                <quantity-changer :control-name="'qty[{{ item.id }}][{{ optionKey }}]'" 
-                                                quantity="{{ item.additional['quantities'][quantityCounter] | length > 0 ? item.additional['quantities'][quantityCounter] : 1 }}"></quantity-changer>
-                                                {% set quantityCounter = quantityCounter + 1 %}
-                                            {% endif %}
-    
-                                            <button type="button" class="increase">+</button>
-                                            <span class="control-error"></span>        
-                                        </div>
+                                        {% if item.type == 'customizable' %}
+                                            {% set qtyName = 'qty[' ~ item.id ~ '][' ~ optionKey ~ ']' %}
+                                            {% set qtyValue = item.additional['quantities'][quantityCounter] | length > 0 ? item.additional['quantities'][quantityCounter] : 1 %}
+                                            {% set showQtyControl = item.show_quantity_box == true %}
+                                            {% set quantityCounter = quantityCounter + 1 %}
+                                        {% endif %}
+
+                                        {% if showQtyControl %}
+                                            <div class="quantity control-group cart-quantity">
+                                                <label class="required">{{ ('shop::app.products.quantity'|trans) }}</label>
+
+                                                <button type="button" class="decrease" aria-label="تقليل الكمية">−</button>
+                                                <input
+                                                    class="control qtyBox"
+                                                    name="{{ qtyName }}"
+                                                    data-vv-as="{{ ('shop::app.products.quantity'|trans) }}"
+                                                    value="{{ qtyValue }}"
+                                                    max="{{ qtyMax }}"
+                                                    inputmode="numeric"
+                                                />
+                                                <button type="button" class="increase" aria-label="زيادة الكمية">+</button>
+
+                                                <span class="control-error"></span>
+                                            </div>
+                                        {% endif %}
                                     
                                         <span class="remove">
                                             <a href="{{ route('shop.checkout.cart.remove', { 'id': item.id, 'option': optionKey }) }}" onclick="removeLink(event)">
