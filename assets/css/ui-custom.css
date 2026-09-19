@@ -6273,3 +6273,45 @@ body.site-body .modal-container{
 .qs-search__button{
   cursor:pointer!important;
 }
+
+
+/* CART COUPON COMPACT SPACING */
+.cart .coupon-container{
+  padding:12px!important;
+}
+
+.cart .coupon-container .discount-control,
+.cart .coupon-container .discount-control .control-group{
+  margin:0!important;
+  padding:0!important;
+}
+
+.cart .coupon-container .applied-coupon-details{
+  margin:10px 0 0!important;
+  padding:10px 0 0!important;
+  border-top:1px solid var(--qs-line);
+  line-height:1.45;
+}
+
+.cart .coupon-container .applied-coupon-details > label{
+  margin:0!important;
+}
+
+.cart .coupon-container .applied-coupon-details > label + label{
+  margin-inline-start:12px!important;
+}
+
+.cart .coupon-container #maximum-discount{
+  margin-top:6px!important;
+}
+
+@media(max-width:767px){
+  .cart .coupon-container{
+    padding:10px!important;
+  }
+
+  .cart .coupon-container .applied-coupon-details{
+    margin-top:8px!important;
+    padding-top:8px!important;
+  }
+}
