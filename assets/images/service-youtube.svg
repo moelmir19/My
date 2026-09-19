@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" rx="80" fill="#111315"/>
+  <rect x="120" y="120" width="760" height="520" rx="48" fill="#ff0033" opacity=".13"/>
+  <circle cx="500" cy="385" r="170" fill="#ff0033"/>
+  <path d="M455 285l170 100-170 100z" fill="#fff"/>
+  <text x="500" y="760" text-anchor="middle" font-family="Arial,sans-serif" font-size="78" font-weight="700" fill="#fff">YOUTUBE</text>
+  <text x="500" y="835" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="#fff" opacity=".72">Premium</text>
+</svg>
