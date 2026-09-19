@@ -83,10 +83,6 @@
                     {% endif %}
 
 
-                        <div class="full-description mt-30" data-max-height="300">
-                            {{ product.description|raw }}
-                        </div>
-
                         {% if product.show_weight %}
                             <div class="product-metadata weight">
                                 <i class="icon-cart-download mr-5"></i>
@@ -140,6 +136,30 @@
                 </div>
             </form>
         </div>
+
+        {% set productDescription = product.description|default('') %}
+        <section class="qs-product-description-section qs-product-description-section--standard" aria-labelledby="product-description-title">
+            <div class="qs-product-description-section__header">
+                <span>{{ lang == 'ar' ? 'تفاصيل المنتج' : 'Product details' }}</span>
+                <h2 id="product-description-title">{{ lang == 'ar' ? 'الوصف' : 'Description' }}</h2>
+            </div>
+
+            <div class="qs-product-description-section__body">
+                {% if productDescription|striptags|trim %}
+                    <div class="qs-product-description-richtext">
+                        {{ productDescription|raw }}
+                    </div>
+                {% else %}
+                    <div class="qs-product-description-richtext">
+                        <p>
+                            {{ lang == 'ar'
+                                ? 'هذا منتج رقمي من SubCove. اختر الخيارات المناسبة لك ثم أكمل الطلب، وستظهر لك طريقة الاستلام أو التفعيل الخاصة بالمنتج حسب تفاصيل الطلب.'
+                                : 'This is a digital product from SubCove. Choose the options that suit you, complete your order, and follow the delivery or activation instructions provided for the product.' }}
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
 
         {% if product.enable_product_reviews %}
             {% if product.guest_review %}
