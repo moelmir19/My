@@ -33,6 +33,7 @@
                                     name="plan"
                                     value="{{ plan.key }}"
                                     data-price="{{ plan.price }}"
+                                    onchange="window.updateSubscriptionPrice(this);"
                                     {% if loop.first %}checked{% endif %}>
                                 <span class="subscription-plan-card__body">
                                     <span class="subscription-plan-card__name">{{ plan.name }}</span>
@@ -89,13 +90,27 @@
         });
     }
 
+    window.updateSubscriptionPrice = function (radio) {
+        if (!radio || !radio.checked || !price) return;
+        price.textContent = radio.getAttribute('data-price') || '0';
+    };
+
     radios.forEach(function (radio) {
         radio.addEventListener('change', function () {
-            if (this.checked && price) {
-                price.textContent = this.getAttribute('data-price');
-            }
+            window.updateSubscriptionPrice(this);
         });
     });
+
+    document.addEventListener('change', function (event) {
+        if (event.target && event.target.matches('.subscription-plan-card input[name="plan"]')) {
+            window.updateSubscriptionPrice(event.target);
+        }
+    });
+
+    var selectedPlan = document.querySelector('.subscription-plan-card input[name="plan"]:checked');
+    if (selectedPlan) {
+        window.updateSubscriptionPrice(selectedPlan);
+    }
 
     if (!form) return;
 
