@@ -5575,3 +5575,182 @@ body.site-body .modal-container{
 @media(max-width:360px){
   .qs-logo img{max-width:min(108px,100%)}
 }
+
+
+/* ==========================================================
+   HOMEPAGE DEMO SUBSCRIPTION CARDS
+   ========================================================== */
+
+.home-demo-services__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+
+.home-service-card{
+  min-width:0;
+  overflow:hidden;
+  border:1px solid var(--qs-line);
+  border-radius:16px;
+  background:var(--qs-surface);
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+
+.home-service-card:hover{
+  border-color:#3b4841;
+  box-shadow:var(--qs-shadow);
+}
+
+.home-service-card[open]{
+  border-color:rgba(120,155,137,.55);
+}
+
+.home-service-card__summary{
+  position:relative;
+  padding:16px;
+  display:grid;
+  grid-template-columns:92px minmax(0,1fr) 34px;
+  align-items:center;
+  gap:14px;
+  list-style:none;
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.home-service-card__summary::-webkit-details-marker{
+  display:none;
+}
+
+.home-service-card__media{
+  width:92px;
+  height:92px;
+  overflow:hidden;
+  border:1px solid var(--qs-line);
+  border-radius:14px;
+  background:var(--qs-surface-alt);
+}
+
+.home-service-card__image{
+  width:100%!important;
+  height:100%!important;
+  display:block;
+  object-fit:cover!important;
+}
+
+.home-service-card__meta{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.home-service-card__meta strong{
+  color:var(--qs-text);
+  font-size:17px;
+  font-weight:800;
+}
+
+.home-service-card__meta span{
+  color:var(--qs-muted);
+  font-size:12px;
+}
+
+.home-service-card__toggle{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--qs-line);
+  border-radius:10px;
+  background:var(--qs-surface-alt);
+  color:var(--qs-green-dark);
+  font-size:20px;
+  line-height:1;
+  transition:transform .22s ease,background .22s ease,border-color .22s ease;
+}
+
+.home-service-card[open] .home-service-card__toggle{
+  transform:rotate(45deg);
+  border-color:var(--qs-green);
+  background:rgba(120,155,137,.10);
+}
+
+.home-service-card__plans{
+  padding:0 16px 16px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  border-top:1px solid var(--qs-line);
+}
+
+.home-service-plan{
+  margin-top:14px;
+  min-width:0;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border:1px solid var(--qs-line);
+  border-radius:12px;
+  background:var(--qs-surface-alt);
+  text-align:center;
+}
+
+.home-service-plan__name{
+  color:var(--qs-text);
+  font-size:13px;
+  font-weight:700;
+}
+
+.home-service-plan__price{
+  color:var(--qs-green-dark);
+  font-size:16px;
+  font-weight:800;
+}
+
+@media(max-width:991px){
+  .home-demo-services__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+  }
+}
+
+@media(max-width:767px){
+  .home-demo-services__grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .home-service-card__summary{
+    grid-template-columns:76px minmax(0,1fr) 32px;
+    padding:12px;
+    gap:11px;
+  }
+
+  .home-service-card__media{
+    width:76px;
+    height:76px;
+    border-radius:11px;
+  }
+
+  .home-service-card__meta strong{
+    font-size:15px;
+  }
+
+  .home-service-card__plans{
+    padding:0 12px 12px;
+    gap:8px;
+  }
+
+  .home-service-plan{
+    margin-top:12px;
+    padding:12px 8px;
+  }
+
+  .home-service-plan__price{
+    font-size:14px;
+  }
+}
