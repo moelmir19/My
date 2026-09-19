@@ -35,6 +35,8 @@ if ($path === '/subscription/add' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $serviceSlug = strtolower(trim($_POST['service'] ?? ''));
     $planKey = strtolower(trim($_POST['plan'] ?? ''));
     $subscription = subscriptionDemo($serviceSlug);
+    $added = false;
+    $message = 'تعذر إضافة المنتج إلى السلة';
 
     if ($subscription && !empty($subscription['service']['plans'])) {
         $service = $subscription['service'];
@@ -58,10 +60,30 @@ if ($path === '/subscription/add' && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 'price' => (float)$selectedPlan['price'],
                 'image' => $service['image'],
             ];
+
+            $added = true;
+            $message = 'تم إضافة المنتج إلى السلة';
         }
     }
 
-    header('Location: /checkout/cart');
+    $cartState = cart();
+    $cartCount = (int)($cartState['cart']['items_count'] ?? 0);
+
+    $wantsJson = isset($_SERVER['HTTP_ACCEPT']) && str_contains($_SERVER['HTTP_ACCEPT'], 'application/json');
+    $isAjax = strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest';
+
+    if ($wantsJson || $isAjax) {
+        header('Content-Type: application/json; charset=utf-8');
+        http_response_code($added ? 200 : 422);
+        echo json_encode([
+            'success' => $added,
+            'message' => $message,
+            'cart_count' => $cartCount,
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    header('Location: /subscriptions/' . ($serviceSlug ?: 'netflix'));
     exit;
 }
 
@@ -70,6 +92,46 @@ if ($path === '/subscription/remove') {
 
     if ($demoKey !== '' && isset($_SESSION['demo_subscriptions'][$demoKey])) {
         unset($_SESSION['demo_subscriptions'][$demoKey]);
+    }
+
+    header('Location: /checkout/cart');
+    exit;
+}
+
+if ($path === '/cart/remove') {
+    $itemId = trim((string)($_GET['id'] ?? $_POST['id'] ?? ''));
+    $demoKey = trim((string)($_GET['demo_key'] ?? $_POST['demo_key'] ?? ''));
+
+    if ($demoKey !== '' && isset($_SESSION['demo_subscriptions'][$demoKey])) {
+        unset($_SESSION['demo_subscriptions'][$demoKey]);
+    } elseif ($itemId !== '') {
+        if (!isset($_SESSION['cart_removed_items']) || !is_array($_SESSION['cart_removed_items'])) {
+            $_SESSION['cart_removed_items'] = [];
+        }
+
+        if (!in_array($itemId, array_map('strval', $_SESSION['cart_removed_items']), true)) {
+            $_SESSION['cart_removed_items'][] = $itemId;
+        }
+    }
+
+    $cartState = cart();
+    $cartData = $cartState['cart'] ?? [];
+
+    $wantsJson = isset($_SERVER['HTTP_ACCEPT']) && str_contains($_SERVER['HTTP_ACCEPT'], 'application/json');
+    $isAjax = strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest';
+
+    if ($wantsJson || $isAjax) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'success' => true,
+            'message' => 'تم حذف المنتج من السلة',
+            'cart_count' => (int)($cartData['items_count'] ?? 0),
+            'subtotal' => (float)($cartData['base_sub_total'] ?? 0),
+            'tax' => (float)($cartData['base_tax_total'] ?? 0),
+            'grand_total' => (float)($cartData['base_grand_total'] ?? 0),
+            'currency' => $cartData['cart_currency_code'] ?? 'SAR',
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
     }
 
     header('Location: /checkout/cart');
