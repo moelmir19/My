@@ -1437,7 +1437,19 @@ button.btn{
   overflow-wrap:anywhere;
 }
 
-.cart .item-title a{color:var(--qs-text)}
+.cart .item-title,
+.cart .item-title a{
+  color:var(--qs-text)!important;
+}
+
+.cart .item-title a{
+  opacity:1!important;
+  text-shadow:none!important;
+}
+
+.cart .item-title a:hover{
+  color:var(--qs-green-dark)!important;
+}
 
 .cart .item .price{
   color:var(--qs-green-dark);
