@@ -75,6 +75,7 @@
                                         </a>
                                     </div>
                                     <div class="price cart-line-price"
+                                         data-unit-price="{{ item.base_price|default(item.price)|default(0) }}"
                                          data-currency="{{ cart.cart_currency_code|default('SAR') }}">
                                         {{ item.formated_price|raw }}
                                     </div>
@@ -556,89 +557,113 @@
 
 <script>
 (function () {
-    var form;
-    var currency = 'SAR';
-    var fixedAdjustment = 0;
     var submitTimer = null;
 
-    function number(value) {
+    function toNumber(value) {
         var parsed = parseFloat(value);
         return isFinite(parsed) ? parsed : 0;
     }
 
-    function integer(value) {
+    function toInt(value) {
         var parsed = parseInt(value, 10);
         return isFinite(parsed) ? parsed : 1;
     }
 
+    function getForm() {
+        return document.getElementById('cart-update-form');
+    }
+
+    function getCurrency() {
+        var form = getForm();
+        return form ? (form.getAttribute('data-currency') || 'SAR') : 'SAR';
+    }
+
     function money(value) {
-        var n = number(value);
-        return currency + ' ' + n.toFixed(2).replace(/\.00$/, '');
+        var n = toNumber(value);
+        return getCurrency() + ' ' + n.toFixed(2).replace(/\.00$/, '');
     }
 
     function normalize(input) {
-        var value = integer(input.value);
-        if (value < 1) value = 1;
+        var qty = toInt(input.value);
+        if (qty < 1) qty = 1;
 
-        var max = integer(input.getAttribute('max'));
         var rawMax = input.getAttribute('max');
+        var max = toInt(rawMax);
 
-        if (rawMax !== null && rawMax !== '' && max > 0 && value > max) {
-            value = max;
+        if (rawMax !== null && rawMax !== '' && max > 0 && qty > max) {
+            qty = max;
         }
 
-        input.value = value;
-        return value;
+        input.value = qty;
+        return qty;
     }
 
-    function calculateRawTotals() {
+    function getUnitPrice(item) {
+        var priceEl = item.querySelector('.cart-line-price');
+
+        if (priceEl) {
+            var fromPrice = toNumber(priceEl.getAttribute('data-unit-price'));
+            if (fromPrice > 0) return fromPrice;
+        }
+
+        return toNumber(item.getAttribute('data-unit-price'));
+    }
+
+    function refreshLine(input) {
+        var item = input.closest('.item');
+        if (!item) return;
+
+        var priceEl = item.querySelector('.cart-line-price');
+        if (!priceEl) return;
+
+        var qty = normalize(input);
+        var unitPrice = getUnitPrice(item);
+
+        priceEl.textContent = money(unitPrice * qty);
+    }
+
+    function recalculateSummary() {
         var subtotal = 0;
         var tax = 0;
 
-        if (!form) return { subtotal: 0, tax: 0 };
-
-        form.querySelectorAll('.item').forEach(function (item) {
+        document.querySelectorAll('.cart .item').forEach(function (item) {
             var input = item.querySelector('.qtyBox');
             if (!input) return;
 
             var qty = normalize(input);
-            var unitPrice = number(item.getAttribute('data-unit-price'));
-            var taxPercent = number(item.getAttribute('data-tax-percent'));
+            var unitPrice = getUnitPrice(item);
+            var taxPercent = toNumber(item.getAttribute('data-tax-percent'));
             var lineTotal = unitPrice * qty;
 
             subtotal += lineTotal;
             tax += lineTotal * (taxPercent / 100);
         });
 
-        return { subtotal: subtotal, tax: tax };
-    }
-
-    function renderPrices() {
-        if (!form) return;
-
-        form.querySelectorAll('.item').forEach(function (item) {
-            var input = item.querySelector('.qtyBox');
-            var price = item.querySelector('.cart-line-price');
-            if (!input || !price) return;
-
-            var qty = normalize(input);
-            var unitPrice = number(item.getAttribute('data-unit-price'));
-            price.textContent = money(unitPrice * qty);
-        });
-
-        var totals = calculateRawTotals();
+        var form = getForm();
+        var baseGrand = form ? toNumber(form.getAttribute('data-base-grand-total')) : 0;
+        var baseSubtotal = form ? toNumber(form.getAttribute('data-base-subtotal')) : 0;
+        var baseTax = form ? toNumber(form.getAttribute('data-base-tax')) : 0;
+        var fixedAdjustment = baseGrand - baseSubtotal - baseTax;
 
         var subtotalEl = document.querySelector('.order-summary .item-detail:first-of-type .right');
-        if (subtotalEl) subtotalEl.textContent = money(totals.subtotal);
+        if (subtotalEl) subtotalEl.textContent = money(subtotal);
 
         var taxEl = document.querySelector('.order-summary #basetaxamount');
-        if (taxEl) taxEl.textContent = money(totals.tax);
+        if (taxEl) taxEl.textContent = money(tax);
 
         var grandEl = document.getElementById('grand-total-amount-detail');
-        if (grandEl) grandEl.textContent = money(totals.subtotal + totals.tax + fixedAdjustment);
+        if (grandEl) grandEl.textContent = money(subtotal + tax + fixedAdjustment);
     }
 
-    function scheduleServerUpdate() {
+    function refreshAll() {
+        document.querySelectorAll('.cart .qtyBox').forEach(function (input) {
+            refreshLine(input);
+        });
+        recalculateSummary();
+    }
+
+    function scheduleServerUpdate(input) {
+        var form = input ? input.closest('form') : getForm();
         if (!form) return;
 
         var action = (form.getAttribute('action') || '').trim();
@@ -666,50 +691,42 @@
         if (next < 1) next = 1;
 
         var rawMax = input.getAttribute('max');
-        var max = integer(rawMax);
+        var max = toInt(rawMax);
+
         if (delta > 0 && rawMax !== null && rawMax !== '' && max > 0 && next > max) {
             next = max;
         }
 
         input.value = next;
-        renderPrices();
-        scheduleServerUpdate();
+
+        refreshLine(input);
+        recalculateSummary();
+        scheduleServerUpdate(input);
+
         return false;
     };
 
     window.cartQtyInput = function (input) {
         input.value = input.value.replace(/[^0-9]/g, '');
-        if (input.value !== '') {
-            normalize(input);
-            renderPrices();
-        }
+
+        if (input.value === '') return;
+
+        normalize(input);
+        refreshLine(input);
+        recalculateSummary();
     };
 
     window.cartQtyCommit = function (input) {
         normalize(input);
-        renderPrices();
-        scheduleServerUpdate();
+        refreshLine(input);
+        recalculateSummary();
+        scheduleServerUpdate(input);
     };
 
-    function init() {
-        form = document.getElementById('cart-update-form');
-        if (!form) return;
-
-        currency = form.getAttribute('data-currency') || 'SAR';
-
-        var initialGrand = number(form.getAttribute('data-base-grand-total'));
-        var initial = calculateRawTotals();
-
-        // Preserve shipping/discount/other fixed adjustments while quantities change.
-        fixedAdjustment = initialGrand - initial.subtotal - initial.tax;
-
-        renderPrices();
-    }
-
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', refreshAll);
     } else {
-        init();
+        refreshAll();
     }
 })();
 </script>
