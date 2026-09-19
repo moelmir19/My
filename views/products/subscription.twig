@@ -59,15 +59,81 @@
     </div>
 </section>
 
+<div class="qs-cart-toast" id="qs-cart-toast" role="status" aria-live="polite"></div>
+
 <script>
 (function () {
+    var form = document.querySelector('.subscription-product__form');
     var radios = document.querySelectorAll('.subscription-plan-card input[type="radio"]');
     var price = document.getElementById('subscription-current-price');
+    var toast = document.getElementById('qs-cart-toast');
+    var button = form ? form.querySelector('.subscription-product__add') : null;
+    var toastTimer = null;
+
+    function showToast(message, isError) {
+        if (!toast) return;
+
+        toast.textContent = message;
+        toast.classList.toggle('is-error', !!isError);
+        toast.classList.add('is-visible');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+            toast.classList.remove('is-visible');
+        }, 2800);
+    }
+
+    function updateCartCount(count) {
+        document.querySelectorAll('.cart-count.count').forEach(function (el) {
+            el.textContent = count;
+        });
+    }
 
     radios.forEach(function (radio) {
         radio.addEventListener('change', function () {
             if (this.checked && price) {
                 price.textContent = this.getAttribute('data-price');
+            }
+        });
+    });
+
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        if (button) {
+            button.disabled = true;
+            button.classList.add('is-loading');
+        }
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(function (response) {
+            return response.json().then(function (data) {
+                if (!response.ok || !data.success) {
+                    throw new Error(data.message || 'تعذر إضافة المنتج إلى السلة');
+                }
+                return data;
+            });
+        })
+        .then(function (data) {
+            updateCartCount(data.cart_count || 0);
+            showToast(data.message || 'تم إضافة المنتج إلى السلة');
+        })
+        .catch(function (error) {
+            showToast(error.message || 'تعذر إضافة المنتج إلى السلة', true);
+        })
+        .finally(function () {
+            if (button) {
+                button.disabled = false;
+                button.classList.remove('is-loading');
             }
         });
     });
