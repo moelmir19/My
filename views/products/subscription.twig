@@ -33,7 +33,6 @@
                                     name="plan"
                                     value="{{ plan.key }}"
                                     data-price="{{ plan.price }}"
-                                    onchange="window.updateSubscriptionPrice(this);"
                                     {% if loop.first %}checked{% endif %}>
                                 <span class="subscription-plan-card__body">
                                     <span class="subscription-plan-card__name">{{ plan.name }}</span>
@@ -47,7 +46,13 @@
                     <div class="subscription-product__purchase">
                         <div class="subscription-product__price">
                             <span>السعر</span>
-                            <strong><span id="subscription-current-price">{{ service.plans[0].price }}</span> SAR</strong>
+                            <strong class="subscription-selected-price">
+                                {% for plan in service.plans %}
+                                    <span class="subscription-selected-price__value subscription-price-{{ plan.key }}">
+                                        {{ plan.price }} SAR
+                                    </span>
+                                {% endfor %}
+                            </strong>
                         </div>
 
                         <button type="submit" class="subscription-product__add">
@@ -66,7 +71,6 @@
 (function () {
     var form = document.querySelector('.subscription-product__form');
     var radios = document.querySelectorAll('.subscription-plan-card input[type="radio"]');
-    var price = document.getElementById('subscription-current-price');
     var toast = document.getElementById('qs-cart-toast');
     var button = form ? form.querySelector('.subscription-product__add') : null;
     var toastTimer = null;
@@ -88,28 +92,6 @@
         document.querySelectorAll('.cart-count.count').forEach(function (el) {
             el.textContent = count;
         });
-    }
-
-    window.updateSubscriptionPrice = function (radio) {
-        if (!radio || !radio.checked || !price) return;
-        price.textContent = radio.getAttribute('data-price') || '0';
-    };
-
-    radios.forEach(function (radio) {
-        radio.addEventListener('change', function () {
-            window.updateSubscriptionPrice(this);
-        });
-    });
-
-    document.addEventListener('change', function (event) {
-        if (event.target && event.target.matches('.subscription-plan-card input[name="plan"]')) {
-            window.updateSubscriptionPrice(event.target);
-        }
-    });
-
-    var selectedPlan = document.querySelector('.subscription-plan-card input[name="plan"]:checked');
-    if (selectedPlan) {
-        window.updateSubscriptionPrice(selectedPlan);
     }
 
     if (!form) return;
