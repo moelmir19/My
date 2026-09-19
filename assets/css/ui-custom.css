@@ -6126,3 +6126,22 @@ body.site-body .modal-container{
   opacity:.68;
   cursor:wait;
 }
+
+
+/* ==========================================================
+   SUBSCRIPTION SELECTED PRICE — CSS DRIVEN
+   ========================================================== */
+
+.subscription-selected-price__value{
+  display:none;
+}
+
+.subscription-product__form:has(input[name="plan"][value="monthly"]:checked)
+  .subscription-price-monthly{
+  display:inline;
+}
+
+.subscription-product__form:has(input[name="plan"][value="yearly"]:checked)
+  .subscription-price-yearly{
+  display:inline;
+}
