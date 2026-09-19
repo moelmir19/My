@@ -1573,11 +1573,39 @@ section.cart .cart-content .right-side{
 .cart .coupon-form{
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
-  align-items:end;
+  align-items:center;
   gap:10px;
 }
 
-.cart .coupon-container .control-group{margin:0}
+.cart .coupon-container .control-group{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+.cart .coupon-container #coupon-code,
+.cart .coupon-container #apply-coupon-btn{
+  height:42px;
+  min-height:42px;
+  margin:0;
+  box-sizing:border-box;
+}
+
+.cart .coupon-container #coupon-code{
+  width:100%;
+  display:block;
+  padding:0 14px;
+  line-height:40px;
+}
+
+.cart .coupon-container #apply-coupon-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 18px;
+  line-height:1;
+  white-space:nowrap;
+}
 
 .cart .order-summary .item-detail,
 .cart .order-summary .payable-amount{
