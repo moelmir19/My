@@ -204,7 +204,7 @@ function homePage() {
             "sort" => null, 
             "block_id" => 295765, 
             "settings" => [
-                "image" => "/assets/images/banner-1.svg", 
+                "image" => "/assets/images/subcove-banner.png", 
             ] 
         ], 
         [
@@ -15045,7 +15045,7 @@ function subscriptionDemo($slug) {
         'netflix' => [
             'slug' => 'netflix',
             'name' => 'Netflix',
-            'image' => '/assets/images/product-1.svg',
+            'image' => '/assets/images/subcove-netflix.png',
             'description' => 'اختر مدة الاشتراك المناسبة لك، ثم أضف الباقة للسلة.',
             'plans' => [
                 ['key' => 'monthly', 'name' => 'اشتراك شهري', 'price' => 29, 'hint' => 'شهر واحد'],
@@ -15055,7 +15055,7 @@ function subscriptionDemo($slug) {
         'youtube' => [
             'slug' => 'youtube',
             'name' => 'YouTube',
-            'image' => '/assets/images/service-youtube.svg',
+            'image' => '/assets/images/subcove-youtube.png',
             'description' => 'اختر الباقة التي تناسب استخدامك من داخل صفحة المنتج.',
             'plans' => [
                 ['key' => 'monthly', 'name' => 'اشتراك شهري', 'price' => 24, 'hint' => 'شهر واحد'],
@@ -15065,7 +15065,7 @@ function subscriptionDemo($slug) {
         'osn' => [
             'slug' => 'osn',
             'name' => 'OSN',
-            'image' => '/assets/images/product-3.svg',
+            'image' => '/assets/images/subcove-osn.png',
             'description' => 'اختر الاشتراك الشهري أو السنوي ثم أضفه مباشرة إلى السلة.',
             'plans' => [
                 ['key' => 'monthly', 'name' => 'اشتراك شهري', 'price' => 35, 'hint' => 'شهر واحد'],
