@@ -459,8 +459,8 @@ button{
 
     .address-card {
         margin-bottom: 20px;
-        background-color: #f3f3f36e;
-        border: 0px;    
+        background-color: var(--qs-surface);
+        border: 1px solid var(--qs-line);
     }
 
     .notification-item{
@@ -470,9 +470,9 @@ button{
         background-color: var(--brand-secondary-light) !important;
     }
     .address-card .details{
-        min-height: 220px;
-        max-height: 220px;
-        overflow: hidden;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
     }
     .btn-primary-round{
         background: var(--brand);
