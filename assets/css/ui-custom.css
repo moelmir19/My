@@ -6315,3 +6315,21 @@ body.site-body .modal-container{
     padding-top:8px!important;
   }
 }
+
+
+/* HIDE APPLIED COUPON TEXT */
+.cart #applied-coupon-details > label:first-child,
+.cart #applied-coupon-name,
+.cart #maximum-discount{
+  display:none!important;
+}
+
+.cart #applied-coupon-details{
+  min-height:0!important;
+  margin-top:8px!important;
+  padding-top:8px!important;
+}
+
+.cart #applied-coupon-details .right{
+  margin:0!important;
+}
