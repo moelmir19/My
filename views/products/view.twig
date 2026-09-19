@@ -300,29 +300,104 @@
 
         $('body').on('submit', '#product-form', function(e) {
             e.preventDefault();
-            var submitButton = e.originalEvent.submitter;
 
-            if (submitButton.getAttribute('type') != 'submit')
-                return;
+            var form = this;
+            var submitButton = e.originalEvent && e.originalEvent.submitter
+                ? e.originalEvent.submitter
+                : form.querySelector('button[type="submit"]:not([disabled])');
 
-            $('#product-form [required]').each(function(c) {
+            if (!submitButton) return;
+
+            var missingRequired = false;
+
+            $('#product-form [required]').each(function() {
                 if ($.trim($(this).val()) === '') {
-                    toastr.error('required fields are missing');
-                    return false;
+                    missingRequired = true;
                 }
             });
-            
-            var is_buy_now = submitButton.classList.contains('buynow') ? 1 : 0;
-            if(is_buy_now == 1)
-            {
-                $('#is_buy_now').val(is_buy_now);
+
+            if (missingRequired) {
+                if (window.qsCartNotice) {
+                    window.qsCartNotice('يرجى تعبئة جميع الحقول المطلوبة', 'warning');
+                } else if (window.toastr) {
+                    toastr.warning('يرجى تعبئة جميع الحقول المطلوبة');
+                }
+                return;
             }
-            
-            setTimeout(function() {
-                document.getElementById('product-form').submit();
-                var formData = $('#product-form').serializeArray();
-            }, 0);
+
+            var isBuyNow = submitButton.classList.contains('buynow') ? 1 : 0;
+            $('#is_buy_now').val(isBuyNow);
+
+            if (isBuyNow === 1) {
+                form.submit();
+                return;
+            }
+
+            var $button = $(submitButton);
+            var originalText = $button.html();
+
+            $button.prop('disabled', true).addClass('is-loading');
+
+            fetch(form.action, {
+                method: (form.method || 'POST').toUpperCase(),
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(function(response) {
+                var contentType = response.headers.get('content-type') || '';
+
+                if (contentType.indexOf('application/json') !== -1) {
+                    return response.json().then(function(data) {
+                        if (!response.ok || data.success === false) {
+                            throw new Error(data.message || 'تعذر إضافة المنتج إلى السلة');
+                        }
+                        return data;
+                    });
+                }
+
+                if (!response.ok) {
+                    throw new Error('تعذر إضافة المنتج إلى السلة');
+                }
+
+                return {};
+            })
+            .then(function(data) {
+                var message = data.message || 'تم إضافة المنتج إلى السلة';
+
+                if (window.qsCartNotice) {
+                    window.qsCartNotice(message, 'success');
+                } else if (window.toastr) {
+                    toastr.success(message);
+                }
+
+                var count = data.count !== undefined ? data.count : data.cart_count;
+                if (count !== undefined && count !== null) {
+                    $('.cart-count').removeClass('d-none').text(count);
+                    $('.disabled-link').removeClass('disabled-link');
+                }
+            })
+            .catch(function(error) {
+                var message = error && error.message
+                    ? error.message
+                    : 'تعذر إضافة المنتج إلى السلة';
+
+                if (window.qsCartNotice) {
+                    window.qsCartNotice(message, 'error');
+                } else if (window.toastr) {
+                    toastr.error(message);
+                }
+            })
+            .finally(function() {
+                $button.prop('disabled', false).removeClass('is-loading');
+                if (originalText && !$button.html()) {
+                    $button.html(originalText);
+                }
+            });
         });
+
     </script>
     <script>
         window.MAX_QTY = {{product.total_quantity}};
