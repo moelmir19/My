@@ -64,6 +64,7 @@
                             <div class="item"
                                 data-unit-price="{{ item.base_price|default(item.price)|default(0) }}"
                                 data-tax-percent="{{ item.tax_percent|default(0) }}"
+                                data-quantity="{{ item.quantity|default(1) }}"
                                 data-cart-item-id="{{ item.id }}">
                                 <div class="item-image">
                                     <a href="{{ cartItemHref }}">
@@ -637,9 +638,10 @@
 
         document.querySelectorAll('.cart .item').forEach(function (item) {
             var input = item.querySelector('.qtyBox');
-            if (!input) return;
+            var qty = input
+                ? normalize(input)
+                : Math.max(1, toInt(item.getAttribute('data-quantity') || '1'));
 
-            var qty = normalize(input);
             var unitPrice = getUnitPrice(item);
             var taxPercent = toNumber(item.getAttribute('data-tax-percent'));
             var lineTotal = unitPrice * qty;
