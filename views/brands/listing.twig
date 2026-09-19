@@ -27,7 +27,9 @@
                                         href="brands/{{ item.name }}/brand-{{ item.id }}" 
                                     {% endif %}
                                     >
-                                        <img src="{{ storage_url ~ (item.logo) }}" alt="{{ item.name }}">
+                                        <span class="brand-logo-frame">
+                                            <img src="{{ storage_url ~ (item.logo) }}" alt="{{ item.name }}">
+                                        </span>
                                     </a>
                                 </li>
                             {% endfor %}

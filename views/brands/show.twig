@@ -3,8 +3,10 @@
 {% block main_content %}
 
     <div class="main">
-        <article class="article article--brand vertical clearfix">
-            <img src="{{ storage_url ~ (brand.logo) }}" alt="Brand Logo">
+        <article class="article article--brand brand-profile-card vertical clearfix">
+            <div class="brand-logo-frame brand-logo-frame--large">
+                <img src="{{ storage_url ~ (brand.logo) }}" alt="Brand Logo">
+            </div>
             <h1 class="font-18">{{ brand.name ?? '' }}</h1>
             <p class="font-15">
             </p>
