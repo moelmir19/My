@@ -127,6 +127,8 @@
                                                     class="control qtyBox"
                                                     name="{{ qtyName }}"
                                                     data-vv-as="{{ ('shop::app.products.quantity'|trans) }}"
+                                                    type="number"
+                                                    min="1"
                                                     value="{{ qtyValue }}"
                                                     max="{{ qtyMax }}"
                                                     inputmode="numeric"
@@ -538,6 +540,10 @@
 
 
     
+
+</script>
+
+<script>
     /* Cart quantity controls + live pricing.
        Works without jQuery and tolerates missing/invalid max stock values. */
     (function () {
@@ -661,7 +667,6 @@
 
         recalculateCart();
     })();
-
 </script>
 
 {% endblock %}
