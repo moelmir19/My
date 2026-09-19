@@ -167,6 +167,11 @@ class CustomTwigExtensions extends AbstractExtension
 
     public function cartItemsCount()
     {
+        if (function_exists('cart')) {
+            $state = cart();
+            return (string)($state['cart']['items_count'] ?? 0);
+        }
+
         return '0';
     }
     public function customerWallet()
