@@ -24,7 +24,7 @@
   --qs-shadow:0 5px 18px rgba(42,55,49,.07);
   --qs-shadow-lg:0 12px 30px rgba(42,55,49,.11);
   --qs-container:1320px;
-  --qs-font:"Thmanyah Sans","STC",Tahoma,Arial,sans-serif;
+  --qs-font:"Thmanyah Sans",sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -6559,4 +6559,57 @@ body.site-body .modal-container{
   .qs-product-description-card{
     padding:15px;
   }
+}
+
+
+/* THMANYAH SANS — FORCE ENTIRE STOREFRONT */
+html,
+body,
+body.site-body{
+  font-family:var(--qs-font)!important;
+}
+
+/*
+ * Force Thmanyah Sans across every visible text element.
+ * Icon-font elements are intentionally excluded so cart/search/account
+ * symbols keep rendering correctly.
+ */
+body *:not(i):not(svg):not(path):not(style):not(script):not([class^="icon-"]):not([class*=" icon-"]):not(.icon):not(.fa):not(.fas):not(.far):not(.fab):not([class^="fa-"]):not([class*=" fa-"]){
+  font-family:var(--qs-font)!important;
+}
+
+button,
+input,
+textarea,
+select,
+option,
+optgroup,
+label,
+fieldset,
+legend,
+table,
+th,
+td,
+a,
+p,
+small,
+strong,
+b,
+em,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family:var(--qs-font)!important;
+}
+
+input::placeholder,
+textarea::placeholder{
+  font-family:var(--qs-font)!important;
+}
+
+.qs-review-quote{
+  font-family:var(--qs-font)!important;
 }
