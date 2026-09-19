@@ -72,9 +72,17 @@
                                     {% endif %}
                                 
                                     {% if item.additional['attributes'] | length > 0 %}
-                                        <div class="item-options">
+                                        <div class="item-options cart-item-attributes">
                                             {% for attribute in item.additional['attributes'] %}
-                                                <b>{{ attribute['attribute_name'] }} :</b> {{ attribute['option_label'] }}<br/>
+                                                {% set attributeName = attribute['attribute_name']|default('')|trim %}
+                                                {% set optionLabel = attribute['option_label']|default('')|trim %}
+                                                {% set optionLabelKey = optionLabel|lower %}
+                                                {% if attributeName and optionLabel and optionLabelKey not in ['asdf', 'previouslinkids'] %}
+                                                    <span class="cart-item-attribute">
+                                                        <b>{{ attributeName }}:</b>
+                                                        <span>{{ optionLabel }}</span>
+                                                    </span>
+                                                {% endif %}
                                             {% endfor %}
                                         </div>
                                     {% endif %}
@@ -148,7 +156,7 @@
                                 
             
                                     {% if item.type == 'customizable' %}
-                                        <div class="hydrated mt-20">
+                                        <div class="cart-custom-options hydrated mt-20">
                                             {% for itemOption in item.product.customizable %}
                                                 <div class="s-product-options-option-container" data-option-id="{{ itemOption.id }}">
                                                     <div class="s-product-options-option" data-option-type="{{ itemOption.type }}" data-option-required="true">
@@ -175,7 +183,9 @@
                                                                 {% elseif itemOption.type == 'radio' %}
                                                                     <select name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}][]" class="s-form-control"
                                                                         {% if itemOption.required == 'on' %} required {% endif %}>
-                                                                        <option value="">{{ 'admin::app.catalog.products.choose' | trans }}</option>
+                                                                        {% set chooseTranslationKey = 'admin::app.catalog.products.choose' %}
+                                                                        {% set chooseLabel = chooseTranslationKey|trans %}
+                                                                        <option value="">{{ chooseLabel == chooseTranslationKey ? 'اختر' : chooseLabel }}</option>
                                                                         {% for option in itemOption.productOptions %}
                                                                             <option value="{{ option.id }}" 
                                                                                 {% if option.id in (optionValue[itemOption.id]) %} selected {% endif %}>
@@ -204,7 +214,7 @@
                                                                         {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %}
                                                                             <div class="row">
                                                                                 <div class="form-group program-edited">
-                                                                                    <img class="program-edited-image" width="250px"
+                                                                                    <img class="program-edited-image"
                                                                                         src="{{ storage_url ~ optionValue[itemOption.id] }}">
                                                                                     <input type="hidden" name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]"
                                                                                         value="{{ optionValue[itemOption.id] }}">
@@ -223,7 +233,7 @@
                                                                         {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %}
                                                                             <div class="row">
                                                                                 <div class="form-group program-edited">
-                                                                                    <img class="program-edited-image" width="250px"
+                                                                                    <img class="program-edited-image"
                                                                                         src="{{ storage_url ~ optionValue[itemOption.id] }}">
                                                                                     <input type="hidden" name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]"
                                                                                         value="{{ optionValue[itemOption.id] }}">
