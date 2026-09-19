@@ -4530,8 +4530,102 @@ textarea:focus{
   }
 }
 
-/* ==========================================================
-   ADAPTIVE PRIMARY BANNER
+/* Dark normalization for remaining legacy UI surfaces */
+body.site-body a:link,
+body.site-body a:visited{
+  color:inherit;
+}
+
+body.site-body a:hover,
+body.site-body a:focus{
+  color:var(--qs-green-dark);
+}
+
+body.site-body .btn:not(.btn-primary):not(.btn-primary-fill):not(.btn-primary-round):not(.btn-black):not(.btn-dark):not(.bg-primary){
+  border-color:var(--qs-line);
+  background:var(--qs-surface-alt);
+  color:var(--qs-text);
+}
+
+body.site-body .btn:not(.btn-primary):not(.btn-primary-fill):not(.btn-primary-round):not(.btn-black):not(.btn-dark):not(.bg-primary):hover,
+body.site-body .btn:not(.btn-primary):not(.btn-primary-fill):not(.btn-primary-round):not(.btn-black):not(.btn-dark):not(.bg-primary):focus{
+  border-color:var(--qs-green);
+  background:#202721;
+  color:var(--qs-text);
+}
+
+body.site-body .dropdown-btn,
+body.site-body .pagination .page-item{
+  border-color:var(--qs-line);
+  background:var(--qs-surface-alt);
+  color:var(--qs-text);
+}
+
+body.site-body .pagination .page-item:hover{
+  border-color:var(--qs-green);
+  background:#202721;
+  color:var(--qs-text);
+}
+
+body.site-body .pagination .page-item.active{
+  border-color:var(--qs-green);
+  background:var(--qs-green);
+  color:#0d100f;
+}
+
+body.site-body .panel,
+body.site-body .review-box{
+  border-color:var(--qs-line);
+  background:var(--qs-surface);
+  color:var(--qs-text);
+}
+
+body.site-body .panel-heading,
+body.site-body .panel-footer{
+  border-color:var(--qs-line);
+  background:var(--qs-surface-alt);
+  color:var(--qs-text);
+}
+
+body.site-body .modal-content,
+body.site-body .modal-header,
+body.site-body .modal-body,
+body.site-body .modal-footer{
+  background:var(--qs-surface);
+  color:var(--qs-text);
+  border-color:var(--qs-line);
+}
+
+body.site-body .modal-content{
+  border:1px solid var(--qs-line);
+}
+
+body.site-body .quick-view-modal .product,
+body.site-body .search-modal,
+body.site-body .popup-modal .popup-modal-content,
+body.site-body .modal-container{
+  background:var(--qs-surface);
+  color:var(--qs-text);
+  border-color:var(--qs-line);
+}
+
+body.site-body .quick-view-modal .product .product{
+  background:transparent;
+}
+
+body.site-body .search-modal .modal-header,
+body.site-body .search-modal .modal-content,
+body.site-body .search-modal .modal-footer{
+  background:var(--qs-surface);
+  color:var(--qs-text);
+}
+
+body.site-body .popup-modal .popup-modal-content,
+body.site-body .modal-container{
+  border:1px solid var(--qs-line);
+  border-radius:var(--qs-radius-lg);
+  box-shadow:var(--qs-shadow-lg);
+}
 
 /* ==========================================================
    ADAPTIVE PRIMARY BANNER
