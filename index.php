@@ -2,6 +2,10 @@
 require 'vendor/autoload.php';
 require_once 'data.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 use App\Twig\CustomTwigExtensions;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -24,6 +28,62 @@ $twig->addExtension(new CustomTwigExtensions($translator));
 $context = [];
 
 $url = $_SERVER['REQUEST_URI'];
+$path = parse_url($url, PHP_URL_PATH);
+
+// Demo subscription product flow used by the local storefront preview.
+if ($path === '/subscription/add' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $serviceSlug = strtolower(trim($_POST['service'] ?? ''));
+    $planKey = strtolower(trim($_POST['plan'] ?? ''));
+    $subscription = subscriptionDemo($serviceSlug);
+
+    if ($subscription && !empty($subscription['service']['plans'])) {
+        $service = $subscription['service'];
+        $selectedPlan = null;
+
+        foreach ($service['plans'] as $plan) {
+            if (($plan['key'] ?? '') === $planKey) {
+                $selectedPlan = $plan;
+                break;
+            }
+        }
+
+        if ($selectedPlan) {
+            $demoKey = $serviceSlug . '-' . $planKey;
+
+            $_SESSION['demo_subscriptions'][$demoKey] = [
+                'service' => $serviceSlug,
+                'plan' => $planKey,
+                'plan_name' => $selectedPlan['name'],
+                'name' => $service['name'] . ' - ' . $selectedPlan['name'],
+                'price' => (float)$selectedPlan['price'],
+                'image' => $service['image'],
+            ];
+        }
+    }
+
+    header('Location: /checkout/cart');
+    exit;
+}
+
+if ($path === '/subscription/remove') {
+    $demoKey = trim($_GET['key'] ?? '');
+
+    if ($demoKey !== '' && isset($_SESSION['demo_subscriptions'][$demoKey])) {
+        unset($_SESSION['demo_subscriptions'][$demoKey]);
+    }
+
+    header('Location: /checkout/cart');
+    exit;
+}
+
+if (preg_match('#^/subscriptions/(netflix|youtube|osn)$#', $path, $matches)) {
+    $context = subscriptionDemo($matches[1]);
+
+    if ($context) {
+        echo $twig->render('products/subscription.twig', $context);
+        exit;
+    }
+}
 
 if ($url == '/') {
     $context = homePage();
