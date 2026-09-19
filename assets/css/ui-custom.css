@@ -1485,17 +1485,31 @@ button.btn{
 .cart .quantity.control-group{
   margin:0;
   padding:4px;
+  display:grid!important;
   grid-template-columns:34px 50px 34px;
+  grid-template-areas:
+    "label label label"
+    "minus value plus";
+  align-items:center;
+  gap:3px;
+  direction:ltr;
   border:1px solid var(--qs-line);
   border-radius:10px;
   background:var(--qs-surface-alt);
 }
 
 .cart .quantity.control-group label{
+  grid-area:label;
   margin:0 0 3px;
+  direction:rtl;
+  text-align:right;
   color:var(--qs-muted);
   font-size:11px;
 }
+
+.cart .quantity .decrease{grid-area:minus}
+.cart .quantity .qtyBox{grid-area:value}
+.cart .quantity .increase{grid-area:plus}
 
 .cart .quantity .decrease,
 .cart .quantity .increase{
