@@ -1,0 +1,92 @@
+name: SubCove / Twsaa compatibility CI
+
+on:
+  push:
+    branches:
+      - full-ui-rewrite
+  pull_request:
+    branches:
+      - full-ui-rewrite
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: subcove-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compatibility:
+    name: PHP · Twig · contracts · browser
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout SubCove theme
+        uses: actions/checkout@v4
+
+      - name: Checkout upstream Twsaa theme for contract tests
+        run: git clone --depth 1 --branch main https://github.com/Twsaa/twig-theme.git /tmp/twsaa-upstream
+
+      - name: Configure PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring
+          tools: composer:v2
+          coverage: none
+
+      - name: Validate and install locked PHP dependencies
+        run: |
+          composer validate --no-check-publish
+          composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader
+
+      - name: PHP syntax — all project PHP files
+        run: |
+          find . -path './vendor' -prune -o -name '*.php' -print0 |
+            xargs -0 -r -n1 php -l
+
+      - name: Twig syntax — all theme templates
+        run: php tests/twig-lint.php
+
+      - name: Configure Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install isolated browser test dependency
+        run: npm install --no-save --no-package-lock --no-audit --no-fund playwright@1.55.1
+
+      - name: Install Chromium for browser smoke tests
+        run: npx playwright install --with-deps chromium
+
+      - name: JavaScript syntax — custom categories
+        run: node --check assets/js/subcove-categories.js
+
+      - name: Run source/official Twsaa contract tests
+        env:
+          TWSAA_UPSTREAM: /tmp/twsaa-upstream
+        run: node --test tests/contract.test.mjs
+
+      - name: Start upstream-compatible local preview
+        run: |
+          php -S 127.0.0.1:8765 router.php > /tmp/subcove-php.log 2>&1 &
+          echo $! > /tmp/subcove-php.pid
+          for i in $(seq 1 50); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8765/; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/subcove-php.log
+          exit 1
+
+      - name: Browser integration — categories, images, routes, responsive UI
+        env:
+          SUBCOVE_BASE_URL: http://127.0.0.1:8765
+        run: node --test tests/storefront.test.mjs
+
+      - name: Show PHP preview errors on failure
+        if: failure()
+        run: cat /tmp/subcove-php.log || true
