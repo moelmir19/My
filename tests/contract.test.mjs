@@ -51,7 +51,7 @@ test('the actual local data fixture is a category hierarchy, not homepage cards'
     assert.ok(start >= 0, 'The official category mock must remain intact');
     const end = fixture.indexOf('\nfunction ', start + 1);
     const categoryFixture = fixture.slice(start, end > 0 ? end : undefined);
-    assert.match(categoryFixture, /"categories"\s*=>/);
+    assert.match(categoryFixture, /\$context\['categories'\]\s*=/);
     assert.match(categoryFixture, /"children"\s*=>/);
     assert.match(categoryFixture, /"slug"\s*=>/);
     assert.match(categoryFixture, /"image"\s*=>/);
