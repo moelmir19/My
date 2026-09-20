@@ -46,8 +46,12 @@
 
     <div class="qs-main-header">
         <div class="qs-container qs-main-header__inner">
-            <a href="/" class="qs-logo" aria-label="{{ channel.name|default('Quick Salla') }}">
-                <img src="{{ asset_url ~ 'images/subcove-logo.png' }}" alt="{{ channel.name|default('Quick Salla') }}">
+            <a href="/" class="qs-logo" aria-label="{{ channel.name|default('Store') }}">
+                {% if channel.logo %}
+                    <img src="{{ storage_url ~ channel.logo }}" alt="{{ channel.name|default('Store') }}">
+                {% else %}
+                    <span class="qs-logo__text">{{ channel.name|default('Store') }}</span>
+                {% endif %}
             </a>
 
             <div class="qs-search">
