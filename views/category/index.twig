@@ -1,6 +1,8 @@
 {% for index, category in categories %}
     <li parent="{{ index }}">
-        <a href="/{{ category['slug'] }}">
+        {# Expose the same category's uploaded image to SubCove's homepage cards.
+           The official navigation still reads the ordinary href/text unchanged. #}
+        <a href="/{{ category['slug'] }}" data-category-image="{{ category.image_url|default('')|e('html_attr') }}">
             {{ category['name'] }}
         </a>
         {% if category['children'] | length > 0 %}
