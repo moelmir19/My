@@ -594,7 +594,7 @@
     let actionType = "{{ cart.getCartRule  ? cart.getCartRule.action_type : ''}}";
 
     // Enable/Disable apply coupon button based on coupon code input
-    couponCodeInput.addEventListener('input', function() {
+    if (couponCodeInput && applyCouponBtn) couponCodeInput.addEventListener('input', function() {
         if (couponCodeInput.value.trim() !== '') {
             applyCouponBtn.disabled = false;
         } else {
@@ -659,11 +659,15 @@
                 'X-CSRF-TOKEN': '{{ csrf_token() }}',
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Coupon removal HTTP ' + response.status);
+            return response.json();
+        })
         .then(data => {
-            // Reset applied coupon details
+            if (data.success === false) throw new Error(data.message || 'تعذر إزالة القسيمة');
+            // Only change the display after the platform accepted removal.
             appliedCoupon = '';
-            appliedCouponDetails.style.display = 'none';
+            if (appliedCouponDetails) appliedCouponDetails.style.display = 'none';
 
             // Show success message
             alert(data.message);  // Replace with your flash message handling if needed
