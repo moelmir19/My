@@ -253,6 +253,55 @@ test('cards stay in the existing responsive SubCove layout', async () => {
     }
 });
 
+test('configurable selections show Twsaa final variant prices and clear stale combinations', async () => {
+    const page = await browser.newPage();
+    try {
+        // visit() installs the same local/third-party interception used in smoke tests.
+        await visit(page);
+        await page.goto(base + '/2g663yz', { waitUntil: 'domcontentloaded' });
+        await page.waitForFunction(() => typeof window.configure === 'function');
+        const result = await page.evaluate(() => {
+            const price = document.querySelector('.product-price');
+            const selected = document.getElementById('selected_configurable_option');
+            const originalPrice = price.innerHTML;
+            // Mimic the documented childAttributes structure, not a separate
+            // frontend pricing table. Variant prices belong to the platform.
+            window.config = {
+                attributes: [
+                    { id: 101, options: [
+                        { id: 1, products: [111, 222] },
+                        { id: 2, products: [333] }
+                    ] },
+                    { id: 102, options: [
+                        { id: 3, products: [111, 333] },
+                        { id: 4, products: [222] }
+                    ] }
+                ],
+                variant_prices: {
+                    111: { final_price: { formated_price: '111.00' }, qty: 3, weight: '0' },
+                    222: { final_price: { formated_price: '222.00' }, qty: 2, weight: '0' },
+                    333: { final_price: { formated_price: '333.00' }, qty: 1, weight: '0' }
+                }
+            };
+            configure(101, 1, 0);
+            const incomplete = selected.value === '' && price.innerHTML === originalPrice;
+            configure(102, 3, 1);
+            const first = { id: selected.value, price: price.textContent.trim() };
+            configure(101, 2, 0);
+            const changed = { id: selected.value, price: price.textContent.trim() };
+            configure(102, 4, 1);
+            const invalid = selected.value === '' && price.innerHTML === originalPrice;
+            return { incomplete, first, changed, invalid };
+        });
+        assert.equal(result.incomplete, true, 'One chosen attribute is not a valid variant');
+        assert.deepEqual(result.first, { id: '111', price: '111.00' });
+        assert.deepEqual(result.changed, { id: '333', price: '333.00' });
+        assert.equal(result.invalid, true, 'Invalid combination must not retain prior price or SKU');
+    } finally {
+        await page.close();
+    }
+});
+
 test('local preview renders homepage, categories, product types, cart, and customer routes', async () => {
     const routes = [
         '/',
