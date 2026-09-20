@@ -1,45 +1,55 @@
-{% set demo_services = [
-    {
-        'name': 'Netflix',
-        'slug': 'netflix',
-        'image': '/assets/images/subcove-netflix.png'
-    },
-    {
-        'name': 'YouTube',
-        'slug': 'youtube',
-        'image': '/assets/images/subcove-youtube.png'
-    },
-    {
-        'name': 'OSN',
-        'slug': 'osn',
-        'image': '/assets/images/subcove-osn.png'
-    }
-] %}
-
+{# Category names and URLs come from Twsaa's /category endpoint, not demo subscriptions. #}
 <section class="home-categories home-demo-services">
     <div class="home-categories__heading">
-        <h2>الاشتراكات</h2>
+        <h2>{{ lang == 'ar' ? 'الاشتراكات' : 'Subscriptions' }}</h2>
     </div>
-
-    <div class="home-demo-services__grid">
-        {% for service in demo_services %}
-            <a class="home-service-link-card" href="/subscriptions/{{ service.slug }}">
-                <div class="home-service-link-card__media">
-                    <img
-                        src="{{ service.image }}"
-                        alt="{{ service.name }}"
-                        class="home-service-link-card__image"
-                        loading="lazy"
-                        decoding="async">
-                </div>
-
-                <div class="home-service-link-card__content">
-                    <strong>{{ service.name }}</strong>
-                    <span>عرض الاشتراكات</span>
-                </div>
-
-                <span class="home-service-link-card__arrow" aria-hidden="true">←</span>
-            </a>
-        {% endfor %}
-    </div>
+    <div class="home-demo-services__grid" id="qs-platform-category-grid" aria-live="polite"></div>
 </section>
+
+<script>
+$(function () {
+    var grid = $('#qs-platform-category-grid');
+    var images = {
+        netflix: "{{ asset_url ~ 'images/subcove-netflix.png' }}",
+        youtube: "{{ asset_url ~ 'images/subcove-youtube.png' }}",
+        osn: "{{ asset_url ~ 'images/subcove-osn.png' }}"
+    };
+    var fallback = "{{ asset_url ~ 'images/placeholder.svg' }}";
+    $.ajax({
+        url: '/category',
+        type: 'GET',
+        success: function (response) {
+            var html = response && response.html ? response.html : response;
+            if (typeof html !== 'string') return;
+            var tree = $('<ul></ul>').html(html);
+            tree.find('li').each(function () {
+                var link = $(this).children('a').first();
+                var name = $.trim(link.text());
+                var url = link.attr('href');
+                if (!name || !url) return;
+
+                var normalized = name.toLowerCase().replace(/\s+/g, '');
+                var image = /netflix|نتفلكس/.test(normalized) ? images.netflix
+                    : /youtube|يوتيوب/.test(normalized) ? images.youtube
+                    : /osn|اوإسان|اواسأن|اواس‌ان/.test(normalized) ? images.osn : fallback;
+
+                var card = $('<a class="home-service-link-card"></a>').attr('href', url);
+                $('<div class="home-service-link-card__media"></div>')
+                    .append($('<img class="home-service-link-card__image" loading="lazy" decoding="async">')
+                        .attr({src: image, alt: name})).appendTo(card);
+                $('<div class="home-service-link-card__content"></div>')
+                    .append($('<strong></strong>').text(name))
+                    .append($('<span></span>').text("{{ lang == 'ar' ? 'عرض المنتجات' : 'View products' }}"))
+                    .appendTo(card);
+                $('<span class="home-service-link-card__arrow" aria-hidden="true">←</span>').appendTo(card);
+                grid.append(card);
+            });
+            if (!grid.children().length) grid.closest('.home-categories').hide();
+        },
+        error: function () {
+            // No demo URL fallback: the production category endpoint is the source of truth.
+            grid.closest('.home-categories').hide();
+        }
+    });
+});
+</script>
