@@ -2,7 +2,7 @@
  * SubCove storefront categories.
  *
  * Twsaa sources:
- *  - getFunction('getCategories') in the Twig view (inert, server-rendered fallback).
+ *  - getFunction('getCategories') in the Twig view (escaped, server-rendered fallback).
  *  - GET /category, exactly as in upstream views/layout/navbar.twig.
  *  - category.image_url in upstream category-page views.
  *
@@ -218,7 +218,7 @@
 
         // Render upstream getCategories() as soon as possible, then refresh from
         // the same /category endpoint the official navbar relies upon.
-        var fallbackHtml = fallback ? fallback.innerHTML : '';
+        var fallbackHtml = fallback ? (fallback.getAttribute('data-category-html') || '') : '';
         render(fallbackHtml, 'server');
 
         // The platform may replace the grid AFTER the initial request succeeds.
