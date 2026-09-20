@@ -1,99 +1,42 @@
+{% set items = content['settings']['items']|default([]) %}
+{% set section_title = content['settings']['title']|default('') %}
+
+{% if items|length > 0 %}
 <section class="home-categories home-demo-services">
     <div class="home-categories__heading">
-        <h2>{{ lang == 'ar' ? 'الاشتراكات' : 'Subscriptions' }}</h2>
+        <h2>{{ section_title ?: (lang == 'ar' ? 'الاشتراكات' : 'Subscriptions') }}</h2>
     </div>
 
-    <div class="home-demo-services__grid" id="qs-platform-category-grid" aria-live="polite"></div>
+    <div class="home-demo-services__grid">
+        {% for item in items %}
+            {% set item_name = item['name']|default('') %}
+            {% set item_image = item['image']|default('') %}
+            {% set item_link = item['link']|default('') %}
+
+            {% if item_name or item_image or item_link %}
+                <a class="home-service-link-card" href="{{ item_link ?: '#' }}">
+                    <div class="home-service-link-card__media">
+                        {% if item_image %}
+                            <img
+                                src="{{ item_image }}"
+                                alt="{{ item_name }}"
+                                class="home-service-link-card__image"
+                                loading="lazy"
+                                decoding="async">
+                        {% endif %}
+                    </div>
+
+                    <div class="home-service-link-card__content">
+                        {% if item_name %}
+                            <strong>{{ item_name }}</strong>
+                        {% endif %}
+                        <span>{{ lang == 'ar' ? 'عرض الاشتراكات' : 'View subscriptions' }}</span>
+                    </div>
+
+                    <span class="home-service-link-card__arrow" aria-hidden="true">←</span>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
 </section>
-
-<script>
-$(function () {
-    var grid = $('#qs-platform-category-grid');
-
-    var services = [
-        {
-            key: 'netflix',
-            name: 'Netflix',
-            image: "{{ asset_url ~ 'images/subcove-netflix.png' }}",
-            match: /netflix|نتفلكس/i
-        },
-        {
-            key: 'youtube',
-            name: 'YouTube',
-            image: "{{ asset_url ~ 'images/subcove-youtube.png' }}",
-            match: /youtube|يوتيوب/i
-        },
-        {
-            key: 'osn',
-            name: 'OSN',
-            image: "{{ asset_url ~ 'images/subcove-osn.png' }}",
-            match: /(^|\s)osn($|\s)|اوسن|او اس ان|أو اس إن/i
-        }
-    ];
-
-    function drawCards(platformLinks) {
-        grid.empty();
-
-        services.forEach(function (service) {
-            var match = platformLinks.find(function (item) {
-                return service.match.test(item.name);
-            });
-
-            /*
-             * Production uses Twsaa's real category URL when it exists.
-             * /products is only a safe preview/fallback and never a custom backend route.
-             */
-            var href = match && match.url ? match.url : '/products';
-            var label = match && match.name ? match.name : service.name;
-
-            var card = $('<a class="home-service-link-card"></a>').attr('href', href);
-
-            $('<div class="home-service-link-card__media"></div>')
-                .append(
-                    $('<img class="home-service-link-card__image" loading="lazy" decoding="async">')
-                        .attr({ src: service.image, alt: label })
-                )
-                .appendTo(card);
-
-            $('<div class="home-service-link-card__content"></div>')
-                .append($('<strong></strong>').text(label))
-                .append($('<span></span>').text("{{ lang == 'ar' ? 'عرض الاشتراكات' : 'View subscriptions' }}"))
-                .appendTo(card);
-
-            $('<span class="home-service-link-card__arrow" aria-hidden="true">←</span>').appendTo(card);
-
-            grid.append(card);
-        });
-    }
-
-    /*
-     * Start with the exact SubCove visual layout immediately.
-     * Once Twsaa's official category endpoint answers, only the destination URLs/names are upgraded.
-     */
-    drawCards([]);
-
-    $.ajax({
-        url: '/category',
-        type: 'GET',
-        success: function (response) {
-            var html = response && response.html ? response.html : response;
-            if (typeof html !== 'string') return;
-
-            var tree = $('<div></div>').html(html);
-            var links = [];
-
-            tree.find('a').each(function () {
-                var link = $(this);
-                var name = $.trim(link.text());
-                var url = link.attr('href');
-
-                if (name && url) {
-                    links.push({ name: name, url: url });
-                }
-            });
-
-            drawCards(links);
-        }
-    });
-});
-</script>
+{% endif %}
