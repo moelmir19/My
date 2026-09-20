@@ -323,7 +323,6 @@
         window.MAX_QTY = {{product.total_quantity}};
     </script>
     <script>
-        var domain = window.location.hostname;
         $(document).ready(function () {
             function startProcessing(){
                  $("#loadingoverlay").fadeIn();
@@ -339,7 +338,7 @@
                 $.ajax({
                     type: "POST",
                     data: data,
-                    url: domain+"/fast/checkout",
+                    url: "/fast/checkout",
                     success: function(resp) {
                         $('#fastCheckOutBody').html(resp.data);
                         stopProcessing();
