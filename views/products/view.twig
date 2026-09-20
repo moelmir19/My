@@ -298,104 +298,18 @@
             }
         };
 
+        // cart.add is the platform's normal form endpoint; do not assume it returns JSON.
         $('body').on('submit', '#product-form', function(e) {
             e.preventDefault();
-
             var form = this;
-            var submitButton = e.originalEvent && e.originalEvent.submitter
-                ? e.originalEvent.submitter
-                : form.querySelector('button[type="submit"]:not([disabled])');
-
-            if (!submitButton) return;
-
-            var missingRequired = false;
-
-            $('#product-form [required]').each(function() {
-                if ($.trim($(this).val()) === '') {
-                    missingRequired = true;
-                }
-            });
-
-            if (missingRequired) {
-                if (window.qsCartNotice) {
-                    window.qsCartNotice('يرجى تعبئة جميع الحقول المطلوبة', 'warning');
-                } else if (window.toastr) {
-                    toastr.warning('يرجى تعبئة جميع الحقول المطلوبة');
-                }
+            var submitter = e.originalEvent && e.originalEvent.submitter;
+            if (submitter && submitter.type !== 'submit') return;
+            if (!form.checkValidity()) {
+                form.reportValidity();
                 return;
             }
-
-            var isBuyNow = submitButton.classList.contains('buynow') ? 1 : 0;
-            $('#is_buy_now').val(isBuyNow);
-
-            if (isBuyNow === 1) {
-                form.submit();
-                return;
-            }
-
-            var $button = $(submitButton);
-            var originalText = $button.html();
-
-            $button.prop('disabled', true).addClass('is-loading');
-
-            fetch(form.action, {
-                method: (form.method || 'POST').toUpperCase(),
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-            .then(function(response) {
-                var contentType = response.headers.get('content-type') || '';
-
-                if (contentType.indexOf('application/json') !== -1) {
-                    return response.json().then(function(data) {
-                        if (!response.ok || data.success === false) {
-                            throw new Error(data.message || 'تعذر إضافة المنتج إلى السلة');
-                        }
-                        return data;
-                    });
-                }
-
-                if (!response.ok) {
-                    throw new Error('تعذر إضافة المنتج إلى السلة');
-                }
-
-                return {};
-            })
-            .then(function(data) {
-                var message = data.message || 'تم إضافة المنتج إلى السلة';
-
-                if (window.qsCartNotice) {
-                    window.qsCartNotice(message, 'success');
-                } else if (window.toastr) {
-                    toastr.success(message);
-                }
-
-                var count = data.count !== undefined ? data.count : data.cart_count;
-                if (count !== undefined && count !== null) {
-                    $('.cart-count').removeClass('d-none').text(count);
-                    $('.disabled-link').removeClass('disabled-link');
-                }
-            })
-            .catch(function(error) {
-                var message = error && error.message
-                    ? error.message
-                    : 'تعذر إضافة المنتج إلى السلة';
-
-                if (window.qsCartNotice) {
-                    window.qsCartNotice(message, 'error');
-                } else if (window.toastr) {
-                    toastr.error(message);
-                }
-            })
-            .finally(function() {
-                $button.prop('disabled', false).removeClass('is-loading');
-                if (originalText && !$button.html()) {
-                    $button.html(originalText);
-                }
-            });
+            $('#is_buy_now').val(submitter && submitter.classList.contains('buynow') ? 1 : 0);
+            form.submit();
         });
 
     </script>
