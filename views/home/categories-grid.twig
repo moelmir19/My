@@ -1,7 +1,7 @@
 {#
   SubCove keeps only the presentation.
   Category data is sourced from Twsaa's official getCategories() function.
-  The returned HTML is kept inside an inert <template>; our JS converts only
+  The returned HTML stays escaped in a hidden data attribute; our JS converts
   top-level platform categories into the existing SubCove card markup.
 #}
 {% set platform_categories = getFunction('getCategories') %}
@@ -18,7 +18,11 @@
         aria-live="polite"
         aria-busy="true"></div>
 
-    <template id="qs-platform-category-fallback">{{ platform_categories_html|raw }}</template>
+    {# Keep the platform fragment as an escaped data attribute, never live DOM nodes.
+       A raw <template> can be unwrapped by client-side template compilers,
+       exposing the original category <li> links below SubCove's cards. #}
+    <div id="qs-platform-category-fallback" hidden aria-hidden="true"
+         data-category-html="{{ platform_categories_html|e('html_attr') }}"></div>
 </section>
 
 <script src="{{ asset_url ~ 'js/subcove-categories.js' }}"></script>
