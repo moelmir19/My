@@ -194,12 +194,7 @@
             {% endfor %}
         {% endif %}
     </script>
-    <script type="text/javascript" src="https://twsaa.com/admin-themes/mbotiq/assets/search/api.js"></script>
-    {% if lang == 'en' %}
-    <script type="text/javascript" src="https://twsaa.com/admin-themes/mbotiq/assets/search/search.min.js"></script>
-    {% else %}
-    <script type="text/javascript" src="https://twsaa.com/admin-themes/mbotiq/assets/search/search.ar.min.js"></script>
-    {% endif %}
+    {# Search uses SubCove's /api/search integration below; do not initialize competing official search handlers. #}
     <script>
         $(document).ready(function() {
             var $search = $('.qs-search .ui.search');
@@ -395,17 +390,6 @@
                 $('.disabled-link').removeClass('disabled-link');
             }
 
-            function isCartRedirect(url) {
-                if (!url) return false;
-
-                try {
-                    var path = new URL(url, window.location.origin).pathname;
-                    return /\/(checkout\/cart|cart)\/?$/.test(path);
-                } catch (e) {
-                    return false;
-                }
-            }
-
             $(document).ready(function() {
                 $(document).on('click', '.addToCart', function(e){
                     e.preventDefault();
@@ -461,12 +445,8 @@
                             }
 
                             if (response['redirect-url']) {
-                                if (isCartRedirect(response['redirect-url'])) {
-                                    window.qsCartNotice(response.message || 'تم إضافة المنتج إلى السلة', 'success');
-                                    updateCartCount(response.count !== undefined ? response.count : response.cart_count);
-                                } else {
-                                    window.location.href = response['redirect-url'];
-                                }
+                                // Redirects (e.g. configurable options or checkout) are part of the official response contract.
+                                window.location.href = response['redirect-url'];
                                 return;
                             }
 
@@ -497,10 +477,11 @@ document.addEventListener('error', function (event) {
     if (!el || el.tagName !== 'IMG') return;
 
     var src = el.getAttribute('src') || '';
-    if (src.indexOf('/assets/images/placeholder.svg') !== -1) return;
+    var fallback = "{{ asset_url ~ 'images/placeholder.svg' }}";
+    if (src === fallback) return;
 
     el.onerror = null;
-    el.src = '/assets/images/placeholder.svg';
+    el.src = fallback;
 }, true);
 </script>
 
