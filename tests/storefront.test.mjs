@@ -27,9 +27,20 @@ async function visit(page) {
         const target = new URL(route.request().url());
         if (target.origin !== new URL(base).origin) {
             const kind = route.request().resourceType();
+            if (kind === 'image') {
+                // Serve an actual decodable image. An empty PNG response fires
+                // img.onerror, and Twsaa's global image handler replaces its
+                // real merchant URL with /assets/images/placeholder.svg.
+                // That is a mock error, not a category-image integration bug.
+                const png = Buffer.from(
+                    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/6gAAAABJRU5ErkJggg==',
+                    'base64'
+                );
+                await route.fulfill({ status: 200, contentType: 'image/png', body: png });
+                return;
+            }
             const mime = kind === 'script' ? 'application/javascript'
                 : kind === 'stylesheet' ? 'text/css'
-                : kind === 'image' ? 'image/png'
                 : 'text/plain';
             await route.fulfill({ status: 200, contentType: mime, body: '' });
             return;
