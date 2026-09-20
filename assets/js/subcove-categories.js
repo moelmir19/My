@@ -170,6 +170,7 @@
 
             grid.replaceChildren(cards);
             grid.setAttribute('data-category-source', source || 'platform');
+            console.warn('SubCove CI diagnostics', source, 'grid', grid.childElementCount, 'live', grid.isConnected, 'global', document.querySelectorAll('#qs-platform-category-grid .home-service-link-card').length, 'instances', document.querySelectorAll('#qs-platform-category-grid').length);
             grid.setAttribute('aria-busy', 'false');
             section.hidden = false;
 
