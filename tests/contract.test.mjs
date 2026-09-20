@@ -36,7 +36,7 @@ test('category names/links/images come from Twsaa and not demo services', () => 
     const js = read('assets/js/subcove-categories.js');
     const officialCategory = read('views/category/index.twig');
     assert.match(category, /getFunction\('getCategories'\)/);
-    assert.match(js, /fetch\('\/category'/);
+    assert.match(js, /url:\s*'\/category'/);
     assert.match(js, /data-category-image/);
     assert.match(js, /\.category-block \.hero-image img\[src\]/);
     assert.match(officialCategory, /category\.image_url/);
