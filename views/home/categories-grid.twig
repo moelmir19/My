@@ -1,183 +1,20 @@
 {#
-  The design below is SubCove's unchanged category-card structure.
-  Category identity and links are loaded from Twsaa's official /category endpoint.
-  views/category/index.twig exposes category.image_url in data-category-image.
+  SubCove visual markup, powered by Twsaa's existing category data.
+  getCategories() is a function from the upstream Twig extension and provides
+  an inert fallback if the upstream /category request fails.
 #}
+{% set platform_categories = getFunction('getCategories') %}
 <section class="home-categories home-demo-services" id="qs-home-categories">
     <div class="home-categories__heading">
         <h2>{{ lang == 'ar' ? 'الأقسام' : 'Categories' }}</h2>
     </div>
 
-    <div class="home-demo-services__grid" id="qs-platform-category-grid" aria-live="polite" aria-busy="true"></div>
+    <div class="home-demo-services__grid"
+         id="qs-platform-category-grid"
+         aria-live="polite"
+         aria-busy="true"></div>
+
+    {# Keep the upstream function's HTML inert; external JS parses its links if needed. #}
+    <template id="qs-platform-category-fallback">{{ platform_categories['html']|default('')|raw }}</template>
 </section>
-
-<script>
-$(function () {
-    var grid = document.getElementById('qs-platform-category-grid');
-    var section = document.getElementById('qs-home-categories');
-    if (!grid || !section) return;
-
-    function loadCategoryImage(card, categoryUrl) {
-        // Some Twsaa /category responses contain only name + link (no image).
-        // In that case read the image from that category's actual platform page,
-        // whose official category template uses category.image_url.
-        $.ajax({
-            url: categoryUrl,
-            type: 'GET',
-            dataType: 'html',
-            success: function (html) {
-                var page = new DOMParser().parseFromString(html, 'text/html');
-                var platformImage = page.querySelector('.category-block .hero-image img[src]');
-                if (!platformImage) return;
-
-                var src = platformImage.getAttribute('src');
-                if (!src) return;
-
-                var picture = document.createElement('img');
-                picture.src = new URL(src, new URL(categoryUrl, window.location.href)).href;
-                picture.alt = card.querySelector('.home-service-link-card__content strong').textContent;
-                picture.className = 'home-service-link-card__image';
-                picture.loading = 'lazy';
-                picture.decoding = 'async';
-                card.querySelector('.home-service-link-card__media').appendChild(picture);
-            }
-        });
-    }
-
-    var missingImages = [];
-
-    function renderCategory(name, url, image) {
-        var card = document.createElement('a');
-        card.className = 'home-service-link-card';
-        card.href = url;
-
-        var media = document.createElement('div');
-        media.className = 'home-service-link-card__media';
-
-        if (image) {
-            var picture = document.createElement('img');
-            picture.src = image;
-            picture.alt = name;
-            picture.className = 'home-service-link-card__image';
-            picture.loading = 'lazy';
-            picture.decoding = 'async';
-            media.appendChild(picture);
-        }
-
-        var description = document.createElement('div');
-        description.className = 'home-service-link-card__content';
-
-        var title = document.createElement('strong');
-        title.textContent = name;
-
-        var label = document.createElement('span');
-        label.textContent = "{{ lang == 'ar' ? 'عرض المنتجات' : 'View products' }}";
-
-        description.appendChild(title);
-        description.appendChild(label);
-
-        var arrow = document.createElement('span');
-        arrow.className = 'home-service-link-card__arrow';
-        arrow.setAttribute('aria-hidden', 'true');
-        arrow.textContent = '←';
-
-        card.appendChild(media);
-        card.appendChild(description);
-        card.appendChild(arrow);
-        grid.appendChild(card);
-
-        if (!image) {
-            missingImages.push({ card: card, url: url });
-        }
-    }
-
-    function resolveMissingImages() {
-        // Do not download every category page at once; load only nearby cards.
-        if ('IntersectionObserver' in window) {
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (!entry.isIntersecting) return;
-                    observer.unobserve(entry.target);
-                    var matching = missingImages.find(function (item) {
-                        return item.card === entry.target;
-                    });
-                    if (matching) loadCategoryImage(matching.card, matching.url);
-                });
-            }, { rootMargin: '200px' });
-
-            missingImages.forEach(function (item) { observer.observe(item.card); });
-        } else {
-            missingImages.forEach(function (item) {
-                loadCategoryImage(item.card, item.url);
-            });
-        }
-    }
-
-    // /category is the same platform source the original Twsaa navbar uses.
-    $.ajax({
-        url: '/category',
-        type: 'GET',
-        success: function (response) {
-            var html = response && typeof response.html === 'string'
-                ? response.html
-                : response;
-
-            if (typeof html !== 'string') {
-                section.hidden = true;
-                grid.setAttribute('aria-busy', 'false');
-                return;
-            }
-
-            // Parse, but do not execute any scripts that may be in the endpoint's HTML.
-            var documentFromPlatform = new DOMParser().parseFromString(html, 'text/html');
-
-            // The official category template marks first-level categories with "parent".
-            // Subcategories remain on their parent pages and do not crowd the homepage.
-            var categories = documentFromPlatform.querySelectorAll('li[parent]');
-            grid.replaceChildren();
-            missingImages = [];
-
-            categories.forEach(function (category) {
-                var link = category.querySelector('a[href]');
-                if (!link) return;
-
-                var name = (link.textContent || '').trim();
-                var url = (link.getAttribute('href') || '').trim();
-                if (!name || !url || url === '#') return;
-
-                // The navbar can also contain non-category links to all products/brands.
-                // The homepage grid contains real categories only.
-                var resolved;
-                try {
-                    resolved = new URL(url, window.location.href);
-                } catch (e) {
-                    return;
-                }
-                if (resolved.origin !== window.location.origin ||
-                    !/^https?:$/.test(resolved.protocol) ||
-                    ['/products', '/brands'].includes(resolved.pathname.replace(/\/$/, ''))) {
-                    return;
-                }
-
-                // When Twsaa renders views/category/index.twig, this is category.image_url.
-                // Do not substitute SubCove stock images or invent category-image URLs.
-                var image = (link.getAttribute('data-category-image') || '').trim();
-                if (!image) {
-                    var platformImage = link.querySelector('img[src]');
-                    image = platformImage ? (platformImage.getAttribute('src') || '').trim() : '';
-                }
-
-                renderCategory(name, url, image);
-            });
-
-            resolveMissingImages();
-            grid.setAttribute('aria-busy', 'false');
-            section.hidden = grid.childElementCount === 0;
-        },
-        error: function () {
-            grid.setAttribute('aria-busy', 'false');
-            section.hidden = true;
-        }
-    });
-});
-</script>
+<script defer src="{{ asset_url ~ 'js/subcove-categories.js' }}"></script>
