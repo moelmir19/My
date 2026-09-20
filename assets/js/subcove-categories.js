@@ -168,11 +168,17 @@
 
             if (!cards.childElementCount) return false;
 
-            grid.replaceChildren(cards);
-            grid.setAttribute('data-category-source', source || 'platform');
-            console.warn('SubCove CI diagnostics', source, 'grid', grid.childElementCount, 'live', grid.isConnected, 'global', document.querySelectorAll('#qs-platform-category-grid .home-service-link-card').length, 'instances', document.querySelectorAll('#qs-platform-category-grid').length);
-            grid.setAttribute('aria-busy', 'false');
-            section.hidden = false;
+            // Twsaa's Vue initialization may replace the homepage DOM after
+            // the first paint. Never write a late AJAX response into a detached
+            // grid captured when this script first ran.
+            var activeGrid = document.getElementById('qs-platform-category-grid');
+            var activeSection = document.getElementById('qs-home-categories');
+            if (!activeGrid || !activeSection || !activeGrid.isConnected) return false;
+
+            activeGrid.replaceChildren(cards);
+            activeGrid.setAttribute('data-category-source', source || 'platform');
+            activeGrid.setAttribute('aria-busy', 'false');
+            activeSection.hidden = false;
 
             if (needsImage.length) {
                 if ('IntersectionObserver' in window) {
@@ -225,9 +231,15 @@
             },
             error: function (xhr) {
                 console.warn('SubCove categories: /category HTTP', xhr.status);
-                if (!hasCategories && !render(fallbackHtml, 'server')) {
-                    grid.setAttribute('aria-busy', 'false');
-                    grid.textContent = locale === 'ar'
+                var activeGrid = document.getElementById('qs-platform-category-grid');
+                if (!activeGrid) return;
+
+                // A Vue re-render may have detached the first set of fallback
+                // cards. Reapply the official function data to the live grid.
+                if (!activeGrid.querySelector('.home-service-link-card') &&
+                    !render(fallbackHtml, 'server')) {
+                    activeGrid.setAttribute('aria-busy', 'false');
+                    activeGrid.textContent = locale === 'ar'
                         ? 'تعذر تحميل الأقسام حاليًا'
                         : 'Categories are temporarily unavailable';
                 }
