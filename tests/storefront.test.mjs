@@ -14,6 +14,13 @@ after(async () => {
 });
 
 async function visit(page) {
+    page.on('pageerror', (error) => console.error('BROWSER JS:', error.message));
+    page.on('console', (message) => {
+        if (message.type() === 'error' || message.type() === 'warning') {
+            console.error('BROWSER CONSOLE:', message.text());
+        }
+    });
+
     // Isolate the theme's browser smoke tests from third-party CDN outages.
     // Keep all local theme scripts/styles and let specific /category mocks run.
     await page.route('**/*', async function (route) {
