@@ -6,7 +6,11 @@
     <div class="qs-container">
         <div class="qs-footer__grid">
             <div class="qs-footer__about">
-                <img class="qs-footer__logo" src="{{ asset_url ~ 'images/subcove-logo.png' }}" alt="{{ channel.name|default('Quick Salla') }}">
+                {% if channel.logo %}
+                    <img class="qs-footer__logo" src="{{ storage_url ~ channel.logo }}" alt="{{ channel.name|default('Store') }}">
+                {% else %}
+                    <strong class="qs-footer__logo-text">{{ channel.name|default('Store') }}</strong>
+                {% endif %}
                 <h3>{{ lang == 'ar' ? 'من نحن' : 'About us' }}</h3>
                 <p>{{ channel.name }}</p>
                 <div class="qs-footer__social">
