@@ -16,6 +16,16 @@
             {% set primary_banner_rendered = true %}
         {% endif %}
     {% endfor %}
+    {% if not primary_banner_rendered %}
+        <div class="home-primary-banner">
+            <div class="qs-primary-banner">
+                <img class="qs-primary-banner__image"
+                     src="{{ asset_url ~ 'images/subcove-banner.png' }}"
+                     alt="{{ lang == 'ar' ? 'بنر SubCove' : 'SubCove banner' }}"
+                     loading="eager" decoding="async">
+            </div>
+        </div>
+    {% endif %}
 
     {% include 'home/categories-grid.twig' %}
 
