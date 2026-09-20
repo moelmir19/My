@@ -83,3 +83,27 @@ test('store logo, banner, and reviews use platform data instead of demo assets',
     assert.match(reviews, /settings'\]\['reviews'/);
     assert.doesNotMatch(homepage + reviews, /subcove-banner\.png|بناءً على 121 تقييم/);
 });
+
+test('configurable selection keeps the platform final price and rejects missing combinations', () => {
+    const options = read('views/products/view/configurable-options.twig');
+    const product = read('views/products/view.twig');
+    assert.match(options, /config\.variant_prices\[candidate\]/);
+    assert.match(options, /variant\.final_price\.formated_price/);
+    assert.match(options, /\$event\.target\.value/);
+    assert.match(options, /selected_configurable_option/);
+    assert.match(product, /selectedVariant && !selectedVariant\.value/);
+    assert.match(product, /url: "\/fast\/checkout"/);
+    assert.match(official('views/products/view.twig'), /domain\+"\/fast\/checkout"/);
+});
+
+test('cart retains Twsaa authoritative totals, routes and visible coupon errors', () => {
+    const cart = read('views/checkout/cart/index.twig');
+    const summary = read('views/checkout/total/summary.twig');
+    assert.match(cart, /route\('shop\.checkout\.cart\.coupon\.apply'\)/);
+    assert.match(cart, /route\('shop\.checkout\.coupon\.remove\.coupon'\)/);
+    assert.match(cart, /if \(couponCodeInput && applyCouponBtn\)/);
+    assert.match(cart, /\$\('#error-message'\)/);
+    assert.doesNotMatch(cart, /\$\('#error-message-container'\)/);
+    assert.match(summary, /cart\.base_grand_total/);
+    assert.doesNotMatch(summary, /data-base-grand-total\s*\*/);
+});
