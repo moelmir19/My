@@ -64,6 +64,14 @@ jobs:
       - name: JavaScript syntax — custom categories
         run: node --check assets/js/subcove-categories.js
 
+      - name: Verify SubCove uses Twsaa data contracts
+        run: |
+          grep -q "getFunction('getCategories')" views/home/categories-grid.twig
+          grep -q "js/subcove-categories.js" views/home/categories-grid.twig
+          grep -q "route('cart.add', product.product_id)" views/products/view.twig
+          grep -q "route('shop.checkout.cart.remove'" views/checkout/cart/index.twig
+          ! grep -R -n -E "/subscriptions/(netflix|youtube|osn)|/subscription/add|subcove-(netflix|youtube|osn)" views assets/js
+
       - name: Run source/official Twsaa contract tests
         env:
           TWSAA_UPSTREAM: /tmp/twsaa-upstream
