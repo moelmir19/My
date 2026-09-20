@@ -73,11 +73,12 @@ test('fresh /category HTML drives name, URL, image, ordering, and excludes child
             '<li parent="2"><a href="/products">All products</a></li>'
         ].join('');
 
-        await page.route('**/category', (route) => route.fulfill({
+        let endpointCalls = 0;
+        await page.route('**/category', (route) => { endpointCalls += 1; return route.fulfill({
             status: 200,
             contentType: 'text/html; charset=utf-8',
             body: html
-        }));
+        }); }));
 
         await visit(page);
         await page.waitForTimeout(1000);
@@ -104,14 +105,15 @@ test('fresh /category HTML drives name, URL, image, ordering, and excludes child
 test('official JSON HTML wrapper is accepted, as well as HTML fragments', async () => {
     const page = await browser.newPage();
     try {
-        await page.route('**/category', (route) => route.fulfill({
+        let endpointCalls = 0;
+        await page.route('**/category', (route) => { endpointCalls += 1; return route.fulfill({
             status: 200,
             contentType: 'application/json',
             body: JSON.stringify({
                 success: true,
                 html: '<li parent="0"><a href="/shahid">Shahid</a></li>'
             })
-        }));
+        }); }));
         await visit(page);
         await page.waitForTimeout(1000);
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
