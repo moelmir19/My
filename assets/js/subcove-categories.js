@@ -222,8 +222,11 @@
 
                 if (render(html)) {
                     hasCategories = true;
-                } else if (!hasCategories) {
-                    throw new Error('Twsaa /category returned no category links');
+                } else {
+                    console.warn('SubCove categories: /category has no top-level links:', String(html).slice(0, 200));
+                    if (!hasCategories) {
+                        throw new Error('Twsaa /category returned no category links');
+                    }
                 }
             })
             .catch(function (error) {
