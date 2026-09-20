@@ -81,7 +81,10 @@ test('fresh /category HTML drives name, URL, image, ordering, and excludes child
         }); });
 
         await visit(page);
-        await page.waitForTimeout(1000);
+        await page.waitForFunction(() =>
+            document.getElementById('qs-platform-category-grid')?.dataset.categorySource === 'endpoint',
+            { timeout: 10000 }
+        );
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
         console.log('HTML endpoint returned cards:', JSON.stringify(debugNames));
         console.log('HTML endpoint intercepted requests:', endpointCalls);
@@ -116,7 +119,10 @@ test('official JSON HTML wrapper is accepted, as well as HTML fragments', async 
             })
         }); });
         await visit(page);
-        await page.waitForTimeout(1000);
+        await page.waitForFunction(() =>
+            document.getElementById('qs-platform-category-grid')?.dataset.categorySource === 'endpoint',
+            { timeout: 10000 }
+        );
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
         console.log('Single-category endpoint returned cards:', JSON.stringify(debugNames));
         if (typeof endpointCalls !== 'undefined') console.log('JSON endpoint intercepted requests:', endpointCalls);
@@ -161,7 +167,10 @@ test('category image may come from its genuine platform category page', async ()
             body: '<div class="category-block"><div class="hero-image"><img src="https://cdn.twsaa.com/my-category.jpg"></div></div>'
         }));
         await visit(page);
-        await page.waitForTimeout(1000);
+        await page.waitForFunction(() =>
+            document.getElementById('qs-platform-category-grid')?.dataset.categorySource === 'endpoint',
+            { timeout: 10000 }
+        );
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
         console.log('Single-category endpoint returned cards:', JSON.stringify(debugNames));
         assert.equal(debugNames.length, 1, 'One upstream category must render as one card');
