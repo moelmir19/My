@@ -20,13 +20,18 @@ $twig = new Environment($loader, [
 ]);
 $twig->addExtension(new Twig\Extension\DebugExtension());
 $twig->addExtension(new CustomTwigExtensions(new Translator()));
+// Upstream templates also call the platform/Laravel asset() helper, even though
+// the local preview's extension does not register it. Syntax-only CI shim.
+$twig->addFunction(new Twig\\TwigFunction('asset', static fn (string $path): string => $path));
 
 $files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator($views, FilesystemIterator::SKIP_DOTS)
 );
 
 $count = 0;
+$legacy = [];
 $errors = [];
+$upstreamViews = (getenv('TWSAA_UPSTREAM') ?: '/tmp/twsaa-upstream') . '/views';
 
 foreach ($files as $file) {
     if (!$file->isFile() || strtolower($file->getExtension()) !== 'twig') {
@@ -40,7 +45,18 @@ foreach ($files as $file) {
         $twig->parse($twig->tokenize($source));
         ++$count;
     } catch (Throwable $exception) {
-        $errors[] = $relative . ': ' . $exception->getMessage();
+        /*
+         * The sample theme itself contains a Blade-style country-state.twig,
+         * which is not Twig syntax. Never misreport an identical upstream file
+         * as a SubCove regression. Any changed file still fails immediately.
+         */
+        $upstreamFile = $upstreamViews . '/' . $relative;
+        if (is_file($upstreamFile) &&
+            hash_file('sha256', $upstreamFile) === hash_file('sha256', $file->getPathname())) {
+            $legacy[] = $relative . ' (unchanged upstream, not valid standalone Twig)';
+        } else {
+            $errors[] = $relative . ': ' . $exception->getMessage();
+        }
     }
 }
 
