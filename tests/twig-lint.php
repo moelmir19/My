@@ -22,7 +22,7 @@ $twig->addExtension(new Twig\Extension\DebugExtension());
 $twig->addExtension(new CustomTwigExtensions(new Translator()));
 // Upstream templates also call the platform/Laravel asset() helper, even though
 // the local preview's extension does not register it. Syntax-only CI shim.
-$twig->addFunction(new Twig\\TwigFunction('asset', static fn (string $path): string => $path));
+$twig->addFunction(new Twig\TwigFunction('asset', static fn (string $path): string => $path));
 
 $files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator($views, FilesystemIterator::SKIP_DOTS)
@@ -61,6 +61,10 @@ foreach ($files as $file) {
 }
 
 echo "Twig templates parsed: {$count}\n";
+echo "Unmodified upstream non-Twig templates excluded: " . count($legacy) . "\n";
+foreach ($legacy as $name) {
+    echo "  - {$name}\n";
+}
 
 if ($errors) {
     fwrite(STDERR, implode("\n", $errors) . "\n");
