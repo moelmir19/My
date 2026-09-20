@@ -6624,3 +6624,52 @@ textarea::placeholder{
 .qs-review-quote{
   font-family:var(--qs-font)!important;
 }
+
+
+/* Twsaa category navigation: restore functionality while retaining SubCove's header. */
+.qs-header .qs-platform-nav {
+  background: var(--qs-surface, #151a17);
+  border-bottom: 1px solid var(--qs-line, #303c35);
+}
+.qs-header .qs-platform-nav .qs-container {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.qs-header .qs-platform-nav .category-navbar {
+  display: flex !important;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+}
+.qs-header .qs-platform-nav .category-navbar li { position: relative; list-style: none; }
+.qs-header .qs-platform-nav .category-navbar a {
+  color: var(--qs-text, #e8f0eb) !important;
+  display: block;
+  padding: 6px 9px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.qs-header .qs-platform-nav .category-navbar a:hover { color: var(--qs-green-dark, #94b7a5) !important; }
+.qs-header .qs-platform-nav .category-navbar li ul {
+  display: none;
+  position: absolute;
+  z-index: 50;
+  top: 100%;
+  right: 0;
+  min-width: 170px;
+  background: var(--qs-surface, #151a17);
+  border: 1px solid var(--qs-line, #303c35);
+  padding: 7px;
+  list-style: none;
+}
+.qs-header .qs-platform-nav .category-navbar li:hover > ul,
+.qs-header .qs-platform-nav .category-navbar li:focus-within > ul { display: block; }
+.qs-header .qs-platform-nav .category-navbar li ul li { display: block; }
+@media (max-width: 767px) {
+  .qs-header .qs-platform-nav .category-navbar { gap: 5px; font-size: 13px; }
+}
