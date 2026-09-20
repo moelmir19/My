@@ -3,13 +3,12 @@
 {% block title %} main {% endblock %}
 
 {% block main_content %}
-<div class="home home-categories-only">
-
-    {# Primary banner only #}
+<div class="home home-subcove">
+    {# Keep SubCove's first banner and category cards at the top. #}
     {% set primary_banner_rendered = false %}
     {% for content in homeContent %}
         {% if not primary_banner_rendered
-            and ('fixed_banner' == content['slug'] or 'wide_banner' == content['slug'])
+            and content['slug'] in ['fixed_banner', 'wide_banner']
             and content['settings']['image'] %}
             <div class="home-primary-banner">
                 {% include 'custom/bold-banner.twig' with {'content': content} %}
@@ -18,11 +17,71 @@
         {% endif %}
     {% endfor %}
 
-    {# Categories only — products are intentionally excluded from homepage #}
-    {% set categories = getFunction('getHomepageCategories') %}
-    {% include 'home/categories-grid.twig' with {'categories': categories} %}
+    {% include 'home/categories-grid.twig' %}
+
+    {# Every merchant-configured official homeContent block remains renderable. #}
+    {% set primary_banner_skipped = false %}
+    {% for content in homeContent %}
+        {% if content['slug'] in ['fixed_banner', 'wide_banner'] and content['settings']['image'] %}
+            {% if not primary_banner_skipped %}
+                {% set primary_banner_skipped = true %}
+            {% else %}
+                {% include 'custom/bold-banner.twig' with {'content': content} %}
+            {% endif %}
+        {% elseif content['slug'] == 'youtube' and content['settings']['youtube_url'] %}
+            {% include 'custom/video.twig' with {'content': content} %}
+        {% elseif content['slug'] == 'customer_options' %}
+            {% include 'custom/customer-options.twig' with {'content': content} %}
+        {% elseif content['slug'] == 'store_features' %}
+            {% include 'custom/store-features.twig' with {'content': content} %}
+        {% elseif content['slug'] == 'brands' %}
+            {% include 'custom/brands.twig' with {'content': content} %}
+        {% elseif content['slug'] == 'list_of_items' %}
+            {% if content['settings']['type'] == 'slider' %}
+                {% include 'custom/list-of-items-slider.twig' with {'content': content} %}
+            {% else %}
+                {% include 'custom/list-of-items.twig' with {'content': content} %}
+            {% endif %}
+        {% elseif content['slug'] == 'fixed_products' %}
+            <div class="home-products-stream">
+                {% include 'home/fixed-products-block.twig' with {'content': content} %}
+            </div>
+        {% endif %}
+    {% endfor %}
 
     {% include 'home/faq-reviews.twig' %}
-
 </div>
+{% endblock %}
+
+{% block footer_scripts %}
+<script>
+    // Same /fetch-home-products endpoint and data contract used by Twsaa's main theme.
+    $(function () {
+        $('.load-products').each(function () {
+            var block = $(this);
+            $.ajax({
+                url: '/fetch-home-products',
+                type: 'GET',
+                data: { id: block.data('id'), type: block.data('type'), limit: block.data('limit') },
+                success: function (html) {
+                    block.html(html);
+                    if ($.fn.owlCarousel) {
+                        block.find('.product-slider, .owl-carousel').each(function () {
+                            if (!$(this).hasClass('owl-loaded')) {
+                                $(this).owlCarousel({
+                                    loop: false, autoplay: true, autoplayTimeout: 4000,
+                                    autoWidth: true, margin: 15, nav: false,
+                                    rtl: {{ lang == 'ar' ? 'true' : 'false' }}
+                                });
+                            }
+                        });
+                    }
+                },
+                error: function (xhr) {
+                    console.error('Unable to load platform home products', xhr.status);
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
