@@ -79,7 +79,11 @@
         </div>
 
         <div class="qs-footer__bottom">
-            <p>© {{ "now"|date("Y") }} {{ lang == 'ar' ? 'حقوق الطبع والنشر' : 'All rights reserved' }} · {{ channel.name }}</p>
+            {% if getConfig('config.general.show-platform-message') == 0 %}
+                <p>© {{ "now"|date("Y") }} {{ lang == 'ar' ? 'حقوق الطبع والنشر' : 'All rights reserved' }} · {{ channel.name }}</p>
+            {% else %}
+                <p>{{ ('admin::app.footer.twsaa-reserved'|trans) }} {{ "now"|date("Y") }} | {{ ('admin::app.users.sessions.company'|trans) }}</p>
+            {% endif %}
         </div>
     </div>
 </footer>
