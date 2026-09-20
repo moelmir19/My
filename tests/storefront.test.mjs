@@ -78,7 +78,7 @@ test('fresh /category HTML drives name, URL, image, ordering, and excludes child
             status: 200,
             contentType: 'text/html; charset=utf-8',
             body: html
-        }); }));
+        }); });
 
         await visit(page);
         await page.waitForTimeout(1000);
@@ -114,7 +114,7 @@ test('official JSON HTML wrapper is accepted, as well as HTML fragments', async 
                 success: true,
                 html: '<li parent="0"><a href="/shahid">Shahid</a></li>'
             })
-        }); }));
+        }); });
         await visit(page);
         await page.waitForTimeout(1000);
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
