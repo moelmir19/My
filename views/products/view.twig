@@ -308,6 +308,12 @@
                 form.reportValidity();
                 return;
             }
+            // A complete, valid Twsaa variant must be selected before submitting.
+            var selectedVariant = form.querySelector('#selected_configurable_option');
+            if (selectedVariant && !selectedVariant.value) {
+                if (window.qsCartNotice) window.qsCartNotice('اختر باقة أو خيارات متاحة للمنتج', 'warning');
+                return;
+            }
             $('#is_buy_now').val(submitter && submitter.classList.contains('buynow') ? 1 : 0);
             form.submit();
         });
