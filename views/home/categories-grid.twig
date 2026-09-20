@@ -31,7 +31,7 @@ $(function () {
                 var normalized = name.toLowerCase().replace(/\s+/g, '');
                 var image = /netflix|نتفلكس/.test(normalized) ? images.netflix
                     : /youtube|يوتيوب/.test(normalized) ? images.youtube
-                    : /osn|اوإسان|اواسأن|اواس‌ان/.test(normalized) ? images.osn : fallback;
+                    : /osn|اواسان|اوسن/.test(normalized) ? images.osn : fallback;
 
                 var card = $('<a class="home-service-link-card"></a>').attr('href', url);
                 $('<div class="home-service-link-card__media"></div>')
