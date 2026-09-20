@@ -155,7 +155,7 @@ $(function () {
                 }
                 if (resolved.origin !== window.location.origin ||
                     !/^https?:$/.test(resolved.protocol) ||
-                    ['/products', '/brands'].includes(resolved.pathname.replace(/\\/$/, ''))) {
+                    ['/products', '/brands'].includes(resolved.pathname.replace(/\/$/, ''))) {
                     return;
                 }
 
