@@ -186,6 +186,10 @@ test('local preview renders homepage, categories, product types, cart, and custo
         const body = await response.text();
         assert.equal(response.status, 200, path + ' returned ' + response.status + ': ' + body.slice(0, 400));
         assert.doesNotMatch(body, /Fatal error:|Uncaught Twig\\|Uncaught Error:/i, path);
-        assert.match(body, /<html/i, path + ' did not render an HTML page');
+        if (path === '/category') {
+            assert.match(body, /<li\\b[^>]*parent=/i, 'Official category endpoint is an HTML fragment');
+        } else {
+            assert.match(body, /<html/i, path + ' did not render an HTML page');
+        }
     }
 });
