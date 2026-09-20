@@ -20,6 +20,9 @@
 
         var locale = (document.documentElement.lang || 'ar').toLowerCase();
         var imageRequests = new WeakSet();
+        var lastRenderedHtml = '';
+        var lastRenderedSource = '';
+        var lastRenderedGrid = null;
 
         function normalizeImage(raw, pageUrl) {
             if (!raw) return '';
@@ -173,9 +176,19 @@
             // grid captured when this script first ran.
             var activeGrid = document.getElementById('qs-platform-category-grid');
             var activeSection = document.getElementById('qs-home-categories');
-            if (!activeGrid || !activeSection || !activeGrid.isConnected) return false;
+            // Keep a valid platform response even if Vue temporarily removed the grid.
+            // The observer below will render it into the next live grid.
+            if (!activeGrid || !activeSection || !activeGrid.isConnected) {
+                lastRenderedHtml = html;
+                lastRenderedSource = source || 'platform';
+                lastRenderedGrid = null;
+                return false;
+            }
 
             activeGrid.replaceChildren(cards);
+            lastRenderedHtml = html;
+            lastRenderedSource = source || 'platform';
+            lastRenderedGrid = activeGrid;
             activeGrid.setAttribute('data-category-source', source || 'platform');
             activeGrid.setAttribute('aria-busy', 'false');
             activeSection.hidden = false;
@@ -206,7 +219,22 @@
         // Render upstream getCategories() as soon as possible, then refresh from
         // the same /category endpoint the official navbar relies upon.
         var fallbackHtml = fallback ? fallback.innerHTML : '';
-        var hasCategories = render(fallbackHtml, 'server');
+        render(fallbackHtml, 'server');
+
+        // The platform may replace the grid AFTER the initial request succeeds.
+        // Checking only when the AJAX callback runs misses that later replacement.
+        // Restore only a missing/replaced grid; never rebuild on unrelated mutations.
+        if ('MutationObserver' in window) {
+            var gridObserver = new MutationObserver(function () {
+                var liveGrid = document.getElementById('qs-platform-category-grid');
+                if (!liveGrid || !liveGrid.isConnected || !lastRenderedHtml) return;
+                if (liveGrid !== lastRenderedGrid ||
+                    !liveGrid.querySelector('.home-service-link-card')) {
+                    render(lastRenderedHtml, lastRenderedSource);
+                }
+            });
+            gridObserver.observe(document.documentElement, { childList: true, subtree: true });
+        }
 
         // Twsaa's own navbar uses jQuery AJAX with the identical endpoint.
         // Its live response may be raw HTML or { html: '...' }.
@@ -223,9 +251,7 @@
                     ? response.html
                     : response;
 
-                if (render(html, 'endpoint')) {
-                    hasCategories = true;
-                } else {
+                if (!render(html, 'endpoint')) {
                     console.warn('SubCove categories: /category has no top-level links.');
                 }
             },
