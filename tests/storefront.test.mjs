@@ -200,6 +200,40 @@ test('category image may come from its genuine platform category page', async ()
     }
 });
 
+test('categories survive Vue replacing the grid after /category has succeeded', async () => {
+    const page = await browser.newPage();
+    try {
+        await page.route('**/category', (route) => route.fulfill({
+            status: 200,
+            contentType: 'text/html',
+            body: '<li parent="0"><a href="/new-merchant-category" data-category-image="https://cdn.twsaa.com/category.jpg">New merchant category</a></li>'
+        }));
+        await visit(page);
+        await page.waitForFunction(() =>
+            document.getElementById('qs-platform-category-grid')?.dataset.categorySource === 'endpoint'
+        );
+
+        // The original grid is detached after the AJAX callback, not before it.
+        await page.evaluate(() => {
+            const former = document.getElementById('qs-platform-category-grid');
+            const replacement = document.createElement('div');
+            replacement.id = former.id;
+            replacement.className = former.className;
+            former.replaceWith(replacement);
+        });
+        await page.waitForFunction(() =>
+            document.querySelector('#qs-platform-category-grid [href$="/new-merchant-category"]')
+        );
+        const liveGrid = page.locator('#qs-platform-category-grid');
+        assert.equal(await liveGrid.getAttribute('data-category-source'), 'endpoint');
+        assert.equal(await liveGrid.getAttribute('aria-busy'), 'false');
+        assert.equal(await liveGrid.locator('.home-service-link-card').count(), 1);
+        assert.equal(await liveGrid.locator('img').getAttribute('src'), 'https://cdn.twsaa.com/category.jpg');
+    } finally {
+        await page.close();
+    }
+});
+
 test('cards stay in the existing responsive SubCove layout', async () => {
     const page = await browser.newPage({ viewport: { width: 1366, height: 800 } });
     try {
