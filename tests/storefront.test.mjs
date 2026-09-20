@@ -65,7 +65,7 @@ test('homepage renders actual Twsaa category data without a manual homepage list
             'The official fixture contains category mob');
         // The upstream HTML is input data for cards, not a second visible list.
         const fallback = page.locator('#qs-platform-category-fallback');
-        assert.equal(await fallback.getAttribute('hidden'), '',
+        assert.equal(await fallback.isHidden(), true,
             'The stored category data must remain hidden');
         assert.match(await fallback.getAttribute('data-category-html') || '', /<li\\b/,
             'The official category HTML must remain available for the cards');
