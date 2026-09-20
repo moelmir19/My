@@ -3,95 +3,25 @@
 {% block title %} main {% endblock %}
 
 {% block main_content %}
-<div class="home home-subcove">
-    {# Keep SubCove's first banner and category cards at the top. #}
-    {% set primary_banner_rendered = false %}
-    {% for content in homeContent %}
-        {% if not primary_banner_rendered
-            and content['slug'] in ['fixed_banner', 'wide_banner']
-            and content['settings']['image'] %}
-            <div class="home-primary-banner">
-                {% include 'custom/bold-banner.twig' with {'content': content} %}
-            </div>
-            {% set primary_banner_rendered = true %}
-        {% endif %}
-    {% endfor %}
-    {% if not primary_banner_rendered %}
-        <div class="home-primary-banner">
-            <div class="qs-primary-banner">
-                <img class="qs-primary-banner__image"
-                     src="{{ asset_url ~ 'images/subcove-banner.png' }}"
-                     alt="{{ lang == 'ar' ? 'بنر SubCove' : 'SubCove banner' }}"
-                     loading="eager" decoding="async">
-            </div>
-        </div>
-    {% endif %}
+<div class="home home-categories-only">
 
+    {# SubCove visual identity stays fixed; platform data is used inside the category/product flows. #}
+    <div class="home-primary-banner">
+        <div class="qs-primary-banner">
+            <img
+                class="qs-primary-banner__image"
+                src="{{ asset_url ~ 'images/subcove-banner.png' }}"
+                alt="{{ lang == 'ar' ? 'بنر SubCove' : 'SubCove banner' }}"
+                loading="eager"
+                decoding="async">
+        </div>
+    </div>
+
+    {# Same SubCove category-card UI, backed by Twsaa's official /category endpoint. #}
     {% include 'home/categories-grid.twig' %}
 
-    {# Every merchant-configured official homeContent block remains renderable. #}
-    {% set primary_banner_skipped = false %}
-    {% for content in homeContent %}
-        {% if content['slug'] in ['fixed_banner', 'wide_banner'] and content['settings']['image'] %}
-            {% if not primary_banner_skipped %}
-                {% set primary_banner_skipped = true %}
-            {% else %}
-                {% include 'custom/bold-banner.twig' with {'content': content} %}
-            {% endif %}
-        {% elseif content['slug'] == 'youtube' and content['settings']['youtube_url'] %}
-            {% include 'custom/video.twig' with {'content': content} %}
-        {% elseif content['slug'] == 'customer_options' %}
-            {% include 'custom/customer-options.twig' with {'content': content} %}
-        {% elseif content['slug'] == 'store_features' %}
-            {% include 'custom/store-features.twig' with {'content': content} %}
-        {% elseif content['slug'] == 'brands' %}
-            {% include 'custom/brands.twig' with {'content': content} %}
-        {% elseif content['slug'] == 'list_of_items' %}
-            {% if content['settings']['type'] == 'slider' %}
-                {% include 'custom/list-of-items-slider.twig' with {'content': content} %}
-            {% else %}
-                {% include 'custom/list-of-items.twig' with {'content': content} %}
-            {% endif %}
-        {% elseif content['slug'] == 'fixed_products' %}
-            <div class="home-products-stream">
-                {% include 'home/fixed-products-block.twig' with {'content': content} %}
-            </div>
-        {% endif %}
-    {% endfor %}
-
+    {# Keep the custom SubCove FAQ/reviews section. #}
     {% include 'home/faq-reviews.twig' %}
-</div>
-{% endblock %}
 
-{% block footer_scripts %}
-<script>
-    // Same /fetch-home-products endpoint and data contract used by Twsaa's main theme.
-    $(function () {
-        $('.load-products').each(function () {
-            var block = $(this);
-            $.ajax({
-                url: '/fetch-home-products',
-                type: 'GET',
-                data: { id: block.data('id'), type: block.data('type'), limit: block.data('limit') },
-                success: function (html) {
-                    block.html(html);
-                    if ($.fn.owlCarousel) {
-                        block.find('.product-slider, .owl-carousel').each(function () {
-                            if (!$(this).hasClass('owl-loaded')) {
-                                $(this).owlCarousel({
-                                    loop: false, autoplay: true, autoplayTimeout: 4000,
-                                    autoWidth: true, margin: 15, nav: false,
-                                    rtl: {{ lang == 'ar' ? 'true' : 'false' }}
-                                });
-                            }
-                        });
-                    }
-                },
-                error: function (xhr) {
-                    console.error('Unable to load platform home products', xhr.status);
-                }
-            });
-        });
-    });
-</script>
+</div>
 {% endblock %}
