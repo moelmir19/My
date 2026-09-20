@@ -58,9 +58,7 @@
                             item['additional']['options'] : 
                             [item]) %}
 
-                            {% set cartItemHref = item.is_demo_subscription|default(false)
-                                ? '/' ~ item.product.url_key
-                                : route('shop.productOrCategory.index', url_key) %}
+                            {% set cartItemHref = route('shop.productOrCategory.index', url_key) %}
                             <div class="item"
                                 data-unit-price="{{ item.base_price|default(item.price)|default(0) }}"
                                 data-tax-percent="{{ item.tax_percent|default(0) }}"
@@ -159,13 +157,13 @@
                                         <span class="remove">
                                             <a
                                                 class="cart-remove-link"
-                                                href="/cart/remove?{% if item.is_demo_subscription|default(false) %}demo_key={{ item.demo_key|url_encode }}{% else %}id={{ item.id }}{% endif %}"
+                                                href="{{ route('shop.checkout.cart.remove', { 'id': item.id, 'option': optionKey }) }}" onclick="removeLink(event)"
                                                 aria-label="حذف المنتج">
                                                 <span class="icon-close-mini"><i class="fa fa-times"></i></span>
                                             </a>
                                         </span>
                                     
-                                        {% if authUser and not item.is_demo_subscription|default(false) %}
+                                        {% if authUser %}
                                             <span class="towishlist">
                                                 {% if item.parent_id | length == 0 %}
                                                     <a href="{{ route('shop.movetowishlist', item.id ) }}" onclick="removeLink(event)">
@@ -189,6 +187,125 @@
                                 
             
                                     
+
+                                    {% if item.type == 'customizable' %}
+                                        <div class="hydrated mt-20">
+                                            {% for itemOption in item.product.customizable %}
+                                                <div class="s-product-options-option-container" data-option-id="{{ itemOption.id }}">
+                                                    <div class="s-product-options-option" data-option-type="{{ itemOption.type }}" data-option-required="true">
+                                                        <label for="options[{{ itemOption.id }}]" class="s-product-options-option-label">
+                                                            <b> {{ itemOption.option_name }}
+                                                                {% if itemOption.required == 'on' %}
+                                                                    <span> * </span>
+                                                                {% endif %}
+                                                            </b>
+                                                        </label>
+                                                        <div class="s-product-options-option-content">
+                                                            <div class="s-product-options-{{ itemOption.type }}">
+                                                                {% if itemOption.type == 'text' or itemOption.type == 'number' %}
+                                                                    <input type="{{ itemOption.type }}" class="s-form-control" 
+                                                                        {% if itemOption.required == 'on' %} required {% endif %}
+                                                                        name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
+                                                                        placeholder="" value="{{ optionValue[itemOption.id] |length > 0 ? optionValue[itemOption.id] : '' }}">
+                                                                {% elseif itemOption.type == 'textarea' %}
+                                                                    <textarea rows="4" class="s-form-control"
+                                                                        {% if itemOption.required == 'on' %} required {% endif %}
+                                                                        id="options[{{ itemOption.id }}]" 
+                                                                        name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
+                                                                        placeholder="">{{ optionValue[itemOption.id] |length > 0 ? optionValue[itemOption.id] : '' }}</textarea>
+                                                                {% elseif itemOption.type == 'radio' %}
+                                                                    <select name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}][]" class="s-form-control"
+                                                                        {% if itemOption.required == 'on' %} required {% endif %}>
+                                                                        <option value="">{{ 'admin::app.catalog.products.choose' | trans }}</option>
+                                                                        {% for option in itemOption.productOptions %}
+                                                                            <option value="{{ option.id }}" 
+                                                                                {% if option.id in (optionValue[itemOption.id]) %} selected {% endif %}>
+                                                                                {{ option.option_details_name }}  {{ cart.cart_currency_code }}  {{ option.details_price }}
+                                                                            </option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                {% elseif itemOption.type == 'checkbox' %}
+                                                                    <div class="s-product-options-multiple-options-wrapper required">
+                                                                        {% for option in itemOption.productOptions %}
+                                                                            <div>
+                                                                                <input type="checkbox" value="{{ option.id }}" 
+                                                                                    name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}][]" 
+                                                                                    id="field-{{ itemOption.id }}-{{ option.id }}" 
+                                                                                    aria-describedby="options[{{ itemOption.id }}]-description"
+                                                                                    {% if itemOption.required == 'on' %} required {% endif %}
+                                                                                    {% if option.id in (optionValue[itemOption.id]) %} checked {% endif %}>
+                                                                                <label for="field-{{ itemOption.id }}-{{ option.id }}">
+                                                                                    {{ option.option_details_name }} {{ cart.cart_currency_code }} {{option.details_price}}
+                                                                                </label>
+                                                                            </div>
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                {% elseif itemOption.type == 'image' %}
+                                                                    <div>
+                                                                        {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %}
+                                                                            <div class="row">
+                                                                                <div class="form-group program-edited">
+                                                                                    <img class="program-edited-image" width="250px"
+                                                                                        src="{{ storage_url ~ optionValue[itemOption.id] }}">
+                                                                                    <input type="hidden" name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]"
+                                                                                        value="{{ optionValue[itemOption.id] }}">
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        <div class="s-product-options-image-input required s-file-upload hydrated 
+                                                                            {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %} d-none {% endif %}">
+                                                                            <input type="file" class="my-pond" id="filepond-image" 
+                                                                                name="hidden-options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]"
+                                                                                {% if itemOption.required == 'on' %} required {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                {% elseif itemOption.type == 'file' %}
+                                                                    <div>
+                                                                        {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %}
+                                                                            <div class="row">
+                                                                                <div class="form-group program-edited">
+                                                                                    <img class="program-edited-image" width="250px"
+                                                                                        src="{{ storage_url ~ optionValue[itemOption.id] }}">
+                                                                                    <input type="hidden" name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]"
+                                                                                        value="{{ optionValue[itemOption.id] }}">
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                        <div class="s-product-options-image-input required s-file-upload hydrated 
+                                                                            {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %} d-none {% endif %}">
+                                                                            <input type="file" id="filepond-file" class="my-pond"
+                                                                                name="hidden-options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
+                                                                                {% if itemOption.required == 'on' %} required {% endif %}>    
+                                                                        </div>
+                                                                    </div>
+                                                                {% elseif itemOption.type == 'color_picker' %}
+                                                                    <input type="color" class="form-control form-control-color" 
+                                                                        {% if itemOption.required == 'on' %} required {% endif %}
+                                                                        name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
+                                                                        value="#ff2402">
+                                                                {% elseif itemOption.type == 'date' %}
+                                                                    <input type="date" class="form-control form-control-color" 
+                                                                        {% if itemOption.required == 'on' %} required {% endif %}
+                                                                        name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
+                                                                        value="{{ optionValue[itemOption.id] |length > 0 ? optionValue[itemOption.id] : '' }}">
+                                                                {% elseif itemOption.type == 'time' %}
+                                                                    <input type="time" class="form-control form-control-color" 
+                                                                        {% if itemOption.required == 'on' %} required {% endif %}
+                                                                        name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
+                                                                        value="{{ optionValue[itemOption.id] |length > 0 ? optionValue[itemOption.id] : '' }}">
+                                                                {% elseif itemOption.type == 'datetime' %}
+                                                                    <input type="datetime-local" class="form-control form-control-color" 
+                                                                        {% if itemOption.required == 'on' %} required {% endif %}
+                                                                        name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
+                                                                        value="{{ optionValue[itemOption.id] |length > 0 ? optionValue[itemOption.id] : '' }}">
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
@@ -571,261 +688,39 @@
 </script>
 
 <script>
+// Update quantities through the official cart.update form; only the server knows final totals.
 (function () {
-    var submitTimer = null;
-
-    function toNumber(value) {
-        var parsed = parseFloat(value);
-        return isFinite(parsed) ? parsed : 0;
-    }
-
-    function toInt(value) {
-        var parsed = parseInt(value, 10);
-        return isFinite(parsed) ? parsed : 1;
-    }
-
-    function getForm() {
-        return document.getElementById('cart-update-form');
-    }
-
-    function getCurrency() {
-        var form = getForm();
-        return form ? (form.getAttribute('data-currency') || 'SAR') : 'SAR';
-    }
-
-    function money(value) {
-        var n = toNumber(value);
-        return getCurrency() + ' ' + n.toFixed(2).replace(/\.00$/, '');
-    }
-
+    var timer;
     function normalize(input) {
-        var qty = toInt(input.value);
-        if (qty < 1) qty = 1;
-
-        var rawMax = input.getAttribute('max');
-        var max = toInt(rawMax);
-
-        if (rawMax !== null && rawMax !== '' && max > 0 && qty > max) {
-            qty = max;
-        }
-
+        var qty = parseInt(input.value, 10);
+        if (!isFinite(qty) || qty < 1) qty = 1;
+        var max = parseInt(input.getAttribute('max'), 10);
+        if (isFinite(max) && max > 0) qty = Math.min(qty, max);
         input.value = qty;
         return qty;
     }
-
-    function getUnitPrice(item) {
-        var priceEl = item.querySelector('.cart-line-price');
-
-        if (priceEl) {
-            var fromPrice = toNumber(priceEl.getAttribute('data-unit-price'));
-            if (fromPrice > 0) return fromPrice;
-        }
-
-        return toNumber(item.getAttribute('data-unit-price'));
+    function save(input) {
+        var form = input.closest('form');
+        if (!form || !form.action) return;
+        clearTimeout(timer);
+        timer = setTimeout(function () { form.submit(); }, 700);
     }
-
-    function refreshLine(input) {
-        var item = input.closest('.item');
-        if (!item) return;
-
-        var priceEl = item.querySelector('.cart-line-price');
-        if (!priceEl) return;
-
-        var qty = normalize(input);
-        var unitPrice = getUnitPrice(item);
-
-        priceEl.textContent = money(unitPrice * qty);
-    }
-
-    function recalculateSummary() {
-        var subtotal = 0;
-        var tax = 0;
-
-        document.querySelectorAll('.cart .item').forEach(function (item) {
-            var input = item.querySelector('.qtyBox');
-            var qty = input
-                ? normalize(input)
-                : Math.max(1, toInt(item.getAttribute('data-quantity') || '1'));
-
-            var unitPrice = getUnitPrice(item);
-            var taxPercent = toNumber(item.getAttribute('data-tax-percent'));
-            var lineTotal = unitPrice * qty;
-
-            subtotal += lineTotal;
-            tax += lineTotal * (taxPercent / 100);
-        });
-
-        var form = getForm();
-        var baseGrand = form ? toNumber(form.getAttribute('data-base-grand-total')) : 0;
-        var baseSubtotal = form ? toNumber(form.getAttribute('data-base-subtotal')) : 0;
-        var baseTax = form ? toNumber(form.getAttribute('data-base-tax')) : 0;
-        var fixedAdjustment = baseGrand - baseSubtotal - baseTax;
-
-        var subtotalEl = document.querySelector('.order-summary .item-detail:first-of-type .right');
-        if (subtotalEl) subtotalEl.textContent = money(subtotal);
-
-        var taxEl = document.querySelector('.order-summary #basetaxamount');
-        if (taxEl) taxEl.textContent = money(tax);
-
-        var grandEl = document.getElementById('grand-total-amount-detail');
-        if (grandEl) grandEl.textContent = money(subtotal + tax + fixedAdjustment);
-    }
-
-    function refreshAll() {
-        document.querySelectorAll('.cart .qtyBox').forEach(function (input) {
-            refreshLine(input);
-        });
-        recalculateSummary();
-    }
-
-    function scheduleServerUpdate(input) {
-        var form = input ? input.closest('form') : getForm();
-        if (!form) return;
-
-        var action = (form.getAttribute('action') || '').trim();
-        if (!action) return;
-
-        clearTimeout(submitTimer);
-        submitTimer = setTimeout(function () {
-            if (typeof form.requestSubmit === 'function') {
-                form.requestSubmit();
-            } else {
-                form.submit();
-            }
-        }, 700);
-    }
-
     window.cartQtyStep = function (button, delta) {
         var control = button.closest('.cart-quantity');
-        if (!control) return false;
-
-        var input = control.querySelector('.qtyBox');
+        var input = control && control.querySelector('.qtyBox');
         if (!input) return false;
-
-        var current = normalize(input);
-        var next = current + delta;
-        if (next < 1) next = 1;
-
-        var rawMax = input.getAttribute('max');
-        var max = toInt(rawMax);
-
-        if (delta > 0 && rawMax !== null && rawMax !== '' && max > 0 && next > max) {
-            next = max;
-        }
-
-        input.value = next;
-
-        refreshLine(input);
-        recalculateSummary();
-        scheduleServerUpdate(input);
-
+        input.value = normalize(input) + delta;
+        normalize(input);
+        save(input);
         return false;
     };
-
     window.cartQtyInput = function (input) {
         input.value = input.value.replace(/[^0-9]/g, '');
-
-        if (input.value === '') return;
-
-        normalize(input);
-        refreshLine(input);
-        recalculateSummary();
     };
-
     window.cartQtyCommit = function (input) {
         normalize(input);
-        refreshLine(input);
-        recalculateSummary();
-        scheduleServerUpdate(input);
+        save(input);
     };
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', refreshAll);
-    } else {
-        refreshAll();
-    }
-})();
-</script>
-
-
-<script>
-(function () {
-    var toast = document.getElementById('qs-cart-toast');
-    var toastTimer = null;
-
-    function money(currency, value) {
-        var n = parseFloat(value);
-        if (!isFinite(n)) n = 0;
-        return currency + ' ' + n.toFixed(2).replace(/\.00$/, '');
-    }
-
-    function showToast(message, isError) {
-        if (!toast) return;
-        toast.textContent = message;
-        toast.classList.toggle('is-error', !!isError);
-        toast.classList.add('is-visible');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(function () {
-            toast.classList.remove('is-visible');
-        }, 2600);
-    }
-
-    function updateCount(count) {
-        document.querySelectorAll('.cart-count.count').forEach(function (el) {
-            el.textContent = count;
-        });
-    }
-
-    document.addEventListener('click', function (event) {
-        var link = event.target.closest('.cart-remove-link');
-        if (!link) return;
-
-        event.preventDefault();
-
-        var item = link.closest('.item');
-        link.style.pointerEvents = 'none';
-        link.setAttribute('aria-busy', 'true');
-
-        fetch(link.href, {
-            headers: {
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        })
-        .then(function (response) {
-            return response.json().then(function (data) {
-                if (!response.ok || !data.success) {
-                    throw new Error(data.message || 'تعذر حذف المنتج');
-                }
-                return data;
-            });
-        })
-        .then(function (data) {
-            if (item) item.remove();
-
-            updateCount(data.cart_count || 0);
-
-            var subtotalEl = document.querySelector('.order-summary .item-detail:first-of-type .right');
-            if (subtotalEl) subtotalEl.textContent = money(data.currency || 'SAR', data.subtotal);
-
-            var taxEl = document.getElementById('basetaxamount');
-            if (taxEl) taxEl.textContent = money(data.currency || 'SAR', data.tax);
-
-            var grandEl = document.getElementById('grand-total-amount-detail');
-            if (grandEl) grandEl.textContent = money(data.currency || 'SAR', data.grand_total);
-
-            showToast(data.message || 'تم حذف المنتج من السلة');
-
-            if ((data.cart_count || 0) === 0) {
-                window.location.reload();
-            }
-        })
-        .catch(function (error) {
-            link.style.pointerEvents = '';
-            link.removeAttribute('aria-busy');
-            showToast(error.message || 'تعذر حذف المنتج', true);
-        });
-    });
 })();
 </script>
 {% endblock %}
