@@ -71,7 +71,7 @@
                 });
         }
 
-        function render(html) {
+        function render(html, source) {
             if (typeof html !== 'string' || !html.trim()) return false;
 
             /*
@@ -166,10 +166,10 @@
                 cards.appendChild(card);
             });
 
-            console.warn('SubCove category parser:', 'nodes', nodes.length, 'cards', cards.childElementCount, 'preview', String(html).slice(0, 70));
             if (!cards.childElementCount) return false;
 
             grid.replaceChildren(cards);
+            grid.setAttribute('data-category-source', source || 'platform');
             grid.setAttribute('aria-busy', 'false');
             section.hidden = false;
 
@@ -199,7 +199,7 @@
         // Render upstream getCategories() as soon as possible, then refresh from
         // the same /category endpoint the official navbar relies upon.
         var fallbackHtml = fallback ? fallback.innerHTML : '';
-        var hasCategories = render(fallbackHtml);
+        var hasCategories = render(fallbackHtml, 'server');
 
         // Twsaa's own navbar uses jQuery AJAX with the identical endpoint.
         // Its live response may be raw HTML or { html: '...' }.
@@ -212,12 +212,11 @@
             url: '/category',
             type: 'GET',
             success: function (response) {
-                console.warn('SubCove CI response /category:', typeof response, String(response && response.html || response).slice(0, 180));
                 var html = response && typeof response.html === 'string'
                     ? response.html
                     : response;
 
-                if (render(html)) {
+                if (render(html, 'endpoint')) {
                     hasCategories = true;
                 } else {
                     console.warn('SubCove categories: /category has no top-level links.');
@@ -225,7 +224,7 @@
             },
             error: function (xhr) {
                 console.warn('SubCove categories: /category HTTP', xhr.status);
-                if (!hasCategories && !render(fallbackHtml)) {
+                if (!hasCategories && !render(fallbackHtml, 'server')) {
                     grid.setAttribute('aria-busy', 'false');
                     grid.textContent = locale === 'ar'
                         ? 'تعذر تحميل الأقسام حاليًا'
