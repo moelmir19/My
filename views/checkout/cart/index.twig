@@ -607,6 +607,7 @@
         e.preventDefault();
     
         const couponCode = $('#coupon-code').val().trim(); // assuming the coupon code input has id 'coupon-code'
+        $('#error-message').hide().text('');
         
         if (!couponCode) return;
     
@@ -639,12 +640,12 @@
                     }
                 } else {
                     // Display error message
-                    $('#error-message-container').text(data.message).show(); // assuming error message container has id 'error-message-container'
+                    $('#error-message').text(data.message).show(); // assuming error message container has id 'error-message-container'
                 }
                 $('#apply-coupon-btn').prop('disabled', false); // re-enable button
             },
             error: function(error) {
-                $('#error-message-container').text(error.message).show(); // assuming error message container has id 'error-message-container'
+                $('#error-message').text(error.responseJSON?.message || error.message || 'تعذر تطبيق القسيمة').show(); // assuming error message container has id 'error-message-container'
                 $('#apply-coupon-btn').prop('disabled', false); // re-enable button
             }
         });
