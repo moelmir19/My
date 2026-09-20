@@ -83,6 +83,7 @@ test('fresh /category HTML drives name, URL, image, ordering, and excludes child
         await visit(page);
         await page.waitForFunction(() =>
             document.getElementById('qs-platform-category-grid')?.dataset.categorySource === 'endpoint',
+            null,
             { timeout: 10000 }
         );
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
@@ -121,6 +122,7 @@ test('official JSON HTML wrapper is accepted, as well as HTML fragments', async 
         await visit(page);
         await page.waitForFunction(() =>
             document.getElementById('qs-platform-category-grid')?.dataset.categorySource === 'endpoint',
+            null,
             { timeout: 10000 }
         );
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
@@ -169,6 +171,7 @@ test('category image may come from its genuine platform category page', async ()
         await visit(page);
         await page.waitForFunction(() =>
             document.getElementById('qs-platform-category-grid')?.dataset.categorySource === 'endpoint',
+            null,
             { timeout: 10000 }
         );
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
