@@ -84,6 +84,7 @@ test('fresh /category HTML drives name, URL, image, ordering, and excludes child
         await page.waitForTimeout(1000);
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
         console.log('HTML endpoint returned cards:', JSON.stringify(debugNames));
+        console.log('HTML endpoint intercepted requests:', endpointCalls);
         assert.equal(debugNames.length, 2, 'Raw HTML /category must override getCategories fallback');
 
         const cards = page.locator('#qs-platform-category-grid .home-service-link-card');
@@ -118,6 +119,7 @@ test('official JSON HTML wrapper is accepted, as well as HTML fragments', async 
         await page.waitForTimeout(1000);
         const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
         console.log('Single-category endpoint returned cards:', JSON.stringify(debugNames));
+        if (typeof endpointCalls !== 'undefined') console.log('JSON endpoint intercepted requests:', endpointCalls);
         assert.equal(debugNames.length, 1, 'One upstream category must render as one card');
         assert.equal(
             await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').textContent(),
