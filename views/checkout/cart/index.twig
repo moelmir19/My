@@ -193,7 +193,7 @@
                                             {% for itemOption in item.product.customizable %}
                                                 <div class="s-product-options-option-container" data-option-id="{{ itemOption.id }}">
                                                     <div class="s-product-options-option" data-option-type="{{ itemOption.type }}" data-option-required="true">
-                                                        <label for="options[{{ itemOption.id }}]" class="s-product-options-option-label">
+                                                        <label for="options-{{ item.id }}-{{ optionKey }}-{{ itemOption.id }}" class="s-product-options-option-label">
                                                             <b> {{ itemOption.option_name }}
                                                                 {% if itemOption.required == 'on' %}
                                                                     <span> * </span>
@@ -210,7 +210,7 @@
                                                                 {% elseif itemOption.type == 'textarea' %}
                                                                     <textarea rows="4" class="s-form-control"
                                                                         {% if itemOption.required == 'on' %} required {% endif %}
-                                                                        id="options[{{ itemOption.id }}]" 
+                                                                        id="options-{{ item.id }}-{{ optionKey }}-{{ itemOption.id }}" 
                                                                         name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
                                                                         placeholder="">{{ optionValue[itemOption.id] |length > 0 ? optionValue[itemOption.id] : '' }}</textarea>
                                                                 {% elseif itemOption.type == 'radio' %}
@@ -230,11 +230,11 @@
                                                                             <div>
                                                                                 <input type="checkbox" value="{{ option.id }}" 
                                                                                     name="options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}][]" 
-                                                                                    id="field-{{ itemOption.id }}-{{ option.id }}" 
+                                                                                    id="field-{{ item.id }}-{{ optionKey }}-{{ itemOption.id }}-{{ option.id }}" 
                                                                                     aria-describedby="options[{{ itemOption.id }}]-description"
                                                                                     {% if itemOption.required == 'on' %} required {% endif %}
                                                                                     {% if option.id in (optionValue[itemOption.id]) %} checked {% endif %}>
-                                                                                <label for="field-{{ itemOption.id }}-{{ option.id }}">
+                                                                                <label for="field-{{ item.id }}-{{ optionKey }}-{{ itemOption.id }}-{{ option.id }}">
                                                                                     {{ option.option_details_name }} {{ cart.cart_currency_code }} {{option.details_price}}
                                                                                 </label>
                                                                             </div>
@@ -254,7 +254,7 @@
                                                                         {% endif %}
                                                                         <div class="s-product-options-image-input required s-file-upload hydrated 
                                                                             {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %} d-none {% endif %}">
-                                                                            <input type="file" class="my-pond" id="filepond-image" 
+                                                                            <input type="file" class="my-pond" id="filepond-image-{{ item.id }}-{{ optionKey }}-{{ itemOption.id }}" 
                                                                                 name="hidden-options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]"
                                                                                 {% if itemOption.required == 'on' %} required {% endif %}>
                                                                         </div>
@@ -273,7 +273,7 @@
                                                                         {% endif %}
                                                                         <div class="s-product-options-image-input required s-file-upload hydrated 
                                                                             {% if optionValue[itemOption.id] |length > 0 and optionValue[itemOption.id] %} d-none {% endif %}">
-                                                                            <input type="file" id="filepond-file" class="my-pond"
+                                                                            <input type="file" id="filepond-file-{{ item.id }}-{{ optionKey }}-{{ itemOption.id }}" class="my-pond"
                                                                                 name="hidden-options[{{ item.id }}][{{ optionKey }}][{{ itemOption.id }}]" 
                                                                                 {% if itemOption.required == 'on' %} required {% endif %}>    
                                                                         </div>
