@@ -1,54 +1,98 @@
-{# Category names and URLs come from Twsaa's /category endpoint, not demo subscriptions. #}
 <section class="home-categories home-demo-services">
     <div class="home-categories__heading">
         <h2>{{ lang == 'ar' ? 'الاشتراكات' : 'Subscriptions' }}</h2>
     </div>
+
     <div class="home-demo-services__grid" id="qs-platform-category-grid" aria-live="polite"></div>
 </section>
 
 <script>
 $(function () {
     var grid = $('#qs-platform-category-grid');
-    var images = {
-        netflix: "{{ asset_url ~ 'images/subcove-netflix.png' }}",
-        youtube: "{{ asset_url ~ 'images/subcove-youtube.png' }}",
-        osn: "{{ asset_url ~ 'images/subcove-osn.png' }}"
-    };
-    var fallback = "{{ asset_url ~ 'images/placeholder.svg' }}";
+
+    var services = [
+        {
+            key: 'netflix',
+            name: 'Netflix',
+            image: "{{ asset_url ~ 'images/subcove-netflix.png' }}",
+            match: /netflix|نتفلكس/i
+        },
+        {
+            key: 'youtube',
+            name: 'YouTube',
+            image: "{{ asset_url ~ 'images/subcove-youtube.png' }}",
+            match: /youtube|يوتيوب/i
+        },
+        {
+            key: 'osn',
+            name: 'OSN',
+            image: "{{ asset_url ~ 'images/subcove-osn.png' }}",
+            match: /(^|\s)osn($|\s)|اوسن|او اس ان|أو اس إن/i
+        }
+    ];
+
+    function drawCards(platformLinks) {
+        grid.empty();
+
+        services.forEach(function (service) {
+            var match = platformLinks.find(function (item) {
+                return service.match.test(item.name);
+            });
+
+            /*
+             * Production uses Twsaa's real category URL when it exists.
+             * /products is only a safe preview/fallback and never a custom backend route.
+             */
+            var href = match && match.url ? match.url : '/products';
+            var label = match && match.name ? match.name : service.name;
+
+            var card = $('<a class="home-service-link-card"></a>').attr('href', href);
+
+            $('<div class="home-service-link-card__media"></div>')
+                .append(
+                    $('<img class="home-service-link-card__image" loading="lazy" decoding="async">')
+                        .attr({ src: service.image, alt: label })
+                )
+                .appendTo(card);
+
+            $('<div class="home-service-link-card__content"></div>')
+                .append($('<strong></strong>').text(label))
+                .append($('<span></span>').text("{{ lang == 'ar' ? 'عرض الاشتراكات' : 'View subscriptions' }}"))
+                .appendTo(card);
+
+            $('<span class="home-service-link-card__arrow" aria-hidden="true">←</span>').appendTo(card);
+
+            grid.append(card);
+        });
+    }
+
+    /*
+     * Start with the exact SubCove visual layout immediately.
+     * Once Twsaa's official category endpoint answers, only the destination URLs/names are upgraded.
+     */
+    drawCards([]);
+
     $.ajax({
         url: '/category',
         type: 'GET',
         success: function (response) {
             var html = response && response.html ? response.html : response;
             if (typeof html !== 'string') return;
-            var tree = $('<ul></ul>').html(html);
-            tree.find('li').each(function () {
-                var link = $(this).children('a').first();
+
+            var tree = $('<div></div>').html(html);
+            var links = [];
+
+            tree.find('a').each(function () {
+                var link = $(this);
                 var name = $.trim(link.text());
                 var url = link.attr('href');
-                if (!name || !url) return;
 
-                var normalized = name.toLowerCase().replace(/\s+/g, '');
-                var image = /netflix|نتفلكس/.test(normalized) ? images.netflix
-                    : /youtube|يوتيوب/.test(normalized) ? images.youtube
-                    : /osn|اواسان|اوسن/.test(normalized) ? images.osn : fallback;
-
-                var card = $('<a class="home-service-link-card"></a>').attr('href', url);
-                $('<div class="home-service-link-card__media"></div>')
-                    .append($('<img class="home-service-link-card__image" loading="lazy" decoding="async">')
-                        .attr({src: image, alt: name})).appendTo(card);
-                $('<div class="home-service-link-card__content"></div>')
-                    .append($('<strong></strong>').text(name))
-                    .append($('<span></span>').text("{{ lang == 'ar' ? 'عرض المنتجات' : 'View products' }}"))
-                    .appendTo(card);
-                $('<span class="home-service-link-card__arrow" aria-hidden="true">←</span>').appendTo(card);
-                grid.append(card);
+                if (name && url) {
+                    links.push({ name: name, url: url });
+                }
             });
-            if (!grid.children().length) grid.closest('.home-categories').hide();
-        },
-        error: function () {
-            // No demo URL fallback: the production category endpoint is the source of truth.
-            grid.closest('.home-categories').hide();
+
+            drawCards(links);
         }
     });
 });
