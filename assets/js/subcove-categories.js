@@ -166,6 +166,7 @@
                 cards.appendChild(card);
             });
 
+            console.warn('SubCove category parser:', 'nodes', nodes.length, 'cards', cards.childElementCount, 'preview', String(html).slice(0, 70));
             if (!cards.childElementCount) return false;
 
             grid.replaceChildren(cards);
