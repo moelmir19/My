@@ -6632,16 +6632,15 @@ textarea::placeholder{
   border-bottom: 1px solid var(--qs-line, #303c35);
 }
 .qs-header .qs-platform-nav .qs-container {
-  overflow-x: auto;
-  scrollbar-width: thin;
+  overflow: visible; /* keep submenu accessible */
 }
 .qs-header .qs-platform-nav .category-navbar {
   display: flex !important;
   gap: 20px;
   align-items: center;
-  flex-wrap: nowrap;
-  width: max-content;
-  min-width: 100%;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
   margin: 0;
   padding: 8px 0;
   list-style: none;
