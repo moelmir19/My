@@ -6,7 +6,7 @@
     <div class="qs-container">
         <div class="qs-footer__grid">
             <div class="qs-footer__about">
-                <img class="qs-footer__logo" src="/assets/images/subcove-logo.png" alt="{{ channel.name|default('Quick Salla') }}">
+                <img class="qs-footer__logo" src="{{ asset_url ~ 'images/subcove-logo.png' }}" alt="{{ channel.name|default('Quick Salla') }}">
                 <h3>{{ lang == 'ar' ? 'من نحن' : 'About us' }}</h3>
                 <p>{{ channel.name }}</p>
                 <div class="qs-footer__social">
@@ -49,7 +49,28 @@
             <div class="qs-footer__column">
                 <h3>{{ lang == 'ar' ? 'الدفع الآمن' : 'Secure payment' }}</h3>
                 <div class="qs-payment">
-                    <img class="qs-payment__all" src="/assets/images/payment.svg" alt="{{ lang == 'ar' ? 'وسائل الدفع' : 'Payment methods' }}">
+                    {% set defaultPayment = getFunction('getDefaultPaymentMethod') %}
+                    {% set codPayment = getFunction('getInstallmentPaymentMethod') %}
+                    {% set tabbyPayment = getFunction('getTabbyPaymentMethod') %}
+                    {% set tamaraPayment = getFunction('getTamaraPaymentMethod') %}
+                    {% set country = getSuperConfig('store.current_country_code') %}
+                    {% if defaultPayment.getAdminPaymentMethod and defaultPayment.getAdminPaymentMethod['active']|default(0) == 1 %}
+                        <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/visa.png" alt="Visa">
+                        <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/mastercard.png" alt="Mastercard">
+                        {% if country != 'OM' %}
+                            <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/mada.png" alt="Mada">
+                            <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/applepay.png" alt="Apple Pay">
+                        {% endif %}
+                    {% endif %}
+                    {% if codPayment.getAdminPaymentMethod and codPayment.getAdminPaymentMethod['active']|default(0) == 1 %}
+                        <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/cod.png" alt="Cash on delivery">
+                    {% endif %}
+                    {% if tabbyPayment and tabbyPayment.active|default(0) == 1 and tabbyPayment.getAdminPaymentMethod['active']|default(0) == 1 %}
+                        <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/tabby.webp" alt="Tabby">
+                    {% endif %}
+                    {% if tamaraPayment and tamaraPayment.active|default(0) == 1 and tamaraPayment.getAdminPaymentMethod['active']|default(0) == 1 %}
+                        <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/tamara.svg" alt="Tamara">
+                    {% endif %}
                 </div>
                 {% if companyTax and (companyTax.show_tax_no|default(0)) == 1 %}
                     <p class="qs-tax">{{ ('admin::app.footer.tax_no'|trans) }}: <strong>{{ companyTax.tax_no ?? '' }}</strong></p>
