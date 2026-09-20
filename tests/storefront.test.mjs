@@ -67,7 +67,7 @@ test('homepage renders actual Twsaa category data without a manual homepage list
         const fallback = page.locator('#qs-platform-category-fallback');
         assert.equal(await fallback.isHidden(), true,
             'The stored category data must remain hidden');
-        assert.match(await fallback.getAttribute('data-category-html') || '', /<li\\b/,
+        assert.ok((await fallback.getAttribute('data-category-html') || '').includes('<li '),
             'The official category HTML must remain available for the cards');
         assert.equal(await page.locator('.home-categories-only li[parent], .home-categories-only .cat-sub').count(), 0,
             'Do not expose upstream raw category list underneath the cards');
