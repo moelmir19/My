@@ -5,23 +5,57 @@
 {% block main_content %}
 <div class="home home-categories-only">
 
-    {# SubCove visual identity stays fixed; platform data is used inside the category/product flows. #}
-    <div class="home-primary-banner">
-        <div class="qs-primary-banner">
-            <img
-                class="qs-primary-banner__image"
-                src="{{ asset_url ~ 'images/subcove-banner.png' }}"
-                alt="{{ lang == 'ar' ? 'بنر SubCove' : 'SubCove banner' }}"
-                loading="eager"
-                decoding="async">
+    {#
+      SubCove owns the markup/layout only.
+      All merchant content below is selected from Twsaa's official homeContent payload.
+    #}
+    {% set hero_content = false %}
+    {% set categories_content = false %}
+    {% set faq_content = false %}
+    {% set reviews_content = false %}
+
+    {% for content in homeContent %}
+        {% if not hero_content
+            and content['slug'] in ['fixed_banner', 'wide_banner']
+            and content['settings']['image']|default('') %}
+            {% set hero_content = content %}
+        {% endif %}
+
+        {% if not categories_content
+            and content['slug'] == 'list_of_items'
+            and content['settings']['items']|default([])|length > 0 %}
+            {% set categories_content = content %}
+        {% endif %}
+
+        {% if not faq_content
+            and content['slug'] == 'store_features'
+            and content['settings']['items']|default([])|length > 0 %}
+            {% set faq_content = content %}
+        {% endif %}
+
+        {% if not reviews_content
+            and content['slug'] == 'customer_options'
+            and content['settings']['reviews']|default([])|length > 0 %}
+            {% set reviews_content = content %}
+        {% endif %}
+    {% endfor %}
+
+    {% if hero_content %}
+        <div class="home-primary-banner">
+            {% include 'custom/bold-banner.twig' with {'content': hero_content} %}
         </div>
-    </div>
+    {% endif %}
 
-    {# Same SubCove category-card UI, backed by Twsaa's official /category endpoint. #}
-    {% include 'home/categories-grid.twig' %}
+    {% if categories_content %}
+        {% include 'home/categories-grid.twig' with {'content': categories_content} %}
+    {% endif %}
 
-    {# Keep the custom SubCove FAQ/reviews section. #}
-    {% include 'home/faq-reviews.twig' %}
+    {% if faq_content or reviews_content %}
+        {% include 'home/faq-reviews.twig' with {
+            'faq_content': faq_content,
+            'reviews_content': reviews_content
+        } %}
+    {% endif %}
 
 </div>
 {% endblock %}
