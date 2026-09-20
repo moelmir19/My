@@ -1,148 +1,119 @@
-{% set faq_items = [
-    {
-        'q': 'كيف أستلم منتجي بعد الدفع؟',
-        'a': 'مباشرة بعد إتمام الدفع تظهر بيانات اشتراكك في صفحة الطلب، وتصلك أيضاً نسخة على بريدك الإلكتروني.'
-    },
-    {
-        'q': 'كم يستغرق التسليم؟',
-        'a': 'أغلب المنتجات تسليمها فوري خلال لحظات. الاشتراكات التي تحتاج تفعيلاً يدوياً تصلك خلال وقت قصير.'
-    },
-    {
-        'q': 'هل الاشتراكات أصلية؟',
-        'a': 'نعم، جميع اشتراكاتنا أصلية 100% ومضمونة طوال مدة الاشتراك.'
-    },
-    {
-        'q': 'ما طرق الدفع المتاحة؟',
-        'a': 'مدى، آبل باي، فيزا وماستركارد — عبر بوابة دفع آمنة ومعتمدة.'
-    },
-    {
-        'q': 'دفعت ولم يصلني المنتج أو ظهر خطأ، ماذا أفعل؟',
-        'a': 'لا تُعد الطلب حتى لا يُخصم منك مرتين. راجع «طلباتي» وبريدك، وإن لم تجد منتجك تواصل معنا عبر التلقرام وسنساعدك فوراً.'
-    },
-    {
-        'q': 'كيف أتواصل مع الدعم؟',
-        'a': 'عبر التلقرام على مدار الساعة — نرد عليك بأسرع وقت ممكن.'
-    }
-] %}
+{% set faq_items = faq_content ? faq_content['settings']['items']|default([]) : [] %}
+{% set review_items = reviews_content ? reviews_content['settings']['reviews']|default([]) : [] %}
+{% set hide_review_user = reviews_content ? reviews_content['settings']['hide_user']|default('') : '' %}
 
-{% set review_items = [
-    {
-        'name': 'طلال العنزي',
-        'rating': 5,
-        'text': 'متجر ممتاز وسريع للامانه الشهر الثالث ارجع افعل معه ، ولا يتقفل الحساب كامل المده اكثر من شهر',
-        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
-        'date': '16 Sep 2026'
-    },
-    {
-        'name': 'Amal Saad',
-        'rating': 5,
-        'text': 'لحد الان المتجر ممتاز.',
-        'product': 'اشتراك شاهد شهر مسلسلات ضمان ذهبي وتسليم فوري',
-        'date': '14 Sep 2026'
-    },
-    {
-        'name': 'عمار .',
-        'rating': 5,
-        'text': 'تسليم سريع جدااااا وموثوق ❣️',
-        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
-        'date': '13 Sep 2026'
-    },
-    {
-        'name': 'محمد معشي',
-        'rating': 5,
-        'text': 'موقع موثوق',
-        'product': 'اشتراك شاهد شهر مسلسلات ضمان ذهبي وتسليم فوري',
-        'date': '13 Sep 2026'
-    },
-    {
-        'name': 'ابو سهم',
-        'rating': 5,
-        'text': 'ممتاز',
-        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
-        'date': '12 Sep 2026'
-    },
-    {
-        'name': 'D A',
-        'rating': 5,
-        'text': 'ثقه',
-        'product': 'اشتراك نتفلكس رسمي 4k تسليم فوري',
-        'date': '12 Sep 2026'
-    }
-] %}
+{% set rating_total = 0 %}
+{% for review in review_items %}
+    {% set rating_total = rating_total + review['rating']|default(0) %}
+{% endfor %}
+{% set rating_count = review_items|length %}
+{% set rating_average = rating_count > 0 ? (rating_total / rating_count) : 0 %}
 
+{% if faq_items|length > 0 or review_items|length > 0 %}
 <section class="qs-faq-reviews">
     <div class="qs-container">
-        <div class="qs-faq-wrap">
-            <div class="qs-section-heading">
-                <h2>الأسئلة الشائعة</h2>
-                <p>كل ما تحتاج معرفته قبل الطلب</p>
-            </div>
+        {% if faq_items|length > 0 %}
+            <div class="qs-faq-wrap">
+                <div class="qs-section-heading">
+                    <h2>{{ lang == 'ar' ? 'الأسئلة الشائعة' : 'Frequently asked questions' }}</h2>
+                    <p>{{ lang == 'ar' ? 'كل ما تحتاج معرفته قبل الطلب' : 'Everything you need to know before ordering' }}</p>
+                </div>
 
-            <div class="qs-faq-list">
-                {% for item in faq_items %}
-                    <details class="qs-faq-item">
-                        <summary class="qs-faq-q">
-                            <span class="qs-faq-q-text">{{ item.q }}</span>
-                            <span class="qs-faq-icon" aria-hidden="true">+</span>
-                        </summary>
+                <div class="qs-faq-list">
+                    {% for item in faq_items %}
+                        {% set question = item['main_title']|default('') %}
+                        {% set answer = item['sub_title']|default('') %}
 
-                        <div class="qs-faq-panel">
-                            <div class="qs-faq-panel-inner">
-                                <p class="qs-faq-answer">{{ item.a }}</p>
-                            </div>
-                        </div>
-                    </details>
-                {% endfor %}
-            </div>
-        </div>
+                        {% if question or answer %}
+                            <details class="qs-faq-item">
+                                <summary class="qs-faq-q">
+                                    <span class="qs-faq-q-text">{{ question }}</span>
+                                    <span class="qs-faq-icon" aria-hidden="true">+</span>
+                                </summary>
 
-        <div class="qs-reviews-wrap">
-            <div class="qs-section-heading qs-reviews-heading">
-                <h2>آراء عملائنا</h2>
-
-                <div class="qs-reviews-summary">
-                    <div class="qs-review-stars" dir="ltr" aria-label="5 من 5">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                    <div class="qs-reviews-score">
-                        <strong>5.0</strong>
-                        <span>من 5</span>
-                    </div>
-                    <i class="qs-reviews-separator"></i>
-                    <span class="qs-reviews-count">بناءً على 121 تقييم</span>
+                                <div class="qs-faq-panel">
+                                    <div class="qs-faq-panel-inner">
+                                        <p class="qs-faq-answer">{{ answer }}</p>
+                                    </div>
+                                </div>
+                            </details>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
+        {% endif %}
 
-            <div class="qs-reviews-grid">
-                {% for review in review_items %}
-                    <article class="qs-review-card">
-                        <span class="qs-review-quote" aria-hidden="true">“</span>
+        {% if review_items|length > 0 %}
+            <div class="qs-reviews-wrap">
+                <div class="qs-section-heading qs-reviews-heading">
+                    <h2>{{ lang == 'ar' ? 'آراء عملائنا' : 'Customer reviews' }}</h2>
 
-                        <div class="qs-review-stars qs-review-card-stars" dir="ltr" aria-label="{{ review.rating }} من 5">
+                    <div class="qs-reviews-summary">
+                        <div class="qs-review-stars" dir="ltr" aria-label="{{ rating_average|number_format(1) }} / 5">
                             {% for i in 1..5 %}
-                                <span class="{{ i <= review.rating ? 'is-active' : '' }}">★</span>
+                                <span class="{{ i <= rating_average|round ? 'is-active' : '' }}">★</span>
                             {% endfor %}
                         </div>
+                        <div class="qs-reviews-score">
+                            <strong>{{ rating_average|number_format(1) }}</strong>
+                            <span>{{ lang == 'ar' ? 'من 5' : 'of 5' }}</span>
+                        </div>
+                        <i class="qs-reviews-separator"></i>
+                        <span class="qs-reviews-count">
+                            {{ lang == 'ar'
+                                ? 'بناءً على ' ~ rating_count ~ ' تقييم'
+                                : 'Based on ' ~ rating_count ~ ' reviews' }}
+                        </span>
+                    </div>
+                </div>
 
-                        <p class="qs-review-text">{{ review.text }}</p>
+                <div class="qs-reviews-grid">
+                    {% for review in review_items %}
+                        {% set review_name = hide_review_user == 'true'
+                            ? (lang == 'ar' ? 'عميل' : 'Customer')
+                            : review['name']|default(lang == 'ar' ? 'عميل' : 'Customer') %}
+                        {% set review_rating = review['rating']|default(0) %}
+                        {% set review_text = review['comment']|default('') %}
+                        {% set review_product = '' %}
+                        {% if review['product'] is defined and review['product'] and review['product']['name'] is defined %}
+                            {% set review_product = review['product']['name'] %}
+                        {% elseif review['product_name'] is defined %}
+                            {% set review_product = review['product_name'] %}
+                        {% endif %}
 
-                        <div class="qs-review-footer">
-                            <span class="qs-review-avatar">{{ review.name|slice(0, 1) }}</span>
+                        <article class="qs-review-card">
+                            <span class="qs-review-quote" aria-hidden="true">“</span>
 
-                            <div class="qs-review-person">
-                                <strong>{{ review.name }}</strong>
-                                <span class="qs-review-product">
-                                    <i class="icon-packed-box" aria-hidden="true"></i>
-                                    {{ review.product }}
-                                </span>
+                            <div class="qs-review-stars qs-review-card-stars" dir="ltr" aria-label="{{ review_rating }} / 5">
+                                {% for i in 1..5 %}
+                                    <span class="{{ i <= review_rating ? 'is-active' : '' }}">★</span>
+                                {% endfor %}
                             </div>
 
-                            <time class="qs-review-date">{{ review.date }}</time>
-                        </div>
-                    </article>
-                {% endfor %}
+                            <p class="qs-review-text">{{ review_text }}</p>
+
+                            <div class="qs-review-footer">
+                                <span class="qs-review-avatar">{{ review_name|slice(0, 1) }}</span>
+
+                                <div class="qs-review-person">
+                                    <strong>{{ review_name }}</strong>
+                                    {% if review_product %}
+                                        <span class="qs-review-product">
+                                            <i class="icon-packed-box" aria-hidden="true"></i>
+                                            {{ review_product }}
+                                        </span>
+                                    {% endif %}
+                                </div>
+
+                                {% if review['created_at'] is defined and review['created_at'] %}
+                                    <time class="qs-review-date">{{ review['created_at']|date('d M Y') }}</time>
+                                {% endif %}
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
 </section>
-
+{% endif %}
