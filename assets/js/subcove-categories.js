@@ -200,44 +200,37 @@
         var fallbackHtml = fallback ? fallback.innerHTML : '';
         var hasCategories = render(fallbackHtml);
 
-        fetch('/category', {
-            credentials: 'same-origin',
-            headers: { 'X-Requested-With': 'XMLHttpRequest' }
-        })
-            .then(function (response) {
-                if (!response.ok) throw new Error('Twsaa /category HTTP ' + response.status);
-                return response.text();
-            })
-            .then(function (body) {
-                var html = body;
+        // Twsaa's own navbar uses jQuery AJAX with the identical endpoint.
+        // Its live response may be raw HTML or { html: '...' }.
+        if (typeof window.jQuery !== 'function') {
+            console.warn('SubCove categories: jQuery is unavailable; using platform function output.');
+            return;
+        }
 
-                try {
-                    var decoded = JSON.parse(body);
-                    html = typeof decoded === 'string'
-                        ? decoded
-                        : (decoded && (decoded.html || (decoded.data && decoded.data.html))) || '';
-                } catch (error) {
-                    // The upstream endpoint normally responds with raw HTML.
-                }
+        window.jQuery.ajax({
+            url: '/category',
+            type: 'GET',
+            success: function (response) {
+                var html = response && typeof response.html === 'string'
+                    ? response.html
+                    : response;
 
                 if (render(html)) {
                     hasCategories = true;
                 } else {
-                    console.warn('SubCove categories: /category has no top-level links:', String(html).slice(0, 200));
-                    if (!hasCategories) {
-                        throw new Error('Twsaa /category returned no category links');
-                    }
+                    console.warn('SubCove categories: /category has no top-level links.');
                 }
-            })
-            .catch(function (error) {
-                console.warn('SubCove categories:', error.message);
+            },
+            error: function (xhr) {
+                console.warn('SubCove categories: /category HTTP', xhr.status);
                 if (!hasCategories && !render(fallbackHtml)) {
                     grid.setAttribute('aria-busy', 'false');
                     grid.textContent = locale === 'ar'
                         ? 'تعذر تحميل الأقسام حاليًا'
                         : 'Categories are temporarily unavailable';
                 }
-            });
+            }
+        });
     }
 
     if (document.readyState === 'loading') {
