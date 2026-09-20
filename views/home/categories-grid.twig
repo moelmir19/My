@@ -1,42 +1,112 @@
-{% set items = content['settings']['items']|default([]) %}
-{% set section_title = content['settings']['title']|default('') %}
-
-{% if items|length > 0 %}
-<section class="home-categories home-demo-services">
+{#
+  The design below is SubCove's unchanged category-card structure.
+  Category identity and links are loaded from Twsaa's official /category endpoint.
+  views/category/index.twig exposes category.image_url in data-category-image.
+#}
+<section class="home-categories home-demo-services" id="qs-home-categories">
     <div class="home-categories__heading">
-        <h2>{{ section_title ?: (lang == 'ar' ? 'الاشتراكات' : 'Subscriptions') }}</h2>
+        <h2>{{ lang == 'ar' ? 'الأقسام' : 'Categories' }}</h2>
     </div>
 
-    <div class="home-demo-services__grid">
-        {% for item in items %}
-            {% set item_name = item['name']|default('') %}
-            {% set item_image = item['image']|default('') %}
-            {% set item_link = item['link']|default('') %}
-
-            {% if item_name or item_image or item_link %}
-                <a class="home-service-link-card" href="{{ item_link ?: '#' }}">
-                    <div class="home-service-link-card__media">
-                        {% if item_image %}
-                            <img
-                                src="{{ item_image }}"
-                                alt="{{ item_name }}"
-                                class="home-service-link-card__image"
-                                loading="lazy"
-                                decoding="async">
-                        {% endif %}
-                    </div>
-
-                    <div class="home-service-link-card__content">
-                        {% if item_name %}
-                            <strong>{{ item_name }}</strong>
-                        {% endif %}
-                        <span>{{ lang == 'ar' ? 'عرض الاشتراكات' : 'View subscriptions' }}</span>
-                    </div>
-
-                    <span class="home-service-link-card__arrow" aria-hidden="true">←</span>
-                </a>
-            {% endif %}
-        {% endfor %}
-    </div>
+    <div class="home-demo-services__grid" id="qs-platform-category-grid" aria-live="polite" aria-busy="true"></div>
 </section>
-{% endif %}
+
+<script>
+$(function () {
+    var grid = document.getElementById('qs-platform-category-grid');
+    var section = document.getElementById('qs-home-categories');
+    if (!grid || !section) return;
+
+    function renderCategory(name, url, image) {
+        var card = document.createElement('a');
+        card.className = 'home-service-link-card';
+        card.href = url;
+
+        var media = document.createElement('div');
+        media.className = 'home-service-link-card__media';
+
+        if (image) {
+            var picture = document.createElement('img');
+            picture.src = image;
+            picture.alt = name;
+            picture.className = 'home-service-link-card__image';
+            picture.loading = 'lazy';
+            picture.decoding = 'async';
+            media.appendChild(picture);
+        }
+
+        var description = document.createElement('div');
+        description.className = 'home-service-link-card__content';
+
+        var title = document.createElement('strong');
+        title.textContent = name;
+
+        var label = document.createElement('span');
+        label.textContent = "{{ lang == 'ar' ? 'عرض المنتجات' : 'View products' }}";
+
+        description.appendChild(title);
+        description.appendChild(label);
+
+        var arrow = document.createElement('span');
+        arrow.className = 'home-service-link-card__arrow';
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.textContent = '←';
+
+        card.appendChild(media);
+        card.appendChild(description);
+        card.appendChild(arrow);
+        grid.appendChild(card);
+    }
+
+    // /category is the same platform source the original Twsaa navbar uses.
+    $.ajax({
+        url: '/category',
+        type: 'GET',
+        success: function (response) {
+            var html = response && typeof response.html === 'string'
+                ? response.html
+                : response;
+
+            if (typeof html !== 'string') {
+                section.hidden = true;
+                grid.setAttribute('aria-busy', 'false');
+                return;
+            }
+
+            // Parse, but do not execute any scripts that may be in the endpoint's HTML.
+            var documentFromPlatform = new DOMParser().parseFromString(html, 'text/html');
+
+            // The official category template marks first-level categories with "parent".
+            // Subcategories remain on their parent pages and do not crowd the homepage.
+            var categories = documentFromPlatform.querySelectorAll('li[parent]');
+            grid.replaceChildren();
+
+            categories.forEach(function (category) {
+                var link = category.querySelector('a[href]');
+                if (!link) return;
+
+                var name = (link.textContent || '').trim();
+                var url = (link.getAttribute('href') || '').trim();
+                if (!name || !url || url === '#') return;
+
+                // When Twsaa renders views/category/index.twig, this is category.image_url.
+                // Do not substitute SubCove stock images or invent category-image URLs.
+                var image = (link.getAttribute('data-category-image') || '').trim();
+                if (!image) {
+                    var platformImage = link.querySelector('img[src]');
+                    image = platformImage ? (platformImage.getAttribute('src') || '').trim() : '';
+                }
+
+                renderCategory(name, url, image);
+            });
+
+            grid.setAttribute('aria-busy', 'false');
+            section.hidden = grid.childElementCount === 0;
+        },
+        error: function () {
+            grid.setAttribute('aria-busy', 'false');
+            section.hidden = true;
+        }
+    });
+});
+</script>
