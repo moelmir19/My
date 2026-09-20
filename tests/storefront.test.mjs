@@ -14,6 +14,22 @@ after(async () => {
 });
 
 async function visit(page) {
+    // Isolate the theme's browser smoke tests from third-party CDN outages.
+    // Keep all local theme scripts/styles and let specific /category mocks run.
+    await page.route('**/*', async function (route) {
+        const target = new URL(route.request().url());
+        if (target.origin !== new URL(base).origin) {
+            const kind = route.request().resourceType();
+            const mime = kind === 'script' ? 'application/javascript'
+                : kind === 'stylesheet' ? 'text/css'
+                : kind === 'image' ? 'image/png'
+                : 'text/plain';
+            await route.fulfill({ status: 200, contentType: mime, body: '' });
+            return;
+        }
+        await route.fallback();
+    });
+
     await page.goto(base + '/', { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForFunction(() =>
         document.querySelectorAll('#qs-platform-category-grid .home-service-link-card').length > 0,
