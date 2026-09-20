@@ -10,7 +10,6 @@
       All merchant content below is selected from Twsaa's official homeContent payload.
     #}
     {% set hero_content = false %}
-    {% set categories_content = false %}
     {% set faq_content = false %}
     {% set reviews_content = false %}
 
@@ -19,12 +18,6 @@
             and content['slug'] in ['fixed_banner', 'wide_banner']
             and content['settings']['image']|default('') %}
             {% set hero_content = content %}
-        {% endif %}
-
-        {% if not categories_content
-            and content['slug'] == 'list_of_items'
-            and content['settings']['items']|default([])|length > 0 %}
-            {% set categories_content = content %}
         {% endif %}
 
         {% if not faq_content
@@ -46,9 +39,8 @@
         </div>
     {% endif %}
 
-    {% if categories_content %}
-        {% include 'home/categories-grid.twig' with {'content': categories_content} %}
-    {% endif %}
+    {# Cards now represent real top-level Twsaa categories; no homeContent list required. #}
+    {% include 'home/categories-grid.twig' %}
 
     {% if faq_content or reviews_content %}
         {% include 'home/faq-reviews.twig' with {
