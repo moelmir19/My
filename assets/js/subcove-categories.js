@@ -211,6 +211,7 @@
             url: '/category',
             type: 'GET',
             success: function (response) {
+                console.warn('SubCove CI response /category:', typeof response, String(response && response.html || response).slice(0, 180));
                 var html = response && typeof response.html === 'string'
                     ? response.html
                     : response;
