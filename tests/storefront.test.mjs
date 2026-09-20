@@ -80,9 +80,10 @@ test('fresh /category HTML drives name, URL, image, ordering, and excludes child
         }));
 
         await visit(page);
-        await page.waitForFunction(() =>
-            document.querySelectorAll('#qs-platform-category-grid .home-service-link-card').length === 2
-        );
+        await page.waitForTimeout(1000);
+        const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
+        console.log('HTML endpoint returned cards:', JSON.stringify(debugNames));
+        assert.equal(debugNames.length, 2, 'Raw HTML /category must override getCategories fallback');
 
         const cards = page.locator('#qs-platform-category-grid .home-service-link-card');
         assert.deepEqual(await cards.locator('.home-service-link-card__content strong').allTextContents(), [
@@ -112,9 +113,10 @@ test('official JSON HTML wrapper is accepted, as well as HTML fragments', async 
             })
         }));
         await visit(page);
-        await page.waitForFunction(() =>
-            document.querySelectorAll('#qs-platform-category-grid .home-service-link-card').length === 1
-        );
+        await page.waitForTimeout(1000);
+        const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
+        console.log('Single-category endpoint returned cards:', JSON.stringify(debugNames));
+        assert.equal(debugNames.length, 1, 'One upstream category must render as one card');
         assert.equal(
             await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').textContent(),
             'Shahid'
@@ -155,9 +157,10 @@ test('category image may come from its genuine platform category page', async ()
             body: '<div class="category-block"><div class="hero-image"><img src="https://cdn.twsaa.com/my-category.jpg"></div></div>'
         }));
         await visit(page);
-        await page.waitForFunction(() =>
-            document.querySelectorAll('#qs-platform-category-grid .home-service-link-card').length === 1
-        );
+        await page.waitForTimeout(1000);
+        const debugNames = await page.locator('#qs-platform-category-grid .home-service-link-card__content strong').allTextContents();
+        console.log('Single-category endpoint returned cards:', JSON.stringify(debugNames));
+        assert.equal(debugNames.length, 1, 'One upstream category must render as one card');
 
         await page.locator('a.home-service-link-card[href$="/my-category"]').scrollIntoViewIfNeeded();
         await page.locator('a.home-service-link-card[href$="/my-category"] img').waitFor({ timeout: 12000 });
