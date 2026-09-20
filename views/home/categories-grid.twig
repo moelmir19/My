@@ -1,20 +1,24 @@
 {#
-  SubCove visual markup, powered by Twsaa's existing category data.
-  getCategories() is a function from the upstream Twig extension and provides
-  an inert fallback if the upstream /category request fails.
+  SubCove keeps only the presentation.
+  Category data is sourced from Twsaa's official getCategories() function.
+  The returned HTML is kept inside an inert <template>; our JS converts only
+  top-level platform categories into the existing SubCove card markup.
 #}
 {% set platform_categories = getFunction('getCategories') %}
+{% set platform_categories_html = platform_categories['html']|default('') %}
+
 <section class="home-categories home-demo-services" id="qs-home-categories">
     <div class="home-categories__heading">
         <h2>{{ lang == 'ar' ? 'الأقسام' : 'Categories' }}</h2>
     </div>
 
-    <div class="home-demo-services__grid"
-         id="qs-platform-category-grid"
-         aria-live="polite"
-         aria-busy="true"></div>
+    <div
+        class="home-demo-services__grid"
+        id="qs-platform-category-grid"
+        aria-live="polite"
+        aria-busy="true"></div>
 
-    {# Keep the upstream function's HTML inert; external JS parses its links if needed. #}
-    <template id="qs-platform-category-fallback">{{ platform_categories['html']|default('')|raw }}</template>
+    <template id="qs-platform-category-fallback">{{ platform_categories_html|raw }}</template>
 </section>
-<script defer src="{{ asset_url ~ 'js/subcove-categories.js' }}"></script>
+
+<script src="{{ asset_url ~ 'js/subcove-categories.js' }}"></script>
