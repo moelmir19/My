@@ -72,6 +72,17 @@
                         <img class="qs-payment__method" src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/tamara.svg" alt="Tamara">
                     {% endif %}
                 </div>
+                {% if company.certificate_id %}
+                    {% if getSuperConfig('store.current_country_code') == 'OM' %}
+                        <a class="qs-footer__certificate" href="https://maroof.om/businesses?keyword={{ company.certificate_id }}" target="_blank" rel="noopener noreferrer">
+                            <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/sbc.webp" alt="{{ lang == 'ar' ? 'شهادة المتجر' : 'Store certificate' }}" loading="lazy">
+                        </a>
+                    {% else %}
+                        <a class="qs-footer__certificate" href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/{{ company.certificate_id }}" target="_blank" rel="noopener noreferrer">
+                            <img src="https://twsaa.com/admin-themes/mbotiq/assets/images/payments/sbc.webp" alt="{{ lang == 'ar' ? 'شهادة المتجر' : 'Store certificate' }}" loading="lazy">
+                        </a>
+                    {% endif %}
+                {% endif %}
                 {% if companyTax and (companyTax.show_tax_no|default(0)) == 1 %}
                     <p class="qs-tax">{{ ('admin::app.footer.tax_no'|trans) }}: <strong>{{ companyTax.tax_no ?? '' }}</strong></p>
                 {% endif %}
