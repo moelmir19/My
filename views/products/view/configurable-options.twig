@@ -7,9 +7,8 @@
                 <label class="required">{{ attribute['label'] }}</label>
                  {% if (not attribute['swatch_type'] or attribute['swatch_type'] == '' or attribute['swatch_type'] == 'dropdown') and attribute['code'] != 'image' and attribute['code'] != 'color' %}
                     <select class="control" name="super_attribute[{{ attribute['id'] }}]" data-attribute-id="{{ attribute['id'] }}" 
-                    {% for option in attribute['options'] %}
-                        @change="configure({{ attribute['id'] }}, {{ option['id'] }}, {{ index }})"
-                    {% endfor %}
+                    required
+                    @change="configure({{ attribute['id'] }}, $event.target.value, {{ index }})"
                     >
                         <option value="">{{ ('shop::app.products.select-above-options'|trans) }}</option>
                         {% for option in attribute['options'] %}
@@ -20,7 +19,7 @@
                     <div class="swatch-container">
                         {% for option in attribute['options'] %}
                             <label class="swatch" data-id="{{ option['id'] }}">
-                                <input type="radio" name="super_attribute[{{ attribute['id'] }}]" value="{{ option['id'] }}" @change="configure({{ attribute['id'] }}, {{ option['id'] }}, {{ index }})" />
+                                <input type="radio" name="super_attribute[{{ attribute['id'] }}]" value="{{ option['id'] }}" required @change="configure({{ attribute['id'] }}, {{ option['id'] }}, {{ index }})" />
                                 {% if attribute['code'] == 'color' %}
                                     <span style="background: {{ option['swatch_value'] }};"></span>
                                 {% elseif attribute['code'] == 'image' %}
@@ -40,80 +39,80 @@
 
 <script>
 
+
+    // Variant IDs, formatted prices and stock are supplied by Twsaa in childAttributes.
+    // Do not calculate a subscription-plan price or keep the previous variant selected.
     var allowedProducts = [];
     var simpleProduct = '';
-    var config = ({{ childAttributes | json_encode | raw }});
-
-    function configure(attribute, option, index) {
-
-        matchedAttributes = config.attributes.filter(function (config) {
-            return config.id === attribute
-        });
-
-        matchedOptions = matchedAttributes[0]['options'].filter(function (matchedAttributes) {
-            return matchedAttributes.id == option;
-        });
-
-        if (matchedOptions[0] != undefined && matchedOptions[0].products != undefined) {
-            allowedProducts[index] = matchedOptions[0].products;
-        }
-
-        if(findCommonValues(allowedProducts)[0] != undefined)
-        {
-            simpleProduct = findCommonValues(allowedProducts)[0];
-        }
-        $('#selected_configurable_option').val(simpleProduct);
-        reloadPrice(simpleProduct);
-        changeStock(simpleProduct);
-    }
+    var config = {{ childAttributes | json_encode | raw }};
+    var initialPriceMarkup = $('.product-price').html();
 
     function findCommonValues(arrays) {
-        return arrays.reduce((acc, curr) => acc.filter(value => curr.includes(value)));
+        if (!arrays.length) return [];
+        return arrays.reduce(function (common, products) {
+            return common.filter(function (id) { return products.includes(id); });
+        });
     }
 
-    function reloadPrice (simpleProduct) {
-        var variant_prices = config['variant_prices'][simpleProduct];
-        var regularElement = $('.product-price');
-        var priceElement = $('.special-price');
-        console.log(config['variant_prices'])
-        $('.product-shipping-weight').html(variant_prices.weight);
-        {# weightElement.innerHTML = variant_prices.weight; #}
+    function configure(attribute, option, index) {
+        var matchedAttribute = (config.attributes || []).find(function (item) {
+            return String(item.id) === String(attribute);
+        });
+        var matchedOption = matchedAttribute && (matchedAttribute.options || []).find(function (item) {
+            return String(item.id) === String(option);
+        });
 
-        if(variant_prices['qty'] > 0)
-        {
-            qty = 1; 
-            maxQuantity = variant_prices['qty'];
-            $('#qtyBox').attr('min', 1);
-            $('#qtyBox').attr('max', variant_prices['qty']);
-            $('#qtyBox').attr('max', variant_prices['qty']);
-            $('#qtyBox').attr('value', 1);
-        }else{
-            qty = 0; 
-            maxQuantity = 0;
-            $('#qtyBox').attr('min', 1);
-            $('#qtyBox').attr('max', 0);
-            $('#qtyBox').attr('value', 0);
-        }
+        // An emptied dropdown or an unavailable combination must clear old state.
+        allowedProducts[index] = matchedOption && Array.isArray(matchedOption.products)
+            ? matchedOption.products : [];
+        var selected = allowedProducts.filter(function (products) {
+            return Array.isArray(products) && products.length > 0;
+        });
+        var possible = selected.length === (config.attributes || []).length
+            ? findCommonValues(selected) : [];
+        var candidate = possible.length ? possible[0] : '';
+        var variant = candidate !== '' && config.variant_prices
+            ? config.variant_prices[candidate] : null;
 
-        regularElement.html(variant_prices.regular_price.formated_price);
-        priceElement.html(variant_prices.final_price.formated_price);
+        simpleProduct = variant ? candidate : '';
+        $('#selected_configurable_option').val(simpleProduct);
+        reloadPrice(variant);
+        changeStock(variant);
+    }
 
-        if (variant_prices.qty) {
-            const maxqty = variant_prices.qty;
-            window.MAX_QTY = maxqty;
-        } else {
+    function reloadPrice(variant) {
+        var priceElement = $('.product-price');
+        if (!variant || !variant.final_price || !variant.final_price.formated_price) {
+            // Original platform price is a range until a valid variant is chosen.
+            priceElement.html(initialPriceMarkup);
             window.MAX_QTY = null;
+            return;
         }
+
+        // The final_price field already reflects the platform's configured price.
+        priceElement.html(variant.final_price.formated_price);
+        $('.product-shipping-weight').text(variant.weight == null ? '' : variant.weight);
+        var available = Math.max(0, Number(variant.qty) || 0);
+        qty = available > 0 ? 1 : 0;
+        minQuantity = available > 0 ? 1 : 0;
+        maxQuantity = available;
+        window.MAX_QTY = available;
+        $('#qtyBox').attr({ min: minQuantity, max: maxQuantity }).val(qty);
     }
 
-    function changeStock (productId) {
-        var inStockElement = document.querySelector('.stock-status');
-
-        if (productId) {
-            inStockElement.style.display= "block";
-        } else {
-            inStockElement.style.display= "none";
+    function changeStock(variant) {
+        var stock = document.querySelector('.stock-status');
+        if (!stock) return;
+        if (!variant) {
+            stock.style.display = 'none';
+            return;
         }
+        var available = Number(variant.qty) > 0;
+        stock.style.display = '';
+        stock.classList.toggle('active', available);
+        stock.textContent = available
+            ? {{ ('shop::app.products.in-stock'|trans)|json_encode|raw }}
+            : {{ ('shop::app.products.out-of-stock'|trans)|json_encode|raw }};
     }
 </script>
 
