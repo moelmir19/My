@@ -24,7 +24,7 @@
   --qs-shadow:0 5px 18px rgba(42,55,49,.07);
   --qs-shadow-lg:0 12px 30px rgba(42,55,49,.11);
   --qs-container:1320px;
-  --qs-font:"Thmanyah Sans",sans-serif;
+  --qs-font:"Thmanyah Sans","STC",Tahoma,Arial,sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -6561,6 +6561,17 @@ body.site-body .modal-container{
   }
 }
 
+
+/* THMANYAH SANS — LOCAL LICENSE-SAFE LOOKUP */
+@font-face{
+  font-family:"Thmanyah Sans";
+  src:local("Thmanyah Sans"),
+      local("ThmanyahSans"),
+      local("Thmanyah Sans Regular");
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
+}
 
 /* THMANYAH SANS — FORCE ENTIRE STOREFRONT */
 html,
