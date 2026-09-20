@@ -263,7 +263,7 @@ test('configurable selections show Twsaa final variant prices and clear stale co
         const result = await page.evaluate(() => {
             const price = document.querySelector('.product-price');
             const selected = document.getElementById('selected_configurable_option');
-            const originalPrice = price.innerHTML;
+            const originalPrice = price.textContent.trim();
             // Mimic the documented childAttributes structure, not a separate
             // frontend pricing table. Variant prices belong to the platform.
             window.config = {
@@ -284,16 +284,16 @@ test('configurable selections show Twsaa final variant prices and clear stale co
                 }
             };
             configure(101, 1, 0);
-            const incomplete = selected.value === '' && price.innerHTML === originalPrice;
+            const incomplete = selected.value === '' && price.textContent.trim() === originalPrice;
             configure(102, 3, 1);
             const first = { id: selected.value, price: price.textContent.trim() };
             configure(101, 2, 0);
             const changed = { id: selected.value, price: price.textContent.trim() };
             configure(102, 4, 1);
-            const invalid = selected.value === '' && price.innerHTML === originalPrice;
+            const invalid = selected.value === '' && price.textContent.trim() === originalPrice;
             return { incomplete, first, changed, invalid };
         });
-        assert.equal(result.incomplete, true, 'One chosen attribute is not a valid variant');
+        assert.equal(result.incomplete, true, 'One chosen attribute is not a valid variant: ' + JSON.stringify(result));
         assert.deepEqual(result.first, { id: '111', price: '111.00' });
         assert.deepEqual(result.changed, { id: '333', price: '333.00' });
         assert.equal(result.invalid, true, 'Invalid combination must not retain prior price or SKU');
