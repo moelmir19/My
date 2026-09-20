@@ -70,7 +70,18 @@ jobs:
           grep -q "js/subcove-categories.js" views/home/categories-grid.twig
           grep -q "route('cart.add', product.product_id)" views/products/view.twig
           grep -q "route('shop.checkout.cart.remove'" views/checkout/cart/index.twig
-          ! grep -R -n -E "/subscriptions/(netflix|youtube|osn)|/subscription/add|subcove-(netflix|youtube|osn)" views assets/js
+          # products/subscription.twig belongs exclusively to index.php's local demo
+          # and is not part of the production storefront. Audit only rendered
+          # production templates; keep the demo as a deliberate preview fixture.
+          if find views -type f -name '*.twig' ! -path 'views/products/subscription.twig' -print0 |
+            xargs -0 -r grep -n -E "/subscriptions/(netflix|youtube|osn)|/subscription/add|subcove-(netflix|youtube|osn)"; then
+            echo "Production Twig template depends on local subscription demo" >&2
+            exit 1
+          fi
+          if grep -R -n -E "/subscriptions/(netflix|youtube|osn)|/subscription/add|subcove-(netflix|youtube|osn)" assets/js; then
+            echo "Production JS depends on local subscription demo" >&2
+            exit 1
+          fi
 
       - name: Run source/official Twsaa contract tests
         env:
