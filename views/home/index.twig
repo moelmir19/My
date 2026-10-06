@@ -3,11 +3,12 @@
 {% block title %} main {% endblock %}
 
 {% block main_content %}
-<div class="home home-categories-only">
+<div class="home home-products-only">
 
     {#
-      SubCove owns the markup/layout only.
-      All merchant content below is selected from Twsaa's official homeContent payload.
+      Keep the current storefront layout, but render Twsaa product sections
+      from the official homeContent fixed_products blocks instead of the
+      custom categories grid.
     #}
     {% set hero_content = false %}
     {% set faq_content = false %}
@@ -39,8 +40,30 @@
         </div>
     {% endif %}
 
-    {# Cards now represent real top-level Twsaa categories; no homeContent list required. #}
-    {% include 'home/categories-grid.twig' %}
+    {# Render the merchant's actual Twsaa product blocks. #}
+    {% for content in homeContent %}
+        {% if content['slug'] == 'fixed_products' %}
+            {% set list_type = content['settings']['list_type']|default('') %}
+            {% set can_render =
+                (list_type == 'chosen_products' and content['settings']['sku_text']|default(''))
+                or (list_type == 'category' and content['settings']['category_id']|default(''))
+                or list_type in ['featured_products', 'discounted_products', 'most_sales', 'latest_products']
+            %}
+
+            {% if can_render %}
+                <div
+                    class="load-products container mt-50"
+                    data-id="{{ content['block_id'] }}"
+                    data-title="{{ content['settings']['products_title']|default('') }}"
+                    data-link="{{ content['settings']['link']|default(list_type == 'category' ? '' : '/products') }}"
+                    data-products="{{ content['settings']['products']|default('') }}"
+                    data-limit="{{ content['settings']['limit']|default(8) }}"
+                    data-ids="{{ content['settings']['ids']|default('') }}"
+                    data-type="{{ content['settings']['type']|default('list') }}">
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
 
     {% if faq_content or reviews_content %}
         {% include 'home/faq-reviews.twig' with {
@@ -50,4 +73,33 @@
     {% endif %}
 
 </div>
+{% endblock %}
+
+{% block footer_scripts %}
+<script>
+$(document).ready(function () {
+    $('.load-products').each(function () {
+        const block = $(this);
+        const blockId = block.data('id');
+        const blockType = block.data('type');
+        const blockLimit = block.data('limit');
+
+        $.ajax({
+            url: '/fetch-home-products',
+            method: 'GET',
+            data: {
+                id: blockId,
+                type: blockType,
+                limit: blockLimit
+            },
+            success: function (response) {
+                block.html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error('AJAX Error: ' + error);
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
