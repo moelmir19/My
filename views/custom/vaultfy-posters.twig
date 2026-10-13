@@ -1,0 +1,24 @@
+{# Merchant-curated gallery: original images, labels and links from Twsaa's admin-configured homeContent. #}
+{% if content['settings']['items']|default([])|length > 0 %}
+<section class="vf-category-area vf-curated-gallery" id="block{{ content['block_id'] }}" aria-label="{{ lang == 'ar' ? 'الأقسام' : 'Categories' }}">
+  <div class="vf-category-grid">
+    {% for item in content['settings']['items'] %}
+      {% set vf_link = item['link']|default('') %}
+      {% set vf_label = item['name']|default('') %}
+      {% set vf_image = item['image']|default('') %}
+      {% if vf_link %}<a class="vf-category-poster vf-category-poster--{{ loop.index0 % 6 + 1 }}" href="{{ vf_link }}" aria-label="{{ vf_label ?: 'الانتقال إلى القسم' }}">
+      {% else %}<div class="vf-category-poster vf-category-poster--{{ loop.index0 % 6 + 1 }}">{% endif %}
+        <span class="vf-category-poster__media{{ vf_image ? ' vf-category-poster__media--has-image' : '' }}">
+          {% if vf_image %}
+            <img class="vf-category-poster__image" src="{{ vf_image }}" alt="{{ vf_label }}" loading="{{ loop.index <= 3 ? 'eager' : 'lazy' }}" decoding="async">
+          {% else %}
+            <span class="vf-category-poster__placeholder"><span class="vf-category-poster__initial">{{ vf_label|slice(0,1) }}</span><span class="vf-category-poster__fallback-name">{{ vf_label }}</span></span>
+          {% endif %}
+          {% if vf_link %}<span class="vf-category-poster__pill">اضغط هنا</span>{% endif %}
+        </span>
+        {% if vf_label %}<span class="vf-category-poster__caption">{{ vf_label }}</span>{% endif %}
+      {% if vf_link %}</a>{% else %}</div>{% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
