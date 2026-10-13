@@ -1,6 +1,6 @@
 {% extends "layout/main.twig" %}
 
-{% block title %} main {% endblock %}
+{% block title %}{{ page.page_title|default('صفحة') }} | Vaultfy{% endblock %}
 {% block main_content %}
     <div class="cms-content vf-cms">
         {{ page.html_content|raw }}
