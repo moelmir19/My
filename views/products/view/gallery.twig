@@ -27,7 +27,7 @@
 
         <div id="video-container" style="display:none;"></div>
         <div class="product-hero-image" id="product-hero-image">
-            <img  id="pro-img" data-image="currentOriginalImageUrl"/>
+            <img id="pro-img" alt="{{ product.name|default('صورة المنتج') }}" src="{{ product.product.base_image_url|default('') }}" data-image="currentOriginalImageUrl" loading="eager" decoding="async"/>
 
             {% if product.promotion_title %}
                 <p class="promotion-title" style="background-color:#f87e7e">{{ product.promotion_title }}</p>                
@@ -51,6 +51,12 @@
     });
 
     function changeImage (index) {
+        // Product preview must remain usable when the backend has no gallery entries.
+        if (!Array.isArray(images) || !images[index]) {
+            $("#video-container").hide().empty();
+            $("#product-hero-image").show();
+            return;
+        }
         if (images[index].video_url) {
             $("#product-hero-image").hide();
             $("#video-container").show();
