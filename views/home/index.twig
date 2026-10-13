@@ -23,6 +23,12 @@
             <p>اشتراكات رقمية موثوقة، بتسليم فوري وتجربة شراء آمنة</p>
         </div>
         {% endif %}
+        {# Render merchant-configured Twsaa banner first, like the reference's hero area. #}
+        {% for vf_banner in homeContent %}
+            {% if vf_banner['slug'] in ['fixed_banner','wide_banner'] and vf_banner['settings']['image']|default('') %}
+                {% include 'custom/bold-banner.twig' with {'content': vf_banner} %}
+            {% endif %}
+        {% endfor %}
         {# Grid links are populated from Twsaa's native /category response, not hardcoded. #}
         <section id="vf-categories" class="vf-category-area" hidden aria-label="أقسام المتجر">
             <div class="vf-section-head">
@@ -44,9 +50,6 @@
 
         {% for content in homeContent %}
         {# <pre>{{ dump(content['settings']) }}</pre> #}
-            {% if (('fixed_banner' == content['slug'] or 'wide_banner' == content['slug']) and content['settings']['image'] ) %}
-                {% include 'custom/bold-banner.twig' with {'content': content} %}
-            {% endif %}
             {% if ('youtube' == content['slug'] and content['settings']['youtube_url'] ) %}
                 {% include 'custom/video.twig' with {'content': content} %}
             {% endif %}
