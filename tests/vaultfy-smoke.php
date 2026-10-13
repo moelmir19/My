@@ -9,6 +9,9 @@ $files = [
     'views/layout/main.twig',
     'views/layout/header.twig',
     'views/home/index.twig',
+    'views/category/index.twig',
+    'views/custom/vaultfy-posters.twig',
+    'views/custom/bold-banner.twig',
     'views/products/list/card.twig',
     'views/products/view.twig',
     'views/checkout/cart/index.twig',
@@ -45,6 +48,14 @@ if (!$failed) {
     $assert(str_contains($script, "querySelector('#cat-here')"), "Native category feed not used");
     $assert(str_contains($header, "getFunction('getCurrentChannel')"), "Merchant channel data missing");
     $assert(str_contains($style, "--vf-bg:"), "Dark color tokens missing");
+    $assert(str_contains($header, 'vf-mobile-search') && str_contains($header, 'vf-menu-toggle'), "Mobile utility buttons missing");
+    $assert(str_contains($header, 'vf-primary-menu') && str_contains($header, 'vf-search-panel'), "Desktop header regions missing");
+    $assert(str_contains($home, 'vf_poster_blocks') && str_contains($home, 'custom/vaultfy-posters.twig'), "Merchant-managed poster block not rendered");
+    $assert(str_contains($contents['views/category/index.twig'], 'data-vf-image'), "Native category thumbnails unavailable");
+    $assert(str_contains($contents['views/custom/vaultfy-posters.twig'], "content['settings']['items']"), "Poster images not loaded from Twsaa");
+    $assert(str_contains($contents['views/custom/bold-banner.twig'], "content['settings']['image']"), "Native merchant banner image missing");
+    $assert(str_contains($script, 'MutationObserver') && str_contains($script, 'createPoster'), "Category gallery initialization missing");
+    $assert(str_contains($style, 'grid-template-columns:repeat(3,minmax(0,1fr))'), "Three-up poster grid missing");
     foreach (['views/layout/main.twig', 'views/home/index.twig'] as $path) {
         $open = preg_match_all('/\\{%\\s*block\\s+/', $contents[$path]);
         $close = preg_match_all('/\\{%\\s*endblock\\s*%\\}/', $contents[$path]);
