@@ -35,7 +35,7 @@
       <div class="store-logo top-links-2">
         <a href="/" aria-label="{{ channel.name|default('Vaultfy') }}">
           {% if channel.logo|default('') %}
-            <img class="logo" src="{{ storage_url ~ channel.logo }}" alt="{{ channel.name|default('Vaultfy') }}" decoding="async">
+            <img class="logo" src="{{ channel.logo starts with '/' ? channel.logo : storage_url ~ channel.logo }}" alt="{{ channel.name|default('Vaultfy') }}" decoding="async">
           {% else %}
             <strong class="vf-brand-name">{{ channel.name|default('Vaultfy') }}</strong>
           {% endif %}
