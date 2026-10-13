@@ -6,23 +6,12 @@
 {% block main_content %}
     <div class="home vf-home">
         {# Keep official Twsaa homeContent intact; branding is presentation-only. #}
-        {% set vf_has_banner = false %}
         {% set vf_poster_blocks = [] %}
         {% for vf_block in homeContent %}
-            {% if vf_block['slug'] in ['fixed_banner','wide_banner'] and vf_block['settings']['image']|default('') %}
-                {% set vf_has_banner = true %}
-            {% endif %}
             {% if vf_block['slug'] == 'list_of_items' and vf_block['settings']['items']|default([])|length > 0 %}
                 {% set vf_poster_blocks = vf_poster_blocks|merge([vf_block]) %}
             {% endif %}
         {% endfor %}
-        {% if not vf_has_banner %}
-        <div class="vf-intro">
-            <span class="vf-intro__eyebrow">VAULTFY — DIGITAL SUBSCRIPTIONS</span>
-            <h1>كل منصاتك في مكان واحد</h1>
-            <p>اشتراكات رقمية موثوقة، بتسليم فوري وتجربة شراء آمنة</p>
-        </div>
-        {% endif %}
         {# Render merchant-configured Twsaa banner first, like the reference's hero area. #}
         {% for vf_banner in homeContent %}
             {% if vf_banner['slug'] in ['fixed_banner','wide_banner'] and vf_banner['settings']['image']|default('') %}
