@@ -238,3 +238,11 @@ body .vf-footer-about__brand img{width:auto;max-width:145px;max-height:60px;obje
 body .vf-footer-about__brand strong{font-size:26px;font-weight:800;letter-spacing:.3px;color:var(--vf-text)}
 body .vf-footer-about p{font-size:13px;color:var(--vf-muted);line-height:1.85;max-width:660px;margin:0}
 @media(max-width:767px){body .vf-footer-about{flex-direction:column;align-items:flex-start;gap:10px;padding-inline:16px}}
+
+/* Mobile search stays in the utility row, not as an empty second row. */
+@media(max-width:767px){
+ body .header-row-one{position:relative}
+ body .top-links-1:has(.top-links-search){display:flex;flex:0 0 auto}
+ body .top-links-1>li:has(.top-links-search){position:static!important;order:0;flex:0 0 auto;width:auto;min-width:0}
+ body .top-links-1>li:has(.top-links-search)>.dropdown-list{top:calc(100% - 1px);left:12px;right:12px}
+}
