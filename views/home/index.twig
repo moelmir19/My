@@ -4,7 +4,43 @@
 {% block title %} main {% endblock %}
 
 {% block main_content %}
-    <div class="home">
+    <div class="home vf-home">
+        {# Keep official Twsaa homeContent intact; branding is presentation-only. #}
+        {% set vf_has_banner = false %}
+        {% set vf_has_features = false %}
+        {% for vf_block in homeContent %}
+            {% if vf_block['slug'] in ['fixed_banner','wide_banner'] and vf_block['settings']['image']|default('') %}
+                {% set vf_has_banner = true %}
+            {% endif %}
+            {% if vf_block['slug'] == 'store_features' and vf_block['settings']['items']|default([])|length %}
+                {% set vf_has_features = true %}
+            {% endif %}
+        {% endfor %}
+        {% if not vf_has_banner %}
+        <div class="vf-intro">
+            <span class="vf-intro__eyebrow">VAULTFY — DIGITAL SUBSCRIPTIONS</span>
+            <h1>كل منصاتك في مكان واحد</h1>
+            <p>اشتراكات رقمية موثوقة، بتسليم فوري وتجربة شراء آمنة</p>
+        </div>
+        {% endif %}
+        {# Grid links are populated from Twsaa's native /category response, not hardcoded. #}
+        <section id="vf-categories" class="vf-category-area" hidden aria-label="أقسام المتجر">
+            <div class="vf-section-head">
+                <h2>تصفح المنصات</h2>
+                <span>اختر المنصة المناسبة لك</span>
+            </div>
+            <div id="vf-category-grid" class="vf-category-grid"></div>
+        </section>
+
+        {% if not vf_has_features %}
+        <section class="s-block s-block--features container vf-features-fallback" aria-label="مزايا المتجر">
+            <div class="row">
+                <div class="col-md-4"><div class="s-block--features__item"><div class="feature-icon"><i class="icon-shield"></i></div><h2>الخصوصية</h2><p>نحرص على حماية معلوماتك أثناء الشراء.</p></div></div>
+                <div class="col-md-4"><div class="s-block--features__item"><div class="feature-icon"><i class="icon-headset"></i></div><h2>خدمة العملاء</h2><p>تواصل معنا إذا احتجت مساعدة في اشتراكك.</p></div></div>
+                <div class="col-md-4"><div class="s-block--features__item"><div class="feature-icon"><i class="icon-tag"></i></div><h2>خيارات تناسبك</h2><p>تعرّف على خطط الاشتراكات الرقمية المتاحة.</p></div></div>
+            </div>
+        </section>
+        {% endif %}
 
         {% for content in homeContent %}
         {# <pre>{{ dump(content['settings']) }}</pre> #}
