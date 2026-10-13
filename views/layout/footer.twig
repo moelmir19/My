@@ -2,7 +2,17 @@
 {% set companyTax = getFunction('getCompanyTax') %}
 {% set company = channel['getCompanyAddress'] %}
 
-<footer class="footer">
+<footer class="footer vf-site-footer">
+    <div class="vf-footer-about container">
+        <div class="vf-footer-about__brand">
+            {% if channel.logo|default('') %}
+                <img src="{{ storage_url ~ channel.logo }}" alt="{{ channel.name|default('Vaultfy') }}" loading="lazy">
+            {% else %}
+                <strong>{{ channel.name|default('Vaultfy') }}</strong>
+            {% endif %}
+        </div>
+        <p>اشتراكات رقمية موثوقة وتجربة تسوق مريحة. اكتشف المنصات التي تحبها في مكان واحد.</p>
+    </div>
     <div class="footer-main">
         <div class="container">
             <div class="">
