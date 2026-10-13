@@ -3070,21 +3070,9 @@ class CustomTwigExtensions extends AbstractExtension
     }
     public function getad()
     {
-        return [
-            "id" => 31,
-            "icon" => "icon-bell",
-            "title" => "asdf",
-            "description" => "asdf",
-            "expire_date" => "2025-04-30 00:00:00",
-            "pages" => "all",
-            "font_color" => " #ffffff",
-            "background_color" => "#000000",
-            "link" => '{"link_type":"category","type_id":"182","prod_name":null,"slug":"\u0639\u0637\u0648\u0631 \u0646\u0633\u0627\u0626\u064a\u0629"}',
-            "is_active" => 1,
-            "company_id" => 38,
-            "created_at" => "2025-04-06 16:36:42",
-            "updated_at" => "2025-04-06 17:25:48",
-        ];
+        // Local fixture: do not display the starter theme's expired dummy ad.
+        // Production advertising still comes from Twsaa's native getad() API.
+        return null;
     }
     public function getPath()
     {
