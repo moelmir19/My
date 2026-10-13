@@ -1,4 +1,10 @@
-<header>
+<header class="vf-site-header">
+    <div class="vf-announcement">
+        <div class="vf-announcement__inner">
+            <span class="vf-announcement__dot" aria-hidden="true"></span>
+            <span>اشتراكات رقمية موثوقة <b>•</b> تسليم فوري <b>•</b> تجربة شراء آمنة</span>
+        </div>
+    </div>
     <div class="header-container">
         <div class="header-row-one">
             <ul class="top-links top-links-1">
@@ -44,7 +50,7 @@
                     </div>
                     <div class="dropdown-list bottom-left popper-tooltip" style="display: none;">
                         <div class="ui search">
-                            <input type="text" placeholder="Search products here" value="" class="prompt search-box"
+                            <input type="text" placeholder="ابحث عن اشتراك أو منصة..." value="" class="prompt search-box"
                                 autocomplete="off">
                             <i class="notch-loader gray search-loader" style="display: none;"></i>
                             <div class="results"></div>
@@ -67,9 +73,9 @@
             <div class="store-logo top-links-2">
                 <a href="/">
                     {% if channel %}
-                        <img src="{{ storage_url ~ channel.logo }}" class="logo">
+                        <img src="{{ storage_url ~ channel.logo }}" class="logo" alt="{{ channel.name|default('Vaultfy') }}" decoding="async">
                     {% else %}
-                        <h1>{{ channel.name }}</h1>
+                        <h1>Vaultfy</h1>
                     {% endif %}
                 </a>
             </div>                
