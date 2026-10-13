@@ -16,6 +16,7 @@ $files = [
     'views/products/view.twig',
     'views/checkout/cart/index.twig',
     'assets/css/vaultfy.css',
+    'assets/css/vf-pages.css',
     'assets/js/vaultfy.js',
 ];
 $failed = [];
@@ -38,6 +39,7 @@ if (!$failed) {
         if (!$ok) $failed[] = $reason;
     };
     $assert(str_contains($layout, "css/vaultfy.css"), "Missing brand CSS link");
+    $assert(str_contains($layout, "css/vf-pages.css"), "Missing page styles link");
     $assert(str_contains($layout, "js/vaultfy.js"), "Missing JS asset link");
     $assert(str_contains($layout, "lang == 'ar' ? 'rtl' : 'ltr'"), "Document RTL language missing");
     $assert(str_contains($layout, "include(\"layout/header.twig\")"), "Twsaa header inclusion missing");
