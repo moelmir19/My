@@ -1,131 +1,89 @@
+{# Vaultfy header: Twsaa's channel, cart, account, search, currencies and /category data remain native. #}
+{% set channel = getFunction('getCurrentChannel') %}
 <header class="vf-site-header">
-    <div class="vf-announcement">
-        <div class="vf-announcement__inner">
-            <span class="vf-announcement__dot" aria-hidden="true"></span>
-            <span>اشتراكات رقمية موثوقة <b>•</b> تسليم فوري <b>•</b> تجربة شراء آمنة</span>
-        </div>
-    </div>
-    <div class="header-container">
-        <div class="header-row-one">
-            <ul class="top-links top-links-1">
-                <li>
-                    <div>
-                        <div class="dropdown-toggle">
-                            <span class="top-links-icon top-links-locale">
-                                <i class="icon-world"></i>
-                            </span>
-                        </div>
-                    
-                        <div class="dropdown-list bottom-left dropdown-links" style="display: none;">
-                            <ul>
-                                {% for locale in getFunction('getAllLocales') %}                             
-                                    <li>
-                                        <a href="?locale={{ locale.code }}">{{ locale.name }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <div class="dropdown-toggle">
-                            <span class="top-links-icon top-links-locale">
-                                <i class="icon-flag"></i>
-                            </span>
-                        </div>
-                        <div class="dropdown-list bottom-left dropdown-links" style="display: none;">
-                            <ul>
-                                {% for currency in getFunction('getActiveChannelCurrency') %}
-                                    <li>
-                                        <a href="?currency={{ currency.code }}" class="{{ currency.company_id }} {{ currency.id }}">{{ currency.code }} {{ currency.symbol }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dropdown-toggle top-links-icon top-links-search icon-magnifying-glass icon-search">
-                    </div>
-                    <div class="dropdown-list bottom-left popper-tooltip" style="display: none;">
-                        <div class="ui search">
-                            <input type="text" placeholder="ابحث عن اشتراك أو منصة..." value="" class="prompt search-box"
-                                autocomplete="off">
-                            <i class="notch-loader gray search-loader" style="display: none;"></i>
-                            <div class="results"></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="cart-dropdown-container has-counter">
-                    <a href="/checkout/cart">
-                        <span class="top-links-icon top-links-cart">
-                            <span class="icon-cart"></span>
-                            <span class="count-wrapper cart-count count">{{ getFunction('cartItemsCount') }}</span>
-                        </span>
-                    </a>
-                </li>
-                <li><a href="/customer/account/wallet"><span
-                            class="top-links-icon top-links-cart"><span class="icon-bag-dollar"></span> <span
-                                class="wallet-wrapper">{{ getFunction('customerWallet') | default('0') |raw }}</span></span></a></li>
+  <div class="header-container">
+    <div class="header-row-one">
+      <div class="vf-utilities vf-utilities--left">
+        <a class="vf-utility vf-wallet" href="/customer/account/wallet" aria-label="{{ lang == 'ar' ? 'المحفظة' : 'Wallet' }}">
+          <i class="icon-bag-dollar" aria-hidden="true"></i>
+          <span class="wallet-wrapper">{{ getFunction('customerWallet')|default('0')|raw }}</span>
+        </a>
+        <a class="vf-utility cart-dropdown-container has-counter" href="/checkout/cart" aria-label="{{ lang == 'ar' ? 'سلة المشتريات' : 'Shopping cart' }}">
+          <span class="top-links-cart"><i class="icon-cart" aria-hidden="true"></i>
+            <span class="count-wrapper cart-count count">{{ getFunction('cartItemsCount') }}</span>
+          </span>
+        </a>
+        <div class="vf-account">
+          <div {% if authUser %}class="dropdown-toggle vf-utility"{% else %}class="vf-utility" role="button" tabindex="0" data-toggle="modal" data-target="#customerLoginModal"{% endif %} aria-label="{{ lang == 'ar' ? 'حسابي' : 'My account' }}">
+            <span class="top-links-account"><i class="icon-user" aria-hidden="true"></i></span>
+          </div>
+          {% if authUser %}
+            <ul class="dropdown-list bottom-right customer-dropdown dropdown-links" style="display:none;">
+              <li class="no-link">{{ authUser.first_name }}</li>
+              <li><a href="/customer/account/notifications"><i class="icon-bell"></i> {{ ('shop::app.header.notifications'|trans) }}</a></li>
+              <li><a href="/customer/account/profile"><i class="icon-user"></i> {{ ('shop::app.header.profile'|trans) }}</a></li>
+              <li><a href="/customer/account/wishlist"><i class="icon-heart"></i> {{ ('shop::app.header.wishlist'|trans) }}</a></li>
+              <li><a href="/customer/account/orders"><i class="icon-packed-box"></i> {{ ('shop::app.header.orders'|trans) }}</a></li>
+              <li><a href="/customer/account/cart"><i class="icon-cart"></i> {{ ('shop::app.header.cart'|trans) }}</a></li>
+              <hr>
+              <li><a href="/customer/account/logout"><i class="icon-send-out"></i> {{ ('shop::app.header.logout'|trans) }}</a></li>
             </ul>
-            {% set channel = getFunction('getCurrentChannel') %}
-            <div class="store-logo top-links-2">
-                <a href="/">
-                    {% if channel %}
-                        <img src="{{ storage_url ~ channel.logo }}" class="logo" alt="{{ channel.name|default('Vaultfy') }}" decoding="async">
-                    {% else %}
-                        <h1>Vaultfy</h1>
-                    {% endif %}
-                </a>
-            </div>                
-            <div class="top-links-3">
-                <div>
-                    <div 
-                    {% if authUser %}
-                        class="dropdown-toggle"
-                    {% else %}
-                        data-toggle="modal" data-target="#customerLoginModal"
-                    {% endif %}>
-                        <span class="top-links-icon top-links-account"><i class="icon-user"></i></span>
-                    </div>
-                    {% if authUser %}
-                        <ul class="dropdown-list bottom-right customer-dropdown dropdown-links">
-                            <li class="no-link">
-                                {{ authUser.first_name }}
-                            </li>
-                            <li>
-                                <a href="/customer/account/notifications"><i class="icon-bell"></i>
-                                    {{ ('shop::app.header.notifications'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/profile"><i class="icon-user"></i>
-                                    {{ ('shop::app.header.profile'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/wishlist"><i class="icon-heart"></i>
-                                    {{ ('shop::app.header.wishlist'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/orders"><i class="icon-packed-box"></i>
-                                    {{ ('shop::app.header.orders'|trans) }}</a>
-                            </li>
-                            <li>
-                                <a href="/customer/account/cart"><i class="icon-cart"></i>
-                                    {{ ('shop::app.header.cart'|trans) }}</a>
-                            </li>
-                            <hr />
-                            <li>
-                                <a href="/customer/account/logout"><i class="icon-send-out"></i>
-                                    {{ ('shop::app.header.logout'|trans) }}</a>
-                            </li>
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
+          {% endif %}
         </div>
-        <div class="primary-menu">
-            {% include 'layout/navbar.twig' %}
+      </div>
+
+      <div class="store-logo top-links-2">
+        <a href="/" aria-label="{{ channel.name|default('Vaultfy') }}">
+          {% if channel.logo|default('') %}
+            <img class="logo" src="{{ storage_url ~ channel.logo }}" alt="{{ channel.name|default('Vaultfy') }}" decoding="async">
+          {% else %}
+            <strong class="vf-brand-name">{{ channel.name|default('Vaultfy') }}</strong>
+          {% endif %}
+        </a>
+      </div>
+
+      <div class="vf-utilities vf-utilities--right">
+        <div class="vf-setting-dropdown">
+          <div class="dropdown-toggle vf-setting-trigger" role="button" tabindex="0" aria-label="{{ lang == 'ar' ? 'اللغة' : 'Language' }}">
+            <span>{{ lang == 'ar' ? 'عربي' : 'En' }}</span>
+          </div>
+          <div class="dropdown-list bottom-left dropdown-links" style="display:none;">
+            <ul>{% for locale in getFunction('getAllLocales') %}<li><a href="?locale={{ locale.code }}">{{ locale.name }}</a></li>{% endfor %}</ul>
+          </div>
         </div>
+        <span class="vf-settings-divider" aria-hidden="true"></span>
+        <div class="vf-setting-dropdown">
+          <div class="dropdown-toggle vf-setting-trigger" role="button" tabindex="0" aria-label="{{ lang == 'ar' ? 'العملة' : 'Currency' }}">
+            <span>{{ getFunction('getActiveChannelCurrency')[0].symbol|default('ر.س') }}</span>
+          </div>
+          <div class="dropdown-list bottom-left dropdown-links" style="display:none;">
+            <ul>{% for currency in getFunction('getActiveChannelCurrency') %}<li><a href="?currency={{ currency.code }}" class="{{ currency.company_id }} {{ currency.id }}">{{ currency.code }} {{ currency.symbol }}</a></li>{% endfor %}</ul>
+          </div>
+        </div>
+        <button type="button" class="vf-mobile-search" aria-label="{{ lang == 'ar' ? 'فتح البحث' : 'Open search' }}" aria-controls="vf-search-panel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </button>
+        <button type="button" class="vf-menu-toggle" aria-label="{{ lang == 'ar' ? 'فتح قائمة الأقسام' : 'Open categories' }}" aria-controls="vf-primary-menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </div>
+
+    <div class="vf-under-header">
+      <div id="vf-search-panel" class="vf-search-panel">
+        <div class="ui search">
+          <label class="vf-search-field">
+            <span class="vf-sr-only">{{ lang == 'ar' ? 'ابحث عن منتج' : 'Search products' }}</span>
+            <input type="search" class="prompt search-box" placeholder="{{ lang == 'ar' ? 'ابحث عن منتج' : 'Search products' }}" autocomplete="off">
+            <i class="icon-magnifying-glass icon-search" aria-hidden="true"></i>
+          </label>
+          <i class="notch-loader gray search-loader" style="display:none;"></i>
+          <div class="results"></div>
+        </div>
+      </div>
+      <nav id="vf-primary-menu" class="primary-menu" aria-label="{{ lang == 'ar' ? 'الأقسام' : 'Categories' }}">
+        {% include 'layout/navbar.twig' %}
+      </nav>
+    </div>
+  </div>
 </header>
