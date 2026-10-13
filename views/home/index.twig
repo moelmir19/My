@@ -7,9 +7,13 @@
     <div class="home vf-home">
         {# Keep official Twsaa homeContent intact; branding is presentation-only. #}
         {% set vf_has_banner = false %}
+        {% set vf_poster_blocks = [] %}
         {% for vf_block in homeContent %}
             {% if vf_block['slug'] in ['fixed_banner','wide_banner'] and vf_block['settings']['image']|default('') %}
                 {% set vf_has_banner = true %}
+            {% endif %}
+            {% if vf_block['slug'] == 'list_of_items' and vf_block['settings']['items']|default([])|length > 0 %}
+                {% set vf_poster_blocks = vf_poster_blocks|merge([vf_block]) %}
             {% endif %}
         {% endfor %}
         {% if not vf_has_banner %}
@@ -25,14 +29,18 @@
                 {% include 'custom/bold-banner.twig' with {'content': vf_banner} %}
             {% endif %}
         {% endfor %}
-        {# Grid links are populated from Twsaa's native /category response, not hardcoded. #}
-        <section id="vf-categories" class="vf-category-area" hidden aria-label="أقسام المتجر">
-            <div class="vf-section-head">
-                <h2>تصفح المنصات</h2>
-                <span>اختر المنصة المناسبة لك</span>
-            </div>
-            <div id="vf-category-grid" class="vf-category-grid"></div>
-        </section>
+        {# Prefer explicitly configured poster artwork from Twsaa's list_of_items blocks.
+           If absent, use native category images from the /category endpoint. #}
+        {% if vf_poster_blocks|length > 0 %}
+            {% for vf_poster_block in vf_poster_blocks %}
+                {% include 'custom/vaultfy-posters.twig' with {'content': vf_poster_block} %}
+            {% endfor %}
+        {% else %}
+            <section id="vf-categories" class="vf-category-area" hidden aria-label="أقسام المتجر">
+                <h2 class="vf-sr-only">تصفح المنصات</h2>
+                <div id="vf-category-grid" class="vf-category-grid"></div>
+            </section>
+        {% endif %}
 
 
         {% for content in homeContent %}
@@ -49,13 +57,7 @@
              {% if ('brands' == content['slug']) %}
                 {% include 'custom/brands.twig' with {'content': content} %}
             {% endif %}
-            {% if ('list_of_items' == content['slug']) %}
-                {% if ('slider' == content['settings']['type']) %}
-                    {% include 'custom/list-of-items-slider.twig' with {'content': content} %}
-                {% else %}
-                    {% include 'custom/list-of-items.twig' with {'content': content} %}
-                {% endif %}
-            {% endif %}
+            {# list_of_items rendered as native-data poster gallery above. #}
 
              {% if ('fixed_products' == content['slug']) %}
                 {% if ('chosen_products' == content['settings']['list_type'] and content['settings']['sku_text']) %}
