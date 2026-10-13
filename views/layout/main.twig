@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% set lang = getFunction('locale') %}
+<html lang="{{ lang }}" dir="{{ lang == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,7 +11,7 @@
     {% set asset_url = getFunction('assets') %}
     {# {% set asset_url = '/twig-theme/assets/' %} #}
     {% set storage_url = 'https://cdn.twsaa.com/' %}
-    {% set lang = getFunction('locale') %}
+    {# Language defined before the HTML element for valid RTL markup. #}
 
     {% if lang == 'ar' %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/bootstrap-ar.min.css' }}">
@@ -35,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/app.css' }}">
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/custom.css' }}">
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/ui-custom.css' }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'css/vaultfy.css' }}">
 
     <link href="{{ asset_url ~ 'fonts/STC-Regular.ttf' }}">
     <link href="https://twsaa.com/admin-themes/mbotiq/assets/vendor/datepicker.min.css">
@@ -308,6 +310,7 @@
     
     </script>
     {% block footer_scripts %}{% endblock %}
+    <script defer src="{{ asset_url ~ 'js/vaultfy.js' }}"></script>
 
     <div class="modal-overlay"></div>
     <script>
