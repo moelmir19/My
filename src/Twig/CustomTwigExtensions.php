@@ -367,8 +367,8 @@ class CustomTwigExtensions extends AbstractExtension
         $data = [
             "id" => 23, 
             "code" => "demo", 
-            "name" => "Demo", 
-            "description" => "PERFUMES AND MORE", 
+            "name" => "Vaultfy", 
+            "description" => "اشتراكات رقمية تناسبك", 
             "location" => null, 
             "timezone" => null, 
             "theme" => "twig", 
@@ -1004,6 +1004,13 @@ class CustomTwigExtensions extends AbstractExtension
                 ] 
             ]
         ]; 
+        // Local Twig sample only: use the user's original logo if supplied.
+        // The real Twsaa merchant channel still determines the logo in production.
+        if (is_file(dirname(__DIR__, 2) . '/assets/images/vaultfy-logo.png')) {
+            $data['logo'] = '/assets/images/vaultfy-logo.png';
+        } else {
+            $data['logo'] = '';
+        }
         return $data;
     }
     public function getCompanyTax()
