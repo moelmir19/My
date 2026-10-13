@@ -64,6 +64,43 @@ if (!$failed) {
         $assert($open === $close, "Twig block tags unbalanced: $path");
     }
 }
+// If Composer dependencies are installed, compile-check the brand Twig templates
+// through the real Twig parser, without invoking payments or mock business data.
+if (is_file($root . '/vendor/autoload.php')) {
+    require_once $root . '/vendor/autoload.php';
+    if (class_exists(\Twig\Environment::class)) {
+        $loader = new \Twig\Loader\FilesystemLoader($root . '/views');
+        $twig = new \Twig\Environment($loader, ['cache' => false]);
+        $twig->addExtension(new \App\Twig\CustomTwigExtensions(new \App\Twig\Translator()));
+        $templates = [
+            'layout/main.twig',
+            'layout/header.twig',
+            'layout/footer.twig',
+            'home/index.twig',
+            'custom/vaultfy-posters.twig',
+            'custom/bold-banner.twig',
+            'category/index.twig',
+            'products/view/gallery.twig',
+            'products/view.twig',
+            'checkout/cart/index.twig',
+            'cms/page.twig',
+        ];
+        foreach ($templates as $template) {
+            try {
+                $source = new \Twig\Source(
+                    file_get_contents($root . '/views/' . $template),
+                    $template
+                );
+                $twig->parse($twig->tokenize($source));
+            } catch (\Throwable $e) {
+                $failed[] = "Twig compile: $template: " . $e->getMessage();
+            }
+        }
+    }
+} else {
+    echo "Composer not installed: only structural checks available.\n";
+}
+
 if ($failed) {
     fwrite(STDERR, "Vaultfy smoke checks FAILED:\n - " . implode("\n - ", $failed) . "\n");
     exit(1);
