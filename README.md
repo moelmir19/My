@@ -1,10 +1,72 @@
-# Twsaa custom twig theme sample code
- 
-How to create a new Theme
-Download the sample code
-After downloading the code you need to install Twig
-To install twig run the below code in your terminal
-composer require "twig/twig:^3.0"
-After Twig is installed you can preview the theme on your browser
-Now you can start making changes in the code
-Happy Coding 🙂
+# Vaultfy — Twsaa Twig Theme
+
+إعادة بناء واجهة متجر Vaultfy على قالب توسع الرسمي، مستوحاة من **تخطيط متجر UP**
+وفق صور الكمبيوتر والجوال المرسلة. الهويّة التجارية والشعار والمحتوى تخص Vaultfy.
+الثيم يستهلك بيانات توسع الأصلية — لا يستورد منتجات أو أسعار المنافس.
+
+## تشغيله محلياً (Windows / PowerShell)
+
+يُرجى وجود Git وPHP 8.2+ وComposer.
+
+```powershell
+cd "$env:USERPROFILE\Desktop"
+git clone --branch vaultfy-upstore-from-scratch --single-branch https://github.com/moelmir19/My.git Vaultfy-Local
+cd Vaultfy-Local
+composer install
+php tests/vaultfy-smoke.php
+php -S 127.0.0.1:8000
+```
+
+افتح الرابط **http://127.0.0.1:8000/**.
+
+إذا سبق تحميل الفرع، لا تستنسخه مرة أخرى:
+
+```powershell
+cd "$env:USERPROFILE\Desktop\Vaultfy-Local"
+git pull origin vaultfy-upstore-from-scratch
+composer install
+php -S 127.0.0.1:8000
+```
+
+### إضافة شعار Vaultfy الأصلي إلى المعاينة
+
+ضع نفس PNG الأصلي الذي رفعته باسم
+`assets/images/vaultfy-logo.png`
+**دون تغيير بكسلات الشعار**. تتعرف بيئة الاختبار المحلية تلقائياً على
+الشعار؛ أما في المتجر المنشور فالشعار يأتي مباشرة من إعدادات توسع.
+
+إذا كان الملف الأصلي بخلفية بيضاء، ستظهر الخلفية البيضاء أيضاً: هذا متعمَّد
+للمحافظة على الملف الأصلي، ويمكن توفير PNG شفاف لاحقاً دون إعادة رسم العلامة.
+
+### بيانات المعاينة مهمة
+
+بيئة توسع المفتوحة المصدر تحتوي على `data.php` وهو **بيانات محاكاة**:
+منتجات/أقسام/سلة لأغراض تصميم محلي فقط. لا تعكس بيانات Vaultfy الحقيقية.
+بعد رفع الثيم إلى منصة توسع، تستقبل ملفات Twig البيانات من متجرك الحي.
+
+- ضع بنر Vaultfy من لوحة تحكم توسع في `fixed_banner` أو `wide_banner`.
+- للبطاقات العمودية الثلاثية يمكن استعمال كتلة `list_of_items` في الصفحة
+  الرئيسية بصور ومعلومات متجرك، أو صور الأقسام من مسار توسع `/category`.
+- لا ترفع شعار أو بنر UP ولا تنقل الصور المحمية من المتجر الآخر.
+
+## بنية الملفات
+
+| المسار | الدور |
+| --- | --- |
+| `views/layout/header.twig` | هيدر مركزي، بحث، فئات، قائمة جوال |
+| `views/home/index.twig` | بنر + معرض أقسام + محتوى توسع |
+| `views/custom/vaultfy-posters.twig` | صور الفئات من `list_of_items` |
+| `views/category/index.twig` | روابط/صور الفئات من المنصة |
+| `assets/css/vaultfy.css` | الهوية والتخطيط والتجاوب |
+| `assets/css/vf-pages.css` | تنسيق صفحات المنتج والسلة والحساب والمحتوى |
+| `assets/js/vaultfy.js` | فتح البحث والقائمة وبناء بطاقات صور الأقسام |
+| `tests/vaultfy-smoke.php` | فحوصات بنية القالب بدون اختبار خادم توسع |
+
+## حدود التحقق
+
+فحص PHP/Twig الهيكلي و`node --check assets/js/vaultfy.js` لا يثبت أن
+السلة والاشتراكات والتسعير الحقيقي أو عملية الدفع تعمل في توسع. يظل اختبار
+المعاينة على متجر توسع الفعلي إلزامياً قبل نشر القالب، خصوصاً:
+تغيير سعر خيارات الاشتراك، تطبيق القسائم، تعديل الكمية، الدخول، والدفع.
+
+ملف **VAULTFY-REBUILD.md** يوثق المعاينة المطلوبة والمشاكل المتبقية.
