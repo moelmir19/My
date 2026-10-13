@@ -1,21 +1,16 @@
-{% if content['settings']['image'] %}
-    {% if content['settings']['link'] %}
-        <a id="block{{ content['block_id'] }}" href="{{ content['settings']['link'] }}">
-    {% endif %}
-
-    {% if content['settings']['start_date'] and content['settings']['start_date'] != '' and content['settings']['end_date'] and content['settings']['end_date'] != '' %}
-        {% if "now"|date > content['settings']['start_date'] and "now"|date < content['settings']['end_date'] %}
-            <img class="w-100 mb-40" src="{{ content['content']['settings']['image'] }}" alt="Banner" />
+{# Native Twsaa merchant banner. Do not hard-code the competitor's promotional artwork. #}
+{% set vf_image = content['settings']['image']|default('') %}
+{% set vf_start = content['settings']['start_date']|default('') %}
+{% set vf_end = content['settings']['end_date']|default('') %}
+{% set vf_live = (vf_start == '' or 'now'|date('U') >= vf_start|date('U')) and (vf_end == '' or 'now'|date('U') <= vf_end|date('U')) %}
+{% if vf_image and vf_live %}
+    <div class="vf-banner" id="block{{ content['block_id'] }}">
+        {% if content['settings']['link']|default('') %}
+            <a href="{{ content['settings']['link'] }}" aria-label="{{ lang == 'ar' ? 'عرض المتجر' : 'Store offer' }}">
         {% endif %}
-    {% elseif content['settings']['start_date'] and content['settings']['start_date'] != '' and (content['settings']['end_date'] == '' or content['settings']['end_date'] == '') %}
-        {% if "now"|date > setting['start_date'] %}
-            <img class="w-100 mb-40" src="{{ content['settings']['image'] }}" alt="Banner" />
+            <img src="{{ vf_image }}" alt="{{ channel.name|default('Vaultfy') }} — {{ lang == 'ar' ? 'عروض المتجر' : 'Store offers' }}" loading="eager" fetchpriority="high">
+        {% if content['settings']['link']|default('') %}
+            </a>
         {% endif %}
-    {% else %}
-        <img class="w-100 mb-40" src="{{ content['settings']['image'] }}" alt="Banner" />
-    {% endif %}
-   
-    {% if content['settings']['link'] %}
-    </a>
-    {% endif %}
+    </div>
 {% endif %}
