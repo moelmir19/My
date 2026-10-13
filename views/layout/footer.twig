@@ -6,7 +6,7 @@
     <div class="vf-footer-about container">
         <div class="vf-footer-about__brand">
             {% if channel.logo|default('') %}
-                <img src="{{ storage_url ~ channel.logo }}" alt="{{ channel.name|default('Vaultfy') }}" loading="lazy">
+                <img src="{{ channel.logo starts with '/' ? channel.logo : storage_url ~ channel.logo }}" alt="{{ channel.name|default('Vaultfy') }}" loading="lazy">
             {% else %}
                 <strong>{{ channel.name|default('Vaultfy') }}</strong>
             {% endif %}
